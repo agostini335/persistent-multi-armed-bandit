@@ -1,0 +1,50 @@
+{
+    "tmax": 70,
+    "time": 100000,
+    "n_runs":10,
+    "arm_sets": [
+        {
+            "alpha": 1,
+            "beta": 1,
+            "starting_reward": 20,
+            "quantity": 1,
+            "reward_incrment_step": 0
+        },
+        {
+            "alpha": 1,
+            "beta": 1,
+            "starting_reward": 5,
+            "quantity": 1,
+            "reward_incrment_step": 0
+        },
+        {
+            "alpha": 1,
+            "beta": 2,
+            "starting_reward": 19,
+            "quantity": 1,
+            "reward_incrment_step": 0
+        },
+
+        {
+            "alpha": 5,
+            "beta": 2,
+            "starting_reward": 10,
+            "quantity": 1,
+            "reward_incrment_step": 0
+        },
+        {
+            "alpha": 5,
+            "beta": 12,
+            "starting_reward": 9,
+            "quantity": 1,
+            "reward_incrment_step": 0
+        },
+        {
+            "alpha": 5,
+            "beta": 12,
+            "starting_reward": 19.6,
+            "quantity": 1,
+            "reward_incrment_step": 0
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "tmax": 10,
+    "time": 50000,
+    "n_runs":7,
+    "arm_sets": [
+        {
+            "alpha": 0.9,
+            "beta": 5,
+            "starting_reward": 10,
+            "quantity": 1,
+            "reward_incrment_step": 0
+        },
+        {
+            "alpha": 0.9,
+            "beta": 10,
+            "starting_reward": 15,
+            "quantity": 1,
+            "reward_incrment_step": 0
+        },
+        {
+            "alpha": 1,
+            "beta": 3,
+            "starting_reward": 2,
+            "quantity": 8,
+            "reward_incrment_step": 0.2
+        }
+    ]
+}

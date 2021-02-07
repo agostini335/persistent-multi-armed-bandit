@@ -1,6 +1,8 @@
-from ExperimentDescription import *
-from ArmSet import *
+'''
+from Parser.ExperimentDescription import *
+from Parser.ArmSet import *
 import json
+
 
 
 a1= ArmSet(alpha=1,beta=1,starting_reward=10,quantity=10,increment=0)
@@ -13,3 +15,4 @@ experiment_desc = ExperimentDescription(tmax=100,time=100,arm_sets=[a1,a2,a3])
 with open('ConfigFiles/experiment_1.json', 'w', encoding='utf-8') as f:
     json.dump(experiment_desc,   f, default=lambda o: o.__dict__,ensure_ascii=False, indent=4)
 
+'''

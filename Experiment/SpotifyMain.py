@@ -2,12 +2,10 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import math
 from collections import Counter
 from datetime import datetime
 import matplotlib.lines as mlines
 from tqdm import tqdm
-import hashlib
 
 '''
 play_0     1888
@@ -45,6 +43,13 @@ for pl in selected_playlist_rids:
         play_dict[pl].append(bucket)
 
 
+import pickle
+outfile = open("pl_dict_output",'wb')
+pickle.dump(play_dict,outfile)
+outfile.close()
+
+print("----------------------------------AOK----------------------------")
+
             
             
 #%% STATS
@@ -60,6 +65,15 @@ for pl in selected_playlist_rids:
     print("std" + str(np.std(summed)))
     print("")
 print(pl_avg)
+
+import pickle
+outfile = open("pl_avg_output",'wb')
+pickle.dump(pl_avg,outfile)
+outfile.close()
+
+print("----------------------------------AOK----------------------------")
+
+
 #%%
 ''''
 #%% STATS... spotify ok
@@ -126,19 +140,19 @@ from SpotifyScenario.SpotifyArm import SpotifyArm
 from AnalyticsManager import AnalyticsManager
 from ConfigManager import ConfigManager
 from Environment import Environment
-from Bound1Learner_myopic import Bound1Learner_myopic
-from Bound1Learner_myopic_adaptive import Bound1Learner_myopic_adaptive
-from Bound1Learner_farsighted import Bound1Learner_farsighted
-from Bound1Learner_farsighted_adaptive import Bound1Learner_farsighted_adaptive
-from BaselineLearner_myopic import BaselineLearner_myopic
-from BaselineLearner_farsighted import BaselineLearner_farsighted
-from ThompsonLearner import ThompsonLearner
-from BaselineLearner_farsighted_adaptive import BaselineLearner_farsighted_adaptive
-from BaselineLearner_myopic_adaptive import BaselineLearner_myopic_adaptive
-from ThompsonLearner import ThompsonLearnerSpotify
-from ThompsonLearner import ThompsonBaselineSpotify
-from ThompsonLearner import ThompsonLearnerExplorerSpotify
-from Oracle import Oracle
+from Learners.Bound1Learner_myopic import Bound1Learner_myopic
+from Learners.Bound1Learner_myopic_adaptive import Bound1Learner_myopic_adaptive
+from Learners.Bound1Learner_farsighted import Bound1Learner_farsighted
+from Learners.Bound1Learner_farsighted_adaptive import Bound1Learner_farsighted_adaptive
+from Learners.BaselineLearner_myopic import BaselineLearner_myopic
+from Learners.BaselineLearner_farsighted import BaselineLearner_farsighted
+from Learners.ThompsonLearner import ThompsonLearner
+from Learners.BaselineLearner_farsighted_adaptive import BaselineLearner_farsighted_adaptive
+from Learners.BaselineLearner_myopic_adaptive import BaselineLearner_myopic_adaptive
+from Learners.ThompsonLearner import ThompsonLearnerSpotify
+from Learners.ThompsonLearner import ThompsonBaselineSpotify
+from Learners.ThompsonLearner import ThompsonLearnerExplorerSpotify
+from Learners.Oracle import Oracle
 from tqdm import tqdm
 from Parser.ArmSet import ArmSet
 from Parser.ExperimentDescription import ExperimentDescription

@@ -1,5 +1,6 @@
 from Learners.Learner import Learner
 import numpy as np
+from scipy.stats import beta as scipybeta
 import Utils
 import random
 
@@ -525,6 +526,56 @@ class ThompsonLearnerExplorerSpotify(Learner):
         
         
 
+    
+    def update_observations(self, pulled_arm, bucket):
+        super().update_observations(pulled_arm, bucket)
+        for arm in range(self.n_arms):
+            #check correct list of arms
+            active_buckets = []
+            for b in self.arms[arm].buckets:
+                # m is the relative time of a bucket
+                m = int(self.t - b.t_start)
+                # if m == tmax : the bucket is ended
+                if m < self.tmax:
+                    active_buckets.append(b)
+                    #update visite
+                    self.visits_table[m][arm] = self.visits_table[m][arm]+1
+                    #update dei successi
+                    if b.values[m]>0:
+                        self.hits_table[m][arm] = self.hits_table[m][arm]+1
+            self.arms[arm].buckets = active_buckets
+
+
+class BayesUCBPersistentSpotify(Learner):
+ 
+    def __init__(self, n_arms, arms, tmax):
+        name = "BayesUCBPersistent"        
+        super().__init__(n_arms,arms,name)
+      
+        self.hits_table = np.zeros((tmax,n_arms))
+        self.visits_table = np.zeros((tmax,n_arms))
+        self.init_prior_alpha = np.ones((tmax,n_arms))
+        self.init_prior_beta = np.ones((tmax,n_arms))
+        self.tmax = tmax
+        self.arms_r_vector = np.zeros(n_arms)        
+               
+        #assign_numeric_id
+        for id_arm in range(n_arms):
+            self.arms[id_arm].numeric_id = id_arm        
+            self.arms_r_vector[id_arm] = self.arms[id_arm].reward
+                   
+        
+
+    def pull_arm(self):
+        #myopic static
+        # draw THETAmi according to the Beta             
+        S = self.hits_table
+        F = self.visits_table - self.hits_table
+        THETA = scipybeta.ppf((1-(1/(1+self.t))),S + self.init_prior_alpha, F + self.init_prior_beta)
+        # chose armi
+        pulled_arm_id = np.argmax(THETA.sum(axis = 0)*self.arms_r_vector)
+        assert(self.arms[pulled_arm_id].numeric_id == pulled_arm_id)            
+        return self.arms[pulled_arm_id]
     
     def update_observations(self, pulled_arm, bucket):
         super().update_observations(pulled_arm, bucket)

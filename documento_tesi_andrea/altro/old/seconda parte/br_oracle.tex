@@ -1,0 +1,232 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{times}  %Required
+\usepackage{helvet}  %Required
+\usepackage{courier}  %Required
+\usepackage{url}  %Required
+\usepackage{graphicx}  %Required
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{pgf}
+\usetikzlibrary{calc}
+\usepackage{algorithm}
+\usepackage{ntheorem}\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[noend]{algpseudocode}
+\usepackage{thm-restate}
+\usepackage{todonotes}
+\usepackage{enumitem}
+\usepackage{pgfplots}
+\usepackage{mathtools}
+\usepackage{bm}
+
+\frenchspacing  %Required
+\setlength{\pdfpagewidth}{8.5in}  %Required
+\setlength{\pdfpageheight}{11in}  %Required
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proof}{Proof}%[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+%\newtheorem{problem}{Problem}
+\newtheorem{prop}{Proposition}
+\newtheorem{observation}{Observation}
+\newtheorem{property}{Property}
+\newtheorem{remark}{Remark}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\pl}{\mathcal{P}}
+\DeclareMathOperator*{\pre}{\sqsubseteq}
+\DeclareMathOperator*{\I}{\mathcal{I}}
+\DeclareMathOperator*{\T}{\mathcal{T}}
+\DeclareMathOperator*{\F}{\mathcal{F}}
+\DeclareMathOperator*{\B}{\mathcal{B}}
+\DeclareMathOperator*{\A}{\mathcal{A}}
+\DeclareMathOperator*{\ag}{\textbf{a}}
+\DeclareMathOperator*{\pg}{\textbf{p}}
+
+\title{Best-Response Oracle with Pruning}
+\author{}
+\date{October 2018}
+
+
+\begin{document}
+
+
+\begin{algorithm}[!h]
+	\caption{\texttt{br player 2 pruning}}
+	\begin{scriptsize}
+		\begin{algorithmic}[1]
+
+%dove inizializzo R a 0 ? (nella funzione BRP)
+%va bene chiamarlo R sia in BRP che in PRUNE o sarbbe meglio cambiarlo?
+            \State $R \leftarrow \emptyset$
+        	\Function{BRP}{$\Gamma$, $\breve{v}$, $h$, $u_{\pi_1\pi_{\A}}$}\Comment{$i\in\pl$ has perfect recall}
+			\If{$(h \in Z)$}
+			\State\textbf{return} $u_{\pi_1\pi_{\A}}(h)$
+			\EndIf
+			\State $LB^{*}(I_2)\leftarrow -\infty$
+		    \If{$(h \in I | P(I)=2)$}
+		    \State $I_2 \leftarrow I(h)$
+		    
+		    \For {$i=1:|A_o(h)|$}
+		    \State $a \leftarrow A_o(h)_i$
+		    \State $flag \leftarrow 0$
+		    \For {$\bar{h} \in I_2$}
+		    \If {$(LB^{*}(I_2)>\breve{v}(\bar{h}a))$}
+		    \State $flag \leftarrow flag + 1$
+		    \EndIf
+		    \EndFor
+		    \If {$(flag=|I_2|)$}
+		    \State $R \leftarrow R$ $\cup$ PRUNE$(\Gamma,I_2,a)$
+		    \State \textbf{continue};
+		    \EndIf
+		    \If {$(I_2,a) \notin E $}
+		    \State $LB'(I_2) \leftarrow 0$
+		    \For {$\bar{h} \in I_2$}
+		    \State $LB'(I_2) \leftarrow LB'(I_2) + $BRP$(\Gamma,\breve{v}, \bar{h}a, u_{\pi_1\pi_{\A}})$
+		    \EndFor
+		    \If {$(LB'(I_2)>LB^{*}(I_2))$}
+		    \State $LB^{*}(I_2) \leftarrow LB'(I_2)$
+		    \EndIf
+		    \State $E \leftarrow E \cup \{(I_2,a)\}$
+		    \EndIf
+		    \EndFor
+		    \EndIf
+		    \State\textbf{return} $R$
+		    \EndFunction
+			
+			\Function{PRUNE}{$\Gamma,\bar{I},a$}
+			\State $I_{h,a} \leftarrow\{I(ha)\}_{h \in \bar{I}}$
+			\State $\hat{H} \leftarrow \bigcup_{I \in I_{h,a}} \{h \in H_1 | \exists b, (I,b) \in X_{1,2}(h) \}$
+			\State $\bar{R}\leftarrow \emptyset$
+			\For {$I_1 \in \I_1$}	
+			\If {$( \forall h \in I_1 , h \in \hat{H} )$}
+			\State $\bar{R} \leftarrow \bar{R} \cup \{I_1\} $
+			
+			\EndIf
+			\EndFor
+			\State\textbf{return} $\bar{R}$
+			\EndFunction
+			
+		\end{algorithmic}
+	\end{scriptsize}
+	\label{alg:brp}
+\end{algorithm}
+
+\noindent
+Function PRUNE takes in input game $\Gamma$, the information set $\bar{I}$ and an action $a \in A(\bar{I})$; $I_{h,a}$ is the set of information sets that immediately follows from $\bar{I}$ given action $a$ and $\hat{H}$ is the set of all nodes in a subtree having root node in some $I \in I_{h,a}$. The function returns set $R$ that contains all the information set where we can fix an action. An information set can be part of $R$ only if all its nodes belong to $\hat{H}$.
+% tesi: qui posso mettere un disegno che spieghi i vari casi. Ad esempio quando alcuni nodi appartengono ad \hat(H) ed altri no.
+
+\noindent
+Function BRP takes in input game $\Gamma$, the vector containing an upper bound value  $\breve{v}$ per information set, a node $h \in H$ and the vector of utilities $u_{\pi_1\pi_A}(z)$, $z \in Z$, that are marginalized with respect to the given behavioral strategies $\pi_1$ of player 1 and $\pi_{\A}$ of adversary player.
+
+\noindent
+Function BRP returns $R$, the set of information sets which can be pruned. Pruning an information set practically means fixing a certain action. Indeed we know that the pruned information set will not be part of the best response, so we can fix a random action there because we will never take that path. Fixing an action simplify the combinatorial problem of choosing plans of player 1.
+
+\noindent
+BRP is a recursive function that reads the marginalized utilities at leaves nodes and then propagate them up as lower bounds. The aim of the team of players $\{1,2\}$ is maximizing the utility so
+
+
+\begin{algorithm}[!h]
+	\caption{\texttt{update}}
+	\begin{scriptsize}
+		\begin{algorithmic}[1]
+			\State\textbf{init} $\ag \leftarrow \textbf{1}$ %un vettore di tutti uni lungo |I| DEVO METTERE IL PEDICE |\I_i| a 1 e 0 per far capire ce il vettore ha quella lunghezza? SI
+			\State\textbf{init} $\pg \leftarrow \textbf{0}$ %vettore di zeri lungo |I|
+			\State$\bar{\pi}_1 \leftarrow$ TOBEHAVIORAL$(\ag)$
+			
+			\Function {TOBEHAVIORAL}{$\ag$}
+			\State $\bm{\bar{\pi}_1} \leftarrow \mathbf{0}_{|\I_1|\times|A(I_1)|}$
+			\For {$x=1:|\I_1|,y=1:|A(I_1)|$}
+			\If {$\ag_x=y$}
+			\State $\bm{\bar{\pi}_1}(x,y) \leftarrow 1$
+			\EndIf
+			\EndFor
+			\State\textbf{return} $\bm{\bar{\pi}_1}$
+			\EndFunction
+			
+			\Function{UPDATE}{$(\ag,\pg,R)$}
+			\State $\pg \leftarrow$ UPDATEP$(\pg,R)$
+			\State $\ag \leftarrow$ UPDATEA$(\ag,\pg)$
+			\State\textbf{return} $(\ag,\pg)$
+			\EndFunction
+			
+			\Function{UPDATEP}{$\pg,R$}
+			\For {$I_i \in \I_1$}
+			\If {$\pg_i \ne 1 \land I_i \in R $}
+			\State $\pg_i \leftarrow 1$
+			\EndIf
+			\EndFor
+			\State\textbf{return} $\pg$
+			\EndFunction
+			
+			%non molto efficiente
+			\Function{UPDATEA}{$\ag,\pg$}
+			\State $B \leftarrow \I_1$
+			\For {$i | \pg_i = 1$}
+			\State $B \leftarrow B \setminus I_i $
+			\EndFor
+			%\State $\ag \leftarrow \times_{I \in B}A(I)$
+			\State $\ag \leftarrow$ NEXT$(B)$
+			\State\textbf{return} $\ag$
+			
+			% dico di prendere una azione da ogni info set \in \I_i e man mano 
+			% tolgo da |\I_i| gli info set fissati indicati con 1 in p
+			% quindi cerco in un insieme sempre più piccolo man mano li tolgo.
+			
+			\EndFunction
+			
+		\end{algorithmic}
+	\end{scriptsize}
+	\label{update}
+\end{algorithm}
+
+\begin{algorithm}[!h]
+	\caption{\texttt{Ordered Actions in $A_o(I_i)$}}
+	\begin{scriptsize}
+		\begin{algorithmic}[1]
+			
+			%controlla se la notazione è giusta
+			%metodo euristico
+			
+			\Function {ORDER}{$\Gamma, I_i$}
+			\State $C \leftarrow I_i \times A(I_i)$
+			\State $j \leftarrow 1$
+			\For {$(h,a) \in I_i \times A(I_i) $}
+			\If {$(h,a) \in C$}
+			\If {$\breve{v}(ha) \ge \breve{v}(\bar{h}\bar{a}) \quad \forall (\bar{h},\bar{a}) \in I_i \times A(I_i) $}
+			\State $A_o(I_i)_j \leftarrow a$
+			\State $j \leftarrow j+1$
+			\For {$\bar{h} \in I_i$}
+			\State $C \leftarrow C \setminus \{(\bar{h},a)\}$
+			\EndFor
+			\EndIf
+			\EndIf 
+			\EndFor
+			\EndFunction
+			
+			
+		\end{algorithmic}
+	\end{scriptsize}
+	\label{ordinare}
+\end{algorithm}
+
+
+\noindent
+Algorithm \ref{update} use two vectors of dimension $|\I_1|$:
+\begin{itemize}
+\item $\ag$: the i-th element $\ag_i$ is the action currently selected at the i-th information set of player 1. The action is expressed as an index (ID) from $1$ to $|A(I_i)|$ following the order of $A_o(I_i)$ (e.g. $\ag_2=1$ means that the second element of $\ag$, which is the action currently selected at the second information set of player one $I_2$, is the first element of the ordered set of action of $I_2$ that is $A_o(I_2)_1$). $\ag$ is initialized as a vector of 1s that means that the first path selected is the one with the highest value according to information obtained from the perfect recall refinement.
+\item $\pg$: the i-th element $\pg_i$ is equal to 1 iff the i-th information set of player 1 has been pruned. This information is useful in order to fix an action there. %this semplify the combinatorial problem: our aim.
+\end{itemize}
+
+\noindent
+Function TOBEHAVIORAL takes in input the vector $\ag$ and create $\bm{\bar{\pi}_1}$ a matrix $|\I_1| \times |A(I_1)|$. Note that the branching factor is the same for all the information sets of player 1 (i.e. $|A(I_1)|=|A(I_2)|=...=|A(I_{|\I_1|})|$). The i-th row of the matrix is the pure behavioral strategy followed by player 1 at information set $I_i \in \I_1$. Behavioral strategy at information set $I_i$ is a distribution of probabilities over actions $A(I_i)$; playing a pure strategy means setting $\bm{\bar{\pi}_1}(i,j)=1$ if the j-th action of $A_o(I_i)$ (whose ID is $\ag(i)$) is chosen and all the other elements $\bm{\bar{\pi}_1}(i,\bar{j})=0 \quad \forall\bar{j} \ne j$.
+
+
+\end{document}

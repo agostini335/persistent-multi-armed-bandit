@@ -1,0 +1,596 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% nuovo bound in capitolo inflation
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% disegno strategie triangolo
+
+%schemino perfect info perfect recall
+
+%supplement material
+
+\chapter{Preliminaries}\label{C2}
+
+\section{Game Theory}
+Game theory is the name given to the methodology of using mathematical tools to model and analyze situations of interactive decision making. These are situations involving several decision makers, called players or agents, with different goals, in which the decision of each affects the outcome for all the decision makers. This interactivity distinguishes game theory from standard decision theory, which involves a single decision maker, and it is its main focus \citep{maschler2013game}.
+It is important to notice that agents are supposed to be rational, meaning that each agent is aware of his alternatives, makes expectations about any unknowns, has clear preferences over the outcomes and chooses his actions in order to maximize his reward.
+In the absence of uncertainty, the following elements provide a basic model of rational choice \citep{Osborne1994}.
+\begin{itemize}
+	\item A set of \textit{actions} $A$ available to the agent;
+	\item A set $C$ of possible \textit{consequences} (outcomes) to these actions;
+	\item A \textit{consequence function} $g: A \rightarrow C$ that determines the consequence of each action;
+	\item A \textit{preference relation} $\succsim$ over the set of possible outcomes $C$.
+\end{itemize}
+Usually decision-makers's preferences are expressed with a \textit{utility function} $U: C\rightarrow \mathbb{R}$, which defines a preference relation over the outcomes by the condition $x\succsim y \Leftrightarrow U(x)\geq U(y)$.
+To model situations of decision-making under uncertainty this model of rationality is adapted, according to \citep{vonNeumann44}, by letting each decision-maker maximize her expected utility.
+
+\subsection {Normal Form Games}
+A game is a description of a strategic interaction which constrains the actions available to each player and defines the players' interests but it does not specify the actions that players will take. In order to understand how the game will be played we need a \textit{solution concept} which describes how players choose their strategies.
+
+The following paragraphs give an overview of the game models and solution concepts required to understand the following chapters. For a broader presentation of these topics see \citep{Fudenberg,Osborne1994}.   
+
+\subsubsection{The Normal Form}
+%normal form + strategy
+%TODO dire che la complessità con cui cresce è esponenziale?
+A game in normal (strategic) form describes a strategic interaction in which each agent chooses his plan of action once and for all, and these choices are made simultaneously. 
+\begin{definition}
+	The normal-form representation of a game consists of a triplet $\langle N, (A_{i}), (\succsim_{i})\rangle$ where:
+	\begin{itemize}
+		\item $N=\{1,2,\ldots,n\}$ is the set of players;
+		\item for each player $i \in N$, $A_{i}=\{a_{i,1},a_{i,2},\ldots,a_{i,m}\}$ is the set of actions available to player $i$;
+		\item for each player $i \in N$, $\succsim_{i}$ is the preference relation on $A=\times_{j\in N}A_{j}$ of player $i$.
+	\end{itemize}
+\end{definition}
+
+\begin{definition}
+	An action profile $\mathbf{a}$ is a tuple $\langle a_{1},a_{2}, \ldots, a_{n}\rangle$ with $a_{i}\in A_{i}$, containing one action per player. 
+	
+	The action profile $\mathbf{a_{-i}}$ is a tuple $\langle a_{1},\ldots,a_{i-1},a_{i+1},\ldots,a_{n}\rangle$ with $a_{j} \in A_{j}$, containing one action per player except for player $i$.
+\end{definition}
+
+Under a wide range of circumstances the preference relation $\succsim_{i}$ can be represented by a \textit{payoff function} (\textit{utility function}) $u_{i}:A\rightarrow\mathbb{R}$ such that $u_{i}(\mathbf{a})\geq u_{i}(\mathbf{b})$ whenever $\mathbf{a}\succsim_{i}\mathbf{b}$. In such cases we denote the game as $\langle N,(A_{i}),(u_{i})\rangle$.
+
+%\begin{definition}\label{def:mixed_strategy}
+%	A strategy is a function $s_{i}:A_{i}\rightarrow[0,1]$ with $s_{i}\in\bigtriangleup^{m}(A_{i})$ returning the probability with which agent $i$ plays each action in $A_{i}$.
+%\end{definition}
+%Recall that $|A_{i}|=m$ and that by writing $s_{i}\in\bigtriangleup^{m}(A_{i})$ we are stating that $s_{i}$ is a point belonging to the \textit{unit m-simplex} which is defined as: $$\bigtriangleup^{m}=\{(s_{1},s_{2},\ldots,s_{m})\in \mathbb{R}^{m}|\sum_{i=1}^{m}s_{i}=1 \quad and \quad s_{i}\geq 0 \quad for \quad all \quad i\}$$ It reflects the idea that each agent will play for sure an action but may be uncertain on which one he is going to play. 
+%Strategies such that it exists an action $a_{i}$ for which $s(a_{i})=1$ are called \textit{pure strategies}, otherwise they are defined as \textit{mixed strategies} and they describe a probability distribution over the available actions. A \textit{strategy profile} $\mathbf{s}$ is defined in the same way as an action profile.
+
+
+In some real-world scenarios it may happen that players pursuing the same objectives are allowed by a correlating device to decide jointly their strategy and synchronize its execution. Such a group of players is equivalent to a single player whose actions are the joint actions of the teammates. More formally, we define a correlated strategy as follows:
+\begin{definition}\label{def:correlated_strategy}
+	Given a normal form game $\langle N,(A_{i}),(u_{i})\rangle$ with a set of players $T\subseteq N$ such that, for all $i,j \in T$, $u_{i}=u_{j}$, a correlated strategy for players in $T$ is defined as $p:A_{T}\rightarrow \bigtriangleup^{\prod_{i \in T}m_{i}}$, where $A_{T}=\times_{i\in T}A_{i}$ and, for each $i\in T$, $m_{i}=|A_{i}|$.
+\end{definition}
+
+
+\subsubsection{Team Games}
+The following definitions generalize the concept of \textit{team game} as presented in \citep{von1997}.
+\begin{definition}\label{def:team}
+	Given a normal-form game $\langle N,(A_{i}),(u_{i})\rangle$, a team $T\in N$ is a subset of players sharing the same utility function, which is maximal under inclusion. More formally, for any $i,j \in N$, $i,j\in T \Leftrightarrow u_{i}=u_{j}=u_{T}$, where $u_{T}$ is the utility of each player in the team $T$.
+\end{definition} 
+\begin{definition}
+	A team game is a normal-form game in which at least one team is present.
+\end{definition}
+Team games describe the frequent scenario where players pursue equal objectives like, as a simple example, the card game Bridge. The coordination of team members can be of two forms: \textit{correlated}, when a central planner decides a \textit{joint} action for the team and then communicates to each team member her action, and \textit{non-correlated}, when each player plays independently from the others but is aware of the presence of her teammates. In the first scenario, teammates act as a single individual playing over a correlated strategy profile as defined in Def. \ref{def:correlated_strategy}. On the other hand, in the second setting, each team member has her own mixed strategy (Def. \ref{def:mixed_strategy}).
+
+\subsection{Nash Equilibrium} 
+The Nash Equilibrium is the most commonly used solution concept in game theory. The basic idea is to define an equilibrium point in such a way that no player can profitably deviate given the actions of the other players. Formally:
+\begin{definition}
+	A Nash equilibrium of a strategic game $\langle N,(A_{i}),(\succsim_{i})\rangle$ is an action profile $\mathbf{a}^{\ast}$ such that for every player $i \in N$ the following holds: $$(a_{i}^{\ast},\mathbf{a_{-i}}^{\ast})\succsim_{i}(a_{i},\mathbf{a_{-i}}^{\ast})\quad\forall a_{i} \in A_{i}$$
+\end{definition}
+It is useful to provide the following alternative definition, which makes use of the concept of \textit{best-response function} i.e. the optimal answer to respond to the adversaries' strategies.
+\begin{definition}
+	The best-response function of player $i$ is the set-valued function $B_{i}$ such that: $$B_{i}(\mathbf{a_{-i}})=\{a_{i}\in A_{i}:(a_{i},\mathbf{a_{-i}})\succsim_{i}(a_{i}',\mathbf{a_{-i}})\quad\forall a_{i}'\in A_{i}\}.$$
+\end{definition}
+\begin{definition}
+	A Nash equilibrium is an action profile $\mathbf{a}^{\ast}$ for which $$a_{i}^{\ast}\in B_{i}(\mathbf{a_{-i}}^{\ast}) \quad \forall i \in N$$
+\end{definition}
+
+Clearly players are not allowed to communicate in order to determine their strategy profile. Their decisions rely only on the assumption of knowing the strategy profiles of the other individuals at the equilibrium. 
+
+A fundamental result in game theory, due to the seminal work \citep{Nash1951}, is that any game with a finite set of players and a finite set of actions has at least a Nash equilibrium in mixed strategies. In particular, the following holds:
+\begin{theorem}
+	The strategic game $\langle N,(A_{i}),(\succsim_{i})\rangle$ has a Nash equilibrium if, for all $i\in N$, the set $A_{i}$ of actions of player $i$ is a nonempty compact convex subset of a Euclidean space and the preference relation $\succsim_{i}$ is continuous and quasi-concave on $A_{i}$.
+\end{theorem}
+The Nash equilibrium is stable, meaning that, once the players are playing such a solution, they do not have any incentive to individually deviate from it. On the other hand a game may admit multiple Nash equilibria and it may happen that players reach a non-optimal final reward.
+
+\section{Extensive Form Games}
+
+Extensive-form game model is able to capture a situation in which players play sequentially on a game tree. Initially, we focus on the restricted case in which all the actions of the players are observable by others (i.e games with perfect information). In that case, every player perfectly knows her position in the game tree when she plays.
+
+%dire che le histories deternimano un nodo 
+
+\begin{definition}
+	The extensive-form representation of a perfect-information game is a tuple $\langle \mathcal{P},A,H,Z,P,\pi_c,u\rangle$, where: 
+	\begin{itemize}
+		%come togliere spaziatura tra gli items?
+ \item $\mathcal{P}=\{1,2,...,n\}$ is a finite set of players; 
+ \item $A=\{A_1,A_2,...,A_n\}$ is a finite set of actions in which $A_i=\{a_1,a_2,...,a_{m_i}\}$ is the set of actions of player i; 
+ \item $H$ is a finite set of histories (i.e., sequences of actions);
+ \item $Z\subseteq H$ is the set of terminal histories;
+ \item P : $V\to N$ is the function returning the player that acts at a given decision node;
+ \item $\pi_c$ is the fixed strategy of a chance player;
+ \item $u=\{u_1,u_2,...u_n\}$ is the set of utility functions in which $u_i$ : $Z\to \mathbb{R}$.
+   \end{itemize}
+\end{definition}
+
+\noindent
+Each node is uniquely determined by the history leading to it (in the following, with a slight abuse of notation, we refer to the node identified by $h \in H$ simply as $h$).
+History $h$ is a prefix of $h'$ ($h\sqsubseteq h'$) if $h'$ begins with $h$. 
+For every $h\in H$, define $A(h) = \{a : a\in A, ha\in H\}$ to be the set of valid actions at history h; $P(h)\in \mathcal{P}\cup\{c\}$ is the player who acts at $h$, where $c$ denotes chance. $H_i$ is the set of histories where player $i$ acts. $Z\subseteq H$ is the set of terminal histories. A terminal history $z\in Z$ is a history such that there does not exist any history $h\in H$, $h\neq z$, s.t. $z\sqsubseteq h$. The utility function $u_i:Z\to\mathbb{R}$ specifies the utility of $i\in\mathcal{P} $ at each terminal history.
+
+\begin{definition}
+	An information set I of player $i$ is a subset of $H_i$ such that, for all h, $h' \in I$ the property $A(h)=A(h')$ holds.
+\end{definition}
+
+\begin{definition}
+	The extensive-form representation of a imperfect-information game is a tuple $\langle \mathcal{P},A,H,Z,P,\pi_c,u,\mathcal{I}\rangle$, where: 
+	\begin{itemize}
+		\item $\langle \mathcal{P},A,H,Z,P,\pi_c,u\rangle$ is a perfect information game in extensive form;
+		\item $\mathcal{I}=\{\mathcal{I}_1,...,\mathcal{I}_n\}$ is the set of information sets, in which $\mathcal{I}_i$ is a partition of $H_i$ in information sets.
+	\end{itemize}
+\end{definition}
+
+
+An extensive-form game with imperfect information has a set $\mathcal{I}$ of information sets. Decision nodes within the same information set are not distinguishable for the player whose turn it is to move. For each player $i\in \mathcal{P}$, $\mathcal{I}_i$ is a partition of $H_i$ s.t. $A(h)=A(h')$, for each pair $h,h'$ belonging to the same member of the partition. A set $I\in \mathcal{I}_i$ is an information set of $i$ and $A(I)$ denotes the set of actions available at $I$. Define $I(h)$ to be the information set containing $h$.
+
+Finally, $\pi_c$ is the fixed “strategy” of chance player, which is used to represent exogenous stochasticity. $\pi_c(I,a)$ gives the probability that chance event $a$ occurs at $I\in\mathcal{I}_c$. %For all $h\in H_c$, $\sum_{a\in A(h)}\pi_c(a,h)=1$ and the decision at any $h$ is independent of the decision at $h'$, $h\neq h'$.
+
+Given a history $h$, define $X_i(h)$ to be the sequence of information set, action pairs s.t. $(I,a)\in X_i(h)$ if $I\in\mathcal{I}_i$ and there exists $h'\sqsubseteq h$ such that $h'\in I$ and $h'a\sqsubseteq h$. The order of the pairs in $X_i(h)$ is the order in which they occur in $h$. Define $X(h)$ to be the sequence pairs belonging to all players, and $X_{-i}(h)$ similarly, by removing player $i$ 's information set,
+action pairs from $X(h)$. Moreover, denote by $X(h, h')$ the sequence of information set, action pairs belonging to all players that start at $h$ and end at $h'$ when $h\sqsubseteq h'$; if $h$ is not a prefix of $h'$, $X(h,h')$ is defined to be the empty sequence. $X_i(h,h')$ and $X_{-i}(h,h')$ are similarly defined.
+
+\section{Strategy Representation}
+
+\begin{definition}[Pure Normal Form Strategy] A pure normal form strategy for player $i$ is a tuple $s_i\in S_i=\times_{I\in\mathcal{I}_i} A(I)$ that specifies an action for each information set of $i$. $s_i(I)$ denotes the action selected in $s_i$ at information set $I$.
+\end{definition}
+
+\begin{definition}[Mixed Normal Form Strategy] A mixed normal form strategy $\sigma_i$ for player $i$ is defined as $\sigma_i:S_i\to\Delta^{|S_i|}$. We denote by $\Sigma_i$ the mixed strategy space of player $i$.
+\end{definition}
+
+Recall that $|S_{i}|=m$ and that by writing $s_{i}\in\bigtriangleup^{m}(S_{i})$ we are stating that $s_{i}$ is a point belonging to the \textit{unit m-simplex} which is defined as: $$\bigtriangleup^{m}=\{(s_{1},s_{2},\ldots,s_{m})\in \mathbb{R}^{m}|\sum_{i=1}^{m}s_{i}=1 \quad and \quad s_{i}\geq 0 \quad for \quad all \quad i\}$$ It reflects the idea that each agent will play for sure an action but may be uncertain on which one he is going to play.
+
+\begin{definition}[Behavioral Strategy or Agent Form Strategy] A behavioral strategy $\pi_i\in\Pi_i$ associates each $I\in\mathcal{I}_i$ with a probability vector over $A(I)$. $\pi_i(I,a)$ denotes the probability with which $i$ chooses action $a$ at $I$. 
+\end{definition}
+ 
+\noindent
+A common notion of equivalence between strategies is the one of \emph{realization equivalence}. Intuitively, two strategies are equivalent if, no matter what the other players do, every terminal node is reached with the same probability. We denote by $\rho_i^{(\cdot)}(h)$ the probability with which player $i$ plays to reach $h$ under strategy profile $(\cdot)$. In the case of a behavioral strategy profile $\pi=(\pi_i,\pi_{-i})$, this amounts to $\rho_i^\pi(h)=\prod_{h'a\sqsubseteq h,P(h')=i}\pi_i(h',a)$. If $i$ has no information sets intersecting the path from the root to $h$, $\rho_i^\pi(h)=1$. 
+
+Denote by $S_i^\ast(h')\subseteq S_i$ the (possibly empty) set of pure strategies of $i$ under which, for each $h\sqsubseteq h'$, $h\in I$,  $(I,s_i(I))\in X(h')$. Then, $S_i^\ast(h')$ is the set of pure normal-form plans where $i$ plays to reach $h'$. The probability with which $i$ plays to reach $h$ under $\sigma_i\in\Sigma_i$ is
+\begin{equation}\label{eq:rho}
+\rho_i^\sigma(h)=
+\begin{cases}
+\sum_{s_i\in S_i^\ast(h)}\sigma_i(s_i)& \textnormal{if }S_i^\ast(h)\neq\emptyset\\
+0&\textnormal{otherwise}
+\end{cases}.
+\end{equation}
+The probability that history $h$ is reached under $(\cdot)$ is $\rho^{(\cdot)}(h)=\prod_{i\in \mathcal{P}\cup\{c\}}\rho_i^{(\cdot)}(h)$.
+
+\begin{definition}[Realization Equivalence]\label{def:realization_eq}
+	We say that $\pi_i$, $\pi'_i$ are realization equivalent iff, for any $\pi_{-i}$ and for any $z\in Z$, $\rho^\pi(z)=\rho^{\pi'}(z)$, where $\pi=(\pi_i,\pi_{-i})$ and $\pi'=(\pi'_{i},\pi_{-i})$.
+\end{definition}
+The same definition holds for mixed strategies and between strategies in different representations. Thus, realization equivalence also provides a tool to compare the expressive power of different representations. The relationship between normal-form strategies and behavioral strategies is the following. Let $\Gamma$ be such that, for each $h\in H$, $|A(h)|\geq 2$. Every behavioral strategy of player $i$ has an equivalent mixed strategy if and only if $i$ is not absentminded. Moreover, the \textit{Kuhn Theorem}~\citep{Kuhn1953} establishes that in every extensive-form game, if player $i$ has perfect recall, then for every mixed strategy of player $i$ there exists an equivalent behavioral strategy.
+
+A \emph{Nash equilibrium} (NE)~\citep{nash1950eqnplayers}, whose definition does not depend on the representation of the game, is a strategy profile in which no player can improve her utility by unilaterally deviating from her strategy, when the strategies of all the other players are considered to be fixed.
+
+\begin{obs} [Exponential Size of normal-form representation] The normal form representation of an extensive form game may have exponential size in the size of the game tree, where the size of the normal form representation is $|A_1||A_2|$ ... $|A_n|$ and the size of the game is $|Z|$.
+\end{obs}
+
+\begin{obs} [Non-exponential strategies in agent-form representation]\label{obs_nonexp} The size of agent-form strategies is linear in the size of the game tree, prescribing one strategy per action of the game tree.
+\end{obs}
+
+
+\section{Imperfect Recall Games}
+
+%dai definizioni di articolo e di teoria 
+%fai schemino imerfect reca / info
+%cita articoli wichart etc etc per dire che usiamo
+%normal form perchè c'è equilibrio
+
+A player has perfect recall if she has perfect memory of her past actions and observations. Game $\Gamma$ has perfect recall if every player has perfect recall. Formally,
+\begin{definition}[Perfect Recall]\label{def:perfect_rec}
+	An extensive-form game $\Gamma$ has perfect recall if, for every player $i\in \mathcal{P}$, for every $I\in\mathcal{I}_i$, and for any $h,h'\in I$: $X_i(h)=X_i(h')$. Otherwise, the game has imperfect recall.
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%subsection in cui spiego il rapporto tra imperfect info e imperfect recall e giochi equivalenti
+
+
+%%%%%%%%%%%%
+%questo lo chiamo tipo "perchè schegliere mixed è meglio dal punto di vista della utility"
+\noindent 
+A decision problem exhibits imperfect recall if, at a point in time, a player holds information which is forgotten later on.
+A particular class of games with imperfect recall is the one in which a player loses the information that he had previously made a choice~\citep{piccione1997}. Specifically, an imperfect-recall game $\Gamma$ exhibits absentmindedness if, for some $i\in \mathcal{P}$, there exists $I\in\mathcal{I}_i$, and $h,h'\in I$, $h\neq h'$, such that $h\sqsubseteq h'$. In the following, we focus on imperfect recall games without absentmindedness.
+
+Imperfect recall games bring about a number of complications with respect to games with perfect recall. First, the equivalence between behavioral and mixed strategies no longer holds for general imperfect recall games \citep{piccione1997}. Moreover, determining if a player can assure herself a certain payoff in an imperfect recall game is NP-complete \citep{koller1992} and even solving two-players zero-sum games becomes exponential in the worst case \citep{koller1994fast}.
+
+It is crucial to determine, in the context of imperfect-recall games (without absentmindedness), the most appropriate representation of strategies. Behavioral strategies define a set of possible distributions over outcomes which is strictly included in the one of the distributions induced by the set of mixed strategies. This can make the use of behavioral strategies inefficient in terms of final utility for the player. The loss incurred by a player when employing behavioral strategies may be linearly large in the size of the game. The following example from \citep{celli18} provides a lower bound on the worst-case inefficiency. Let $u_1^\sigma$ and $u_1^\pi$ be the expected payoffs of player 1 when strategy profiles $\sigma$ and $\pi$ are adopted, respectively.
+
+\begin{example} \label{esPoU}
+	Consider an extensive-form imperfect recall game with $n$ players and $m$ actions at each of their decision nodes, in which each level of the game tree is associated with one player and forms a unique information set. $n-1$ players form a team and one player is the adversary. The team utility $U_{\mathcal{T}}$ is 1 iff all the teammates choose the same action of the adversary, who plays first. If the team use mixed strategies its expected payoff is $u_{\mathcal{T}}^\sigma=\frac{1}{m}$, otherwise if they use behavioral strategies the expected payoff is $u_{\mathcal{T}}^\pi=\frac{1}{m^{n-1}}$. The inefficiecy of behavioral strategies with respect to mixed strategies can be measured through the ratio between the utilities that we call Price of Uncorrelation (as introduced in \citep{basilico2017}). $PoU=u_{\mathcal{T}}^\sigma/u_{\mathcal{T}}^\pi=\frac{m^{n-1}}{m}=m^{n-2}$. Here we formulate the bound in terms of $|Z|=m^n$, thus $PoU=|Z|^{1-\frac{2}{n}}$. The worst case with respect to $n$ is reached when $m=2$ and $n=log_{2}(|L|)$. Therefore, $PoU= \frac{|Z|}{4}$ . 
+\end{example}
+
+
+As shown in proposition \ref{prop:Z}, we obtain the same worst case bound considering the game in Example \ref{esPoU} and substituting the team with a single player who plays at $n-1$ information sets.
+
+\begin{prop}\label{prop:Z}
+	Given a two-player game $\Gamma$ with Player 1 having imperfect recall, take two strategy profiles $\sigma\in \times_{i\in\mathcal{P}}\Sigma_i $ and $\pi\in \times_{i\in\mathcal{P}}\Pi_i$ identifying two NE of the game. In the worst case, the ratio $u_1^\sigma/u_1^\pi$ is $|Z|/4$.
+\end{prop}
+
+This result will be strengthened in Chapter \ref{C3}.
+
+
+
+
+\section{Relationship Between Strategy Spaces}
+
+Now we study the relation between mixed strategy space and behavioral strategy space. The relation varies depending on the property of the game as we can see from the following results:
+
+\begin{prop}\label{prop:2}
+	In every game in extensive form, if player $i$ has perfect recall, then for every mixed strategy of player i there exists an equivalent behavioural strategy.
+\end{prop}
+
+This result \citep{Kuhn1953} shows that the two strategy spaces are equivalent for perfect recall games.
+
+Another result \citep{Wichardt2008} motivates the use of mixed strategies:
+\begin{prop}
+	\label{prop:3}
+	In general imperfect recall games, even without absentmindedness, a Nash equilibrium in behavioral strategies may not exist.
+\end{prop}
+\noindent
+This means that for imperfect recall games the space of behavioural strategies is included in the space of mixed strategies, as we can see in the following example. \\
+
+\noindent
+\begin{example}[Example from \citep{Wichardt2008}]
+
+\noindent
+\definecolor{ffffff}{rgb}{1,1,1}
+\definecolor{yqyqyq}{rgb}{0.5019607843137255,0.5019607843137255,0.5019607843137255}
+\begin{figure}[h]
+	\centering
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm,scale=0.82]
+\clip(-7.9,-7.3) rectangle (8,0.8);
+\draw [line width=0.8pt] (-1,-6)-- (-2,-4);
+\draw [line width=0.8pt] (-2,-4)-- (-3,-6);
+\draw [line width=0.8pt] (-5,-6)-- (-6,-4);
+\draw [line width=0.8pt] (-6,-4)-- (-7,-6);
+\draw [line width=0.8pt] (-4,-2)-- (-6,-4);
+\draw [line width=0.8pt] (-4,-2)-- (-2,-4);
+\draw [line width=0.8pt] (4,-2)-- (2,-4);
+\draw [line width=0.8pt] (4,-2)-- (6,-4);
+\draw [line width=0.8pt] (2,-4)-- (1,-6);
+\draw [line width=0.8pt] (2,-4)-- (3,-6);
+\draw [line width=0.8pt] (6,-4)-- (5,-6);
+\draw [line width=0.8pt] (6,-4)-- (7,-6);
+\draw [line width=0.8pt,dash pattern=on 2pt off 2pt, color=yqyqyq] (-4,-2)-- (4,-2);
+\draw [line width=0.8pt,dash pattern=on 2pt off 2pt, color=yqyqyq] (-6,-4)-- (6,-4);
+\draw [line width=0.8pt] (0,0)-- (-4,-2);
+\draw [line width=0.8pt] (0,0)-- (4,-2);
+\begin{scriptsize}
+\draw [fill=black] (-1,-6) circle (2.5pt);
+\draw[color=black] (-1.0252727272727247,-6.3) node {$(-5,5)$};
+\draw [fill=black] (-2,-4) circle (2.5pt);
+\draw[color=black] (-1.84,-3.6) node {$v_5$};
+\draw[color=black] (-1.3052727272727247,-4.6) node {$r$};
+\draw [fill=black] (-3,-6) circle (2.5pt);
+\draw[color=black] (-3.045272727272725,-6.3) node {$(-5,5)$};
+\draw[color=black] (-2.7252727272727246,-4.6) node {$l$};
+\draw [fill=black] (-5,-6) circle (2.5pt);
+\draw[color=black] (-5.025272727272725,-6.3) node {$(-1,1)$};
+\draw [fill=black] (-6,-4) circle (2.5pt);
+\draw[color=black] (-6.15,-3.6) node {$v_4$};
+\draw[color=black] (-5.335272727272725,-4.6) node {$r$};
+\draw [fill=black] (-7,-6) circle (2.5pt);
+\draw[color=black] (-7.0452727272727245,-6.3) node {$(1,-1)$};
+\draw[color=black] (-6.605272727272725,-4.6) node {$l$};
+\draw [fill=black] (-4,-2) circle (2.5pt);
+\draw[color=black] (-4.225272727272725,-1.5565454545454567) node {$v_2$};
+\draw[color=black] (-5.16,-2.55) node {$L$};
+\draw[color=black] (-2.83,-2.55) node {$R$};
+\draw [fill=black] (4,-2) circle (2.5pt);
+\draw[color=black] (4.154727272727276,-1.5765454545454567) node {$v_3$};
+\draw [fill=black] (2,-4) circle (2.5pt);
+\draw[color=black] (1.84,-3.6) node {$v_6$};
+\draw[color=black] (2.83,-2.55) node {$L$};
+\draw [fill=black] (6,-4) circle (2.5pt);
+\draw[color=black] (6.15,-3.6) node {$v_7$};
+\draw[color=black] (5.16,-2.55) node {$R$};
+\draw [fill=black] (1,-6) circle (2.5pt);
+\draw[color=black] (1.0347272727272754,-6.3) node {$(-5,5)$};
+\draw[color=black] (1.2747272727272754,-4.6) node {$l$};
+\draw [fill=black] (3,-6) circle (2.5pt);
+\draw[color=black] (2.9547272727272755,-6.3) node {$(-5,5)$};
+\draw[color=black] (2.6747272727272753,-4.6) node {$r$};
+\draw [fill=black] (5,-6) circle (2.5pt);
+\draw[color=black] (4.974727272727275,-6.3) node {$(-1,1)$};
+\draw[color=black] (5.274727272727276,-4.6) node {$l$};
+\draw [fill=black] (7,-6) circle (2.5pt);
+\draw[color=black] (6.9547272727272755,-6.3) node {$(1,-1)$};
+\draw[color=black] (6.614727272727276,-4.6) node {$r$};
+\draw[color=black] (0.014727272727275253,-1.66) node {$I_2$};
+\draw[color=black] (0.014727272727275253,-3.66) node {$I_3$};
+\draw [fill=ffffff] (0,0) circle (2.5pt);
+\draw[color=black] (-7.6,0) node {$pl 1$};
+\draw[color=black] (-7.6,-2) node {$pl 1$};
+\draw[color=black] (-7.6,-4) node {$pl 2$};
+\draw[color=black] (0.15472727272727527,0.42345454545454236) node {$I_1 = \left \{ v_1 \right \}$};
+\draw[color=black] (-2,-0.5) node {$L$};
+\draw[color=black] (2,-0.5) node {$R$};
+\end{scriptsize}
+\end{tikzpicture}
+\caption{Game $\Gamma$}
+\end{figure}
+
+In the figure we can see game $\Gamma$, with information sets $I_1 = \left \{ v_1 \right \}$ and $I_2 = \left \{ v_2,v_3 \right \}$ for player 1, and $I31 = \left \{ v_4,v_5,v_6,v_7 \right \}$ for player 2. \\
+Our purpose is to prove that game $\Gamma$ has an equilibrium in mixed strategies but it does not have an equilibrium in behavioral strategies. 
+First of all we show that there cannot be an equilibrium in pure strategies. We prove this by contradiction. Assume there is an equilibrium in pure strategy. Obviously, player 1 would choose the same action for both $I_1$ and $I_2$, i.e. he would either play $LL$ or $RR$. Player 2's best-response to $LL$ ($RR$) is $r$ ($l$). However, given player 2 plays $r$ ($l$), player 1 would strictly prefer $RR$ to $LL$ ($LL$ to $RR$). Thus there is no equilibrium in which only pure behaviors are used. Moreover, it follows immediately from the preceding argument that there is no equilibrium at all in which player 1 uses only pure behaviors.
+Next, we show that there cannot be an equilibrium in which player 1 uses a mixed behavior at $I_1$ and$/$or $I_2$ either. Again we prove this by contradiction. Assume that there is an equilibrium in which player 1 does not play a pure strategy, and let $p_1$ and $p_2$ denote the probability assigned to $L$ at $I_1$ and $I_2$ respectively. The first thing to note is that in any such equilibrium player 2 cannot respond by playing a pure strategy at $I_3$. If player 2 played a pure strategy, i.e. either $l$ or $r$, player 1's best-response would be to play a pure strategy too, namely $LL$ or $RR$ respectively. As there is no equilibrium in pure strategies, it follows that player 2 has to mix at $I_3$.
+Player 2 mixing at $I_3$, however, implies that player two has to be indifferent between $l$ and $r$ at $I_3$. Due to the symmerty of the payoffs, this requires that $v_4$ and $v_7$ are reached with equal probability. Thus, a first necessary condition for a mixed equilibrium is given by: 
+
+\begin{equation}
+p_1 \cdot p_2 = (1-p_1) \cdot (1-p_2).
+\end{equation}
+
+\noindent
+The term on the left is the probability to reach $v_4$ and the term on the right is the probability to reach $v_7$. Making the calculations we obtain:
+
+\begin{equation}
+p_1 + p_2 = 1.
+\end{equation}
+
+\noindent
+Moreover, the outcomes after $v_4$ and $v_7$ are strictly better for player 1 than the outcomes after $v_5$ and $v_6$. Yet, player 1 can ensure that $v_5$ and $v_6$ are never reached in equilibrium simply by playing concordant pure strategies at $I_1$ and $I_2$. Thus, if mixed equilibrium is played, it has to be such that at least holds: 
+
+\begin{equation}
+p_1 \cdot (1-p_2) + (1-p_1) \cdot p_2 < p_1 \cdot p_2 + (1-p_1) \cdot (1-p_2).
+\end{equation}
+
+\noindent
+The term on the left is the probability to reach $v_5$ or $v_6$ and the term on the right is the probability to reach $v_4$ or $v_7$. Replacing $p_2$ by $1-p_1$ as required by the first condition, and rearranging terms, we obtain: 
+
+\begin{equation}
+( p_1 - (1 - p_1)) ^2 < 0.
+\end{equation}
+
+\noindent
+This condition however, is never satisfied. Thus, there is no equilibrium in behavior strategies where players mix at any of their decision sets either. 
+Of course, player 1 mixing between $LL$ and $RR$ by putting equal weights on each strategy and player 2 responding by a 50-50 mixing between $l$ and $r$ would constitute a mixed-strategy Nash equilibrium of $\Gamma$. However, the convex combination between pure strategies employed by player 1 in this equilibrium is exactly what is ruled out bt the restriction to behavior strategies. And this is where the best-response-correspondence may not be (and in this case is not) convex valued. \\
+
+\end{example}
+%a questo punto mettere la considerazione che avevamo scritto sul quaderno per cui lo spazio delle mixed è convesso perchè si sommano e quello delle behav non lo è perchè si moltiplicano.
+
+
+
+
+\begin{prop}\label{propD}
+	In imperfect recall games with absentmindedness the space of mixed strategies and the space of behavioral strategies are different and there is no inclusion relation between the two.
+\end{prop}
+
+We can prove this proposition through the example af absentminded driver introduced in \citep{piccione1997}. \\
+
+	
+	
+\noindent
+\begin{example}[Absentminded Driver] \label{esAM}
+
+\noindent	
+\definecolor{yqyqyq}{rgb}{0.5019607843137255,0.5019607843137255,0.5019607843137255}
+\begin{figure}[h]
+	\centering
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm,scale=0.9]
+\clip(-5,-5) rectangle (7,1);
+\draw [line width=0.8pt] (2,-2)-- (0,-4);
+\draw [line width=0.8pt] (2,-2)-- (4,-4);
+\draw [line width=0.8pt] (0,0)-- (-2,-2);
+\draw [line width=0.8pt] (0,0)-- (2,-2);
+\draw [shift={(0.9975296947370862,-0.9975296947370862)},line width=0.8pt , dash pattern=on 2pt off 2pt, color=yqyqyq]  plot[domain=-0.7853981633974483:2.356194490192345,variable=\t]({1*1.4177071015791094*cos(\t r)+0*1.4177071015791094*sin(\t r)},{0*1.4177071015791094*cos(\t r)+1*1.4177071015791094*sin(\t r)});
+\begin{scriptsize}
+\draw [fill=black] (-2,-2) circle (2.5pt);
+\draw[color=black] (-2.047530063532792,-2.5) node {$0$};
+\draw [fill=black] (2,-2) circle (2.5pt);
+\draw [fill=black] (0,-4) circle (2.5pt);
+\draw[color=black] (-0.040662554624467454,-4.5) node {$4$};
+\draw[color=black] (0.9418663299452332,-2.55) node {$L$};
+\draw [fill=black] (4,-4) circle (2.5pt);
+\draw[color=black] (3.973072463192182,-4.5) node {$1$};
+\draw[color=black] (3.0532581882758665,-2.55) node {$R$};
+\draw [fill=black] (0,0) circle (2.5pt);
+\draw[color=black] (-0.94,-0.48) node {$L$};
+\draw[color=black] (0.94,-0.48) node {$R$};
+\draw[color=black] (2.196158523012936,0.37879052755668985) node {$1.1$};
+\end{scriptsize}
+\end{tikzpicture}
+\caption{Absentminded Driver Example}
+\end{figure}
+
+
+An individual is sitting late at night in a bar planning his midnight trip home. Turning at the first exit leads into a disastrous area (payoff 0). Turning at the second exit yields the highest reward (payoff 4). If he continues beyond the second exit, he cannot go back and at the end of the highway he will find a motel where he can spend the night (payoff 1). The driver is absentminded and he is aware of this fact. At an intersection, he cannot tell whether it is the first or the second intersection and he cannot remember how may he has passed (one can make the situation more realistic by referring to the 17th intersection). \\ %While sitting at the bar, all he can do is to decide whether or not to exit at an intersection. We exclude at this stage the possibility that the decision maker can include random elements in his strategy.
+
+\begin{table}[h]
+	\begin{center} 
+		\begin{tabular}{|l|c|r|}
+			
+			\hline
+			action & payoff \\
+			\hline
+			\hline
+			LL & 0 \\
+			\hline
+			RR & 1 \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\caption{Normal-form representation}\label{tabNF}
+\end{table}
+
+% perchè non inserisce la tabella sotto il testo indicato?
+\noindent
+In table \ref{tabNF} we can see the normal-form representation of the game.
+
+\noindent
+Now we consider a behavioral, i.e. agent-form, strategy profile:
+\begin{equation}\label{agent}
+\pi=
+\begin{cases}
+\frac{1}{2}&L\\
+\frac{1}{2}&R
+\end{cases}
+\end{equation}
+\noindent
+When employing the above behavioural strategy profile, the terminal node with utility 0 is reached with probability $\frac{1}{2}$, the terminal node with utility 4 is reached with probability $\frac{1}{4}$ and the terminal node with utility 1 is reached with probability $\frac{1}{4}$. \\
+Notice that the terminal node with utility 4 is always reached with zero probability when playing the normal form.\\
+This example prove proposition \ref{propD}.
+
+\end{example}
+%nota che con absentmindedness con behav guadagno di più che con mixed ma la prop 1 (pag 10) perchè quela parla di giochi con 2 players.
+\noindent
+Now we try to shape the strategy space of the absentminded player in Example \ref{esAM}. We suppose that at start the player decides with a certain probability $p$ to play using behavioral strategies, and with the remaining probability $1-p$ to use mixed strategies. Then she choose a specific behavioral strategy and a specific mixed strategy. If $p=1$ she plays a behavioral strategy, if $p=0$ she plays a mixed strategy, otherwise if $p \in (0,1)$ he plays a mixture of the two.
+
+\definecolor{ffwwqq}{rgb}{1,0.4,0}
+\definecolor{ccqqqq}{rgb}{0.8,0,0}
+\definecolor{green}{rgb}{0,0.6,0}
+\begin{figure}[h] 
+	\centering
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm,scale=0.4]
+\clip(-9,-3.5) rectangle (9,13);
+\draw [line width=1pt] (-0.0007961485986584792,10.210939507560367)-- (-7,-2);
+\draw [line width=2pt,color=ffwwqq] (-7,-2)-- (7,-2);
+\draw [line width=1pt] (-0.0007961485986584792,10.210939507560367)-- (7,-2);
+%\draw [line width=2pt,color=green] plot [smooth] coordinates {(-7,-2) (-4,0.79) (-1.71,1) (0.76,0.75) (4.82,-0.7) (7,-2)};
+
+\draw [line width=2pt,color=green] plot [smooth] coordinates {(-7,-2) (-4,0.72) (-1.71,1.1) (0.76,0.75) (4.82,-0.76) (7,-2)};
+
+\begin{scriptsize}
+
+\draw[color=black] (0,11.128634801914586) node {$y$};
+
+\draw[color=black] (-7.8,-2) node {$x$};
+\draw[color=black] (7.8,-2) node {$z$};
+\end{scriptsize}
+\end{tikzpicture} 
+\caption{Strategy space} \label{simplex}
+\end{figure}
+
+\noindent
+In Figure \ref{simplex} we represent the the strategy space (i.e. the simplex) where $x, y, z$ are the outcomes (respectively $0, 4, 1$ in Example \ref{esAM}). Each point in the simplex is a distribution of probability over the outcomes.  We observe that playing behavioral strategies ($p=1$) we can reach all the points on the green line in Figure \ref{simplex} and playing a mixed strategies ($p=0$) we can reach all the points on the orange line. If we play a mixture of the two ($p \in (0,1)$) we can get all the points in the area between the two curves. The points in this area are given by all the possible convex combination between behavioral and mixed strategies. \\
+
+% controlla che realization probability sia il termine giusto da usare.
+
+\begin{table}[h]
+	\begin{center} 
+		\begin{tabular}{|l|c|r|}
+			
+			\hline
+			Payoff & Realization Probability \\
+			\hline
+			\hline
+			$x$ & $p\pi(L) + (1-p)\sigma(L)$ \\
+			\hline
+			$y$ & $p(1-\pi(L))\pi(L)$ \\
+			\hline
+			$z$ & $p(1-\pi(L))^2 + (1-p)(1-\sigma(L))$ \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\caption{Realization Probabilities of the Outcomes}
+	\label{tab_AM}
+\end{table}  
+
+\noindent
+Table \ref{tab_AM} shows the convex combinations of behavioral and mixed strategies which are the realization probabilities (i.e. the probabilities of reaching an outcome). $\pi(L)$ is the probability of playing action $L$ in behavioral strategy and $\sigma(L)$ is the probability of playing action plan $L$ in mixed strategy. \\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent
+As a result of Proposition~\ref{prop:1} and Proposition~\ref{prop:3} we can conclude mixed strategies are the most appropriate to represent imperfect-recall games (without absentmindedness).
+In this context, a suitable notion of equivalence is the one of $\Pi$-equivalence defined in~\citep{Kaneko1995} for information partitions. Here, we consider a slight variation of this equivalence relation, defining it between games, that we will use in the following.
+\begin{definition}[$\Sigma$-equivalence]\label{sigma}
+	Two extensive form games $\Gamma=\langle \mathcal{P},A,H,Z,P,\pi_c,u,\mathcal{I}\rangle$ and $\Gamma'=\langle \mathcal{P},A,H,Z,P,\pi_c,u,\mathcal{I}'\rangle$ are $\Sigma$-equivalent if, for each $i\in\mathcal{P}$, $\Sigma_i=\Sigma'_i$, where $\Sigma_i$ is the mixed strategy space of $i$ in $\Gamma$ and $\Sigma'_i$ is the mixed strategy space of $i$ in $\Gamma'$.
+\end{definition}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Computational Complexity}\label{sec:compl}
+When dealing with the computation of solution concepts, it is useful to understand the amount of resources needed to solve the problem. For this reason conceptual tools from computational complexity are taken into account. Typically this kind of analysis is concerned with the spatial and temporal complexity of a problem, where the first is evaluated as the memory space needed for the operations to be executed and the second as the number of elementary operations required. Another important question that can be answered is: how easier can we make a problem if we only look for approximate solutions?
+
+Notice that we speak about the intrinsic complexity of a problem, which is something more general than the complexity of a specific algorithm that solves an instance of the problem. 
+
+The following paragraphs will cover the basic notions of computational complexity, for a more in depth discussion see \citep{Arora09,Papa94}.
+
+\subsection{Computational Complexity of an Algorithm}
+We need to provide a simple characterization of the temporal behavior of algorithms, in particular:
+\begin{definition}
+	An algorithm is polynomial if, in the worst case, it requires a number of elementary operations which is $O(n^{d})$, where $d$ is a constant and $n$ is the size of the problem instance to be solved.
+\end{definition}
+\begin{definition}
+	An algorithm is exponential if it requires, in the worst case, a number of elementary operations which is $O(2^{n})$, where $n$ is the size of the problem instance to be solved.
+\end{definition}
+It is useful to divide problems in the following classes:
+\begin{itemize}
+	\item Decision problems: problem for which a YES/NO answer is required;
+	\item Function (Search) problems: problem defined as a relation $R(x,y)$, $R\subset \Sigma^{\ast}\times\Sigma^{\ast}$, where $\Sigma$ is an arbitrary alphabet. An algorithm solves a function problem if, for every input $x$ such that there exist a $y$ satisfying $(x,y)\in R$, the algorithms outputs $y$;
+	\item Optimization problems: problem in which the best solution has to be found among all the feasible.
+\end{itemize}
+
+\subsection{Computational Complexity of a Problem}
+We define the complexity of a decision problem by introducing the following classes:
+\begin{itemize}
+	\item $\mathcal{P}$: set of decision problems that can be solved by a deterministic Turing machine using a polynomial amount of time.
+	\item $\mathcal{NP}$: set of decision problems such that, for every instance with positive answer, there exist a concise certificate (proof) which allows to verify in polynomial time that the answer is YES. Equivalently we can define it as the set of decision problems solvable in polynomial time by a non-deterministic Turing machine.
+	\item $\mathcal{CO-NP}$: a decision problem $\pi$ belongs to $\mathcal{CO-NP}$ iff its complement $\bar{\pi}$ is in $\mathcal{NP}$. Recall that $\bar{\pi}$ is the decision problem obtained by reverting YES/NO instances.
+\end{itemize}
+Following the same steps we can define classes $\mathcal{FP}$, $\mathcal{FNP}$, $\mathcal{CO-FNP}$ for function problems and $\mathcal{PO}$, $\mathcal{NPO}$, $\mathcal{CO-NPO}$ for optimization problems. Notice that proving whether $\mathcal{P}\neq\mathcal{NP}$ or not is still an open problem.
+
+It is natural to ask ourselves: how can we understand if a problem is \textit{really} difficult? In order to answer to this question we need to introduce the concept of \textit{reduction}. In particular:
+\begin{definition}
+	Let $\pi$ be a problem defined over a generic finite alphabet $\Sigma$.
+	A problem $\pi'$ is polynomial-time-reducible to $\pi$ ($\pi'\leq_{P}\pi$) iff the following conditions are satisfied:
+	\begin{enumerate}
+		\item There exists $f:\Sigma^{\ast}\rightarrow \Sigma^{\ast}$ such that, for all $w \in \Sigma^{\ast}$, $w$ is a solution of $\pi'$ if and only if $f(w)$ is a solution of $\pi$; and
+		\item $f$ is computable in polynomial time.
+	\end{enumerate}
+\end{definition}
+It is easy to see that this concept can be used to reason about the complexity of problems by reducing them to known ones. For example if $\pi'\leq_{P}\pi$ and $\pi\in \mathcal{P}$, then also $\pi'\in \mathcal{P}$.
+
+We can now answer our initial question by introducing the following complexity classes:
+\begin{definition}
+	A decision problem is $\mathcal{NP}$-hard if every problem in $\mathcal{NP}$ can be reduced to it in polynomial time.
+\end{definition}
+\begin{definition}
+	A decision problem $\pi$ is $\mathcal{NP}$-complete iff:
+	\begin{enumerate}
+		\item $\pi$ is in $\mathcal{NP}$ and
+		\item $\pi$ is $\mathcal{NP}$-hard.
+	\end{enumerate}
+\end{definition}
+A $\mathcal{NP}$-hard problem is \textit{at least as hard} as the hardest problem in $\mathcal{NP}$. 
+
+\subsection{Approximate Solutions}
+At this point we are able to detect problems that are inherently difficult, but can we still find solutions to them in an efficient way? When dealing with optimization problems we may accept approximate solutions if they come at a considerably lower computational cost. 
+
+To understand the quality of an approximation algorithm we consider its \textit{approximation factor} which is usually defined as: $\rho = \frac{APX}{OPT}$, where $OPT$ is the value of the exact solution returned by the exact (exponential) algorithm and $APX$ is the value of the solution returned by the (polynomial) approximation algorithm. If we consider maximization problems we have $\rho\leq 1$ and we can find the best approximation algorithm as follows: $$\max_{poly. alg.}\min_{instances} (\frac{APX}{OPT})$$ We call $\rho^{\ast}$ the best approximation factor obtainable.
+
+In order to properly understand the quality of the best approximate solution of a given optimization problem, we introduce the following complexity classes:
+\begin{itemize}
+	\item $\mathcal{APX}$: the set of all the optimization problems belonging to $\mathcal{NPO}$ and such that they admit a polynomial approximation algorithm with an approximation factor bounded by a constant value, $\rho^{\ast}=\frac{1}{c}$;
+	\item $\mathcal{APX}$-hard: the set of all the optimization problems for which, for every problem $\pi'$ in $\mathcal{APX}$, there exist a polynomial time reduction from $\pi'$ to it;
+	\item $\mathcal{APX}$-complete: an optimization problem $\pi$ is $\mathcal{APX}$-complete if it is $\mathcal{APX}$-hard and it belongs to $\mathcal{APX}$.
+\end{itemize}
+In the same way other classes can be defined by considering different bounds on the approximation factor:
+\begin{itemize}
+	\item $\mathcal{LOG}$-$\mathcal{APX}$: set defined as $\mathcal{APX}$ but with $\rho^{\ast}=\frac{1}{log^{c}(n)}$, where $n$ is the size of the instance to be solved and $c$ is a constant. From this class it is natural to define $\mathcal{LOG}$-$\mathcal{APX}$-hardness and $\mathcal{LOG}$-$\mathcal{APX}$-completeness.
+	\item $\mathcal{POLY}$-$\mathcal{APX}$: the approximation factor is bounded by $\rho^{\ast}=\frac{1}{n^{c}}$. Once again, from this class we can define $\mathcal{POLY}$-$\mathcal{APX}$-hardness and $\mathcal{POLY}$-$\mathcal{APX}$-completeness.
+\end{itemize}
+Notice in these cases the quality of the best approximate solution we are able to obtain decreases with the size of the problem instance to be solved.
+
+Interestingly some $\mathcal{NP}$-hard problems allow approximation to any required degree. For this reason, when dealing with one of such problems, it may be useful to resort to an \textit{approximation scheme}.
+\begin{definition}
+	Let $\pi$ be a $\mathcal{NP}$-hard optimization problem. Algorithm $\mathcal{A}$ is an approximation scheme for $\pi$ if on input $(I,\epsilon)$, where $I$ is an instance of $\pi$ and $\epsilon> 0$ is an error parameter, it outputs a solution such that:
+	\begin{itemize}
+		\item $\rho\geq (1-\epsilon)$ if $\pi$ is a maximization problem;
+		\item $\rho\leq (1+\epsilon)$ if $\pi$ is a minimization problem.
+	\end{itemize}
+\end{definition}
+$\mathcal{A}$ will be said to be a \textit{polynomial time approximation scheme} (PTAS) if, for each fixed $\epsilon>0$, its running time is bounded by a polynomial in the size of instance I ($O(n^{f(\frac{1}{\epsilon})})$). If we further constrain the running time of the algorithm as $O(n^{c}(\frac{1}{\epsilon})^{k})$, where $c$ and $k$ are constants, we obtain a \textit{fully polynomial approximation scheme} (FPTAS). FPTAS is the best we can hope for a $\mathcal{NP}$-hard optimization problem, assuming $\mathcal{P}\neq \mathcal{NP}$.
+

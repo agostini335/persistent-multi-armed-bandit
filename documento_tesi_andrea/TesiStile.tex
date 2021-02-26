@@ -1,0 +1,116 @@
+\documentclass[11pt,a4paper,twoside,openright]{report}
+
+\usepackage[nottoc,notlot,notlof]{tocbibind}
+\usepackage[pdftex]{graphicx}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{subcaption}
+\usepackage{afterpage}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{rotating}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{rotating}
+\usepackage{float}
+\usepackage[pdfusetitle, colorlinks, linkcolor=black, citecolor=black, urlcolor=black]{hyperref}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{pgf,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+
+
+
+\usetikzlibrary{arrows}
+\usepackage{mathtools}
+\usepackage{rotating}
+%per fare elenchi puntati poco distanziati
+\usepackage{enumitem} 
+\usepackage[round]{natbib}
+\usepackage[T1]{fontenc}
+\usepackage{bm}
+\usepackage{dsfont}
+
+
+
+
+
+\setlength{\oddsidemargin} {2. cm}
+\setlength{\evensidemargin} {2. cm}
+\addtolength{\oddsidemargin} {-0.4 cm}
+\addtolength{\evensidemargin} {-0.4 cm}
+\linespread{1.1}
+
+\usepackage[utf8]{inputenc}
+\renewcommand{\captionfont}{\normalfont \itshape \small}
+
+
+\pagestyle{empty}
+
+\floatname{algorithm}{Algorithm}
+\newcommand{\algorithmname}{Algorithm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{problem}{Problem}
+\newtheorem{prop}{Proposition}
+\newtheorem{property}{Property}
+\newtheorem{obs}{Observation}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\I}{\mathcal{I}}
+\DeclareMathOperator*{\pl}{\mathcal{P}}
+\DeclareMathOperator*{\T}{\mathcal{T}}
+\DeclareMathOperator*{\F}{\mathcal{F}}
+\DeclareMathOperator*{\B}{\mathcal{B}}
+\DeclareMathOperator*{\A}{\mathcal{A}}
+\DeclareMathOperator*{\ag}{\textbf{a}}
+\DeclareMathOperator*{\pg}{\textbf{p}}
+
+\begin{document}
+
+\include{contents/frontespizio}
+\pagestyle{empty} \normalfont \cleardoublepage
+%\include{contents/primapagina}
+\cleardoublepage \pagenumbering{Roman} \pagestyle{plain}
+%\include{contents/ringraziamenti}
+%\vspace*{.75truecm} \cleardoublepage
+\include{contents/sommario}
+\addcontentsline{toc}{chapter}{Sommario}
+\vspace*{.75truecm} \normalfont \cleardoublepage
+\include{contents/abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\vspace*{.75truecm} \normalfont \cleardoublepage
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\thispagestyle{plain} \cleardoublepage
+
+\pagestyle{fancy}
+\pagenumbering{arabic}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+\fancyhf{} % delete current header and footer
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[RE]{\bfseries\leftmark}
+\fancyhead[LO]{\bfseries\rightmark}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{0.3pt} % space for the rule
+
+\include{contents/capitolo1-introduzione}
+\include{contents/formalizzazione}
+\include{contents/algorithms}
+\include{contents/capitolo6-conclusions}
+
+\bibliographystyle{abbrvnat}
+%\bibliographystyle{apacite}
+\bibliography{bibliografia}
+
+\end{document}

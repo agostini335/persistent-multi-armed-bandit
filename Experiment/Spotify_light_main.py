@@ -80,7 +80,7 @@ infile.close()
 play_dict = new_dict
 
 #SETUP CONFIG
-experiment_name = "experiment_spotify"
+experiment_name = "experiment_spotify10k20r"
 T = 10000 
 n_runs = 20
 tmax = 80
@@ -99,7 +99,7 @@ for run in range(n_runs):
     bound1_learner_m = Bound1Learner_myopic(get_n_arms(),get_arms(),tmax)
     baseline_learner_m = BaselineLearner_myopic(get_n_arms(),get_arms(),tmax=tmax,tmin=0)
     oracle = Oracle(get_n_arms(),get_arms(),tmax)
-    learners = [ bound1_learner_m,bayesUCB,thompson_learner_baseline]
+    learners = [ baseline_learner_m, bound1_learner_m, bayesUCB, thompson_learner_baseline]
 
                 
     #EXECUTION

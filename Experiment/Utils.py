@@ -135,3 +135,44 @@ def compute_full_analytics(n_runs,time_horizon,oracle,_learners,experiment_name)
 
     compute_experiment_pseudo_regret(learner_names=learner_names,learner_arm_value_dict=learner_arm_value_dict,oracle_value=Oracle_best_arm_value,n_runs=N_RUNS,file_name=exp_name)
     print("DONE")
+
+
+def compute_full_analytics_from_files(n_runs,time_horizon,Oracle_best_arm_value,learner_names,experiment_name):
+    N_RUNS = n_runs
+    time = time_horizon
+    Oracle_best_arm_value
+    exp_name = experiment_name
+    step = ""
+    print(learner_names)
+    
+    #dict learner-> list of list of played arms
+    learner_arm_value_dict = {}
+    for l in range(len(learner_names)):
+        results_list_of_l = [] #it must have n_runs element
+        for i in range(N_RUNS):
+            full_name="Results/"+exp_name+"_arm_value_results_run_"+str(i)+".csv"
+            data = pd.read_csv(full_name)
+            arm_values_of_l_on_run_i = data[learner_names[l]]
+            assert(len(arm_values_of_l_on_run_i) == time)
+            #print(arm_values_of_l_on_run_i.head)
+            results_list_of_l.append(arm_values_of_l_on_run_i)
+        learner_arm_value_dict[learner_names[l]] = results_list_of_l
+
+    #PLOT SINGLE RUN di VERIFICA
+    for run_id in range(N_RUNS):
+        for l in learner_names:
+            plt.plot(calculate_cumulative_pseudo_regret(learner_arm_value_dict[l][run_id],Oracle_best_arm_value),label = l)
+
+        plt.ylabel('cumulative pseudo regret')
+        plt.title('cumulative pseudo regret '+"exp_0_"+str(step)+"_run"+str(run_id))
+        plt.legend(loc='lower left')
+        plt.xlabel('Time t')
+        plt_name = "Results/VERIFICA"+"experiment_4_"+str(step)+"_run_"+str(run_id)+".png"
+        plt.savefig(plt_name, bbox_inches='tight')
+        plt.clf()
+
+    compute_experiment_pseudo_regret(learner_names=learner_names,learner_arm_value_dict=learner_arm_value_dict,oracle_value=Oracle_best_arm_value,n_runs=N_RUNS,file_name=exp_name)
+    print("DONE")
+
+
+compute_full_analytics_from_files(n_runs=50,time_horizon=10000,Oracle_best_arm_value=530.1869158878505,learner_names=["RentUCBLearner_single","RentPersistentSingleExpl"],experiment_name="affitti_bayesvsucb"   )

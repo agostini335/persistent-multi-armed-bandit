@@ -1,4 +1,3 @@
-#%%
 import sys
 sys.path.append("Experiment")
 sys.path.append("Experiment/RentScenario")
@@ -147,13 +146,13 @@ def compute_experiment_pseudo_regret(learner_names,learner_arm_value_dict,oracle
     for learner in learner_names:
         x = np.arange(len(learner_average_pseudo_regret[learner]))
         confidence_interval = 2*learner_std[learner]/np.sqrt(n_runs)
-        plt.errorbar(x,learner_average_pseudo_regret[learner],confidence_interval,elinewidth=0.9,capsize=2,errorevery=7000 ,label = learner)
+        plt.errorbar(x,learner_average_pseudo_regret[learner],confidence_interval,elinewidth=0.9,capsize=2,errorevery=1000 ,label = learner)
 
     plt.ylabel('cumulative pseudo regret')
     plt.title('cumulative pseudo regret '+ str(file_name))
     plt.legend(loc='upper left')
     plt.xlabel('Time t')
-    plt.savefig("Results/"+ str(file_name)+" n_runs:"+str(n_runs)+".png",dpi=600)
+    plt.savefig("Results/"+ str(file_name)+"FULLANALYTICS.png",dpi=600)
     plt.show()
     plt.clf()    
 
@@ -202,11 +201,11 @@ T_GLOBAL = TMAX_a +TMAX_s
 
 #%%RUN
 from RentScenario.RentBound1Learner import RentBound1LearnerAdaptive
+from RentScenario.RentBound1Learner import RentPersistentSingleExpl
 
-
-n_runs = 5
-experiment_name = "affitti"
-
+n_runs = 50
+experiment_name = "affitti_bayesvsucb"
+T_HORIZON = 10000
 for run in range(n_runs):
         learners = []
         rent_env = RentEnv(tmax_a=TMAX_a,tmax_s=TMAX_s)
@@ -217,13 +216,8 @@ for run in range(n_runs):
         print("ORACLE VALUE:"+str(oracle.value))
         learners.append(RentUCBLearner_single(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict = avg_sfitti_dict,avg_contratti_dict =avg_contratti_dict),T_GLOBAL))
         #learners.append(RentUCBLearner_double(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL,TMAX_a,TMAX_s))
-        #learners.append(RentBound1Learner(n_arms=len(arms),arms=get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),tmax_a=TMAX_a,tmax_s=TMAX_s,t_global=T_GLOBAL))
-        learners.append(RentBound1LearnerAdaptive(n_arms=len(arms),arms=get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),tmax_a=TMAX_a,tmax_s=TMAX_s,t_global=T_GLOBAL))
-
-
-        print("oracle:" + str(oracle.value))
-        b = rent_env.round(arms[1],contratto_dict,sfitto_dict)
-        T_HORIZON = 40000
+        learners.append(RentPersistentSingleExpl(n_arms=len(arms),arms=get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),tmax_a=TMAX_a,tmax_s=TMAX_s,t_global=T_GLOBAL))
+        #learners.append(RentBound1LearnerAdaptive(n_arms=len(arms),arms=get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),tmax_a=TMAX_a,tmax_s=TMAX_s,t_global=T_GLOBAL))
 
         for i in tqdm(range(T_HORIZON)):    
                 for learner in learners:
@@ -248,7 +242,7 @@ for run in range(n_runs):
         plt.xlabel('Time t')
         plt_name = "Results/"+experiment_name+"_run"+str(run)
         plt.savefig(plt_name, bbox_inches='tight')
-        plt.show()
+        #plt.show()
         plt.clf()
 
         

@@ -1,0 +1,106 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{times}  %Required
+\usepackage{helvet}  %Required
+\usepackage{courier}  %Required
+\usepackage{url}  %Required
+\usepackage{graphicx}  %Required
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{pgf}
+\usetikzlibrary{calc}
+\usepackage{algorithm}
+\usepackage{ntheorem}\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[noend]{algpseudocode}
+\usepackage{thm-restate}
+\usepackage{todonotes}
+\usepackage{enumitem}
+\usepackage{pgfplots}
+\usepackage{mathtools}
+\usepackage{bm}
+
+\frenchspacing  %Required
+\setlength{\pdfpagewidth}{8.5in}  %Required
+\setlength{\pdfpageheight}{11in}  %Required
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proof}{Proof}%[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+%\newtheorem{problem}{Problem}
+\newtheorem{prop}{Proposition}
+\newtheorem{observation}{Observation}
+\newtheorem{property}{Property}
+\newtheorem{remark}{Remark}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\pl}{\mathcal{P}}
+\DeclareMathOperator*{\pre}{\sqsubseteq}
+\DeclareMathOperator*{\I}{\mathcal{I}}
+\DeclareMathOperator*{\T}{\mathcal{T}}
+\DeclareMathOperator*{\F}{\mathcal{F}}
+\DeclareMathOperator*{\B}{\mathcal{B}}
+
+\title{Upper Bound}
+\author{}
+\date{October 2018}
+
+
+\begin{document}
+
+\noindent
+$\textbf{Best-Response problem in sequence form}$
+The best-response problem of player $i$ against strategy $r_adv$ of the adversarial player in sequence form is formulated as: \\
+
+
+
+
+\begin{equation}
+\max_{r_1} \sum_{q_1 \in Q_1} \sum_{q_{adv} \in Q_{adv}} r_1^T(q_1) U_1(q_1,q_{adv}) r_{adv}^T(q_{adv}) 
+\end{equation}
+
+
+
+\begin{algorithm}[!h]
+	\caption{\texttt{Upper Bound}}
+	\begin{scriptsize}
+		\begin{algorithmic}
+
+		    \Function{UB}{$\Gamma$, $h$, $\bm{\pi}^{adv}$, $\bm{\pi}^1$}
+		    % devo dire che il primo h passato è il nodo radice
+		    
+		    \If{$h \in Z$}  
+		    \State\textbf{return} $u(h)$
+		    \EndIf
+		    
+		    \State $v(h) \leftarrow -\infty$
+		    \If{$(h \in I | P(I)=1)$}
+		    
+		    \For {$a\in A(h)$}
+		    \State $v(h)\leftarrow max\{v(h)$, $\sum_{a \in A(I)} {\pi}_a^1$ UB$(\Gamma$, $ha$, $\bm{\pi}^{adv}$, $\bm{\pi}^1) \}$
+		    \EndFor
+		    \EndIf
+		    
+		    \If{$(h \in I | P(I)=adv)$}
+		    \For {$a\in A(h)$}
+		    \State $v(h)\leftarrow max\{v(h)$, $\sum_{a \in A(I)} {\pi}_a^{adv}$ UB$(\Gamma$, $ha$, $\bm{\pi}^{adv}$, $\bm{\pi}^1) \}$
+		    \EndFor
+		    \EndIf
+		    
+		    \State\textbf{return} $(\Gamma,\textbf{v})$
+		    \EndFunction
+			
+		\end{algorithmic}
+	\end{scriptsize}
+	\label{alg:UpperBound}
+\end{algorithm}
+
+
+
+\end{document}

@@ -1,0 +1,142 @@
+%cambia x in h
+% linea 16 esiste azione .. (vedi algo vecchio)
+% definisco una X (slight abuse of notation)
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{times}  %Required
+\usepackage{helvet}  %Required
+\usepackage{courier}  %Required
+\usepackage{url}  %Required
+\usepackage{graphicx}  %Required
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{pgf}
+\usetikzlibrary{calc}
+\usepackage{algorithm}
+\usepackage{ntheorem}\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[noend]{algpseudocode}
+\usepackage{thm-restate}
+\usepackage{todonotes}
+\usepackage{enumitem}
+\usepackage{pgfplots}
+\usepackage{mathtools}
+\usepackage{bm}
+
+\frenchspacing  %Required
+\setlength{\pdfpagewidth}{8.5in}  %Required
+\setlength{\pdfpageheight}{11in}  %Required
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proof}{Proof}%[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+%\newtheorem{problem}{Problem}
+\newtheorem{prop}{Proposition}
+\newtheorem{observation}{Observation}
+\newtheorem{property}{Property}
+\newtheorem{remark}{Remark}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\pl}{\mathcal{P}}
+\DeclareMathOperator*{\pre}{\sqsubseteq}
+\DeclareMathOperator*{\I}{\mathcal{I}}
+\DeclareMathOperator*{\T}{\mathcal{T}}
+\DeclareMathOperator*{\F}{\mathcal{F}}
+\DeclareMathOperator*{\B}{\mathcal{B}}
+
+\title{algoritmo_CPR}
+\author{}
+\date{October 2018}
+
+
+\begin{document}
+%def presa da journal "approximating maxmin strategies in perfect recall games using A-loss recall property"
+\begin{definition}[Coarsest Perfect Recall Refinement]
+The coarsest perfect recall refinement $\Gamma'$ of the imperfect recall game $\Gamma = \left\langle \pl,A,H,Z,P,\pi_c,u,\mathcal{I} \right\rangle$ is a tuple $\left\langle \pl,A',H,Z,P,\pi_c,u,\mathcal{I'} \right\rangle$ where $\forall i \in \pl$, $\forall I_i \in \I_i$, $H(I_i)$ defines the information set partition $\I'$. $\mathcal{A}'$ is a modification of $\mathcal{A}$, which guarantees that $\forall I \in \I'$, $\forall h_k, h_l \in I,  \mathcal{A}'(h_k)=\mathcal{A}'(h_l)$, while for all distinct $I^k,I^l \in \mathcal{I}'$, $\forall a^k \in \mathcal{A}(I^k)$, $\forall a^l \in \mathcal{A}(I^l)$, $a^k \ne a^l$.
+
+
+\end{definition}
+
+
+\begin{algorithm}[!h]
+	\caption{\texttt{Coarsest Perfect Recall Refinement}}
+	\begin{scriptsize}
+		\begin{algorithmic}[1]
+
+			
+		    
+		    \Function{CPRR}{$\Gamma$, $i$}\Comment{$i\in\pl$ has imperfect recall}
+		    
+		    \State $O=\{I\in \I_i|\exists h\in I, X_i(h)=\emptyset\}$
+		    \State $\I^\ast_i\leftarrow\I_i\setminus O$
+		    %\State $N_i\leftarrow\{x \in H | ~ P(x)=i\}$
+		    \State $\mathcal{L}_i\leftarrow\emptyset$
+		    \State $L\leftarrow\emptyset$
+		    
+		    \For {$I\in \I_i^\ast$}
+		    \State $L\leftarrow I$
+		    \For {$x \in I$}
+		    \If{$x \in L$}
+		    \State $I_x = \textnormal{CHECK}(\Gamma,I,x)$
+		    \State $L=L \setminus \{I_x\}$
+		    \State $\mathcal{L}_i = \mathcal{L}_i \cup I_x$
+		    \EndIf
+		    \EndFor
+		    \EndFor
+		    \State $\bar{\I}_i= O \cup \mathcal{L}_i$	
+		    \State\textbf{return} $\bar{\I}_i$
+		    \EndFunction
+			
+			\Function{CHECK}{$\Gamma,I,x$}
+			\State $I_x=\{x\}$
+			%\State $P=\{y \in N_i | y \in \bar{I} \subset X_i(x)\}$
+			\State $P=\{I_i \in \I_i | I_i \in X_i(x)\}$
+			\For {$\bar{x} \in I\setminus\{x\}$}
+			\State $\bar{P}=\{p \in P | seq_i\{p\rightarrow x\} \ne \emptyset \land seq_i\{p\rightarrow \bar{x}\} \ne \emptyset\}$
+			\For {$\bar{p} \in \bar{P}$}		
+			\If {$seq_i\{\bar{p}\rightarrow x\} = seq_i\{\bar{p}\rightarrow \bar{x}\}$}
+			\State $I_x=I_x \cup \{\bar{x}\}$
+			\EndIf
+			\EndFor
+			\EndFor
+			\State\textbf{return} $I_x$
+			\EndFunction
+			
+		\end{algorithmic}
+	\end{scriptsize}
+	\label{alg:inflation}
+\end{algorithm}
+
+\noindent
+The algorithm takes in input a generic extensive-form imperfect recall game and returns its coarsest perfect recall refinement by splitting some information sets of the original game.
+Consider an information set $I$ with $n$ nodes: if $n=1$, $I$ will be in the final perfect recall partition $\bar{\I}_i$ because we cannot further split it. If $n>1$ the algorithm select each couple $(x,\bar{x})$ of nodes in $I$ and checks all the common fathers $\bar{p}$: if the sequence of nodes and actions that bring from $\bar{p}$ to $x$ (i.e. $seq_i\{\bar{p}\rightarrow x\}$) and the sequence from $\bar{p}$ to $\bar{x}$ (i.e. $seq_i\{\bar{p}\rightarrow \bar{x}\}$) are the same, we can keep these two nodes in the same information set of the perfect recall partition. The fact that the sequences are identical means that each possible loss of memory of player $i$ in the path from $\bar{p}$ to $x$ and $\bar{x}$ is not due to his own previous action. \\
+\noindent
+
+In this algorithm we don't have to follow a specific order when we visit the information sets $I\in \I_i^\ast$.
+An information set is splitted checking all the superior information sets. Each of these information sets is a potential cause of division so if we check all of them as we do in our algorithm, it is impossible to pass over a possible split. Moreover the split of inferior information sets does not modify the superior ones.
+
+The perfect recall refinement given by this algorithm is the coarsest: in the refinement we assemble the biggest number of nodes possible such that the information set they create is perfect recall. 
+%riferimento a righe
+
+% è polinomiale perchè per ogni decision nodes controllo al massimo tutti gli non posso (running time O(H^2) nel peggiore dei casi l'algo paragona ogni nodo ad ogni altro -> H^2 confronti)
+
+
+%1) non importa l'ordine di visita perchè
+%- dividere quelli sotto non modifica quelli sopra (ovvio?)
+%- dividere quelli sopra non modifica quelli sotto perchè per dividere quelli sotto ho controllato tutti quelli sopra, non solo il livello appena superiore. (ogni info set superiore è potenziale causa di divisione per quelli sotto quindi se ogni volta li controllo tutti sono sicura di aver diviso il più possibile il io info set corrente.)
+
+%2) dire perchè è il coarsest (perchè ogni volta metto in I_x tutti i nodi che possono stare con x)
+
+%1) commento rispetto a punto 1: non importa l'ordine se l'albero è non timeable. 
+%se albero è timeable allora basta una passata da sopra a sotto, e basta controllare solo l'info set immediatamente superiore.
+
+
+\end{document}
+

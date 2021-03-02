@@ -13,6 +13,7 @@ from Learners.BaselineLearner_farsighted import BaselineLearner_farsighted
 from Learners.ThompsonLearner import ThompsonLearner
 from Learners.BaselineLearner_farsighted_adaptive import BaselineLearner_farsighted_adaptive
 from Learners.BaselineLearner_myopic_adaptive import BaselineLearner_myopic_adaptive
+from Learners.Idea2 import Idea2
 from Learners.Oracle import Oracle
 from tqdm import tqdm
 from Parser.ArmSet import ArmSet
@@ -141,6 +142,8 @@ for run in range(n_runs):
     
     bound1_learner_f_adp = Bound1Learner_farsighted_adaptive(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax())
     bound1_learner_m_adp = Bound1Learner_myopic_adaptive(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax())
+
+    idea2 = Idea2(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax())
     
 
 
@@ -154,7 +157,7 @@ for run in range(n_runs):
    
     #learners = [bound1_learner_m,bound1_learner_f,baseline_learner_m,baseline_learner_f,thompson_learner_m_s,thompson_learner_f_s,thompson_learner_m_s_mono,thompson_learner_m_s_opti]
 
-    learners = [bound1_learner_m, baseline_learner_m]
+    learners = [idea2,baseline_learner_m,bound1_learner_m]
         
     #EXECUTION
     for i in tqdm(range(T)):    

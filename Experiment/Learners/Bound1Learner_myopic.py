@@ -1,6 +1,6 @@
 from Learners.Learner import Learner
 import numpy as np
-import Utils
+
 
 class Bound1Learner_myopic(Learner):
     """

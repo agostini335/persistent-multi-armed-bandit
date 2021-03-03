@@ -6,7 +6,18 @@ import tqdm
 import pandas as pd
 from Parser.ArmSet import ArmSet
 from Parser.ExperimentDescription import ExperimentDescription
+from matplotlib import rc
 import matplotlib.pyplot as plt
+plt.style.use('classic')
+
+from matplotlib import rcParams
+rcParams['axes.titlepad'] = 20 
+
+
+plt.rcParams['mathtext.fontset'] = 'stix'
+plt.rcParams['font.family'] = 'STIXGeneral'
+
+
 import json
 
 def append_list_as_row(file_name, list_of_elem):
@@ -43,13 +54,16 @@ def compute_experiment_pseudo_regret(learner_names,learner_arm_value_dict,oracle
     for learner in learner_names:
         x = np.arange(len(learner_average_pseudo_regret[learner]))
         confidence_interval = 2*learner_std[learner]/np.sqrt(n_runs)
-        plt.errorbar(x,learner_average_pseudo_regret[learner],confidence_interval,elinewidth=0.9,capsize=2,errorevery=7000 ,label = learner)
+        plt.errorbar(x,learner_average_pseudo_regret[learner],confidence_interval,elinewidth=0.9,capsize=5, errorevery=3000 ,label = learner)
 
-    plt.ylabel('cumulative pseudo regret')
-    plt.title('cumulative pseudo regret '+ str(file_name))
+    plt.ylabel('Pseudo Regret')
+    plt.title(str(file_name))
     plt.legend(loc='upper left')
+    lgd = plt.legend(loc='center left', bbox_to_anchor=(1, 0.5),fancybox = False, shadow = False)
+
+    #plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
     plt.xlabel('Time t')
-    plt.savefig("Results/"+ str(file_name)+" ANALYTICS.png",dpi=600)
+    plt.savefig("Results/"+ str(file_name)+" ANALYTICS.png", bbox_extra_artists=(lgd,), bbox_inches='tight',dpi=600)
     #plt.show()
     plt.clf()
 
@@ -175,4 +189,4 @@ def compute_full_analytics_from_files(n_runs,time_horizon,Oracle_best_arm_value,
     print("DONE")
 
 
-#compute_full_analytics_from_files(n_runs=50,time_horizon=10000,Oracle_best_arm_value=530.1869158878505,learner_names=["RentUCBLearner_single","RentPersistentSingleExpl"],experiment_name="affitti_bayesvsucb"   )
+compute_full_analytics_from_files(n_runs=30,time_horizon=10000,Oracle_best_arm_value=254.99999999999997,learner_names=["Idea2","Baseline_myopic","Bound1_myopic"],experiment_name="experiment_easy"   )

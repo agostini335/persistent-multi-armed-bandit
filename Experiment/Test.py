@@ -157,7 +157,7 @@ for run in range(n_runs):
    
     #learners = [bound1_learner_m,bound1_learner_f,baseline_learner_m,baseline_learner_f,thompson_learner_m_s,thompson_learner_f_s,thompson_learner_m_s_mono,thompson_learner_m_s_opti]
 
-    learners = [idea2,baseline_learner_m,bound1_learner_m]
+    learners = [idea2,baseline_learner_m,bound1_learner_m,baseline_learner_f,bound1_learner_f,thompson_learner_m_s_opti]
         
     #EXECUTION
     for i in tqdm(range(T)):    

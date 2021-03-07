@@ -1,23 +1,24 @@
-\chapter{Problem Formulation}\label{C10}
+\chapter{Problem Formulation}\label{CF}
 
 
 
-Standard MAB problem formulations...
+In this chapter we formally introduce the Multi-Armed Bandit problem with persistent rewards. After defining all the elements and details necessary to depict the interaction between the learning agent and the environment, we specify the performance measures adopted. Finally, we formalize two real-world scenarios which will be deeply analyzed during the thesis.
+
 
 \section{The MAB Persistent problem}
 
 The Mab Persistent problem that we are going to analyze in this thesis is formalized in this section. Over a finite time horizon, composed of $N$ time instants, at each time instant $t$, an agent must pull (choose) an arm (action) $a_t$ from an arm set $A =\{1, \dots, K\} $. When we pull an arm $a_j$ at time $t$ the environment returns a realization of a random variable $R_{j,t}$ and one of a random vector $\boldsymbol{Z_{j,t}}= (Z_{j,t,1},\dots, Z_{j,t,Tmax})$. The vector $\boldsymbol{Z_{j,t}}$ represtens the persistency of the feedback $R_{j,t}$, meaning that each component $Z_{j,t,m}$ describes which fraction of $R_{j,t}$ the agent will collect at the m-step. At each time instant from the pull of an arm, the learner will collect a reward called \emph{instant reward} defined as follows:
 \begin{definition}[Instant Reward]
-	We define the instant reward achived at time $s$, consequently to the pull of the arm j at time t as:	
+	We define the instant reward achived at time $s$, consequently to the pull of the arm j at time t, as:	
 		$$r_{j,t,s} = R_{j,t} Z_{j,t,m}$$
 Where $s \in \{t,\dots,t+T_{max}-1\}$ and $m = s-t+1$
 \end{definition}
-By setting the size of the vector $\boldsymbol{Z_{j,t}}$ to $T_{max}$, which is a fixed constant, we impose that the lasting of the feedback can be at most $T_{max}$ steps. In according to the scenario we are dealing with, $T_{max}$ will be known or not by the agent. We do not have any preliminary knowledge regarding the distributions of $R_{j,t}$ and $\boldsymbol{Z_{j,t}}$, we only know that $R_{j,t}$ has support in $[R_{min},R_{max}]$ and $Z_{j,t,m}$ has support in $[0,1]$ where $1\leq j \leq K$, $1\leq t \leq N$, $1\leq m \leq T_{max}$. Each realization of $\boldsymbol{Z_{j,t}}$ is characterized by the number of steps that we have to wait before having a positive component $Z_{j,t,m}$. We call this quantity \emph{delay} and we formalize it in the following way:
+By setting the size of the vector $\boldsymbol{Z_{j,t}}$ to $T_{max}$, which is a fixed constant, we impose that the lasting of the feedback can be at most $T_{max}$ steps. According to the scenario we are dealing with, $T_{max}$ will be known or not known by the agent. We do not have any preliminary knowledge regarding the distributions of $R_{j,t}$ and $\boldsymbol{Z_{j,t}}$, we only know that $R_{j,t}$ has support in $[R_{min},R_{max}]$ and $Z_{j,t,m}$ has support in $[0,1]$ where $1\leq j \leq K$, $1\leq t \leq N$, $1\leq m \leq T_{max}$. Each realization of $\boldsymbol{Z_{j,t}}$ is characterized by the number of steps that we have to wait before having a positive component $Z_{j,t,m}$. We call this quantity \emph{delay} and we formalize it in the following way:
 \begin{definition}[Delay]
 	We define the delay of a realization $\boldsymbol{Z_{j,t}}$ as:$$d_{j,t} = \sum_{m=0}^{T_{max}}\mathds{1}_{\{Z_{j,t,m}=0\ \wedge\ \forall k<m\ Z_{j,t,k} = 0\}}$$
 
 \end{definition}
-We are also interested in the position of the last positive component of a realization $\boldsymbol{Z_{j,t}}$. In essence, this quantity represents the true number of steps that we need to wait in order to collect all the instant rewards achievable after the pull of an arm. For this reason we call it \emph{true length} and we define it as follows:
+We are also interested in the position of the last positive component of a realization $\boldsymbol{Z_{j,t}}$. This quantity represents the true number of steps that we need to wait in order to collect all the instant rewards achievable after the pull of an arm. For this reason, we call it \emph{true length} and we define it as follows:
 \begin{definition}[True Length]
 	We define the true length of a realization $\boldsymbol{Z_{j,t}}$ as:
 		$$l_{j,t} = \sum_{m=0}^{T_{max}}\mathds{1}_{\{\exists k \ k\geq m \ \mid \ Z_{j,t,k} > 0\}}$$
@@ -30,7 +31,7 @@ To better suit a variety of scenarios that require a persistence reward framewor
 \begin{itemize}
 	\item \textbf{General Persistency} We do not assume anything regarding $\boldsymbol{Z_{j,t}}$. This configuration turns to be suitable for scenarios in which the istant reward could be missing at a certain point and then reappear at a later time. 
 	
-	\item \textbf{Tight Persistency} We impose that, giving a realization of a persistency vector, every non-zero component must be adjacent. More formally, we say that we are in \emph{Tight Persistency} configuration if for each realization $\boldsymbol{Z_{j,t}}= (Z_{j,t,1},\dots, Z_{j,t,Tmax})$ it holds the following condition:
+	\item \textbf{Tight Persistency} We impose that, giving a realization of a persistency vector, every non-zero component must be adjacent. More formally, we say that we are in \emph{Tight Persistency} configuration if for each realization $\boldsymbol{Z_{j,t}}= (Z_{j,t,1},\dots, Z_{j,t,Tmax})$ the following condition holds:
 	\begin{center}
 		$\nexists i,m,k  \quad i<m<k\quad \text{s.t.}\quad Z_{j,t,i}>0 \wedge Z_{j,t,m}=0 \wedge \ Z_{j,t,k}>0 \quad \forall i,m,k 	\in (1,\dots,T_{max})$
 	\end{center}
@@ -42,16 +43,20 @@ To better suit a variety of scenarios that require a persistence reward framewor
 
 
 
-We now present a couple of examples derived from practical cases with the aim to highlight the needs that motivate the two configurations above mentioned. 
-\begin{example}
-	We are the seller of an online magazine that works via subscription. In order to have access to our service, a new user can stipulate a contract with fixed duration and monthly fee. We let the possibility to suspend and restart the service in every moment during the contract simply stopping or making the monthly payments. Intuitively, we think that high prices discourage a continuous usage of the service while low prices could lead to stable subscriptions but with the risk of generating unsatisfactory profit. We are facing the problem of finding the best monthly price to assign at the service in order to maximize the revenue. This scenario can be directly modeled as a MAB persistent problem in \textbf{General Persistency}. Each arm can be assigned to a specific fee designed as a valid option. When the agent pulls an arm the feedback extracted $R_{j,t}$ will be simply the price related to that arm. The persistency vector $\boldsymbol{Z_{j,t}}$, on the other side, will capture the adherence of the user to the service and will have a size of Tmax equal to the number of months of the contract. Every component of the vector will be a Bernoulli variable that takes the value 1 if the user has made the payment in a certain month, 0 on the contrary.
+We now present a couple of examples derived from practical cases with the aim to highlight the needs that motivate the two configurations mentioned above. 
+\begin{example}[Pricing of a magazine subscription]
+	We are the seller of an online magazine that works via subscription. In order to have access to our service, a new user can stipulate a contract with fixed duration and monthly fees. We let the possibility to suspend and restart the service in every moment during the contract, simply stopping or making the monthly payments. Intuitively, we think that high prices discourage a continuous usage of the service while low prices could lead to stable subscriptions but with the risk of generating unsatisfactory profit. We are facing the problem of finding the best monthly price to assign at the service in order to maximize the revenue. This scenario can be directly modeled as a MAB persistent problem in \textbf{General Persistency}. Each arm can be assigned to a specific fee designed as a valid option. When the agent pulls an arm the extracted feedback $R_{j,t}$ will be the price related to that arm. The persistency vector $\boldsymbol{Z_{j,t}}$, on the other side, will capture the adherence of the user to the service and will have a size of Tmax equal to the number of months of the contract. Every component of the vector will be a Bernoulli variable that takes the value 1 if the user has made the payment for a certain month or the value 0 in the opposite case.
+	\label{magazine}
 \end{example}
-\begin{example}
-	We want to conduct an ethical clinical trial, In order to define which is the best medical treatment for a specific chronic illness. Let's say that we have two options available, a red pill and a blue one, hence we model them as two arms. Every day the agent must choose which one of the two therapies administer to a new patient on the basis of previous observations. Different from prior MAB application for this task, here we want to consider also the life quality of a patience in addition to his lifespan. For this reason after the treatment administration, a patient is tested every day and an index of his health status is computed. We can assume that this index is ranging from 0 to 1, where 1 represents a perfect state of health whereas 0 means that the patient is dead. This scenario could be easily addressed as a MAB persistent problem in \textbf{Thigh Persistency} configuration with delay steps equal to zero for each realization of the persistency vector. In fact, we can set $T_{max}$ at the maximum lifespan possible after the diagnosis of the considered ilness, and we can model every component of the vector $\boldsymbol{ Z_ {j, t}} $ as the health status index. For this scenario $R_{j,t}$ could be fixed to a constant equal for each arm, letting the role of capturing the reward only to the persistency vector $\boldsymbol{ Z_ {j, t}}$. The Thigh Peristency condition holds, as a matter of fact, it does not make sense to have a positive index health status after a death. 
+\begin{example}[Medical Trial]
+	\label{trial}
+	We want to conduct an ethical clinical trial in order to define which is the best medical treatment for a specific chronic illness. Let's say that we have two options available, a red pill and a blue one, hence we model them as two arms. Every day the agent must choose which one of the two therapies administer to a new patient on the basis of previous observations. Different from prior MAB application for this task, here we want to consider also the life quality of a patience in addition to his lifespan. For this reason after the treatment administration, a patient is tested every day and an index of his health status is computed. We can assume that this index is ranging from 0 to 1, where 1 represents a perfect state of health and 0 means that the patient is dead. This scenario could be easily addressed as a MAB persistent problem in \textbf{Tight Persistency} configuration with delay steps equal to zero for each realization of the persistency vector. As a matter of fact, we can set $T_{max}$ at the maximum lifespan possible after the diagnosis of the considered ilness, and we can model every component of the vector $\boldsymbol{ Z_ {j, t}} $ as the health status index. For this scenario, $R_{j,t}$ could be fixed to a constant equal for each arm, letting the role of capturing the reward only to the persistency vector $\boldsymbol{ Z_ {j, t}}$. The Tight Peristency condition holds, as a matter of fact, it does not make sense to have a positive index health status after a death. 
 \end{example}
 
 % metrics
-The nature of the presented problem lead us to introduce two definitions of reward achievable pulling an arm. In a straightforward manner, we call \emph{Pull Reward} the the sum of the instant rewards gained thanks to the pull. In some scenarios could be reasonable to take in consideration also the time needed to collect all the instant rewards of a pull. Hence, we call \emph{Normalized Pull Reward} the sum of instant rewards divided by the true length of the persistency vector. Formal definitions are provided below.
+The nature of the presented problem leads us to introduce two definitions of reward achievable pulling an arm. In a straightforward manner, we call \emph{Pull Reward} the the sum of the instant rewards gained thanks to the pull. In both Example \ref{magazine} and Example \ref{trial}, the goal of the learning agent was to find the arm able to maximize this quantity. However, in some scenarios could be reasonable to take in consideration also the time needed to collect all the instant rewards of a pull. In particular, we call \emph{Normalized Pull Reward} the sum of instant rewards divided by the true length of the persistency vector.
+This measure is particularly relevant when we consider case studies in which we want to allocate resources and we must take into consideration possible vacant periods, as outlined in Example \ref{cloud}.
+Formal definitions of rewards are provided below.
 
 
 \begin{definition}[Pull Reward]
@@ -63,49 +68,87 @@ The nature of the presented problem lead us to introduce two definitions of rewa
 	We define the normalized pull reward achived pulling the arm j at time t as:
 		$$Y_{j,t} = \dfrac{\sum_{s=t}^{t+T_{max}-1} r_{j,t,s}}{l_{j,t}}$$
 \end{definition}
+\begin{example}[Pricing of a Cloud Computing Service]
+\label{cloud}
+A cloud computing company has a new set of servers at its disposal and is facing the problem of deciding the daily price to rent a server. Once a specific price has been chosen, the company will disclose its offer online and later will enter into a contract of a fixed duration with the purchaser. Each day of the contract, the user will pay a fixed cost concering the rent, in addition to a variable cost related to the resources usage. The company assumes that by publishing an offer with an high price it will take a long time to find a buyer, on the contrary, with a very low price it will immediately be able to rent it but with little profit. In this scenario we see how the unused server time affects the income, therefore, not only the accumulated reward must be taken into account but also the time necessary to find a buyer. The problem is well modeled in 	\textbf{Tight persistency}. Each arm $a_j$ is associated to a deterministic daily price $R_{j,t}$ and the delay $d_{j,t}$ of each peristency vector $\boldsymbol{Z_{j,t}}$ will represent the days between the publication of the offer and the stipulation of the contract. Hence, $R_{j,t}$ can be seen as the price of one day of full use of the service, and finally each positive component $Z_{j,t,m}$ will indicate the fraction of $R_{j,t}$ to be daily paid by the user. We are interested in finding the arm that maximizes the \textbf{Normalized Pull Reward}, taking into account also the penalty imposed by the vacant periods.
 
-For the sake of simplicity, we will refer to a generic reward of arm $a_j$ at time $t$ as $X_{j,t}$, in order to adopt the same notation of the standard MAB literature. However the definitions stated below will apply evenly to the \emph{Pull reward} or the \emph{Normalized pull Reward}, unless otherwise specified.\\
-Successive plays of arm $a_j$ yield rewards $X_{j,t_1}, X_{j,t_2},\dots$ which are random variables independent and identically distributed according to an unknown distribution with unknown expectation $\mu_j$.\\ 
+\end{example}
+
+Successive plays of arm $a_j$ yield pull rewards $X_{j,t_1}, X_{j,t_2},\dots$ which are random variables independent and identically distributed according to an unknown distribution with unknown expectation $\mu_j$.
+In the same way, we can consider the normalized pull rewards, $Y_{j,t_1}, Y_{j,t_2}, \dots$ which are random variables i.i.d. with unknown expectation $\eta_j$. For the sake of simplicity, we will refer to a generic reward of arm $a_j$ at time $t$ as  $X_{j,t}$, in order to adopt the same notation of the standard MAB literature. However, the definitions stated below will apply evenly to the \emph{Pull reward} and the \emph{Normalized pull Reward}, unless otherwise specified.\\
+
+\begin{table}
+
 \begin{center}
+	\caption{Configurations-Rewards scenarios. \\The combination General-Persistency/Normalized Pull Reward leads to impractical cases that are not of interest to us.}\label{tabNF}
 	\begin{tabularx}{0.8\textwidth} { 
 			| >{\raggedright\arraybackslash}X 
 			| >{\centering\arraybackslash}X 
-			| >{\raggedleft\arraybackslash}X | }
+			| >{\centering\arraybackslash}X | }
 		\hline
 		  & Pull Reward & Normalized Pull Reward \\
 		\hline
-		General Persistency  & example 1 Spostify Scenario  &   \\
+		General Persistency  & example 1 Spotify Scenario  &   \\
 		\hline
-		Tight Persistency  & example 2  & Rent Scenario  \\
-		\hline
-	\end{tabularx}
+		Tight Persistency  & example 2  & 
+			example 3    Rent Scenario 
+			 \\
+		\hline		
+	\end{tabularx}	
 \end{center}
+
+\end{table}
+
 
 
 
 \subsection{ Performance measures}
 % policy
-The goal of a learning agent is to maximize its cumulated reward, the pulling strategy adopted to accomplish this task is referred as \emph{policy}. In order to measure the performance of a policy, we compare its beahviour with the one of a fictitious algorithm, called \emph{Oracle}, which constantly play the optimal arm. For this purpose we introduce de concept of \emph{Regret}.
+The goal of a learning agent is to maximize its cumulated reward, the pulling strategy adopted to accomplish this task is referred as \emph{policy}. In order to measure the performance of a policy, we compare its beahviour with the one of a fictitious algorithm, called \emph{Oracle}, which for any horizon of $n$ time steps constantly plays the optimal arm. For this purpose, we introduce the concept of \emph{Regret}.
 % sampling regret + pseudo regret
 \begin{definition}[Regret]
 	The Regret of a policy cumulated after n plays is definied as:
 	
 		$$R_n=\max_{j = \{1,\dots,k\}} \sum_{t=1}^n{X_{j,t}} - \sum_{t=1}^{n} X_{a_t,t} $$
 
-	Where  $a_t$ is the arm played by the learner at time t and the first term $\max_{j = \{1,\dots,k\}}\sum_{t=1}^n{X_{j,t}}$ represtents the reward cumulated by the Oracle up to time n.
+	Where  $a_t$ is the arm played by the learner at time t and the first term $\max_{j = \{1,\dots,k\}}\sum_{t=1}^n{X_{j,t}}$ represents the reward cumulated by the Oracle up to time n.
 
 \end{definition}
-Since both the rewards and the player's actions are stochastic, we introduce a form of average regret, called \emph{pseudo-regret}.
+Since both the rewards and the player's actions are stochastic, we introduce a form of average regret called \emph{pseudo-regret}.
 
 \begin{definition}[Pseudo-Regret]
 	The Pseudo-Regret of a policy cumulated after n plays is definied as:
-		$$\bm\bar{{R_n}}=n{\mu^{*}}- \sum_{t=1}^{n} \mu_{a_t}$$
+		$$\bm\bar{R}_{n}=n{\mu^{*}}- \sum_{t=1}^{n} \mu_{a_t}$$
 	Where  $\mu^{*}=\max_{j = \{1,\dots,k\}} \mu_j$ is the expected reward of the optimal arm and $\mu_{a_t}$ is the expected reward of the arm played at time t.
 \end{definition}
-This form of regret is more suitable for the purpose of our analysis, therefore in the rest of thesis we will evaluate our algorithm in term of pseudo-regret and, for the sake of simplicity, from now on we will refer to it as regret.
+For clearity, we give the definition of \emph{Normalized-Pseudo Regret}
+\begin{definition}[Normalized Pseudo-Regret]
+	The Normalized Pseudo-Regret of a policy cumulated after n plays is definied as:
+	$$\bm\bar{R}_{n}=n{\mu^{*}}- \sum_{t=1}^{n} \mu_{a_t}$$
+	Where  $\mu^{*}=\max_{j = \{1,\dots,k\}} \mu_j$ is the expected normalized reward of the optimal arm and $\mu_{a_t}$ is the expected normalized reward of the arm played at time t.
+\end{definition}
+
+
+
+This Pseudo-Regret form is more suitable for the purpose of our analysis, therefore in the rest of the thesis we will evaluate the algorithms in terms of pseudo-regret and, in order to simplify, we will refer to it as regret.
 
 
 %example table
+
+\section{Modeling of real-world scenarios}
+\subsection{The Spotify Playlist problem}
+\begin{itemize}
+	\item motivation: cold users, stato attuale -> possibile miglioramento 
+	\item fixed R constant - Z ascolti 
+	\item General Persistency - Pull Reward
+\end{itemize}
+\subsection{The Rental Pricing problem}
+\begin{itemize}
+	\item soluzione ad hoc
+	\item delay = sfitto 
+	\item Thigh Persistency - Normalized Pull Reward
+\end{itemize}
+ 	
 
 
 

@@ -1,7 +1,7 @@
 {
     "tmax": 50,
-    "time": 10000,
-    "n_runs":30,
+    "time": 5000,
+    "n_runs":10,
     "arm_sets": [
         {
             "alpha": 1,

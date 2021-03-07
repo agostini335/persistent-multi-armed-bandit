@@ -51,7 +51,7 @@ class Idea2(Learner):
                 c = np.sqrt((2*self.tmax*np.log(self.t))/ self.number_of_pulls[arm])
             else:
                 c = np.inf 
-            self.criterion[arm] = self.arms[arm].reward*(self.old_buckets_sum[arm] + self.active_buckets_sum[arm])/self.number_of_pulls[arm] + c
+            self.criterion[arm] = self.arms[arm].reward*((self.old_buckets_sum[arm] + self.active_buckets_sum[arm])/self.number_of_pulls[arm] + c)
 
                 
  

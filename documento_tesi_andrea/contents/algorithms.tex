@@ -2,14 +2,182 @@
 
 
 
+
 \section{Grounding Concepts}
-Multi-armed Bandit problems pertain to Online Learning, which means that in order to evaluate algorithms we need to design a simulation environment where we can mimic real-scenarios dynamics.
-From a practical perspective we need a data structure which represents the concept of persistent reward. In order to do that we define a vector called \emph{Bucket} aimed to contain the rewards obtained at each time steps. With $r_{b,m}$ we refer to the reward at position $m$ on bucket $b$. The \emph{Bucket} has a fixed size \emph{Tmax}. During the simulation, the bucket will be parsed according to the experiment time, meaning that the learner can only visit the bucket-cells containing the rewards of the past. When at time $t$ an arm $a_j$ is played, the environment generates a bucket $b_{t,j}$ that is collected by the learner. We call $B_j$ the set of buckets collected after playing $a_j$.
-The algorithms described below have a structural difference from the standard ones designed for traditional Multi-armed Bandit, infact in the presented framework more than one arms can have a set of active buckets (not totally parsed yet) simultaneously.  This parallelism implies that at each time instant we need to update the terms of every arms and not only of the last one played.
+Multi-armed Bandit problems pertain to Online Learning, which means that in order to evaluate algorithms we need to design a simulation environment where we can mimic real-scenarios dynamics. Informally, we will call \emph{Bucket} a realization $\boldsymbol{Z_{j,t}}= (Z_{j,t,1},\dots, Z_{j,t,Tmax})$ of the persistency vector. During the simulation, each bucket will be parsed according to the experiment time $t$, meaning that the learner can only visit the bucket-cells containing the information of the past. As stated in chapter \ref{CF}, when at time $t$ an arm $a_j$ is played, the environment generates a bucket $\boldsymbol{Z_{j,t}}$ and a feedback $R_{j,t}$ that is collected by the learner.
+Changing the point of view, we can say that, during the experiment, each arm $a_j$ collects a sequence of pulls, characterized by the extracted feedback-bucket pairs $(R_ {j, t}, \boldsymbol{Z_ {j, t}})$. We define as $P_j$ the set of pulls of arm $a_j$, hence, when an arm is pulled a pair $(R, \boldsymbol{Z})$ id added to the his set. In order to simplify the notation we will omit the arm and time indices where not needed.\\
+The algorithms described below have a structural difference from the standard ones designed for traditional Multi-armed Bandit, infact in the presented framework more than one arms can have a set of active buckets (not totally parsed yet) simultaneously.  This parallelism implies that at each time instant we need to update the terms of every arms and not only of the last one played. In order to facilitate the understanding of the code, the described algorithms will be decoupled into two modules, the \emph{Policy} and the \emph{Update} function. The policy module will describe a generic learner's interaction with the environment and will require an update function passed as an argument. The update function will be responsible to update the data and compute the indices needed by the policy to take decisions, concretizing the overall strategy.\\BOZZA:
+\begin{enumerate}
+	
+	\item Baseline UCB 
+	\item Baseline TS
+	\item Bound 1
+	\item TS persistent 
+	\item TS persistent forced exploartion
+	\item Bayes UCB Persistent
+	
+	
+\end{enumerate}
 
 
-\section{Baseline UCB}
-The pseudo-code of the Baseline UCB is depicted in Algorithm1. This algorithm extends the idea of the well known UCB algorithm in the case of persistent rewards. The reward is considered as a unique variable available after the termination of the bucket. The first k istants form the initialization phase, during which  each arm is chosen once. After the k-th time istant the loop phase begins. Here the agent plays the arm having the largest index $u_j(t)$, the upper confidence bound of the arm $a_j$ at time t. It is the sum of  the empirical reward of the arm measured so far $\hat{\mu}_j(t) $ and the exploration term $c_j(t) $. After the play of an arm, the \emph{Update Procedure} occurs. For each arm it scans every bucket collected and when a terminated bucket is detected (after $Tmax$ istants from his generation) a new reward is observed. $T_j(t)$ representes the number of times arm $a_j$ has been pulled up to time $t$. $R_j$ is the reward of the arm $a_j$ (SISTEMARE).
+\section{Frequentist Algorithms}
+The pseudo-code of the Frequentist Policy is depicted in Algorithm \ref{alg:FreqPolicy}.  The first k istants form the initialization phase, during which  each arm is chosen once. After the k-th time istant the loop phase begins. Here the agent plays the arm having the largest index $u_j(t)$, the upper confidence bound of the arm $a_j$ at time t. After the play of an arm, the \emph{Update Procedure} occurs.
+
+\begin{algorithm}[!h]
+	\caption{\texttt{Frequentist Policy}}
+	\begin{scriptsize}
+		\begin{algorithmic}[1]						
+			\Require{arm set $A = \{a_1, a_2, \ldots, a_k\}$, time horizon $N$, update function ${U}$}			
+			\Statex
+			\Function{policy}{\emph{$A$,$N$,$U$}}
+			\For { $t \in  \{1, \ldots,k\}$} \Comment{init phase}
+			\State play arm $a_t$\;
+			\State \emph{call U}\;
+			\EndFor
+			\For { $t \in  \{k+1, \ldots,N\}$} \Comment{loop phase}
+			\State play arm $a_i$ such that  $i = \argmax_j$ $u_j $\;
+			\State \emph{call U}\;
+			\EndFor
+			\EndFunction			
+		\end{algorithmic}
+	\end{scriptsize}
+	\label{alg:FreqPolicy}
+\end{algorithm}
+
+
+
+\subsection{Baseline UCB}
+This algorithm \ref{alg:BaselineUCB} extends the idea of the well known UCB algorithm in the case of persistent rewards. The reward is considered as a unique variable available after the termination of the bucket.
+\begin{algorithm}[!h]
+	\caption{\texttt{Baseline UCB}}
+	\begin{scriptsize}
+		\begin{algorithmic}[1]
+			
+			\Require{bucket size $T_{max}$, maximum feedback $R_{max}$}
+			\Function{update}{$T_{max}$,$R_{max}$}
+			\For{each arm $a_j \in  A$}
+			\For{each pair $(R,\boldsymbol{Z})$ $\in P_j$}
+			\If{$\boldsymbol{Z}$ is ended}
+			
+			\State compute reward $x$\;
+			\State compute average reward $\hat{\mu}_j $\;
+			\State$P_j \gets P_j \setminus \{(R,\boldsymbol{Z})\}$\;	
+			
+			\EndIf				
+			\EndFor			
+			
+			\State$c_j\gets R_{max}  T_{max}  \sqrt{\frac{2log(t)}{T_j(t)}}$\;
+			\State$u_j \gets  \hat{\mu}_j +  c_j$
+			\EndFor
+			
+			\EndFunction
+			
+		\end{algorithmic}
+	\end{scriptsize}
+	\label{alg:BaselineUCB}
+\end{algorithm}
+\\
+\subsection{Bound 1}
+
+\begin{algorithm}[!h]
+	\caption{\texttt{Bound1}}
+	\begin{scriptsize}
+		\begin{algorithmic}[1]
+			
+			
+			\Require{bucket size $T_{max}$}
+			
+			
+			\Function{update}{$T_{max}$}
+			\For{each arm $a_j \in  A$}
+			\For{$m \in \{1, \ldots,T_{max}\}  $}
+			
+			\State compute average persistency $\overline{Z_{j,m}}$ on the available buckets \;
+			\State$c_{j,m}\gets  \sqrt{{2log(tT_{max}^{\frac{1}{4}})}/{v_{j,m}(t)}}$\;
+			
+			\EndFor		
+			
+			\State $u_j \gets  R_j \sum_{m=1}^{T_{max}} min(1,\overline{Z_{j,m}}+c_{j,m}) $\;	
+			\EndFor
+			
+			
+			
+			
+			\EndFunction
+			
+		\end{algorithmic}
+	\end{scriptsize}
+	\label{alg:Bound1}
+\end{algorithm}
+
+
+
+
+
+
+
+\section{Bayesian Algorithms}
+
+\section{Farsighted versions}
+
+\section{Adaptive versions}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\iffalse
+	contenuto...
 
 
 
@@ -72,19 +240,7 @@ The pseudo-code of the Baseline UCB is depicted in Algorithm1. This algorithm ex
 			
 			
 			\Require{arm set $A = \{a_1, a_2, \ldots, a_k\}$, time horizon $N$, bucket size $Tmax$}
-			\Statex
-			\Function{policy}{} 
-			\For { $t \in  \{1, \ldots,k\}$} \Comment{init phase}
-			\State play arm $a_t$\;
-			\State $\textsc{update}$
-			\EndFor
-			\For { $t \in  \{k+1, \ldots,N\}$} \Comment{loop phase}
-			\State play arm $a_z$ such that  $z = argmax_j$ $u_j (t)$\;
-			\State $\textsc{update}$
-			\EndFor
-			\EndFunction
-			\Statex
-			
+	
 			
 			\Function{update}{}
 			\For{each arm $a_j \in  A$}
@@ -108,5 +264,4 @@ The pseudo-code of the Baseline UCB is depicted in Algorithm1. This algorithm ex
 	\label{alg:Bound1}
 \end{algorithm}
 
-
-
+\fi

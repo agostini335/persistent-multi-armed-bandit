@@ -1,7 +1,6 @@
 #%%
 import sys
 sys.path.append("Experiment")
-from AnalyticsManager import AnalyticsManager
 from ConfigManager import ConfigManager
 from Environment.Environment import Environment
 from Learners.Bound1Learner_myopic import Bound1Learner_myopic

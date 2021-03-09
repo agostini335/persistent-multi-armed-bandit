@@ -202,10 +202,11 @@ T_GLOBAL = TMAX_a +TMAX_s
 #%%RUN
 from RentScenario.RentBound1Learner import RentBound1LearnerAdaptive
 from RentScenario.RentBound1Learner import RentPersistentSingleExpl
+from Learners.Idea2 import Idea2
 
-n_runs = 50
+n_runs = 3
 experiment_name = "affitti_bayesvsucb"
-T_HORIZON = 10000
+T_HORIZON = 5000
 for run in range(n_runs):
         learners = []
         rent_env = RentEnv(tmax_a=TMAX_a,tmax_s=TMAX_s)
@@ -215,8 +216,9 @@ for run in range(n_runs):
         oracle = get_oracle(canoni_distinct,T_GLOBAL,avg_sfitti_dict = avg_sfitti_dict,avg_contratti_dict =avg_contratti_dict)
         print("ORACLE VALUE:"+str(oracle.value))
         learners.append(RentUCBLearner_single(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict = avg_sfitti_dict,avg_contratti_dict =avg_contratti_dict),T_GLOBAL))
+        learners.append(Idea2(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict = avg_sfitti_dict,avg_contratti_dict =avg_contratti_dict),T_GLOBAL))
         #learners.append(RentUCBLearner_double(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL,TMAX_a,TMAX_s))
-        learners.append(RentPersistentSingleExpl(n_arms=len(arms),arms=get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),tmax_a=TMAX_a,tmax_s=TMAX_s,t_global=T_GLOBAL))
+        #learners.append(RentPersistentSingleExpl(n_arms=len(arms),arms=get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),tmax_a=TMAX_a,tmax_s=TMAX_s,t_global=T_GLOBAL))
         #learners.append(RentBound1LearnerAdaptive(n_arms=len(arms),arms=get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),tmax_a=TMAX_a,tmax_s=TMAX_s,t_global=T_GLOBAL))
 
         for i in tqdm(range(T_HORIZON)):    

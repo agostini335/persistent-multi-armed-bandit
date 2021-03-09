@@ -189,4 +189,4 @@ def compute_full_analytics_from_files(n_runs,time_horizon,Oracle_best_arm_value,
     print("DONE")
 
 
-#compute_full_analytics_from_files(n_runs=30,time_horizon=10000,Oracle_best_arm_value=254.99999999999997,learner_names=["Idea2","Baseline_myopic","Bound1_myopic"],experiment_name="experiment_easy"   )
+#compute_full_analytics_from_files(n_runs=30,time_horizon=13000,Oracle_best_arm_value=254.99999999999997,learner_names=["Idea2","Baseline_myopic","Bound1_myopic","Baseline_farsighted","Bound1_farsighted"],experiment_name="experiment_easy"   )

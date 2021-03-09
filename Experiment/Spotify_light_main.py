@@ -25,6 +25,7 @@ from Learners.ThompsonLearner import ThompsonLearnerSpotify
 from Learners.ThompsonLearner import ThompsonBaselineSpotify
 from Learners.ThompsonLearner import ThompsonLearnerExplorerSpotify
 from Learners.ThompsonLearner import BayesUCBPersistentSpotify
+from Learners.Idea2 import Idea2Spotify
 from Learners.Oracle import Oracle
 from tqdm import tqdm
 from Parser.ArmSet import ArmSet
@@ -95,11 +96,14 @@ for run in range(n_runs):
     thompson_learner_exp = ThompsonLearnerExplorerSpotify(get_n_arms(),get_arms(),tmax,exploration_factor=0.005)
     thompson_learner_exp2 = ThompsonLearnerExplorerSpotify(get_n_arms(),get_arms(),tmax,exploration_factor=0.0025)
     thompson_learner_exp3 = ThompsonLearnerExplorerSpotify(get_n_arms(),get_arms(),tmax,exploration_factor=0.0075)
+
     bayesUCB = BayesUCBPersistentSpotify(get_n_arms(),get_arms(),tmax)         
     bound1_learner_m = Bound1Learner_myopic(get_n_arms(),get_arms(),tmax)
     baseline_learner_m = BaselineLearner_myopic(get_n_arms(),get_arms(),tmax=tmax,tmin=0)
+    idea2_learner = Idea2(get_n_arms(),get_arms(),tmax)
     oracle = Oracle(get_n_arms(),get_arms(),tmax)
-    learners = [ baseline_learner_m, bound1_learner_m, bayesUCB, thompson_learner_baseline]
+
+    learners = [ baseline_learner_m, bound1_learner_m, bayesUCB, thompson_learner_baseline, idea2_learner]
 
                 
     #EXECUTION

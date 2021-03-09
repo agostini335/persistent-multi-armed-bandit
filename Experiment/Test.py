@@ -10,10 +10,10 @@ from Learners.Bound1Learner_farsighted import Bound1Learner_farsighted
 from Learners.Bound1Learner_farsighted_adaptive import Bound1Learner_farsighted_adaptive
 from Learners.BaselineLearner_myopic import BaselineLearner_myopic
 from Learners.BaselineLearner_farsighted import BaselineLearner_farsighted
-from Learners.ThompsonLearner import ThompsonLearner
+from Learners.ThompsonLearner import ThompsonLearner,ThompsonBaseline, BayesUCBPersistent
 from Learners.BaselineLearner_farsighted_adaptive import BaselineLearner_farsighted_adaptive
 from Learners.BaselineLearner_myopic_adaptive import BaselineLearner_myopic_adaptive
-from Learners.Idea2 import Idea2
+from Learners.Idea2 import Idea2, Idea2Positive
 from Learners.Oracle import Oracle
 from tqdm import tqdm
 from Parser.ArmSet import ArmSet
@@ -131,19 +131,24 @@ for run in range(n_runs):
     thompson_learner_m_a_mono = ThompsonLearner(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax(),farsighted=False,adaptive=True, monotonic = True)
     thompson_learner_f_s_mono = ThompsonLearner(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax(),farsighted=True,adaptive=False, monotonic = True)
     thompson_learner_f_a_mono = ThompsonLearner(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax(),farsighted=True,adaptive=True, monotonic = True)
-
     thompson_learner_m_s = ThompsonLearner(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax(),farsighted=False,adaptive=False, monotonic = False)
     thompson_learner_m_a = ThompsonLearner(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax(),farsighted=False,adaptive=True, monotonic = False)
     thompson_learner_f_s = ThompsonLearner(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax(),farsighted=True,adaptive=False, monotonic = False)
     thompson_learner_f_a = ThompsonLearner(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax(),farsighted=True,adaptive=True, monotonic = False)
-
     thompson_learner_m_s_opti = ThompsonLearner(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax(),farsighted=False,adaptive=False, monotonic = False, optimistic= True)
     thompson_learner_m_s_mono_opti = ThompsonLearner(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax(),farsighted=False,adaptive=False, monotonic = True, optimistic= True)
     
     bound1_learner_f_adp = Bound1Learner_farsighted_adaptive(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax())
     bound1_learner_m_adp = Bound1Learner_myopic_adaptive(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax())
 
+
+    thomposon_baseline_m = ThompsonBaseline(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax(),optimistic=False,farsighted=False)
+    thomposon_baseline_f = ThompsonBaseline(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax(),optimistic=False,farsighted=True)
+    bayes_m = BayesUCBPersistent(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax())
+    bayes_f = BayesUCBPersistent(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax(),farsighted=True)
     idea2 = Idea2(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax())
+    idea2_pos = Idea2Positive(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax())
+
     
 
 
@@ -157,7 +162,7 @@ for run in range(n_runs):
    
     #learners = [bound1_learner_m,bound1_learner_f,baseline_learner_m,baseline_learner_f,thompson_learner_m_s,thompson_learner_f_s,thompson_learner_m_s_mono,thompson_learner_m_s_opti]
 
-    learners = [idea2,baseline_learner_m,bound1_learner_m,baseline_learner_f,bound1_learner_f,thompson_learner_m_s_opti]
+    learners = [idea2,idea2_pos,baseline_learner_m,bound1_learner_m,baseline_learner_f,bound1_learner_f,thomposon_baseline_m,thomposon_baseline_f,bayes_f,bayes_m]
         
     #EXECUTION
     for i in tqdm(range(T)):    

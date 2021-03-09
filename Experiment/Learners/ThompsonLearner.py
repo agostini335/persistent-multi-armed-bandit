@@ -1,7 +1,7 @@
 from Learners.Learner import Learner
 import numpy as np
 from scipy.stats import beta as scipybeta
-import Utils
+#import Utils
 import random
 
 class ThompsonLearner(Learner):

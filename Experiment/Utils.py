@@ -8,7 +8,7 @@ from Parser.ArmSet import ArmSet
 from Parser.ExperimentDescription import ExperimentDescription
 from matplotlib import rc
 import matplotlib.pyplot as plt
-plt.style.use('classic')
+plt.style.use("seaborn")
 
 from matplotlib import rcParams
 rcParams['axes.titlepad'] = 20 
@@ -16,6 +16,9 @@ rcParams['axes.titlepad'] = 20
 
 plt.rcParams['mathtext.fontset'] = 'stix'
 plt.rcParams['font.family'] = 'STIXGeneral'
+
+color_list = ["purple","violet","darkred","red","mediumblue","dodgerblue","darkorange","gold","darkgreen","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
+
 
 
 import json
@@ -50,19 +53,21 @@ def compute_experiment_pseudo_regret(learner_names,learner_arm_value_dict,oracle
         learner_pseudo_regret_dict[learner] = pseudo_regret_of_learner
         learner_average_pseudo_regret[learner] = np.mean(pseudo_regret_of_learner,axis = 0)
         learner_std[learner] = np.std(pseudo_regret_of_learner,axis = 0)
-
+    i = 0
     for learner in learner_names:
         x = np.arange(len(learner_average_pseudo_regret[learner]))
         confidence_interval = 2*learner_std[learner]/np.sqrt(n_runs)
-        plt.errorbar(x,learner_average_pseudo_regret[learner],confidence_interval,elinewidth=0.9,capsize=5, errorevery=3000 ,label = learner)
-
+        (_, caps, _) =plt.errorbar(x,learner_average_pseudo_regret[learner],confidence_interval,elinewidth=0.9,capsize=3, errorevery=4000 ,label = learner,color=color_list[i])
+        i = i+1
+        for cap in caps:
+            cap.set_markeredgewidth(1)
     plt.ylabel('Pseudo Regret')
     plt.title(str(file_name))
     plt.legend(loc='upper left')
     lgd = plt.legend(loc='center left', bbox_to_anchor=(1, 0.5),fancybox = False, shadow = False)
 
     #plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
-    plt.xlabel('Time t')
+    plt.xlabel('Time')
     plt.savefig("Results/"+ str(file_name)+" ANALYTICS.png", bbox_extra_artists=(lgd,), bbox_inches='tight',dpi=600)
     #plt.show()
     plt.clf()
@@ -172,10 +177,12 @@ def compute_full_analytics_from_files(n_runs,time_horizon,Oracle_best_arm_value,
             results_list_of_l.append(arm_values_of_l_on_run_i)
         learner_arm_value_dict[learner_names[l]] = results_list_of_l
 
+    
     #PLOT SINGLE RUN di VERIFICA
     for run_id in range(N_RUNS):
         for l in learner_names:
             plt.plot(calculate_cumulative_pseudo_regret(learner_arm_value_dict[l][run_id],Oracle_best_arm_value),label = l)
+
 
         plt.ylabel('cumulative pseudo regret')
         plt.title('cumulative pseudo regret '+"exp_0_"+str(step)+"_run"+str(run_id))
@@ -188,5 +195,5 @@ def compute_full_analytics_from_files(n_runs,time_horizon,Oracle_best_arm_value,
     compute_experiment_pseudo_regret(learner_names=learner_names,learner_arm_value_dict=learner_arm_value_dict,oracle_value=Oracle_best_arm_value,n_runs=N_RUNS,file_name=exp_name)
     print("DONE")
 
-
-#compute_full_analytics_from_files(n_runs=30,time_horizon=13000,Oracle_best_arm_value=254.99999999999997,learner_names=["Idea2","Baseline_myopic","Bound1_myopic","Baseline_farsighted","Bound1_farsighted"],experiment_name="experiment_easy"   )
+ln = ["Idea2_zeros","Idea2_ones","Baseline_myopic","Baseline_farsighted","Bound1_myopic","Bound1_farsighted","Thompson_baseline_myopic","Thompson_baseline_farsighted","BayesUCBPersistentfarsighted","BayesUCBPersistentmyopic"]
+compute_full_analytics_from_files(n_runs=50,time_horizon=20000,Oracle_best_arm_value=254.99999999999997,learner_names=ln,experiment_name="experiment_easy")

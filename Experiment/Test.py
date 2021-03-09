@@ -109,7 +109,7 @@ def save_experiment_description(cnfg_m):
 
 
 
-experiment_name = "experiment_easy"
+experiment_name = "experiment_B"
 config_manager = ConfigManager(path ="Experiment/Parser/ConfigFiles", name = experiment_name+".json")
 env = Environment(config_manager.get_n_arms(), tmax = config_manager.get_tmax())
 T = config_manager.get_time()       

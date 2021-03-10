@@ -25,7 +25,7 @@ from Learners.ThompsonLearner import ThompsonLearnerSpotify
 from Learners.ThompsonLearner import ThompsonBaselineSpotify
 from Learners.ThompsonLearner import ThompsonLearnerExplorerSpotify
 from Learners.ThompsonLearner import BayesUCBPersistentSpotify
-from Learners.Idea2 import Idea2Spotify
+from Learners.Idea2 import Idea2,Idea2Positive,Idea2Spotify,Idea2PositiveSpotify
 from Learners.Oracle import Oracle
 from tqdm import tqdm
 from Parser.ArmSet import ArmSet
@@ -82,8 +82,8 @@ play_dict = new_dict
 
 #SETUP CONFIG
 experiment_name = "experiment_spotify10k20r"
-T = 10000 
-n_runs = 20
+T = 20000 
+n_runs = 50
 tmax = 80
 oracle = Oracle(get_n_arms(),get_arms(),tmax)
 
@@ -93,17 +93,17 @@ for run in range(n_runs):
     #LEARNERS SET UP
     learners = []
     thompson_learner_baseline = ThompsonBaselineSpotify(get_n_arms(),get_arms(),tmax)
-    thompson_learner_exp = ThompsonLearnerExplorerSpotify(get_n_arms(),get_arms(),tmax,exploration_factor=0.005)
-    thompson_learner_exp2 = ThompsonLearnerExplorerSpotify(get_n_arms(),get_arms(),tmax,exploration_factor=0.0025)
-    thompson_learner_exp3 = ThompsonLearnerExplorerSpotify(get_n_arms(),get_arms(),tmax,exploration_factor=0.0075)
-
+    #thompson_learner_exp = ThompsonLearnerExplorerSpotify(get_n_arms(),get_arms(),tmax,exploration_factor=0.005)
+    #thompson_learner_exp2 = ThompsonLearnerExplorerSpotify(get_n_arms(),get_arms(),tmax,exploration_factor=0.0025)
+    #thompson_learner_exp3 = ThompsonLearnerExplorerSpotify(get_n_arms(),get_arms(),tmax,exploration_factor=0.0075)
     bayesUCB = BayesUCBPersistentSpotify(get_n_arms(),get_arms(),tmax)         
     bound1_learner_m = Bound1Learner_myopic(get_n_arms(),get_arms(),tmax)
     baseline_learner_m = BaselineLearner_myopic(get_n_arms(),get_arms(),tmax=tmax,tmin=0)
-    idea2_learner = Idea2(get_n_arms(),get_arms(),tmax)
+    idea2_learner = Idea2Spotify(get_n_arms(),get_arms(),tmax)
+    idea2_learner_p = Idea2PositiveSpotify(get_n_arms(),get_arms(),tmax)
     oracle = Oracle(get_n_arms(),get_arms(),tmax)
 
-    learners = [ baseline_learner_m, bound1_learner_m, bayesUCB, thompson_learner_baseline, idea2_learner]
+    learners = [ baseline_learner_m, bound1_learner_m, bayesUCB, thompson_learner_baseline, idea2_learner,idea2_learner_p]
 
                 
     #EXECUTION

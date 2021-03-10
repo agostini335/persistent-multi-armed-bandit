@@ -196,4 +196,4 @@ def compute_full_analytics_from_files(n_runs,time_horizon,Oracle_best_arm_value,
     print("DONE")
 
 ln = ["Idea2_zeros","Idea2_ones","Baseline_myopic","Baseline_farsighted","Bound1_myopic","Bound1_farsighted","Thompson_baseline_myopic","Thompson_baseline_farsighted","BayesUCBPersistentfarsighted","BayesUCBPersistentmyopic"]
-compute_full_analytics_from_files(n_runs=50,time_horizon=20000,Oracle_best_arm_value=254.99999999999997,learner_names=ln,experiment_name="experiment_easy")
+compute_full_analytics_from_files(n_runs=50,time_horizon=20000,Oracle_best_arm_value=30.500000000002828,learner_names=ln,experiment_name="experiment_B")

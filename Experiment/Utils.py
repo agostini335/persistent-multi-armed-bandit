@@ -17,9 +17,9 @@ rcParams['axes.titlepad'] = 20
 plt.rcParams['mathtext.fontset'] = 'stix'
 plt.rcParams['font.family'] = 'STIXGeneral'
 
-color_list = ["purple","violet","darkred","red","mediumblue","dodgerblue","darkorange","gold","darkgreen","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
+#color_list = ["purple","violet","darkred","red","mediumblue","dodgerblue","darkorange","gold","darkgreen","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
 
-
+color_list = ["purple","violet","darkred","mediumblue","darkorange","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
 
 import json
 
@@ -195,5 +195,6 @@ def compute_full_analytics_from_files(n_runs,time_horizon,Oracle_best_arm_value,
     compute_experiment_pseudo_regret(learner_names=learner_names,learner_arm_value_dict=learner_arm_value_dict,oracle_value=Oracle_best_arm_value,n_runs=N_RUNS,file_name=exp_name)
     print("DONE")
 
-ln = ["Idea2_zeros","Idea2_ones","Baseline_myopic","Baseline_farsighted","Bound1_myopic","Bound1_farsighted","Thompson_baseline_myopic","Thompson_baseline_farsighted","BayesUCBPersistentfarsighted","BayesUCBPersistentmyopic"]
-compute_full_analytics_from_files(n_runs=50,time_horizon=20000,Oracle_best_arm_value=30.500000000002828,learner_names=ln,experiment_name="experiment_B")
+#ln = ["Idea2_zeros","Idea2_ones","Baseline_myopic","Baseline_farsighted","Bound1_myopic","Bound1_farsighted","Thompson_baseline_myopic","Thompson_baseline_farsighted","BayesUCBPersistentfarsighted","BayesUCBPersistentmyopic"]
+ln = ["Idea2_zeros","Idea2_ones","Baseline_myopic","Bound1_myopic","Thompson_baseline","BayesUCBPersistent"]
+compute_full_analytics_from_files(n_runs=50,time_horizon=20000,Oracle_best_arm_value=52.35280282242258,learner_names=ln,experiment_name="experiment_spotify10k20r")

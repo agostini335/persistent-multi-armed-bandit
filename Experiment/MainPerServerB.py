@@ -67,8 +67,8 @@ def save_experiment_description(cnfg_m):
 
 
 
-ex_list = ["110","160","210"]
-
+#ex_list = ["110","160","210"]
+ex_list = ["210"]
 for ex in ex_list:
     experiment_name = "experiment_C_"+ex
     config_manager = ConfigManager(path ="Experiment/Parser/ConfigFiles", name = experiment_name+".json")

@@ -17,9 +17,9 @@ rcParams['axes.titlepad'] = 20
 plt.rcParams['mathtext.fontset'] = 'stix'
 plt.rcParams['font.family'] = 'STIXGeneral'
 
-#color_list = ["purple","violet","darkred","red","mediumblue","dodgerblue","darkorange","gold","darkgreen","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
+color_list = ["purple","violet","darkred","red","mediumblue","dodgerblue","darkorange","gold","darkgreen","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
 
-color_list = ["purple","violet","darkred","mediumblue","darkorange","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
+#color_list = ["purple","violet","darkred","mediumblue","darkorange","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
 
 import json
 
@@ -156,6 +156,102 @@ def compute_full_analytics(n_runs,time_horizon,oracle,_learners,experiment_name)
     print("DONE")
 
 
+def compute_cumulated_pulls(collected_pulls,current_id):
+
+    cum_pulls = np.zeros(len(collected_pulls))
+    if collected_pulls[0] == current_id:
+        cum_pulls[0] = 1
+    for i in range(1,len(collected_pulls)):
+        if collected_pulls[i] == current_id:
+            cum_pulls[i] = cum_pulls[i-1] +1
+        else:
+            cum_pulls[i] = cum_pulls[i-1]
+    return cum_pulls
+
+
+
+
+def compute_experiment_pulled_arms(n_runs,time_horizon,ids,learner_names,experiment_name):
+    N_RUNS = n_runs
+    time = time_horizon
+    exp_name = experiment_name
+    file_name = exp_name
+    step = ""
+    id_list = ids
+    print(learner_names)
+
+    
+    #for l in learner
+        # for each run
+            # compute pulls arm dict
+        # avg results
+        # std results
+        #plot
+
+    #dict learner-> list of list of played arms
+    learner_arm_id_dict = {}
+    
+
+    for l in range(len(learner_names)):
+        results_list_of_l = [] #it must have n_runs element
+        for i in range(N_RUNS):
+            full_name="Results/"+exp_name+"_id_results_run_"+str(i)+".csv"
+            data = pd.read_csv(full_name)
+            arm_id_of_l_on_run_i = data[learner_names[l]]
+            assert(len(arm_id_of_l_on_run_i) == time)
+            results_list_of_l.append(arm_id_of_l_on_run_i)
+        learner_arm_id_dict[learner_names[l]] = results_list_of_l
+    
+    print("start cumulated")
+    
+    #cumulated pulls
+    cuml_pulls_dict_list = []
+    for l in range(len(learner_names)):
+        d = {}
+        cuml_pulls_dict_list.append(d)
+        for i in id_list:
+            d[i] = []
+            for n in range(N_RUNS):
+                d[i].append(compute_cumulated_pulls(learner_arm_id_dict[learner_names[l]][n],i))
+    
+    #avg pulls
+    x = np.arange(time)
+    
+    for l in range(len(learner_names)):
+        #new plot
+        z = 0
+        for k in range(len(id_list)):
+            list_of_cumulated_lists = np.array(cuml_pulls_dict_list[l][k])
+            mean = np.mean(list_of_cumulated_lists,axis = 0)
+            std = np.std(list_of_cumulated_lists,axis = 0)
+            confidence_interval = 2*std/np.sqrt(n_runs)
+
+            (_, caps, _) =plt.errorbar(x,mean,confidence_interval,elinewidth=0.9,capsize=3, errorevery=4000 ,label = id_list[k],color=color_list[z+1])
+            for cap in caps:
+                cap.set_markeredgewidth(1)
+            z =z+1
+
+        plt.ylabel('cumulated pulls')
+        plt.title(str(file_name)+"_pulls_"+str(learner_names[l]))
+        plt.legend(loc='upper left')
+        lgd = plt.legend(loc='center left', bbox_to_anchor=(1, 0.5),fancybox = False, shadow = False)
+        plt.xlabel('Time')
+        plt.savefig("Results/PULLS/"+ str(file_name)+str(learner_names[l])+" cum_pulls.png", bbox_extra_artists=(lgd,), bbox_inches='tight',dpi=600)
+        #plt.show()
+        plt.clf()
+
+
+
+               
+
+
+
+
+    
+
+        
+
+
 def compute_full_analytics_from_files(n_runs,time_horizon,Oracle_best_arm_value,learner_names,experiment_name):
     N_RUNS = n_runs
     time = time_horizon
@@ -192,9 +288,27 @@ def compute_full_analytics_from_files(n_runs,time_horizon,Oracle_best_arm_value,
         plt.savefig(plt_name, bbox_inches='tight')
         plt.clf()
 
-    compute_experiment_pseudo_regret(learner_names=learner_names,learner_arm_value_dict=learner_arm_value_dict,oracle_value=Oracle_best_arm_value,n_runs=N_RUNS,file_name=exp_name)
+    compute_experiment_pseudo_regret(learner_names=learner_names,learner_arm_value_dict=learner_arm_value_dict,oracle_value=Oracle_best_arm_value,n_runs=N_RUNS,file_name="ANALYTICS/"+exp_name)
     print("DONE")
 
-#ln = ["Idea2_zeros","Idea2_ones","Baseline_myopic","Baseline_farsighted","Bound1_myopic","Bound1_farsighted","Thompson_baseline_myopic","Thompson_baseline_farsighted","BayesUCBPersistentfarsighted","BayesUCBPersistentmyopic"]
-ln = ["Idea2_zeros","Idea2_ones","Baseline_myopic","Bound1_myopic","Thompson_baseline","BayesUCBPersistent"]
-compute_full_analytics_from_files(n_runs=50,time_horizon=20000,Oracle_best_arm_value=52.35280282242258,learner_names=ln,experiment_name="experiment_spotify10k20r")
+
+
+
+
+'''
+ln = ["Idea2_zeros","Idea2_ones","Baseline_myopic","Baseline_farsighted","Bound1_myopic","Bound1_farsighted","Thompson_baseline_myopic","Thompson_baseline_farsighted","BayesUCBPersistentfarsighted","BayesUCBPersistentmyopic"]
+
+#ln = ["Idea2_zeros","Idea2_ones","Baseline_myopic","Bound1_myopic","Thompson_baseline","BayesUCBPersistent"]
+
+avg_list = []
+std_list = []
+
+compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=10.823308799999998,learner_names=ln,experiment_name="experiment_C_5")
+compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=19.166313650000003,learner_names=ln,experiment_name="experiment_C_10")
+compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=36.28571441774977,learner_names=ln,experiment_name="experiment_C_20")
+compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=70.57142857247196,learner_names=ln,experiment_name="experiment_C_40")
+compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=122.00000000002078,learner_names=ln,experiment_name="experiment_C_70")
+compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=190.57142857142938,learner_names=ln,experiment_name="experiment_C_110")
+compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=276.28571428571433,learner_names=ln,experiment_name="experiment_C_160")
+compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=362.0,learner_names=ln,experiment_name="experiment_C_210")
+'''

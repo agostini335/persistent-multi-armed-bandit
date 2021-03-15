@@ -1,61 +1,61 @@
 {
+    "n_runs": 20,
     "tmax": 10,
-    "time": 200,
-    "n_runs": 2,
     "arm_sets": [
         {
-            "alpha": 2,
-            "beta": 8,
-            "starting_reward": 6,
             "quantity": 1,
-            "reward_incrment_step": 0,
             "id_code": 0,
-            "arm_value": 15.008280540000003
+            "arm_value": 15.008280540000003,
+            "reward_incrment_step": 0,
+            "starting_reward": 6,
+            "beta": 8,
+            "alpha": 2
         },
         {
-            "alpha": 4,
-            "beta": 8,
-            "starting_reward": 5,
             "quantity": 1,
-            "reward_incrment_step": 0,
             "id_code": 1,
-            "arm_value": 19.166313650000003
+            "arm_value": 19.166313650000003,
+            "reward_incrment_step": 0,
+            "starting_reward": 5,
+            "beta": 8,
+            "alpha": 4
         },
         {
-            "alpha": 6,
-            "beta": 8,
-            "starting_reward": 4,
             "quantity": 1,
-            "reward_incrment_step": 0,
             "id_code": 2,
-            "arm_value": 19.142873271543998
+            "arm_value": 19.142873271543998,
+            "reward_incrment_step": 0,
+            "starting_reward": 4,
+            "beta": 8,
+            "alpha": 6
         },
         {
-            "alpha": 8,
-            "beta": 8,
-            "starting_reward": 3,
             "quantity": 1,
-            "reward_incrment_step": 0,
             "id_code": 3,
-            "arm_value": 16.5
+            "arm_value": 16.5,
+            "reward_incrment_step": 0,
+            "starting_reward": 3,
+            "beta": 8,
+            "alpha": 8
         },
         {
-            "alpha": 10,
-            "beta": 8,
-            "starting_reward": 2,
             "quantity": 1,
-            "reward_incrment_step": 0,
             "id_code": 4,
-            "arm_value": 12.111113505996922
+            "arm_value": 12.111113505996922,
+            "reward_incrment_step": 0,
+            "starting_reward": 2,
+            "beta": 8,
+            "alpha": 10
         },
         {
-            "alpha": 12,
-            "beta": 8,
-            "starting_reward": 1,
             "quantity": 1,
-            "reward_incrment_step": 0,
             "id_code": 5,
-            "arm_value": 6.500003856707687
+            "arm_value": 6.500003856707687,
+            "reward_incrment_step": 0,
+            "starting_reward": 1,
+            "beta": 8,
+            "alpha": 12
         }
-    ]
+    ],
+    "time": 20000
 }

@@ -13,6 +13,8 @@ from RentScenario.RentUCBLearner_single import RentUCBLearner_single
 from RentScenario.RentUCBLearner_double import RentUCBLearner_double
 from RentScenario.RentBound1Learner import RentBound1Learner
 from RentScenario.RentBound1Learner import RentBound1LearnerPartial
+from RentScenario.Idea2Rent import Idea2_rent
+from RentScenario.TSLearnerRent import ThompsonBaselineRent,BayesUCBPersistentRent
 from tqdm import tqdm
 
 #%% DATASET EXTRACION
@@ -80,8 +82,8 @@ for i in range(len(canoni_temp)):
 print(contratto_dict)
 #TODO REMOVE #########
 
-#l = np.array(contratto_dict["610.0"])  * 1
-#contratto_dict["610.0"] = l.tolist() 
+l = np.array(contratto_dict["610.0"])  * 1
+contratto_dict["610.0"] = l.tolist() 
 
 #print(contratto_dict)
 
@@ -202,11 +204,11 @@ T_GLOBAL = TMAX_a +TMAX_s
 #%%RUN
 from RentScenario.RentBound1Learner import RentBound1LearnerAdaptive
 from RentScenario.RentBound1Learner import RentPersistentSingleExpl
-from Learners.Idea2 import Idea2
 
-n_runs = 3
-experiment_name = "affitti_bayesvsucb"
-T_HORIZON = 5000
+
+n_runs = 10
+experiment_name = "affitti"
+T_HORIZON = 20000
 for run in range(n_runs):
         learners = []
         rent_env = RentEnv(tmax_a=TMAX_a,tmax_s=TMAX_s)
@@ -216,7 +218,10 @@ for run in range(n_runs):
         oracle = get_oracle(canoni_distinct,T_GLOBAL,avg_sfitti_dict = avg_sfitti_dict,avg_contratti_dict =avg_contratti_dict)
         print("ORACLE VALUE:"+str(oracle.value))
         learners.append(RentUCBLearner_single(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict = avg_sfitti_dict,avg_contratti_dict =avg_contratti_dict),T_GLOBAL))
-        learners.append(Idea2(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict = avg_sfitti_dict,avg_contratti_dict =avg_contratti_dict),T_GLOBAL))
+        learners.append(Idea2_rent(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL))
+        learners.append(ThompsonBaselineRent(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL))
+        learners.append(BayesUCBPersistentRent(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL))
+
         #learners.append(RentUCBLearner_double(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL,TMAX_a,TMAX_s))
         #learners.append(RentPersistentSingleExpl(n_arms=len(arms),arms=get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),tmax_a=TMAX_a,tmax_s=TMAX_s,t_global=T_GLOBAL))
         #learners.append(RentBound1LearnerAdaptive(n_arms=len(arms),arms=get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),tmax_a=TMAX_a,tmax_s=TMAX_s,t_global=T_GLOBAL))

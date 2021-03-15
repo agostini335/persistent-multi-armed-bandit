@@ -1,0 +1,79 @@
+{
+    "tmax": 100,
+    "time": 10000,
+    "n_runs": 5,
+    "arm_sets": [
+        {
+            "alpha": 1,
+            "beta": 1e-07,
+            "starting_reward": 4.77,
+            "quantity": 1,
+            "reward_incrment_step": 0,
+            "id_code": 0,
+            "arm_value": 476.99995383706846
+        },
+        {
+            "alpha": 1,
+            "beta": 1e-07,
+            "starting_reward": 4.62,
+            "quantity": 1,
+            "reward_incrment_step": 0,
+            "id_code": 1,
+            "arm_value": 461.999955288733
+        },
+        {
+            "alpha": 1,
+            "beta": 1e-07,
+            "starting_reward": 4.9,
+            "quantity": 1,
+            "reward_incrment_step": 0,
+            "id_code": 2,
+            "arm_value": 489.9999525789593
+        },
+        {
+            "alpha": 1,
+            "beta": 1e-07,
+            "starting_reward": 4.83,
+            "quantity": 1,
+            "reward_incrment_step": 0,
+            "id_code": 3,
+            "arm_value": 482.9999532564027
+        },
+        {
+            "alpha": 1,
+            "beta": 1e-07,
+            "starting_reward": 4.66,
+            "quantity": 1,
+            "reward_incrment_step": 0,
+            "id_code": 4,
+            "arm_value": 465.9999549016225
+        },
+        {
+            "alpha": 1,
+            "beta": 1e-07,
+            "starting_reward": 5.12,
+            "quantity": 1,
+            "reward_incrment_step": 0,
+            "id_code": 5,
+            "arm_value": 511.9999504498513
+        },
+        {
+            "alpha": 1,
+            "beta": 1e-07,
+            "starting_reward": 5.3,
+            "quantity": 1,
+            "reward_incrment_step": 0,
+            "id_code": 6,
+            "arm_value": 529.9999487078538
+        },
+        {
+            "alpha": 1,
+            "beta": 1e-07,
+            "starting_reward": 4.45,
+            "quantity": 1,
+            "reward_incrment_step": 0,
+            "id_code": 7,
+            "arm_value": 444.99995693395283
+        }
+    ]
+}

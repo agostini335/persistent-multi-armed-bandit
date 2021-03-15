@@ -67,7 +67,7 @@ def save_experiment_description(cnfg_m):
 
 
 
-ex_list = ["5","10","20","40","70","110","160","210"]
+ex_list = ["210"]
 
 for ex in ex_list:
     experiment_name = "experiment_C_"+ex

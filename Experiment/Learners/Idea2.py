@@ -43,7 +43,6 @@ class Idea2(Learner):
                     active_buckets.append(b)
                     self.active_buckets_sum[arm] = self.active_buckets_sum[arm] + sum(b.values[0:m+1])
                 else:
-                    assert(m == self.tmax)
                     self.old_buckets_sum[arm] = self.old_buckets_sum[arm] + sum(b.values)
             self.arms[arm].buckets = active_buckets            
 

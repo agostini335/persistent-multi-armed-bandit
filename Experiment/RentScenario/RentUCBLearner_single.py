@@ -4,7 +4,7 @@ import numpy as np
 
 class RentUCBLearner_single(RentLearner):
     def __init__(self, n_arms, arms, t_global):
-        super().__init__(n_arms,arms,"RentUCBLearner_single")
+        super().__init__(n_arms,arms,"Baseline_UCB_rent")
         self.criterion = np.ones(n_arms) * np.inf
         self.expected_payoffs = np.zeros(n_arms)
         self.number_of_completed_buckets = np.zeros(n_arms)

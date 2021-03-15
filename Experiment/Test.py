@@ -14,6 +14,7 @@ from Learners.ThompsonLearner import ThompsonLearner,ThompsonBaseline, BayesUCBP
 from Learners.BaselineLearner_farsighted_adaptive import BaselineLearner_farsighted_adaptive
 from Learners.BaselineLearner_myopic_adaptive import BaselineLearner_myopic_adaptive
 from Learners.Idea2 import Idea2, Idea2Positive
+from Learners.Idea2CompleteSample import Idea2Complete, Idea2PositiveComplete
 from Learners.Oracle import Oracle
 from tqdm import tqdm
 from Parser.ArmSet import ArmSet
@@ -109,7 +110,7 @@ def save_experiment_description(cnfg_m):
 
 
 
-experiment_name = "experiment_B"
+experiment_name = "experiment_fake_rent"
 config_manager = ConfigManager(path ="Experiment/Parser/ConfigFiles", name = experiment_name+".json")
 env = Environment(config_manager.get_n_arms(), tmax = config_manager.get_tmax())
 T = config_manager.get_time()       
@@ -149,6 +150,9 @@ for run in range(n_runs):
     idea2 = Idea2(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax())
     idea2_pos = Idea2Positive(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax())
 
+    idea2_c = Idea2Complete(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax())
+    idea2_pos_c = Idea2PositiveComplete(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax())
+
     
 
 
@@ -163,7 +167,9 @@ for run in range(n_runs):
     #learners = [bound1_learner_m,bound1_learner_f,baseline_learner_m,baseline_learner_f,thompson_learner_m_s,thompson_learner_f_s,thompson_learner_m_s_mono,thompson_learner_m_s_opti]
 
     learners = [idea2,idea2_pos,baseline_learner_m,bound1_learner_m,baseline_learner_f,bound1_learner_f,thomposon_baseline_m,thomposon_baseline_f,bayes_f,bayes_m]
-        
+
+    #learners = [idea2,idea2_pos,]
+
     #EXECUTION
     for i in tqdm(range(T)):    
         for learner in learners:

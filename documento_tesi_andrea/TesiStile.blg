@@ -9,50 +9,58 @@ Reallocating 'name_of_file' (item size: 1) to 22 items.
 A level-1 auxiliary file: contents/abstract.aux
 Reallocating 'name_of_file' (item size: 1) to 36 items.
 A level-1 auxiliary file: contents/capitolo1-introduzione.aux
+Reallocating 'name_of_file' (item size: 1) to 29 items.
+A level-1 auxiliary file: contents/formalizzazione.aux
+Reallocating 'name_of_file' (item size: 1) to 24 items.
+A level-1 auxiliary file: contents/algorithms.aux
+Reallocating 'name_of_file' (item size: 1) to 34 items.
+A level-1 auxiliary file: contents/ExperimentalAnalysis.aux
 Reallocating 'name_of_file' (item size: 1) to 35 items.
 A level-1 auxiliary file: contents/capitolo6-conclusions.aux
 Reallocating 'name_of_file' (item size: 1) to 9 items.
 The style file: abbrvnat.bst
 Reallocating 'name_of_file' (item size: 1) to 13 items.
 Database file #1: bibliografia.bib
-You've used 1 entry,
+Warning--empty journal in joulani2013
+You've used 3 entries,
             2773 wiz_defined-function locations,
-            602 strings with 4923 characters,
-and the built_in function-call counts, 426 in all, are:
-= -- 32
-> -- 21
-< -- 1
-+ -- 7
-- -- 6
-* -- 26
-:= -- 68
-add.period$ -- 3
-call.type$ -- 1
-change.case$ -- 5
-chr.to.int$ -- 1
-cite$ -- 2
-duplicate$ -- 23
-empty$ -- 41
-format.name$ -- 9
-if$ -- 87
+            614 strings with 5197 characters,
+and the built_in function-call counts, 1026 in all, are:
+= -- 80
+> -- 41
+< -- 4
++ -- 15
+- -- 12
+* -- 59
+:= -- 165
+add.period$ -- 9
+call.type$ -- 3
+change.case$ -- 12
+chr.to.int$ -- 3
+cite$ -- 7
+duplicate$ -- 62
+empty$ -- 103
+format.name$ -- 17
+if$ -- 211
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 1
-newline$ -- 13
-num.names$ -- 4
-pop$ -- 14
+missing$ -- 4
+newline$ -- 23
+num.names$ -- 12
+pop$ -- 36
 preamble$ -- 1
-purify$ -- 4
+purify$ -- 10
 quote$ -- 0
-skip$ -- 17
+skip$ -- 43
 stack$ -- 0
-substring$ -- 2
-swap$ -- 2
-text.length$ -- 0
+substring$ -- 6
+swap$ -- 4
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 11
-warning$ -- 0
-while$ -- 3
+type$ -- 28
+warning$ -- 1
+while$ -- 9
 width$ -- 0
-write$ -- 19
+write$ -- 43
+(There was 1 warning)

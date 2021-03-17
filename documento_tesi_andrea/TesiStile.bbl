@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{3}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -11,5 +11,15 @@ A.~Celli and N.~Gatti.
 \newblock In \emph{Proceedings of the Thirty-Second {AAAI} Conference on
   Artificial Intelligence, New Orleans, Louisiana, USA, February 2-7, 2018},
   2018.
+
+\bibitem[Pooria~Joulani(2013)]{joulani2013}
+C.~S. Pooria~Joulani, Andr´as~Gy¨orgy.
+\newblock Online learning under delayed feedback.
+\newblock 2013.
+
+\bibitem[White(2012)]{banditalgowebopt}
+J.~M. White.
+\newblock \emph{Bandit Algorithms for Website Optimization}, volume~1.
+\newblock O'Reilly, 2012.
 
 \end{thebibliography}

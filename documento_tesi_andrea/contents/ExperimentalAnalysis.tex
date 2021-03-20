@@ -1,12 +1,12 @@
 \chapter{Experimental Analysis}\label{C11}
 
-In this chapter, we present the experimental results of our analysis. In particular, we run all the policies considered so far in a variety of configurations and compare their performance in terms of pseudo-regret and normalized pseudo-regret. In the first section, we describe the settings of our synthetic experiments. In the second and third section we present the settings of the two real-world scenarios formalized in chapter \ref{C10}. Then, in what follows, we show and comment the obtained results.
+In this chapter, we present the experimental results of our analysis. In particular, we run all the policies considered so far in a variety of configurations and compare their performance in terms of pseudo-regret and normalized pseudo-regret. In the first section, we describe the settings of our synthetic experiments. In the second and third section we present the settings of the two real-world scenarios formalized in Chapter \ref{C10}. Then, in what follows, we show and comment the obtained results.
 
 %Appendix: growing tmax + farsighted vs myopic + framework codice esperimenti
-\iffalse
+
 \begin{table}[h]
 	\centering
-	\caption{Experimental Analysis Summary}
+	\caption{Experimental Analysis Summary.}
 	\begin{tabular}{|c|c|c|c|c|c|c|} 
 		\hhline{~------|}
 		\multicolumn{1}{l|}{}     & \multicolumn{2}{c|}{{\cellcolor[rgb]{0.878,0.878,0.878}}\textbf{Persistency}}                              & \multicolumn{2}{c|}{\textbf{Tmax}} & \multicolumn{2}{c|}{{\cellcolor[rgb]{0.878,0.878,0.878}}\textbf{Reward}}                                 \\ 
@@ -24,81 +24,70 @@ In this chapter, we present the experimental results of our analysis. In particu
 \end{table}
 
 \section{Synthetic Experiment Settings}
-All the synthetic experiments analyzed are in \emph{Tight Persistency}, with $Delay=0$ for each realization of the persistency vector, where each element of the persistency vector is a \emph{Bernoulli variable}. The feedback $R_{j, t}$ is deterministic for each arm and constant over time, therefore we will omit the index $t$.  For each experiment we want to maximize the cumulated \emph{Pull Reward}, so we will evaluate the results in terms of \emph{Pseudo-Regret}. In this scenario, a generic realization of the persistency vector, informally called \emph{bucket}, will be a sequence of $T_{max}$ elements composed by a sub-sequence of ones followed by a sub-sequence of zeros. In order to generate synthetic data we associate each arm to a distrubtion representing the lasting of the feedback. At each round the environment will generate a bucket with the number of ones sampled from the distribution of the pulled arm. 
+All the synthetic experiments analyzed are in \emph{tight persistency}, with delay $d_{j,t}=0$ for each realization $\boldsymbol{Z_{j,t}} = (Z_{j,t,1},\dots,Z_{j,t,T_{max}})$ of the persistency vector, where each component $Z_{j,t,m}$ is a \emph{Bernoulli variable}. The feedback $R_{j, t}$ is assumed deterministic for each arm $a_j$, therefore we will omit the index $t$. $T_{max}$ is known by the learner. For each experiment we want to maximize the cumulated \emph{Pull Reward}, so we will evaluate the results in terms of \emph{Pseudo-Regret}. In this scenario, a generic realization of the persistency vector, informally called \emph{bucket}, will be a sequence of $T_{max}$ elements composed by a sub-sequence of ones followed by a sub-sequence of zeros. Note that, given a bucket $\boldsymbol{Z_{j,t}}$, since the delay $d_{j,t}$ is assumed to be 0 and we are in thight persistency, the length of the sub-sequence of ones is equal to the true length $l_{j,t}$.\\
+To generate synthetic data, at each time instant t, we sample the true length $l_{j,t}$ of a new bucket $\boldsymbol{Z_{j,t}}$ from a distrubtion associated to the pulled arm $a_j$. More precisely, each arm $a_j$ is associated to a distribution Beta($\alpha_j$,$\beta_j$), where the parameters $\alpha_j$ and $\beta_j$ are specified in according to the considered setting. The expected Pull Reward $\mu_j$ of an arm $a_j$ is computed in the following way:
+
+$$\mu_j = R_j\sum_{i=1}^{T_{max}}i\bigg(F_j\bigg(\frac{i}{T_{max}}\bigg)-F_j\bigg(\frac{i-1}{T_{max}}\bigg)\bigg) \ ,$$
+where $F_j$ is the cumulative distribution function of the Beta($\alpha_j$,$\beta_j$).
+Below we present three significant settings analyzed: \emph{Synthetic A}, \emph{Synthetic B}, \emph{Synthetic C}.
+
 \begin{figure}[t]
 	\centering
 	\begin{tabular}{llllllllll}
 		\cline{2-9}
 		\multicolumn{1}{l|}{} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} &  \\ \cline{2-9}
-		& \textit{1}             & \textit{}              &                        &                        &                        &                        & \multicolumn{3}{c}{\textit{ Tmax}}                 
+		& \textit{1}             & \textit{}              &                        &                        &                        &                        & \multicolumn{3}{c}{\textit{ $T_{max}$}}                 
 	\end{tabular}
-	\caption{Example of persistency vector realization in Synthetic Setting}
+	\caption{Example of bucket in synthetic setting. In this example $T_{max}$ is equal to 8, the legth of the vector. The first 5 components are successes (1), meaning that the true length l of the vector is equal to 5.}
 \end{figure}
 %A lot of real problems can be easily represented in this way, furthermore, here we focus our attention on this scenario as it directly attacks the problem treated, givining a basic answer to the question we asked ourselves: "What happens if the reward is not a scalar but is persistent over time?"
-\subsection{Synthetic A}
-$Tmax = 50$,
-N\_runs = 50
+\subsection{Synthetic A}\label{SA}
+In this setting, the true length $l_{j,t}$ is sampled from a Beta distrubtion with parameters $a_j = b_j = 1$, for each arm $a_j$, for each time instant t. In this configuration the Beta distribution is equivalent to the uniform distribution. The feedback $R_j$ is set incrementally for each arm $a_j$. Here the best arm is the one with maximum feedback $R_j$. In fact, the magnitude of $R_j$ does not influence the true length $l_{j,t}$ which is generated uniformly at random.  We set $T_{max} = 50$. The experiment is repeated for 50 indipendent runs. The full description of the arms is provided in Table \ref{tabSA}.
+
+
+
 \begin{table}[H]
-	\centering
-	\caption{arm descriptions synthetic A}
-	\begin{tabular}{|l||l|l|l|l|} 
+	
+	\centering	
+	\caption{Description of the arms in setting Synthetic A.}
+	\begin{tabular}{|c|cccccccccc|}
 		\hline
-		\textbf{arm} & \textbf{R} & $\boldsymbol{\alpha}$ & $\boldsymbol{\beta}$ & $\boldsymbol{\mu}$  \\ 
-		\hline
-		$a_0$     & 1          & 1        & 1       & 25.5                    \\ 
-		\hline
-		$a_1$     & 2          & 1        & 1       & 51                      \\ 
-		\hline
-		$a_2$     & 3          & 1        & 1       & 76.5                    \\ 
-		\hline
-		$a_3$     & 4          & 1        & 1       & 102                     \\ 
-		\hline
-		$a_4$     & 5          & 1        & 1       & 127.5                   \\ 
-		\hline
-		$a_5$     & 6          & 1        & 1       & 153                     \\ 
-		\hline
-		$a_6$     & 7          & 1        & 1       & 178.5                   \\ 
-		\hline
-		$a_7$     & 8          & 1        & 1       & 204                     \\ 
-		\hline
-		$a_8$     & 9          & 1        & 1       & 229.5                   \\ 
-		\hline
-		$\boldsymbol{a_9}$        & 10         & 1        & 1       & \textbf{255}                     \\
-		\hline
+		\textbf{Arm}       & $a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ & $a_7$ & $a_8$ & $a_9$ \\ \hline
+		\textbf{R}         & 1     & 2     & 3     & 4     & 5     & 6     & 7     & 8     & 9     & 10    \\
+		$\boldsymbol{\mu}$ & 25.5  & 51    & 76.5  & 102   & 127.5 & 153   & 178.5 & 204   & 229.5 & 255   \\ \hline
 	\end{tabular}
+	
+\label{tabSA}
 \end{table}
 \subsection{Synthetic B}
-$Tmax = 50$,
-N\_runs = 50
+In this setting, for each time instant t, the true length $l_{j,t}$ is sampled from a different Beta distrubtion depending on the pulled arm $a_j$. For each arm $a_j$, the feedback is $R_j=1$. This implies that the best arm is the one wich is associated to the Beta with the highest mean. We set $T_{max}=50$. The experiment is repeated for 50 indipendent runs. The full description of the arms is provided in Table \ref{tabSB}.
+
+
 \begin{table}[H]
 	\centering
-	\caption{arm descriptions synthetic B}
-	\begin{tabular}{|l||l|l|l|l|} 
+	\caption{Description of the arms in setting Synthetic B.}
+	
+	\begin{tabular}{|c|cccccc|}
 		\hline
-		\textbf{arm} & \textbf{R} & $\boldsymbol{\alpha}$ & $\boldsymbol{\beta}$ & $\boldsymbol{\mu}$  \\ 
-		\hline
-		$a_0$     & 1          & 2        & 8       & 10.50                    \\ 
-		\hline
-		$a_1$     & 1          & 4        & 8       & 17.17                      \\ 
-		\hline
-		$a_2$     & 1          & 6        & 8       & 21.93                    \\ 
-		\hline
-		$a_3$     & 1          & 8        & 8       & 25.50                     \\ 
-		\hline
-		$a_4$     & 1          & 10        & 8       & 28.28                   \\ 
-		\hline
-		$\boldsymbol{a_5}$     & 1          & 12        & 8       & \textbf{30.5}                     \\                 
-		\hline
+		\textbf{Arm}          & $a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ \\ \hline
+		\textbf{R}            & 1     & 1     & 1     & 1     & 1     & 1     \\
+		$\boldsymbol{\alpha}$ & 2     & 4     & 6     & 8     & 10    & 12    \\
+		$\boldsymbol{\beta}$  & 8     & 8     & 8     & 8     & 8     & 8     \\
+		$\boldsymbol{\mu}$    & 10.50 & 17.17 & 21.93 & 25.50 & 28.28 & 30.3  \\ \hline
 	\end{tabular}
+
+\label{tabSB}
 \end{table}
-\begin{figure}
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=6cm]{./images/chart (1)-1.png}\quad\includegraphics[width=6cm]{./images/chart (2)-1.png}
-	\caption{Beta distribution description, PDF and CDF}
+	\includegraphics[width=6.26cm]{./images/chart (1)-1.png}\quad\includegraphics[width=6cm]{./images/chart (2)-1.png}
+	\caption{Probability density function and cumulative distribution function of the Beta distributions considered in settings Synthetic B and Synthetic C.}
 	\label{beta}
 \end{figure}
 
 \subsection{Synthetic C}
+
+In this setting, we propose a m, the true length $l_{j,t}$ is sampled from a different Beta distrubtion depending on the pulled arm $a_j$. For each arm $a_j$, the feedback is $R_j=1$. This implies that the best arm is the one wich is associated to the Beta with the highest mean. We set $T_{max}=50$. The experiment is repeated for 50 indipendent runs. The full description of the arms is provided in Table \ref{tabSB}.
 
 $Tmax = 5, 10, 20, 40, 70, 110, 160, 210$
 N\_runs = 20 for each configuration
@@ -167,4 +156,3 @@ N\_runs = 20 for each configuration
 	\caption{PULLS IDEA2 ZEROS C}
 	
 \end{figure}
-\fi

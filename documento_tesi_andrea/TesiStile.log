@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.10)  17 MAR 2021 15:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.10)  20 MAR 2021 23:12
 entering extended mode
 **./TesiStile.tex
 (TesiStile.tex
@@ -1011,10 +1011,10 @@ enefit from \pgfplotsset{compat=1.17} (current compat level: 1.15).
 \openout2 = `contents/frontespizio.aux'.
 
 (contents/frontespizio.tex
-<./images/logopm.pdf, id=98, 578.20877pt x 578.08434pt>
+<./images/logopm.pdf, id=130, 578.20877pt x 578.08434pt>
 File: ./images/logopm.pdf Graphic file (type pdf)
 <use ./images/logopm.pdf>
-Package pdftex.def Info: ./images/logopm.pdf  used on input line 12.
+Package pdftex.def Info: ./images/logopm.pdf  used on input line 13.
 (pdftex.def)             Requested size: 99.58464pt x 99.56087pt.
  [1
 
@@ -1062,21 +1062,21 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 4.
 
 (C:\Users\agost\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-))
-\tf@toc=\write5
-\openout5 = `TesiStile.toc'.
-
-
+)
 [5
 
 
-] [6
+])
+\tf@toc=\write5
+\openout5 = `TesiStile.toc'.
 
-] (TesiStile.lof)
+ [6] (TesiStile.lof)
 \tf@lof=\write6
 \openout6 = `TesiStile.lof'.
 
- [7] [8
+ [7
+
+] [8
 
 ] (TesiStile.lot)
 \tf@lot=\write7
@@ -1090,8 +1090,8 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
 (contents/capitolo1-introduzione.tex
 Chapter 1.
-LaTeX Font Info:    Trying to load font information for T1+cmss on input line 9
-.
+LaTeX Font Info:    Trying to load font information for T1+cmss on input line 1
+0.
 (C:\Users\agost\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmss.fd
 File: t1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ))pdfTeX warning (ext4): destination with the same identifier (name{page.1}) ha
@@ -1221,14 +1221,20 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 ]
 Chapter 3.
+
+LaTeX Warning: Reference `algsumm' on page 11 undefined on input line 11.
+
 [11]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 30.
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 3
-0.
+put line 41.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
+1.
  (C:\Users\agost\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
+Underfull \vbox (badness 1968) has occurred while \output is active []
+
+
 
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1238,6 +1244,9 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
 [12]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1246,7 +1255,10 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[13])
+[13]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1256,35 +1268,274 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
 [14]
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[15])
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[16]
 \openout2 = `contents/ExperimentalAnalysis.aux'.
 
  (contents/ExperimentalAnalysis.tex
 Chapter 4.
-) [15
+
+Overfull \hbox (23.35457pt too wide) in paragraph at lines 10--23
+ [][] 
+ []
+
+[17
 
 
 
 
 ]
+Underfull \vbox (badness 1097) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[18]
+<./images/chart (1)-1.png, id=403, 1723.43875pt x 1505.625pt>
+File: ./images/chart (1)-1.png Graphic file (type png)
+<use ./images/chart (1)-1.png>
+Package pdftex.def Info: ./images/chart (1)-1.png  used on input line 83.
+(pdftex.def)             Requested size: 178.11409pt x 155.60262pt.
+<./images/chart (2)-1.png, id=404, 1723.43875pt x 1505.625pt>
+File: ./images/chart (2)-1.png Graphic file (type png)
+<use ./images/chart (2)-1.png>
+Package pdftex.def Info: ./images/chart (2)-1.png  used on input line 83.
+(pdftex.def)             Requested size: 170.71652pt x 149.12396pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[19 <./images/chart (1)-1.png> <./images/chart (2)-1.png>]
+<./images/experiment_easy ANALYTICS.png, id=412, 680.7834pt x 378.57436pt>
+File: ./images/experiment_easy ANALYTICS.png Graphic file (type png)
+<use ./images/experiment_easy ANALYTICS.png>
+Package pdftex.def Info: ./images/experiment_easy ANALYTICS.png  used on input 
+line 118.
+(pdftex.def)             Requested size: 455.24408pt x 253.15248pt.
+
+Overfull \hbox (95.24408pt too wide) in paragraph at lines 118--120
+ [][] 
+ []
+
+<./images/experiment_B ANALYTICS.png, id=414, 675.84496pt x 378.57436pt>
+File: ./images/experiment_B ANALYTICS.png Graphic file (type png)
+<use ./images/experiment_B ANALYTICS.png>
+Package pdftex.def Info: ./images/experiment_B ANALYTICS.png  used on input lin
+e 123.
+(pdftex.def)             Requested size: 455.24408pt x 255.01254pt.
+
+Overfull \hbox (95.24408pt too wide) in paragraph at lines 123--125
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./images/C/experiment_C_5 ANALYTICS.png, id=415, 670.78606pt x 378.81525pt>
+File: ./images/C/experiment_C_5 ANALYTICS.png Graphic file (type png)
+<use ./images/C/experiment_C_5 ANALYTICS.png>
+Package pdftex.def Info: ./images/C/experiment_C_5 ANALYTICS.png  used on input
+ line 130.
+(pdftex.def)             Requested size: 170.71652pt x 96.40874pt.
+<./images/C/experiment_C_10 ANALYTICS.png, id=416, 675.84496pt x 378.57436pt>
+File: ./images/C/experiment_C_10 ANALYTICS.png Graphic file (type png)
+<use ./images/C/experiment_C_10 ANALYTICS.png>
+Package pdftex.def Info: ./images/C/experiment_C_10 ANALYTICS.png  used on inpu
+t line 130.
+(pdftex.def)             Requested size: 170.71652pt x 95.62537pt.
+<./images/C/experiment_C_20 ANALYTICS.png, id=417, 675.84496pt x 378.57436pt>
+File: ./images/C/experiment_C_20 ANALYTICS.png Graphic file (type png)
+<use ./images/C/experiment_C_20 ANALYTICS.png>
+Package pdftex.def Info: ./images/C/experiment_C_20 ANALYTICS.png  used on inpu
+t line 131.
+(pdftex.def)             Requested size: 170.71652pt x 95.62537pt.
+<./images/C/experiment_C_40 ANALYTICS.png, id=418, 675.84496pt x 378.57436pt>
+File: ./images/C/experiment_C_40 ANALYTICS.png Graphic file (type png)
+<use ./images/C/experiment_C_40 ANALYTICS.png>
+Package pdftex.def Info: ./images/C/experiment_C_40 ANALYTICS.png  used on inpu
+t line 131.
+(pdftex.def)             Requested size: 170.71652pt x 95.62537pt.
+<./images/C/experiment_C_70 ANALYTICS.png, id=419, 680.7834pt x 378.57436pt>
+File: ./images/C/experiment_C_70 ANALYTICS.png Graphic file (type png)
+<use ./images/C/experiment_C_70 ANALYTICS.png>
+Package pdftex.def Info: ./images/C/experiment_C_70 ANALYTICS.png  used on inpu
+t line 132.
+(pdftex.def)             Requested size: 170.71652pt x 94.93217pt.
+<./images/C/experiment_C_110 ANALYTICS.png, id=420, 680.7834pt x 378.57436pt>
+File: ./images/C/experiment_C_110 ANALYTICS.png Graphic file (type png)
+<use ./images/C/experiment_C_110 ANALYTICS.png>
+Package pdftex.def Info: ./images/C/experiment_C_110 ANALYTICS.png  used on inp
+ut line 132.
+(pdftex.def)             Requested size: 170.71652pt x 94.93217pt.
+<./images/C/experiment_C_160 ANALYTICS.png, id=421, 680.7834pt x 378.57436pt>
+File: ./images/C/experiment_C_160 ANALYTICS.png Graphic file (type png)
+<use ./images/C/experiment_C_160 ANALYTICS.png>
+Package pdftex.def Info: ./images/C/experiment_C_160 ANALYTICS.png  used on inp
+ut line 133.
+(pdftex.def)             Requested size: 170.71652pt x 94.93217pt.
+<./images/C/experiment_C_210 ANALYTICS.png, id=422, 680.7834pt x 378.57436pt>
+File: ./images/C/experiment_C_210 ANALYTICS.png Graphic file (type png)
+<use ./images/C/experiment_C_210 ANALYTICS.png>
+Package pdftex.def Info: ./images/C/experiment_C_210 ANALYTICS.png  used on inp
+ut line 133.
+(pdftex.def)             Requested size: 170.71652pt x 94.93217pt.
+<./images/experiment_spotify10k20r ANALYTICS.png, id=423, 633.92834pt x 378.574
+36pt>
+File: ./images/experiment_spotify10k20r ANALYTICS.png Graphic file (type png)
+<use ./images/experiment_spotify10k20r ANALYTICS.png>
+Package pdftex.def Info: ./images/experiment_spotify10k20r ANALYTICS.png  used 
+on input line 141.
+(pdftex.def)             Requested size: 455.24408pt x 271.87436pt.
+
+Overfull \hbox (95.24408pt too wide) in paragraph at lines 141--143
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./images/PULLS/experiment_C_10Idea2_zeros cum_pulls.png, id=424, 554.67226pt x
+ 378.57436pt>
+File: ./images/PULLS/experiment_C_10Idea2_zeros cum_pulls.png Graphic file (typ
+e png)
+<use ./images/PULLS/experiment_C_10Idea2_zeros cum_pulls.png>
+Package pdftex.def Info: ./images/PULLS/experiment_C_10Idea2_zeros cum_pulls.pn
+g  used on input line 149.
+(pdftex.def)             Requested size: 170.71652pt x 116.51923pt.
+<./images/PULLS/experiment_C_40Idea2_zeros cum_pulls.png, id=425, 554.67226pt x
+ 378.57436pt>
+File: ./images/PULLS/experiment_C_40Idea2_zeros cum_pulls.png Graphic file (typ
+e png)
+<use ./images/PULLS/experiment_C_40Idea2_zeros cum_pulls.png>
+Package pdftex.def Info: ./images/PULLS/experiment_C_40Idea2_zeros cum_pulls.pn
+g  used on input line 150.
+(pdftex.def)             Requested size: 170.71652pt x 116.51923pt.
+<./images/PULLS/experiment_C_70Idea2_zeros cum_pulls.png, id=426, 554.67226pt x
+ 378.57436pt>
+File: ./images/PULLS/experiment_C_70Idea2_zeros cum_pulls.png Graphic file (typ
+e png)
+<use ./images/PULLS/experiment_C_70Idea2_zeros cum_pulls.png>
+Package pdftex.def Info: ./images/PULLS/experiment_C_70Idea2_zeros cum_pulls.pn
+g  used on input line 151.
+(pdftex.def)             Requested size: 170.71652pt x 116.51923pt.
+<./images/PULLS/experiment_C_110Idea2_zeros cum_pulls.png, id=427, 554.67226pt 
+x 378.57436pt>
+File: ./images/PULLS/experiment_C_110Idea2_zeros cum_pulls.png Graphic file (ty
+pe png)
+<use ./images/PULLS/experiment_C_110Idea2_zeros cum_pulls.png>
+Package pdftex.def Info: ./images/PULLS/experiment_C_110Idea2_zeros cum_pulls.p
+ng  used on input line 151.
+(pdftex.def)             Requested size: 170.71652pt x 116.51923pt.
+<./images/PULLS/experiment_C_160Idea2_zeros cum_pulls.png, id=428, 554.67226pt 
+x 378.57436pt>
+File: ./images/PULLS/experiment_C_160Idea2_zeros cum_pulls.png Graphic file (ty
+pe png)
+<use ./images/PULLS/experiment_C_160Idea2_zeros cum_pulls.png>
+Package pdftex.def Info: ./images/PULLS/experiment_C_160Idea2_zeros cum_pulls.p
+ng  used on input line 152.
+(pdftex.def)             Requested size: 170.71652pt x 116.51923pt.
+<./images/PULLS/experiment_C_210Idea2_zeros cum_pulls.png, id=429, 554.67226pt 
+x 378.57436pt>
+File: ./images/PULLS/experiment_C_210Idea2_zeros cum_pulls.png Graphic file (ty
+pe png)
+<use ./images/PULLS/experiment_C_210Idea2_zeros cum_pulls.png>
+Package pdftex.def Info: ./images/PULLS/experiment_C_210Idea2_zeros cum_pulls.p
+ng  used on input line 152.
+(pdftex.def)             Requested size: 170.71652pt x 116.51923pt.
+)
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[20 <./images/experiment_easy ANALYTICS.png>]
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[21 <./images/experiment_B ANALYTICS.png>]
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[22 <./images/C/experiment_C_5 ANALYTICS.png> <./images/C/experiment_C_10 ANALY
+TICS.png> <./images/C/experiment_C_20 ANALYTICS.png> <./images/C/experiment_C_4
+0 ANALYTICS.png> <./images/C/experiment_C_70 ANALYTICS.png> <./images/C/experim
+ent_C_110 ANALYTICS.png> <./images/C/experiment_C_160 ANALYTICS.png> <./images/
+C/experiment_C_210 ANALYTICS.png>]
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[23 <./images/experiment_spotify10k20r ANALYTICS.png>]
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[24 <./images/PULLS/experiment_C_10Idea2_zeros cum_pulls.png> <./images/PULLS/e
+xperiment_C_40Idea2_zeros cum_pulls.png> <./images/PULLS/experiment_C_70Idea2_z
+eros cum_pulls.png> <./images/PULLS/experiment_C_110Idea2_zeros cum_pulls.png> 
+<./images/PULLS/experiment_C_160Idea2_zeros cum_pulls.png> <./images/PULLS/expe
+riment_C_210Idea2_zeros cum_pulls.png>]
 \openout2 = `contents/capitolo6-conclusions.aux'.
 
  (contents/capitolo6-conclusions.tex
-
-Package fancyhdr Warning: \headheight is too small (12.3pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
-
-[16
-
-
-
-
-]
 Chapter 5.
-) [17] (TesiStile.bbl
+) [25
+
+
+
+
+] (TesiStile.bbl
 
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1293,70 +1544,75 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[18
+[26
 
 
 
-]) [19] (TesiStile.aux (contents/frontespizio.aux) (contents/sommario.aux)
+]) [27] (TesiStile.aux (contents/frontespizio.aux) (contents/sommario.aux)
 (contents/abstract.aux) (contents/capitolo1-introduzione.aux)
 (contents/formalizzazione.aux) (contents/algorithms.aux)
 (contents/ExperimentalAnalysis.aux) (contents/capitolo6-conclusions.aux))
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `TesiStile.out' has not changed.
-(rerunfilecheck)             Checksum: 5B2DAB2F3AA023359CB62308B925A0B9;1437.
+(rerunfilecheck)             Checksum: 3DC47018CA452E2CCA83D98F2BA28E6B;1982.
  ) 
 Here is how much of TeX's memory you used:
- 31432 strings out of 479618
- 742472 string characters out of 2865026
- 1130509 words of memory out of 3000000
- 47855 multiletter control sequences out of 15000+200000
- 432822 words of font info for 97 fonts, out of 3000000 for 9000
+ 31629 strings out of 479618
+ 748663 string characters out of 2865026
+ 1133509 words of memory out of 3000000
+ 47997 multiletter control sequences out of 15000+200000
+ 436935 words of font info for 114 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 87i,12n,89p,1617b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 87i,16n,89p,1617b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
 er-t1.enc}{C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-supe
 r/cm-super-ts1.enc}<C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmbx10.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/agost/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/agost/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/agost/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/ag
-ost/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/
-Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.
+/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/agost/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/agost/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/agost/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ag
+ost/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/
+Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.
 pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmmib10.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cmextra/cmmib6.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cmextra/cmmib8.pfb><C:/Users/agost/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/agost/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/agost/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/agost
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/User
-s/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+m/cmmi7.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmmi8.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmmib10.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cmextra/cmmib6.pfb><C:/Users/agost/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb><C:/Users/agost/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/ago
+st/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Us
+ers/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb
 ><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
-msy8.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
-nts/cm/cmti10.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/doublestroke/dsrom10.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/font
-s/type1/public/cm-super/sfbi1095.pfb><C:/Users/agost/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/cm-super/sfbx0800.pfb><C:/Users/agost/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/public/cm-super/sfbx1095.pfb><C:/Users/agost/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1200.pfb><C:/Users/agost/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1440.pfb><C:/Users/
-agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1728.pfb><C
-:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx207
-4.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super
-/sfbx2488.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-cm-super/sfcc0800.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1
-/public/cm-super/sfrm0800.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/cm-super/sfrm0900.pfb><C:/Users/agost/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/cm-super/sfrm1095.pfb><C:/Users/agost/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/cm-super/sfss1095.pfb><C:/Users/agost/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/cm-super/sfti0800.pfb><C:/Users/agost/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfti1000.pfb><C:/Users
-/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfti1095.pfb><
-C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sftt10
-95.pfb>
-Output written on TesiStile.pdf (31 pages, 646974 bytes).
+mr8.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmsy8.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmti10.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/doublestroke/dsrom10.pfb><C:/Users/agost/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/cm-super/sfbi1095.pfb><C:/Users/agost/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx0800.pfb><C:/Users/agost/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1095.pfb><C:/Users/
+agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1200.pfb><C
+:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx144
+0.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super
+/sfbx1728.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+cm-super/sfbx2074.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1
+/public/cm-super/sfbx2488.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/cm-super/sfcc0800.pfb><C:/Users/agost/AppData/Local/Programs/Mi
+KTeX/fonts/type1/public/cm-super/sfrm0800.pfb><C:/Users/agost/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/cm-super/sfrm0900.pfb><C:/Users/agost/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1095.pfb><C:/Users/agost/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfss1095.pfb><C:/Users
+/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfti0800.pfb><
+C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfti10
+00.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-supe
+r/sfti1095.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/cm-super/sftt1095.pfb>
+Output written on TesiStile.pdf (39 pages, 10125175 bytes).
 PDF statistics:
- 461 PDF objects out of 1000 (max. 8388607)
- 77 named destinations out of 1000 (max. 500000)
- 202 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 623 PDF objects out of 1000 (max. 8388607)
+ 106 named destinations out of 1000 (max. 500000)
+ 361 words of extra memory for PDF output out of 10000 (max. 10000000)
 

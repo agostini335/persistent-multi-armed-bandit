@@ -9,13 +9,21 @@ import pickle
 from RentScenario.RentArm import RentArm
 from RentScenario.RentEnv import RentEnv
 from RentScenario.RentBucket import RentBucket
-from RentScenario.RentUCBLearner_single import RentUCBLearner_single
+from RentScenario.RentUCBLearner_single import RentUCBLearner_single_m,RentUCBLearner_single_f
 from RentScenario.RentUCBLearner_double import RentUCBLearner_double
 from RentScenario.RentBound1Learner import RentBound1Learner
 from RentScenario.RentBound1Learner import RentBound1LearnerPartial
 from RentScenario.Idea2Rent import Idea2_rent
 from RentScenario.TSLearnerRent import ThompsonBaselineRent,BayesUCBPersistentRent
 from tqdm import tqdm
+plt.style.use("seaborn")
+
+from matplotlib import rcParams
+rcParams['axes.titlepad'] = 20 
+
+
+plt.rcParams['mathtext.fontset'] = 'stix'
+plt.rcParams['font.family'] = 'STIXGeneral'
 
 #%% DATASET EXTRACION
 
@@ -208,7 +216,7 @@ from RentScenario.RentBound1Learner import RentPersistentSingleExpl
 
 n_runs = 10
 experiment_name = "affitti"
-T_HORIZON = 20000
+T_HORIZON = 50000
 for run in range(n_runs):
         learners = []
         rent_env = RentEnv(tmax_a=TMAX_a,tmax_s=TMAX_s)
@@ -217,10 +225,35 @@ for run in range(n_runs):
                 print("canone:"+str(a.canone)+" x/x+s:"+str(a.k_a_s)+" value: "+str(a.value))
         oracle = get_oracle(canoni_distinct,T_GLOBAL,avg_sfitti_dict = avg_sfitti_dict,avg_contratti_dict =avg_contratti_dict)
         print("ORACLE VALUE:"+str(oracle.value))
-        learners.append(RentUCBLearner_single(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict = avg_sfitti_dict,avg_contratti_dict =avg_contratti_dict),T_GLOBAL))
-        learners.append(Idea2_rent(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL))
-        learners.append(ThompsonBaselineRent(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL))
+        learners.append(RentUCBLearner_single_m(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict = avg_sfitti_dict,avg_contratti_dict =avg_contratti_dict),T_GLOBAL))
+        learners.append(RentUCBLearner_single_f(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict = avg_sfitti_dict,avg_contratti_dict =avg_contratti_dict),T_GLOBAL))
+
+        #learners.append(Idea2_rent(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL))
+        learners.append(ThompsonBaselineRent(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL))        
+        learners.append(ThompsonBaselineRent(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL,farsighted=True))
+
+
+        
+
+        
+
+        
+
+        #learners.append(BayesUCBPersistentRent(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL,farsighted=False,param=1))
+        #learners.append(BayesUCBPersistentRent(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL,farsighted=True,param=1))
+
+        learners.append(BayesUCBPersistentRent(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL,farsighted=False,param=2))
+        learners.append(BayesUCBPersistentRent(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL,farsighted=True,param=2))
+
         learners.append(BayesUCBPersistentRent(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL))
+        learners.append(BayesUCBPersistentRent(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL,farsighted=True))
+
+        learners.append(BayesUCBPersistentRent(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL,farsighted=False,param=4))
+        learners.append(BayesUCBPersistentRent(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL,farsighted=True,param=4))
+
+        #learners.append(BayesUCBPersistentRent(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL,farsighted=False,param=5))
+        #learners.append(BayesUCBPersistentRent(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL,farsighted=True,param=5))
+        
 
         #learners.append(RentUCBLearner_double(len(arms),get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),T_GLOBAL,TMAX_a,TMAX_s))
         #learners.append(RentPersistentSingleExpl(n_arms=len(arms),arms=get_arm_list(canoni_distinct,T_GLOBAL,avg_sfitti_dict,avg_contratti_dict),tmax_a=TMAX_a,tmax_s=TMAX_s,t_global=T_GLOBAL))

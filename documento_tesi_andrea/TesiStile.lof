@@ -2,4 +2,11 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Example of bucket in synthetic setting. In this example $T_{max}$ is equal to 8, the legth of the vector. The first 5 components are successes (1), meaning that the true length l of the vector is equal to 5.\relax }}{18}{figure.caption.11}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Probability density function and cumulative distribution function of the Beta distributions considered in settings Synthetic B and Synthetic C.\relax }}{19}{figure.caption.14}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces SYNTHETIC A pseudo regret: beta uniformi (R: 1...10) 50 runs Tmax=50\relax }}{20}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces SYNTHETIC B pseudo regret: 50runs, R fixed, Tmax=50, Beta "crescenti" \relax }}{21}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces SYNTHETIC C\relax }}{22}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Spotify Scenario\relax }}{23}{figure.caption.19}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces PULLS IDEA2 ZEROS C\relax }}{24}{figure.caption.20}%
 \addvspace {10\p@ }

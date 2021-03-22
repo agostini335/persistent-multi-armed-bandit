@@ -21,46 +21,63 @@ Reallocating 'name_of_file' (item size: 1) to 9 items.
 The style file: abbrvnat.bst
 Reallocating 'name_of_file' (item size: 1) to 13 items.
 Database file #1: bibliografia.bib
+Too many commas in name 1 of "Bobadilla Sancho, Jesus Ortega Requena, Fernando Hernando Esteban, Antonio Bernal Bermúdez, Jesús" for entry recsys2
+while executing---line 1347 of file abbrvnat.bst
+Too many commas in name 1 of "Bobadilla Sancho, Jesus Ortega Requena, Fernando Hernando Esteban, Antonio Bernal Bermúdez, Jesús" for entry recsys2
+while executing---line 1347 of file abbrvnat.bst
+Too many commas in name 1 of "Bobadilla Sancho, Jesus Ortega Requena, Fernando Hernando Esteban, Antonio Bernal Bermúdez, Jesús" for entry recsys2
+while executing---line 1347 of file abbrvnat.bst
+Too many commas in name 1 of "Bobadilla Sancho, Jesus Ortega Requena, Fernando Hernando Esteban, Antonio Bernal Bermúdez, Jesús" for entry recsys2
+while executing---line 1347 of file abbrvnat.bst
+Warning--empty journal in recsys3
+Too many commas in name 1 of "Bobadilla Sancho, Jesus Ortega Requena, Fernando Hernando Esteban, Antonio Bernal Bermúdez, Jesús" for entry recsys2
+while executing---line 1429 of file abbrvnat.bst
+Too many commas in name 1 of "Bobadilla Sancho, Jesus Ortega Requena, Fernando Hernando Esteban, Antonio Bernal Bermúdez, Jesús" for entry recsys2
+while executing---line 1429 of file abbrvnat.bst
+Too many commas in name 1 of "Bobadilla Sancho, Jesus Ortega Requena, Fernando Hernando Esteban, Antonio Bernal Bermúdez, Jesús" for entry recsys2
+while executing---line 1429 of file abbrvnat.bst
+Too many commas in name 1 of "Bobadilla Sancho, Jesus Ortega Requena, Fernando Hernando Esteban, Antonio Bernal Bermúdez, Jesús" for entry recsys2
+while executing---line 1429 of file abbrvnat.bst
 Warning--empty journal in joulani2013
-You've used 3 entries,
+You've used 6 entries,
             2773 wiz_defined-function locations,
-            614 strings with 5197 characters,
-and the built_in function-call counts, 1026 in all, are:
-= -- 80
-> -- 41
-< -- 4
-+ -- 15
-- -- 12
-* -- 59
-:= -- 165
-add.period$ -- 9
-call.type$ -- 3
-change.case$ -- 12
-chr.to.int$ -- 3
-cite$ -- 7
-duplicate$ -- 62
-empty$ -- 103
-format.name$ -- 17
-if$ -- 211
+            631 strings with 5660 characters,
+and the built_in function-call counts, 2008 in all, are:
+= -- 168
+> -- 82
+< -- 7
++ -- 30
+- -- 24
+* -- 118
+:= -- 325
+add.period$ -- 19
+call.type$ -- 6
+change.case$ -- 25
+chr.to.int$ -- 6
+cite$ -- 14
+duplicate$ -- 119
+empty$ -- 193
+format.name$ -- 34
+if$ -- 415
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 4
-newline$ -- 23
-num.names$ -- 12
-pop$ -- 36
+missing$ -- 7
+newline$ -- 39
+num.names$ -- 24
+pop$ -- 61
 preamble$ -- 1
-purify$ -- 10
+purify$ -- 20
 quote$ -- 0
-skip$ -- 43
+skip$ -- 86
 stack$ -- 0
-substring$ -- 6
-swap$ -- 4
+substring$ -- 12
+swap$ -- 7
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 28
-warning$ -- 1
-while$ -- 9
+type$ -- 61
+warning$ -- 2
+while$ -- 18
 width$ -- 0
-write$ -- 43
-(There was 1 warning)
+write$ -- 82
+(There were 8 error messages)

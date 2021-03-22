@@ -1,9 +1,26 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{6}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bakhshandegan~Moghaddam and Elahi(2019)]{recsys3}
+F.~Bakhshandegan~Moghaddam and M.~Elahi.
+\newblock Cold start solutions for recommendation systems.
+\newblock 05 2019.
+\newblock \doi{10.13140/RG.2.2.27407.02725}.
+
+\bibitem[Bobadilla~Sancho(2012)]{recsys2}
+F.~H. E. A. B. B.~J. Bobadilla~Sancho, Jesus Ortega~Requena.
+\newblock A collaborative filtering approach to mitigate the new user cold
+  start problem.
+\newblock \emph{Knowledge-Based Systems}, 26, 2012.
+
+\bibitem[Burke(2002)]{recsys1}
+R.~Burke.
+\newblock Hybrid recommender systems: Survey and experiments.
+\newblock \emph{User Modeling and User-Adapted Interaction}, 12, 2002.
 
 \bibitem[Celli and Gatti(2018)]{celli18}
 A.~Celli and N.~Gatti.

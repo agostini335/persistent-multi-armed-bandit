@@ -8,14 +8,14 @@
 As outlined in \cite{banditalgowebopt}, Multi-armed Bandit algorithms have to actively select which data you should acquire and analyze that data in real-time. Indeed, bandit algorithms exemplify two types of learning: \emph{active learning}, which refers to algorithms that actively select which data they should receive; and \emph{online learning}, which refers to algorithms that analyze data in real-time and provide results on the fly. This means that to evaluate algorithms we need to design a simulation environment where we can mimic real-scenarios dynamics. Informally, we will call \emph{bucket} a realization $\boldsymbol{Z_{j,t}}= (Z_{j,t,1},\dots, Z_{j,t,Tmax})$ of the persistency vector. During the simulation, each bucket will be parsed according to the experiment time $t$, meaning that the learner can only visit the element of the bucket containing the information gathered in the past. As stated in Chapter \ref{CF}, when at time $t$ an arm $a_j$ is played, the environment generates a bucket $\boldsymbol{Z_{j,t}}$ and a feedback $R_{j,t}$ that is collected by the learner.
 Changing the point of view, we can say that, during the experiment, each arm $a_j$ collects a sequence of pulls, characterized by the extracted feedback-bucket pairs $(R_ {j, t}, \boldsymbol{Z_ {j, t}})$. 
 %We define as $P_j$ the set of pulls of arm $a_j$, hence, when an arm is pulled a pair $(R, \boldsymbol{Z})$ id added to the his/her set. To simplify the notation we will omit the arm and time indices where not needed.
-\\The algorithms described below have a structural difference from the standard ones designed for traditional Multi-armed Bandit. Indeed, in the presented framework, more than one arm can have a set of non-terminated buckets (not totally parsed yet) simultaneously.  This parallelism implies that at each time instant we need to update the terms of every arms and not only of the last one played. \\Some of the algorithms presented will work without distinction with both Pull Reward and Normalized Pull Reward.  For the sake of clarity, we define a generic reward $W_{j,t}$ with unknown expectations $\omega_j$ that acts as a proxy variable. Depending on the setting addressed, $W_{j,t}$ will represent the Pull Reward $X_{j,t}$ or the Normalized Pull Reward $Y_{j,t}$.\\ The table \ref{algsumm} summarizes the algorithms presented and their operating characteristics.
+\\The algorithms described below have a structural difference from the standard ones designed for traditional Multi-armed Bandit. Indeed, in the presented framework, more than one arm can have a set of non-terminated buckets (not totally parsed yet) simultaneously.  This parallelism implies that at each time instant we need to update the terms of every arms and not only of the last one played. \\Some of the algorithms presented will work without distinction with both pull reward and normalized pull reward.  For the sake of clarity, we define a generic reward $W_{j,t}$ with unknown expectations $\omega_j$ that acts as a proxy variable. Depending on the setting addressed, $W_{j,t}$ will represent the pull reward $X_{j,t}$ or the normalized pull reward $Y_{j,t}$.\\ The table \ref{algsumm} summarizes the algorithms presented and their operating characteristics.
 
 \subsection{Farsighted and Myopic configurations}
 
-Depending on the scenario, we can consider a bucket $\boldsymbol{Z_{j,t}}$ terminated (fully parsed) according to two different criteria: (i) $T_{max}$ time instants have passed since t; (ii) $l_{j,t}$ time instants have passed since t. We say that the algorithm is in \emph{myopic} and \emph{farsighted} configuration in the case we are adopting (i) or (ii) respectively. More formally:
+We can consider a bucket $\boldsymbol{Z_{j,t}}$ terminated (fully parsed) according to two different criteria: (i) $T_{max}$ time instants have passed since t; (ii) $l_{j,t}$ time instants have passed since t. We say that the algorithm is in \emph{myopic} and \emph{farsighted} configuration in the case we are adopting (i) or (ii) respectively. More formally:
 \begin{itemize}
-	\item In \emph{myopic} configuration, at time t, we condisder a bucket $\boldsymbol{Z_{j,s}}$ terminated if $t\geq s+T_{max} \ ;$
-	\item In \emph{farsighted} configuration, at time t, we condisder a bucket $\boldsymbol{Z_{j,s}}$ terminated if $t \geq s+l_{j,s}$, where $l_{j,s}$ is the true length of the bucket $\boldsymbol{Z_{j,s}}$.
+	\item In \emph{myopic} configuration, at time t, we consider a bucket $\boldsymbol{Z_{j,s}}$ terminated if $t\geq s+T_{max} \ ;$
+	\item In \emph{farsighted} configuration, at time t, we consider a bucket $\boldsymbol{Z_{j,s}}$ terminated if $t \geq s+l_{j,s}$, where $l_{j,s}$ is the true length of the bucket $\boldsymbol{Z_{j,s}}$.
 	
 \end{itemize}
 
@@ -34,7 +34,7 @@ Depending on the scenario, we can consider a bucket $\boldsymbol{Z_{j,t}}$ termi
 
 
 \section{Frequentist Algorithms}
-To facilitate the understanding of the code, the algorithms described in this section will be decoupled into two functions, the \emph{Policy} and the \emph{Update}. The policy function will describe the learner's interaction with the environment and will require an update function passed as an argument. The update function will be responsible to update the knowledge of the learner coming from new data and compute the indices needed by the policy to take decisions, concretizing the overall strategy. The pseudo-code of a generic frequentist policy is depicted in Algorithm \ref{alg:FreqPolicy}.  The first $k$ istants form the initialization phase, during which  each arm is chosen once. After the $k^{th}$ time istant the loop phase begins. Here, at time t, the agent plays the arm $a_j$ having the largest index $u_j$, the upper confidence bound of the arm $a_j$. After the play of an arm, the update function $U$ occurs.
+To facilitate the understanding of the code, the algorithms described in this section will be decoupled into two functions: the \emph{Policy} and the \emph{Update}. The policy function will describe the interaction of the learner with the environment and will require an update function passed as an argument. The update function will be responsible to update the knowledge of the learner coming from new data and compute the indices needed by the policy to take decisions, concretizing the overall strategy. The pseudo-code of a generic frequentist policy is depicted in Algorithm \ref{alg:FreqPolicy}.  The first $k$ instants form the initialization phase, during which  each arm is chosen once. After the $k^{th}$ time instant the loop phase begins. Here, at time t, the agent plays the arm $a_j$ having the largest index $u_j$, the upper confidence bound of the arm $a_j$. After the play of an arm, the update function $U$ occurs.
 Algorithm \ref{alg:FreqPolicy} requires in input an arm set $A$, the time horizon $N$, and an update function $U$. Below we propose three update functions that can be passed in input to the generic policy depicted in Algorithm \ref{alg:FreqPolicy}, concretizing the following policies: \emph{Baseline UCB}, \emph{Bound 1}, \emph{Idea2}.
 
 \begin{algorithm}[H]
@@ -63,8 +63,14 @@ Algorithm \ref{alg:FreqPolicy} requires in input an arm set $A$, the time horizo
 \subsection{Baseline UCB}
 %This algorithm can be used in both \emph{Tight Persistency} and \emph{General Persistency} configuration.
 
-Algorithm \ref{alg:BaselineUCB} extends the idea of the well known UCB algorithm in the case of persistent rewards. The reward is considered as a unique variable available after the termination of the bucket. This algorithm takes inspiration from the work of \cite{joulani2013} on delayed feedback. Indeed, evaluating the reward only after termination of the bucket reduces the persistent feedback problem to a delayed feedback problem. For this reason we consider it as a baseline algorithm with which the other proposed strategies are compared. For each arm $a_j$, the update function will detect the terminated buckets in according to the configuration (farisghted or myopic) adopted. At each time t, for each arm $a_j$,
-the algorithm computes: the empirical mean reward $\hat{\omega}_j $ obtained from the terminated buckets of the arm $a_j$, ignoring the non-terminated buckets (line 3); the exploration term $c_j$, where with ${T_j(t)}$ we indicate the number of terminated buckets of the arm $a_j$ at time t (line 4). After that, the index $u_j$ is computed by summing the current empirical mean reward $\hat{\omega}_j $ and exploration term $c_j$ (line 5). In case an arm $a_j$ does not have any terminated bucket, its index $u_j$ is set to infinite. % according to the results obtained in Chapter(??)
+Algorithm \ref{alg:BaselineUCB} extends the idea of the well known UCB algorithm in the case of persistent rewards. It works for both settings where we want to maximize the pull reward and the ones where we want to maximize the normalized pull reward. The reward is considered as a unique variable available after the termination of the bucket. This algorithm takes inspiration from the work of \cite{joulani2013} on delayed feedback. Indeed, evaluating the reward only after termination of the bucket reduces the persistent feedback problem to a delayed feedback problem. For this reason we consider it as a baseline algorithm with which the other proposed strategies are compared. For each arm $a_j$, the update function will detect the terminated buckets in according to the configuration (farsighted or myopic) adopted. At each time t, for each arm $a_j$, the algorithm computes: the empirical mean reward $\hat{\omega}_j $ obtained from the terminated buckets of the arm $a_j$, ignoring the non-terminated buckets (line 3); the exploration term $c_j$ (line 4). The exploration term  $c_j$ is computed in the following way:
+\begin{itemize}
+	\item if we are maximizing the \emph{Pull Reward}: $c_j = R_{max}  T_{max}  \sqrt{\frac{2\ln t}{T_j(t)}} \ ;$
+	\item if we are maximizing the \emph{Normalized Pull Reward: $c_j = R_{max}  \sqrt{\frac{2\ln t}{T_j(t)}} \ ;$}
+\end{itemize}
+
+
+ where with ${T_j(t)}$ we indicate the number of terminated buckets of the arm $a_j$ at time t (line 4). Finally, the index $u_j$ is computed by summing the current empirical mean reward $\hat{\omega}_j $ and exploration term $c_j$ (line 5). In case an arm $a_j$ does not have any terminated bucket, its index $u_j$ is set to infinite. If we are dealing with settings where the feedback $R_{j,t}$ is deterministic ($R_{j,t}=R_j$ for each arm $a_j$, for each t) we can replace $R_{max}$ with $R_j$ in the computation of the exploration term $c_j$. This lead us to have a smaller or equal exploration term $c_j$, and possibly, an improvement on the performances.% according to the results obtained in Chapter(??)
 
 \begin{algorithm}[H]
 	\caption{\texttt{Baseline UCB}}
@@ -75,7 +81,7 @@ the algorithm computes: the empirical mean reward $\hat{\omega}_j $ obtained fro
 			\Function{update}{$T_{max}$,$R_{max}$}
 			\For{each arm $a_j \in  A$}			
 			\State compute empirical mean reward $\hat{\omega}_j $ from the terminated buckets \;			
-			\State$c_j\gets R_{max}  T_{max}  \sqrt{\frac{2\ln t}{T_j(t)}}$\;
+			\State compute $c_j$\;
 			\State$u_j \gets  \hat{\omega}_j +  c_j$
 			\EndFor
 			
@@ -90,12 +96,12 @@ the algorithm computes: the empirical mean reward $\hat{\omega}_j $ obtained fro
 Algorithm \ref{alg:Bound1} is tailored for scenarios where we want to maximize \emph{Pull Reward} and we have a deterministic feedback $R_j$ for each arm $a_j$. The idea behind Algorithm \ref{alg:Bound1} is to estimate, for each arm $a_j$, the average instantaneous reward $\overline{r}_{j,m}$ gathered at each time instant $m \in \{1, \ldots,T_{max}\}$ after the acquisition of a bucket. To compute $\overline{r}_{j,m}$ at time t, the algorithm considers only the buckets of $a_j$ that have been already parsed at position $m$ (informally called "available buckets" at line 4). We indicate with $V_{j,m}(t)$ the set of buckets $\boldsymbol{Z_{j,s}}$ that at time t, have been already parsed at position $m$. Depending on the configuration adopted, we say that:
 \begin{itemize}
 	\item In \emph{myopic} configuration  $\boldsymbol{Z_{j,s}} \in V_{j,m}(t) \ if \ t\geq s+m-1$
-	\item In \emph{farsighted} configuration  $\boldsymbol{Z_{j,s}} \in V_{j,m}(t) \ if \ t\geq s+m-1 \vee \ t \geq s+l_{j,s} $. As a matter of facts, the fasighted configuration allow us to consider a bucket $\boldsymbol{Z_{j,t}}$ fully parsed after that it has been parsed at position true length $l_{j,t}$. 
+	\item In \emph{farsighted} configuration  $\boldsymbol{Z_{j,s}} \in V_{j,m}(t) \ if \ t\geq s+m-1 \vee \ t \geq s+l_{j,s} $. As a matter of facts, the farsighted configuration allow us to consider a bucket $\boldsymbol{Z_{j,t}}$ fully parsed after that it has been parsed at position true length $l_{j,t}$. 
 \end{itemize}
 
 
 At each time t, for each arm $a_j$, for each position $m$, the algorithm compute $\overline{r}_{j,m}$ and $c_{j,m}$ (line 4 and line 5 respectively). $\overline{r}_{j,m}$ is computed in the following way: $$\overline{r}_{j,m} = \frac{1}{\vert V_{j,m}(t) \vert} \sum_{\boldsymbol{Z_{j,s}} \in V_{j,m}(t)} R_jZ_{j,s,m}\ .$$
-Finally, for each arm $a_j$, the upper confidence bound $u_j$ is calculated by summing up, for each $m$, the average instaneous reward $\overline{r}_{j,m}$ and the exploration term  $c_{j,m}$  (line 7). Each element of the summation is upper bounded to $R_j$. This is an help we give to the learner to speed up the learning process. Indeed, it is known a priori, considering that each component of a bucket has support in [0,1], that the maximum instantaneous reward that can be achieved by pulling an arm $a_j$ with deterministic feedback $R_j$ is $r_{max} = R_j$. With this algorithm we are able to exploit partial information of a bucket without the need to wait its termination.
+Finally, for each arm $a_j$, the upper confidence bound $u_j$ is calculated by summing up, for each $m$, the average instantaneous reward $\overline{r}_{j,m}$ and the exploration term  $c_{j,m}$  (line 7). Each element of the summation is upper bounded to $R_j$. This is a help we give to the learner to speed up the learning process. Indeed, it is known a priori, considering that each component of a bucket has support in [0,1], that the maximum instantaneous reward that can be achieved by pulling an arm $a_j$ with deterministic feedback $R_j$ is $r_{max} = R_j$. With this algorithm we are able to exploit partial information of a bucket without the need to wait its termination.
 
 
 
@@ -137,8 +143,8 @@ Finally, for each arm $a_j$, the upper confidence bound $u_j$ is calculated by s
 \end{algorithm}
 
 \subsection{Idea2}
-Algorithm \ref{alg:Idea2} is tailored for scenarios where we want to maximize \emph{Pull Reward} and we have a deterministic feedback $R_j$ for each arm $a_j$. With this algorithm we want to exploit all the information of the buckets acquired during the learning process, considering both the terminated and non-terminated ones. To do that, at each time instant t, for each arm $a_j$, we fill the non-terminated buckets with fake realizations (line 5). Fill a non terminated bucket $\boldsymbol{Z_{j,s}}$ means that we impose each component $Z_{j,s,m}$ not-parsed yet to be equal to a fake realization. At this point, we consider the altered bucket $\boldsymbol{Z_{j,s}}$ fully parsed. We designed two possible strategies to fill the non-terminated buckets: (i)
-fill the non-terminated buckets with zeros, having a pessimistic approach; (ii) fill the non-terminated buckets with ones, having an optimistic approach. We accompany the name of the algorithm with the adjective \emph{pessimistic} and \emph{optimistic} in the case we are adopting (i) or (ii) respectively. At each time instant t, for each arm $a_j$, the exploration term $c_j$ and the index $u_j$ are computed in the following way (respectively at line 8 and at line 9):
+Algorithm \ref{alg:Idea2} is tailored for scenarios where we want to maximize \emph{Pull Reward} and we have a deterministic feedback $R_j$ for each arm $a_j$. With this algorithm we want to exploit all the information of the buckets acquired during the learning process, considering both the terminated and non-terminated ones. To do that, at each time instant t, for each arm $a_j$, we fill the non-terminated buckets with fake realizations (line 5). To fill a non-terminated bucket $\boldsymbol{Z_{j,s}}$ means that we impose each component $Z_{j,s,m}$ not-parsed yet to be equal to a fake realization. At this point, we consider the altered bucket $\boldsymbol{Z_{j,s}}$ fully parsed. We designed two possible strategies to fill the non-terminated buckets: (i)
+fill the non-terminated buckets with zeros, having a pessimistic approach; (ii) fill the non-terminated buckets with ones, having an optimistic approach. We accompany the name of the algorithm with the adjective \emph{pessimistic} and \emph{optimistic} in case we are adopting (i) or (ii) respectively. At each time instant t, for each arm $a_j$, the exploration term $c_j$ and the index $u_j$ are computed in the following way (respectively at line 8 and at line 9):
 $$c_j = R_j \bigg( \sqrt{\frac{2T_{max}\ln{t}}{n_j(t)}} + \frac{T_{max}(T_{max}-1)}{2n_j(t)} \bigg) \ ,$$ 
 $$
 u_j = R_j \bigg( \frac{\sum_{s=1}^{t}\sum_{m=1}^{T_{max}}Z_{j,s,m}}{n_j(t)}\bigg)+c_j   = \frac{\sum_{s=1}^{t} X_{j,s}}{n_j(t)} +c_j  ,
@@ -165,6 +171,10 @@ where $n_j(t)$ is the number of pulls totalized by the arm $a_j$ at time t. The 
 			\EndFor		
 			\State compute $c_j$\;
 			\State compute $u_j$\;
+			
+			\For{each bucket $\boldsymbol{Z_{j,s}} $}
+			\State remove fake realizations from $\boldsymbol{Z_{j,s}}$ if any			
+			\EndFor
 			
 	
 							
@@ -345,7 +355,7 @@ where $n_j(t)$ is the number of pulls totalized by the arm $a_j$ at time t. The 
 
 \section{Bound1}
 \begin{itemize}
-	\item $v_{j,m}(t)$ is the number of time an arm $a_j$ visited a bucket at istant $m$ up to time $t$
+	\item $v_{j,m}(t)$ is the number of time an arm $a_j$ visited a bucket at instant $m$ up to time $t$
 	
 \end{itemize}
 \begin{algorithm}[!h]

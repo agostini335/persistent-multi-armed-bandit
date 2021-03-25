@@ -57,13 +57,17 @@ class Idea2(Learner):
                 
 
 class Idea2Positive(Learner):
-    def __init__(self, n_arms, arms, tmax):
-        super().__init__(n_arms,arms,"Idea2_ones")
+    def __init__(self, n_arms, arms, tmax,half=False):
+        name = "Idea2_ones"
+        if(half):
+            name ="Idea2_0.5"
+        super().__init__(n_arms,arms,name)
         self.number_of_pulls = np.zeros(n_arms)
         self.criterion = np.zeros(n_arms)
         self.old_buckets_sum = np.zeros(n_arms)
         self.active_buckets_sum = np.zeros(n_arms)
         self.tmax=tmax
+        self.half=half
 
 
     def pull_arm(self):
@@ -94,7 +98,10 @@ class Idea2Positive(Learner):
                 m = int(self.t - b.t_start)
                 if m < self.tmax:
                     active_buckets.append(b)
-                    self.active_buckets_sum[arm] = self.active_buckets_sum[arm] + sum(b.values[0:m+1]) + (self.tmax-(m+1))
+                    if (self.half==False):
+                        self.active_buckets_sum[arm] = self.active_buckets_sum[arm] + sum(b.values[0:m+1]) + (self.tmax-(m+1))
+                    else:
+                        self.active_buckets_sum[arm] = self.active_buckets_sum[arm] + sum(b.values[0:m+1]) + int((self.tmax-(m+1))/2)
                 else:
                     assert(m == self.tmax)
                     self.old_buckets_sum[arm] = self.old_buckets_sum[arm] + sum(b.values)
@@ -168,13 +175,17 @@ class Idea2Spotify(Learner):
                 
 
 class Idea2PositiveSpotify(Learner):
-    def __init__(self, n_arms, arms, tmax):
-        super().__init__(n_arms,arms,"Idea2_ones")
+    def __init__(self, n_arms, arms, tmax, half = False):
+        name = "Idea2_ones"
+        if(half):
+            name ="Idea2_0.5"
+        super().__init__(n_arms,arms,name)
         self.number_of_pulls = np.zeros(n_arms)
         self.criterion = np.zeros(n_arms)
         self.old_buckets_sum = np.zeros(n_arms)
         self.active_buckets_sum = np.zeros(n_arms)
         self.tmax=tmax
+        self.half=half
 
         #assign_numeric_id
         for id_arm in range(n_arms):
@@ -210,7 +221,11 @@ class Idea2PositiveSpotify(Learner):
                 m = int(self.t - b.t_start)
                 if m < self.tmax:
                     active_buckets.append(b)
-                    self.active_buckets_sum[arm] = self.active_buckets_sum[arm] + sum(b.values[0:m+1]) + (self.tmax-(m+1))
+                    if(self.half == False):
+                        self.active_buckets_sum[arm] = self.active_buckets_sum[arm] + sum(b.values[0:m+1]) + (self.tmax-(m+1))
+                    else:
+                        self.active_buckets_sum[arm] = self.active_buckets_sum[arm] + sum(b.values[0:m+1]) + int((self.tmax-(m+1))/2)
+
                 else:
                     assert(m == self.tmax)
                     self.old_buckets_sum[arm] = self.old_buckets_sum[arm] + sum(b.values)

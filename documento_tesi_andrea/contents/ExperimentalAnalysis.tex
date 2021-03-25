@@ -38,7 +38,7 @@ Below we present three significant settings analyzed: \emph{Synthetic A}, \emph{
 		\multicolumn{1}{l|}{} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} &  \\ \cline{2-9}
 		& \textit{1}             & \textit{}              &                        &                        &                        &                        & \multicolumn{3}{c}{\textit{ $T_{max}$}}                 
 	\end{tabular}
-	\caption{Example of bucket in synthetic setting. In this example $T_{max}$ is equal to 8, the legth of the vector. The first 5 components are successes (1), meaning that the true length l of the vector is equal to 5.}
+	\caption{Example of bucket in synthetic setting. In this example $T_{max}=8$, the legth of the vector. The first 5 components are successes (1), meaning that the true length of the vector is $l=5$.}
 \end{figure}
 %A lot of real problems can be easily represented in this way, furthermore, here we focus our attention on this scenario as it directly attacks the problem treated, givining a basic answer to the question we asked ourselves: "What happens if the reward is not a scalar but is persistent over time?"
 \subsection{Synthetic A}\label{SA}
@@ -112,37 +112,50 @@ In this setting, we model the common situation where high feedback discourage lo
 
 \section{Results}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\includegraphics[width=16cm]{./images/experiment_easy ANALYTICS.png}
 	\centering	
-	\caption{SYNTHETIC A pseudo regret: beta uniformi (R: 1...10) 50 runs Tmax=50}
+	\caption{Pseudo regret plot of the experiment Synthetic A.}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[H]
 	\includegraphics[width=16cm]{./images/experiment_B ANALYTICS.png}
 	\centering	
-	\caption{SYNTHETIC B pseudo regret: 50runs,  R fixed, Tmax=50, Beta "crescenti" }
+	\caption{Pseudo regret plot of the experiment Synthetic B. }
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=6cm]{./images/C/experiment_C_5 ANALYTICS.png}\quad\includegraphics[width=6cm]{./images/C/experiment_C_10 ANALYTICS.png} 
-	\includegraphics[width=6cm]{./images/C/experiment_C_20 ANALYTICS.png}\quad\includegraphics[width=6cm]{./images/C/experiment_C_40 ANALYTICS.png}
-	\includegraphics[width=6cm]{./images/C/experiment_C_70 ANALYTICS.png}\quad\includegraphics[width=6cm]{./images/C/experiment_C_110 ANALYTICS.png}
-	\includegraphics[width=6cm]{./images/C/experiment_C_160 ANALYTICS.png}\quad\includegraphics[width=6cm]{./images/C/experiment_C_210 ANALYTICS.png}
-	\caption{SYNTHETIC C}
+	\includegraphics[width=9.5cm]{./images/C/experiment_C_70 ANALYTICS.png}\quad\includegraphics[width=9.5cm]{./images/C/experiment_C_110 ANALYTICS.png}
+	\includegraphics[width=9.5cm]{./images/C/experiment_C_160 ANALYTICS.png}\quad\includegraphics[width=9.5cm]{./images/C/experiment_C_210 ANALYTICS.png}
+	\caption{Pseudo regret plot of the experiment Synthetic C.}
 	
 \end{figure}
 
+%SPOTIFY
 
-
-\begin{figure}[h]
+\begin{figure}[H]
 	\includegraphics[width=16cm]{./images/experiment_spotify10k20r ANALYTICS.png}
 	\centering	
-	\caption{Spotify Scenario}
+	\caption{Pseudo regret plot of the experiment Spotify Playlist Problem.}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=16cm]{./images/provvisori/experiment_spotify10k20r ANALYTICS.png}
+	\centering	
+	\caption{PROVVISORIO Pseudo regret plot of the experiment Spotify Playlist Problem.}
 \end{figure}
 
 
-\begin{figure}
+%RENT
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm]{./images/provvisori/RENT_provvisorio.png}
+		
+	\caption{PROVVISORIO Normalized pseudo regret plot of the experiment Rental Pricing Problem.}
+\end{figure}
+
+
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=6cm]{./images/PULLS/experiment_C_10Idea2_zeros cum_pulls.png }\quad\includegraphics[width=6cm]{./images/PULLS/experiment_C_40Idea2_zeros cum_pulls.png
 	} 
@@ -152,3 +165,39 @@ In this setting, we model the common situation where high feedback discourage lo
 	\caption{PULLS IDEA2 ZEROS C}
 	
 \end{figure}
+
+\subsection{Observations}
+\begin{itemize}
+	
+	\item in tutti gli scenari sintentici e reali, l' approccio baysiano è vincente sull'approccio frequentista.
+	
+	\item gli scenari sintetici sono rappresentativi di molti problemi pratici: B->Medical trial, C->Subscription.
+	
+	\item myopic non è mai meglio di farsighted per tutti gli algoritmi testati, in tutti gli scenari sintetici. Tuttavia solo in alcuni casi farsighted si distingue in modo evidente da myopic: Baseline in SA, Baseline in SB, Bound1 in SB, BayesUcb in C a Tmax 200. Negli scenari analizzati la configurazione non discrimina se un algoritmo è meglio di dell'altro.
+	
+	\item idea2 sempre peggio di idea1... capire come fare fars/myopic O idea 0.5
+	
+	
+	\item i primi due scenari sintetici ( A e B) pur avendo una diversa concenzione, presentano lo stesso ranking disegnando una situazione molto simile. BayesUcb vince su tutti. A seguire TS -I2 - B1-Baseline.
+	
+	\item mentre bound1 e baseline hanno un andamento simile nel piegare, idea 2 ha una forte esplorazione nella fase iniziale per poi piegare bruscamente. (piegare= imparare arm migliore) . Potrebbe essere la costante che moltiplica $\ln t$ nel bound?
+	
+	\item lo scenario c evidenzia una situazione interessante, ci fa vedere come idea 2 soffra maggiormente l'aumento di tmax a parità di scenario. bound1 in questo scenario è quasi indistinguibile alla baseline.
+	
+	\subsubsection{spotify}
+	
+	\item bound1 e baseline non sono distinguibili -> ragionevole, siamo in general peristency e il reward è distribuito con stessa probabilità dall'inizio alla fine il vantaggio di anticipare è ridotto (non c'è).
+	\item anche sui bayesiani si riflette in quanto TS si scambia con ByesUCB
+	
+	\item in generale gli algoritmi imparano e dopo 2500 iterazione TS smette di crescere, ovvero riesce a consigliare quasi sempre la playlist migliore. Promettente per implementazioni più approfondite.
+	
+	\subsubsection{rent}
+	\item il problema appare molto più difficile, in quanto ne la baseline ne TS riescono ad imparare nell'orizzonte prefissato. BayesUCB performa molto meglio superando entrambi.
+	
+	\item nel caso degli affitti risulta inappropriato l'utilizzo di mab persistent con questi valori. la simulazione affitta ad ogni mese una nuova casa, e dopo 50000 mesi il prezzo ottimo ""non è stato ancora trovato"". Tuttavia semplificando il problema alterando i dati...
+	
+	
+	
+		
+	
+\end{itemize}

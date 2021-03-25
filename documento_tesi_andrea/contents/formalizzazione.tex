@@ -151,11 +151,11 @@ new items \citep{recsys2}. There are two distinct categories of cold start: the 
 We model the problem of recommend a playlist to a new Spotify user as a MAB-PR problem, proposing a new approach to mitigate the cold-start problem.
 
 \subsubsection*{Formulation}
-When a new user accesses the system, a playlist is proposed. Subsequently, The user will start the reproduction of the playlist and for each song, in any moment, he/she could decide to skip to the next song till the end of the playlist. We are interested in finding the playlist that maximizes the overall listening time. We model the problem as a MAB-PR problem in \emph{general persistency} with the specifics reported below.
+When a new user accesses the system, a playlist is proposed. Subsequently, The user will start the reproduction of the playlist and for each song, in any moment, he/she could decide to skip to the next song till the end of the playlist. We are interested in finding the playlist that maximizes the overall listening time. We model the problem as a MAB-PR problem with the specifics reported below.
 \begin{itemize}
 	\item Each playlist is a set of 20 songs.
 	\item Each arm $a_j$ is associated to a playlist.
-	\item The feedback $R_{j,t}$ is fixed to a constant equal for each arm, since we are only interested in the persistency.
+	\item The feedback $R_{j,t}$ is fixed to a constant equal for each arm, since we are only interested in finding the playlist with the best persistency.
 	\item Based on an official dataset released from Spotify, it is known if a user listened a song for the first 25\%, 50\%, 75\% or 100\% of its duration. This granularity lead us to model each song with four adjacent components of the persistency vector $\boldsymbol{Z_{j,t}}$, where each component $Z_{j,t,m}$ represents a quarter of a song. Each component is a \emph{Bernoulli variable} that takes the value of 1 if the user has listened the song up to that quarter or 0 in the opposite case. The persistency vector will capture the adherence of the user during the playlist, hence its size $T_{max}$ will be equal to  the number of songs of a playlist times the granularity, in this case $T_{max} = 4 \times 20 = 80$. $T_{max}$ is assumed to be known by the learner.  An example of a realization of the persistency vector is provided in figure \ref{bucket_spotify}.
 	\item We want to find the playlist that give us the highest listening time, hence we want to maxime the \emph{pull reward}.
 	
@@ -163,7 +163,7 @@ When a new user accesses the system, a playlist is proposed. Subsequently, The u
 
 \begin{figure}[h]
 	
-	
+	\centering
 		\begin{tabular}{cccccccccccccccccccc}
 			\hline
 			\multicolumn{1}{|c}{1} & 1 & 1 & \multicolumn{1}{c|}{1} & 1 & 1 & 0 & \multicolumn{1}{c|}{0} & 1 & 1 & 1 & \multicolumn{1}{c|}{1} & 0 & 0 & 0 & \multicolumn{1}{c|}{0} & 0 & 0 & 0 & \multicolumn{1}{c|}{0} \\ \hline
@@ -182,14 +182,36 @@ When a new user accesses the system, a playlist is proposed. Subsequently, The u
 
 
 \subsection{The Rental Pricing problem}
+A company owns a large number of rooms with the same characteristics. These rooms are rented with fixed duration contracts and monthly fees. Once the contract has been signed, the tenant can choose to stay until the expiration date or to cancel, ending his stay before the expiry date. When the company publishes the rental announcement, it is aware that by setting a high fee for the room, it can have a long vacancy period. Furthermore, a high fee could discourage the tenant from staying until the end of the contract. At the same time, by setting a fee too low, the company could make unsatisfactory profits. The problem of choosing the best fee is modeled as a MAB-PR problem with the specifics reported below.
+
 \begin{itemize}
-	\item soluzione ad hoc
-	\item delay = sfitto 
-	\item Thigh Persistency - Normalized Pull Reward
+	\item Each arm $a_j$ is associated to a specific fee designed as a valid option.
+	\item The feedback $R_{j,t}$ is set equal to the fee of the arm $a_j$. It is deterministic, meaning that $R_{j,t} = R_j \ \forall t$.  
+	\item The persistency vector $\boldsymbol{Z_{j,t}}$ represents the period of time ranging from the publication of the rental announcement to the deadline of the contract. Each component of the vector $Z_{j,t,m}$ is a \emph{Bernoulli variable} that represents a month. It will take the value of 1 if the tenant has made the payment for a certain month or 0 in the opposite case.
+	\item Each realization of the persistency vector $\boldsymbol{Z_{j,t}}$ is characterized by a delay $d_{j,t}$ equal to the number of vacant months. The vacant months represent the period between the publication of the announcement and the signing of a new contract.
+	\item We define the maximum delay as $d_{max}$ and the maximum duration of a contract as $c_{max}$. The size of the persistency vector $\boldsymbol{Z_{j,t}}$ is $T_{max} = d_{max} + c_{max}$ and it is assumed to be known by the learner.
+	\item We want to find the fee that allows us to maximize our profit keeping in consideration the vacant periods, where we don't receive payments. For this purpose, we want to maximize the \emph{normalized pull reward}.
+	\item We assume that once a contract is canceled, it is not possible to re-enter. This implies that we are in \emph{tight persistency}. A realization of the persistency vector $\boldsymbol{Z_{j,t}}$ will be a sequence of zeros representing the delay $d_{j,t}$, followed by a sequence of ones representing the actual  contract, followed by a sequence of zeros with length = $T_{max}-l_{j,t}$. An example is provided in figure \ref{bucket_affitto}.
 \end{itemize}
  	
 
 
+\begin{figure}[h]
+	\centering
+	
+	
+
+		\begin{tabular}{|cccccccccc|}
+			\hline
+			0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 0 & 0 \\ \hline
+		\end{tabular}
+	
+	
+	
+	
+	\caption{Example of realization of the persistency vector in the Rental Pricing Problem. In this example $T_{max}=10$, the delay $d=2$, the true length $l=8$. The contract last for six months, since we have six ones. The last two zeros are not relevant, a possible interpretation could be that $c_{max}=6$ and $d_{max}=4$.}
+	\label{bucket_affitto}
+\end{figure}
 
 
 

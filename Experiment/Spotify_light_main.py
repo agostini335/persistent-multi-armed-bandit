@@ -83,7 +83,7 @@ play_dict = new_dict
 #SETUP CONFIG
 experiment_name = "experiment_spotify10k20r"
 T = 20000 
-n_runs = 50
+n_runs = 10
 tmax = 80
 oracle = Oracle(get_n_arms(),get_arms(),tmax)
 
@@ -101,9 +101,10 @@ for run in range(n_runs):
     baseline_learner_m = BaselineLearner_myopic(get_n_arms(),get_arms(),tmax=tmax,tmin=0)
     idea2_learner = Idea2Spotify(get_n_arms(),get_arms(),tmax)
     idea2_learner_p = Idea2PositiveSpotify(get_n_arms(),get_arms(),tmax)
+    idea2_learner_p_h = Idea2PositiveSpotify(get_n_arms(),get_arms(),tmax,half=True)
     oracle = Oracle(get_n_arms(),get_arms(),tmax)
 
-    learners = [ baseline_learner_m, bound1_learner_m, bayesUCB, thompson_learner_baseline, idea2_learner,idea2_learner_p]
+    learners = [ baseline_learner_m, bound1_learner_m, bayesUCB, thompson_learner_baseline, idea2_learner,idea2_learner_p,idea2_learner_p_h]
 
                 
     #EXECUTION

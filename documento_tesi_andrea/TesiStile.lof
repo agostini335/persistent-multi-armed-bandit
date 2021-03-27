@@ -1,16 +1,16 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of realization of the persistency vector in the Spotify Playlist Problem. The persistency vector is truncated at the fifth song for visualization purposes. Songs 1 and 3 were listened completely, while song 2 was listened to the 50\% of its duration. Song 4 and Song 5 were skipped entirely.\relax }}{10}{figure.caption.9}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Example of realization of the persistency vector in the Rental Pricing Problem. In this example $T_{max}=10$, the delay $d=2$, the true length $l=8$. The contract last for six months, since we have six ones. The last two zeros are not relevant, a possible interpretation could be that $c_{max}=6$ and $d_{max}=4$.\relax }}{11}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of realization of the persistency vector in the Spotify Playlist Problem. The persistency vector is truncated at the fifth song for visualization purposes. Songs 1 and 3 were listened completely, while song 2 was listened to the 50\% of its duration. Song 4 and Song 5 were skipped entirely.\relax }}{12}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Example of realization of the persistency vector in the Rental Pricing Problem. In this example $T_{max}=10$, the delay $d=2$, the true length $l=8$. The contract last for six months, since we have six ones. The last two zeros are not relevant, a possible interpretation could be that $c_{max}=6$ and $d_{max}=4$.\relax }}{13}{figure.caption.10}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Example of bucket in synthetic setting. In this example $T_{max}=8$, the legth of the vector. The first 5 components are successes (1), meaning that the true length of the vector is $l=5$.\relax }}{22}{figure.caption.12}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Probability density function and cumulative distribution function of the Beta distributions considered in settings Synthetic B and Synthetic C.\relax }}{23}{figure.caption.15}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Pseudo regret plot of the experiment Synthetic A.\relax }}{24}{figure.caption.17}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Pseudo regret plot of the experiment Synthetic B. \relax }}{25}{figure.caption.18}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Pseudo regret plot of the experiment Synthetic C.\relax }}{26}{figure.caption.19}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Pseudo regret plot of the experiment Spotify Playlist Problem.\relax }}{27}{figure.caption.20}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces PROVVISORIO Pseudo regret plot of the experiment Spotify Playlist Problem.\relax }}{28}{figure.caption.21}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces PROVVISORIO Normalized pseudo regret plot of the experiment Rental Pricing Problem.\relax }}{29}{figure.caption.22}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces PULLS IDEA2 ZEROS C\relax }}{30}{figure.caption.23}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Example of bucket in synthetic setting. In this example $T_{max}=8$, the legth of the vector. The first 5 components are successes (1), meaning that the true length of the vector is $l=5$.\relax }}{24}{figure.caption.12}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Probability density function and cumulative distribution function of the Beta distributions considered in settings Synthetic B and Synthetic C.\relax }}{25}{figure.caption.15}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Pseudo regret plot of the experiment Synthetic A.\relax }}{26}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Pseudo regret plot of the experiment Synthetic B. \relax }}{27}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Pseudo regret plot of the experiment Synthetic C.\relax }}{28}{figure.caption.19}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Pseudo regret plot of the experiment Spotify Playlist Problem.\relax }}{29}{figure.caption.20}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces PROVVISORIO Pseudo regret plot of the experiment Spotify Playlist Problem.\relax }}{30}{figure.caption.21}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces PROVVISORIO Normalized pseudo regret plot of the experiment Rental Pricing Problem.\relax }}{31}{figure.caption.22}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces PULLS IDEA2 ZEROS C\relax }}{32}{figure.caption.23}%
 \addvspace {10\p@ }

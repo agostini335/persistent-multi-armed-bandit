@@ -1,34 +1,32 @@
 \contentsline {chapter}{Sommario}{II}{chapter*.2}%
 \contentsline {chapter}{Abstract}{IV}{chapter*.3}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Research Area and Main Problem}{1}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Original Contributions}{2}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Thesis Structure}{2}{section.1.3}%
-\contentsline {chapter}{\numberline {2}Problem Formulation}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}The MAB-PR problem}{3}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1} Performance measures}{7}{subsection.2.1.1}%
-\contentsline {section}{\numberline {2.2}Modeling of real-world scenarios}{8}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}The Spotify Playlist problem}{8}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}The Rental Pricing problem}{10}{subsection.2.2.2}%
-\contentsline {chapter}{\numberline {3}Novel Algorithms}{13}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Grounding Concepts}{13}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Farsighted and Myopic configurations}{14}{subsection.3.1.1}%
-\contentsline {section}{\numberline {3.2}Frequentist Algorithms}{14}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Baseline UCB}{15}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Bound 1}{16}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Idea2}{17}{subsection.3.2.3}%
-\contentsline {section}{\numberline {3.3}Bayesian Algorithms}{18}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Baseline TS}{18}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Bayes UCB Peristent}{19}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}Adaptive version}{19}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Experimental Analysis}{21}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Synthetic Experiment Settings}{21}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Synthetic A}{22}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Synthetic B}{23}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Synthetic C}{23}{subsection.4.1.3}%
-\contentsline {section}{\numberline {4.2}Results}{24}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Observations}{30}{subsection.4.2.1}%
-\contentsline {subsubsection}{spotify}{31}{section*.24}%
-\contentsline {subsubsection}{rent}{31}{section*.25}%
-\contentsline {chapter}{\numberline {5}Conclusions}{33}{chapter.5}%
-\contentsline {chapter}{Bibliography}{35}{chapter*.26}%
+\contentsline {section}{\numberline {1.1}Thesis Structure}{3}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Problem Formulation}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}The MAB-PR problem}{5}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1} Performance measures}{9}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}Modeling of real-world scenarios}{10}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}The Spotify Playlist problem}{10}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}The Rental Pricing problem}{12}{subsection.2.2.2}%
+\contentsline {chapter}{\numberline {3}Novel Algorithms}{15}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Grounding Concepts}{15}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Farsighted and Myopic configurations}{16}{subsection.3.1.1}%
+\contentsline {section}{\numberline {3.2}Frequentist Algorithms}{16}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Baseline UCB}{17}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Bound 1}{18}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Idea2}{19}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Bayesian Algorithms}{20}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Baseline TS}{20}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Bayes UCB Peristent}{21}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Adaptive version}{21}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Experimental Analysis}{23}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Synthetic Experiment Settings}{23}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Synthetic A}{24}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Synthetic B}{25}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Synthetic C}{25}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}Results}{26}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Observations}{32}{subsection.4.2.1}%
+\contentsline {subsubsection}{spotify}{33}{section*.24}%
+\contentsline {subsubsection}{rent}{33}{section*.25}%
+\contentsline {chapter}{\numberline {5}Conclusions}{35}{chapter.5}%
+\contentsline {chapter}{Bibliography}{37}{chapter*.26}%

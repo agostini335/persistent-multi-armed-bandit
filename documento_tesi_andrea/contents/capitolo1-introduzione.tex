@@ -1,20 +1,51 @@
 \chapter{Introduction}
 
 
-\section{Research Area and Main Problem}
+
 
 %-problema:processo in cui ci sono da prendere delle decisioni sequenziali 
 
-Sequential decision making under uncertainty is one of the most important challenges within the research field of artificial intelligence, as it describes a wide variety of real-world scenarios. In many everyday situations, an \emph{agent}, or a decision maker, has to choose between alternatives to achieve his/her goals. These situations vary from simple daily routines, such as go to work or watch a movie, to complex problems, such as financial investment or web content optimization. In particular, in the former, a person has to decide how to reach the workplace, and therefore, everyday he/she will choose whether to take the car or go by public transport. On the other hand, the latter consists in selecting the best items to display for a given user visit (i.e., page view) from a set of available options. In any case, what makes decision making such a difficult task is the \emph{uncertainty} of the outcome of a decision. Furthermore, the outcome of a decision is usually affected by external factors unknown by the agent.
-For example, in some circumstances, driving to work is generally quicker than taking the train, but the state of traffic could easily invert the situation. In the same way, a particular web content could drastically change its attractiveness due to an abrupt change in social trends. The outcome of a decision, which is typically a \emph{reward}, is revealed to the agent only after the decision has been taken. This will lead the agent to take better choices thanks to the acquired knowledge.
--il goal dell'agente è massimizzare il reward
--In studying the sequential problems described above it is usually assumed that the reward acquired after an action taken by the agent is a real number provided to the agent immediately after the action has taken place. Nei casi visti il reward potrebbe esprimere il tempo trascorso per completare il viaggio casa lavoro o il numero di CTK che un determinato contenuto web ha ottenuto. In many application this is a limitation, infact if we consider......
--subscription prezzi alti/bassi
--clinical trial criticità dei casi attuali
--recsys
-- Un natuale adattamento farebbe cadere il problema sotto l'area decision making under delayed feedback, we want to exploit also the partial information visibile by the agent during the reward process. With persistent we refer
+Sequential decision making under uncertainty is one of the most important challenges within the research field of artificial intelligence, as it describes a wide variety of real-world scenarios. In many everyday situations, an \emph{agent}, or a decision maker, has to choose between alternatives to achieve his/her goals. These situations vary from daily routine activities, such as go to work or watch a movie, to complex problems, such as financial investment or web content optimization. In particular, in the former, an agent has to decide how to reach the workplace, and therefore, everyday he/she will choose whether to take the car or go by public transport. On the other hand, the latter consists in selecting the best items to display for a given user visit (i.e., page view) from a set of available options. In any case, what makes decision making such a difficult task is the \emph{uncertainty} of the outcome of a decision. Furthermore, the outcome of a decision is usually affected by external factors unknown by the agent.
+For example, under certain circumstances, driving to work is generally quicker than taking the train, but the traffic conditions could easily invert the situation. In the same way, a particular web content could drastically change its attractiveness due to an abrupt change in social trends. The outcome of a decision, which is typically a \emph{reward}, is revealed to the agent only after the decision has been taken. In the examples mentioned above, the reward can be seen as the time saved on a particular trip from home to work, or as the click-through rate (CTR) obtained by an item shown on a web page. More precisely, consider a sequential decision problem with discrete time and a finite set of actions. At each time step, an agent acting in this environment has to choose an action from the action set,  which results in a reward associated with taking that action at that time step. The goal of the agent is to accumulate as much reward as possible over a certain time horizon. To achieve this goal, the agent will learn how to make good actions using the information about rewards acquired from the past actions.
+\\%motivating application
+In studying sequential decision making problems it is usually assumed that the reward acquired after an action taken by the agent is a real number provided to the agent after the action has taken place. While this assumption is suitable in many cases, it does not allow the description of a large number of real-world scenarios. For example, consider the wide area of subscription-based services. The subscription business model is a business model in which a customer must pay a recurring price at regular intervals to use a service. When a company running this kind of business, such as a  digital streaming platform, an online magazine or a telephone company, enters into a contract with a new customer, it is not able to immediately see the entire reward deriving from that action. This is because the reward is earned over time as a sequence of received payments depending on the period the user remains in the service, which is unknown at the beginning of the contract. Similarly, in a user engagement optimization task, we are interested in selecting the best user interface from a set of alternatives to maximize the time spent by a user in our system. By the nature of the problem, immediately after a user interface is proposed, the reward is unknown. Indeed, the reward is persistently acquired during time according to the engagement of the user with the system. Another example comes from a typical motivating application of this research field which is the optimal design of clinical trials experiments. Consider an experiments with the aim to find the therapy, among a set of alternatives, that maximizes the patient compliance for a particular chronic illness. Patient compliance describes the degree to which a patient correctly follows the therapy, hence after a therapy is assigned we need to take in consideration the level of compliance, which is our reward, obtained at each step of the therapeutic process. We are interested in the type of situations depicted by the examples above in which the reward deriving from an action is spread over the time following the taking of the action.
+\\\\
+This thesis studies sequential decision making problems which involve \emph{persistent rewards}, where with the term persistent reward we are referring to a reward that is persistently gained by an agent for a certain timespan after an action has been taken. We design and analyze algorithms tailored for tackle this problem. In particular, we focus our attention on the performance advantage resulting from the exploitation of partial information obtained during the reward acquisition process.
+We consider a special case of the general problem described above called Multi-Armed Bandit (MAB) problem. We formalize a variation of the classical MAB setting, namely Multi-Armed Bandit with persistent reward (MAB-PR), suitable for handling persistent rewards scenarios. The precise problem definition is given in the coming sections.
+\\\\
 
-This thesis studies sequential decision making for types of situations which involve persistent rewards. We design and study algorithm for one of the most important  ..... abstraction of deci This is called the Multi-Armed Bandit (MAB) problem.
+
+
+
+
+
+
+
+
+%iin modo simile, possiamo considerare the problem of the design of clinical trial which is a typical motivating of the field. In this kind of problem consideriamo il caso dove stiamo cercando la miglior terapia da un set di alternative per trattare una malattia cronica, ovvero che non hanno is a long-term health condition that may not have a cure such has Alzheimer disease.Reppresentare l'efficacia della terapie come un numero, è altamente approssimativo dell'entintà del problema. Volendo tener conto della qualità di vita del paziene instead after a terapy is taken we see day by day a sequence of reward each of oone  rappresentativi dello stato di salute del paziente giorno dopo giorno. As a last motivating example, we can consider a CS ser
+%
+%
+
+
+
+%
+%a process where the reward persistently appear to the agent over a time span
+%
+%reward persistenten intendiamo un segnale di reward che ha una certa persistenza nel tempo
+%
+%
+%One may see this problem, as a particular case of delayed feedback, by the way we want to exploit partial information.... 
+%
+%
+%
+%
+%
+%
+%-clinical trial criticità dei casi attuali
+%-recsys
+%- Un natuale adattamento farebbe cadere il problema sotto l'area decision making under delayed feedback, we want to exploit also the partial information visibile by the agent during the reward earning process. With persistent we refer
+%
+%This thesis studies sequential decision making for types of situations which involve persistent rewards. We design and study algorithm for one of the most important  ..... abstraction of deci This is called the Multi-Armed Bandit (MAB) problem.
 
 
 
@@ -35,15 +66,16 @@ This thesis studies sequential decision making for types of situations which inv
 
 
 
-\section{Original Contributions}
-We start by focusing on s $\textsf{P} = \textsf{NP}$, even on a completely inflated tree.
-Then, we introduce the \emph{hybrid column generation} algorithm which computes optimal team-maxmin equilibria with coordination devices~\citep{celli18}. We can use this 
 
 
 \section{Thesis Structure}
 
 The Thesis is structured in the following way:
 \begin{itemize}
+	\item In Chapter \ref{C6} we present the state-of-the-art of MAB problems.
+	\item In Chapter \ref{C6} we formally define the MAB-PR problem and present the modelling of two real-world scenarios.
+	\item In Chapter \ref{C6} we present in details the novel algorithms and their theoretical guarantees.
+	\item In Chapter \ref{C6} we perform a experimental analysis including settings with both synthetically generated and real data.  
     \item In Chapter \ref{C6} we draw conclusions. We summarize the main results of our work and we propose some future developments.
 \end{itemize}
 

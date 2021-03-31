@@ -1,9 +1,38 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{13}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Agrawal and Goyal(2012)]{agrawal2012analysis}
+S.~Agrawal and N.~Goyal.
+\newblock Analysis of thompson sampling for the multi-armed bandit problem.
+\newblock In \emph{Conference on learning theory}, pages 39--1. JMLR Workshop
+  and Conference Proceedings, 2012.
+
+\bibitem[{Anantharam} et~al.(1987){Anantharam}, {Varaiya}, and
+  {Walrand}]{Anantharam1987Markovian}
+V.~{Anantharam}, P.~{Varaiya}, and J.~{Walrand}.
+\newblock Asymptotically efficient allocation rules for the multiarmed bandit
+  problem with multiple plays-part ii: Markovian rewards.
+\newblock \emph{IEEE Transactions on Automatic Control}, 32\penalty0
+  (11):\penalty0 977--982, 1987.
+\newblock \doi{10.1109/TAC.1987.1104485}.
+
+\bibitem[{Auer} et~al.(1995){Auer}, {Cesa-Bianchi}, {Freund}, and
+  {Schapire}]{Auer1995Adversarial}
+P.~{Auer}, N.~{Cesa-Bianchi}, Y.~{Freund}, and R.~E. {Schapire}.
+\newblock Gambling in a rigged casino: The adversarial multi-armed bandit
+  problem.
+\newblock In \emph{Proceedings of IEEE 36th Annual Foundations of Computer
+  Science}, pages 322--331, 1995.
+\newblock \doi{10.1109/SFCS.1995.492488}.
+
+\bibitem[Auer et~al.(2002)Auer, Cesa-Bianchi, and Fischer]{auer2002finite}
+P.~Auer, N.~Cesa-Bianchi, and P.~Fischer.
+\newblock Finite-time analysis of the multiarmed bandit problem.
+\newblock \emph{Machine learning}, 47\penalty0 (2):\penalty0 235--256, 2002.
 
 \bibitem[Bakhshandegan~Moghaddam and Elahi(2019)]{recsys3}
 F.~Bakhshandegan~Moghaddam and M.~Elahi.
@@ -22,17 +51,36 @@ R.~Burke.
 \newblock Hybrid recommender systems: Survey and experiments.
 \newblock \emph{User Modeling and User-Adapted Interaction}, 12, 2002.
 
-\bibitem[Celli and Gatti(2018)]{celli18}
-A.~Celli and N.~Gatti.
-\newblock Computational results for extensive-form adversarial team games.
-\newblock In \emph{Proceedings of the Thirty-Second {AAAI} Conference on
-  Artificial Intelligence, New Orleans, Louisiana, USA, February 2-7, 2018},
-  2018.
+\bibitem[Kaufmann et~al.(2012)Kaufmann, Capp{\'e}, and
+  Garivier]{kaufmann2012bayesian}
+E.~Kaufmann, O.~Capp{\'e}, and A.~Garivier.
+\newblock On bayesian upper confidence bounds for bandit problems.
+\newblock In \emph{Artificial intelligence and statistics}, pages 592--600.
+  PMLR, 2012.
 
 \bibitem[Pooria~Joulani(2013)]{joulani2013}
 C.~S. Pooria~Joulani, Andr´as~Gy¨orgy.
 \newblock Online learning under delayed feedback.
 \newblock 2013.
+
+\bibitem[Robbins(1952)]{Robbins1952sequential}
+H.~Robbins.
+\newblock Some aspects of the sequential design of experiments.
+\newblock \emph{Bulletin of the American Mathematical Society}, 58\penalty0
+  (5):\penalty0 527--535, 1952.
+\newblock URL
+  \url{http://www.projecteuclid.org/DPubS/Repository/1.0/Disseminate?view=body&id=pdf_1&handle=euclid.bams/1183517370}.
+
+\bibitem[Sutton and Barto(2018)]{sutton2018reinforcement}
+R.~S. Sutton and A.~G. Barto.
+\newblock \emph{Reinforcement learning: An introduction}.
+\newblock MIT press, 2018.
+
+\bibitem[Thompson(1933)]{thompson1933likelihood}
+W.~R. Thompson.
+\newblock On the likelihood that one unknown probability exceeds another in
+  view of the evidence of two samples.
+\newblock \emph{Biometrika}, 25\penalty0 (3/4):\penalty0 285--294, 1933.
 
 \bibitem[White(2012)]{banditalgowebopt}
 J.~M. White.

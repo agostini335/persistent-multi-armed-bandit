@@ -13,7 +13,7 @@ The MAB problem with Persistent Rewards (MAB-PR) that we are going to analyze in
 		$$r_{j,t,s} = R_{j,t} Z_{j,t,s-t+1} \ ,$$
 where $s \in \{t,\dots,t+T_{max}-1\}$ and $1\leq j \leq K$, $1\leq t \leq N$, $1\leq m \leq T_{max}$.
 \end{definition}
-By setting the size of the vector $\boldsymbol{Z_{j,t}}$ to $T_{max}$, which is a fixed constant, we impose that the lasting of the feedback can be at most $T_{max}$ steps. According to the scenario we are dealing with, $T_{max}$ will be known or unknonw to the agent. We do not have any preliminary knowledge regarding the distributions of $R_{j,t}$ and $\boldsymbol{Z_{j,t}}$, we only know that $R_{j,t}$ has support in $[R_{min},R_{max}]$ and $Z_{j,t,m}$ has support in $[0,1]$. Each realization of $\boldsymbol{Z_{j,t}}$ is characterized by the number of steps that we have to wait before having a positive component $Z_{j,t,m}$. We call this quantity \emph{delay} and we formalize it in the following way:
+By setting the size of the vector $\boldsymbol{Z_{j,t}}$ to $T_{max}$, which is a fixed constant, we impose that the lasting of the feedback can be at most $T_{max}$ steps. According to the scenario we are dealing with, $T_{max}$ will be known or unknown to the agent. We do not have any preliminary knowledge regarding the distributions of $R_{j,t}$ and $\boldsymbol{Z_{j,t}}$, we only know that $R_{j,t}$ has support in $[R_{min},R_{max}]$ and $Z_{j,t,m}$ has support in $[0,1]$. Each realization of $\boldsymbol{Z_{j,t}}$ is characterized by the number of steps that we have to wait before having a positive component $Z_{j,t,m}$. We call this quantity \emph{delay} and we formalize it in the following way:
 \begin{definition}[Delay]
 	We define the delay of a realization $\boldsymbol{Z_{j,t}}$ as:$$d_{j,t} = \sum_{m=1}^{T_{max}}\mathds{1}_{\{Z_{j,t,m}=0\ \wedge\ \forall k<m\ Z_{j,t,k} = 0\}}\ .$$
 
@@ -29,7 +29,7 @@ We are also interested in the position of the last positive component of a reali
 
 To better suit a variety of scenarios that require a persistence reward framework, we devise two distinct configurations:
 \begin{itemize}
-	\item \textbf{General Persistency} We do not assume anything regarding $\boldsymbol{Z_{j,t}}$. This configuration turns to be suitable for scenarios in which the istantaneous reward could be missing at a certain instant, $Z_{j,t,m} =0$, and then reappear at a later time. 
+	\item \textbf{General Persistency} We do not assume anything regarding $\boldsymbol{Z_{j,t}}$. This configuration turns to be suitable for scenarios in which the instantaneous reward could be missing at a certain instant, $Z_{j,t,m} =0$, and then reappear at a later time. 
 	
 	\item \textbf{Tight Persistency} We impose that, giving a realization of a persistency vector, every non-zero component must be adjacent. More formally, we say that we are in \emph{Tight Persistency} configuration if for each realization $\boldsymbol{Z_{j,t}}= (Z_{j,t,1},\dots, Z_{j,t,Tmax})$ the following condition holds:
 	
@@ -52,7 +52,7 @@ To better suit a variety of scenarios that require a persistence reward framewor
 
 We now present two examples derived from practical cases with the aim to highlight the needs that motivate the two configurations mentioned above. 
 \begin{example}[Pricing of a magazine subscription]
-	We are the seller of an online magazine that works via subscription. To have access to our service, a new user can stipulate a contract with a fixed duration and monthly fees. We allow to suspend and restart the service at every moment during the contract, simply stopping or making the monthly payments. Intuitively, we think that high prices discourage a continuous usage of the service while low prices could lead to stable subscriptions but with the risk of generating unsatisfactory profit. We are facing the problem of finding the best monthly price to assign at the service to maximize the revenue. This scenario can be directly modeled as a MAB persistent problem in \textbf{General Persistency}. Each arm can be assigned to a specific fee designed as a valid option. When the agent pulls an arm the extracted feedback $R_{j,t}$ will be the price related to that arm. The persistency vector $\boldsymbol{Z_{j,t}}$, on the other side, will capture the adherence of the user to the service and will have a size of $T_{max}$ equal to the number of months of the contract. Every component of the vector will be a Bernoulli variable that takes the value 1 if the user has made the payment for a certain month or the value 0 in the opposite case.
+	We are the seller of an online magazine that works via subscription. To have access to our service, a new user can stipulate a contract with a fixed duration and monthly fees. We allow to suspend and restart the service at every moment during the contract, simply stopping or making the monthly payments. Intuitively, we think that high prices discourage a continuous usage of the service while low prices could lead to stable subscriptions but with the risk of generating unsatisfactory profit. We are facing the problem of finding the best monthly price to assign at the service to maximize the revenue. This scenario can be directly modelled as a MAB persistent problem in \textbf{General Persistency}. Each arm can be assigned to a specific fee designed as a valid option. When the agent pulls an arm the extracted feedback $R_{j,t}$ will be the price related to that arm. The persistency vector $\boldsymbol{Z_{j,t}}$, on the other side, will capture the adherence of the user to the service and will have a size of $T_{max}$ equal to the number of months of the contract. Every component of the vector will be a Bernoulli variable that takes the value 1 if the user has made the payment for a certain month or the value 0 in the opposite case.
 	\label{magazine}
 \end{example}
 \begin{example}[Medical Trial]
@@ -79,7 +79,7 @@ Formal definitions of rewards are provided below.
 We now give an example of a scenario in which we are interested in maximizing the Normalized Pull Reward.
 \begin{example}[Pricing of a Cloud Computing Service]
 \label{cloud}
-A cloud computing company has a new set of servers at its disposal and is facing the problem of deciding the daily price to rent a server. Once a specific price has been chosen, the company will disclose its offer online and, later, will enter into a contract of a fixed duration with the purchaser. Each day of the contract, the user will pay a fixed cost concering the rent, in addition to a variable cost related to the resources usage. The company assumes that by publishing an offer with an high price it will take a long time to find a buyer, on the contrary, with a very low price it will immediately be able to rent it but with little profit. In this scenario, we see how the unused server time affects the income, therefore, not only the accumulated reward must be taken into account but also the time necessary to find a buyer. The problem is well modeled in 	\textbf{Tight Persistency}. Each arm $a_j$ is associated to a deterministic daily price $R_{j,t}$ and the delay $d_{j,t}$ of each peristency vector $\boldsymbol{Z_{j,t}}$ will represent the days between the publication of the offer and the stipulation of the contract. Hence, $R_{j,t}$ can be seen as the price of one day of full use of the service, and finally each positive component $Z_{j,t,m}$ will indicate the fraction of $R_{j,t}$ to be daily paid by the user. We are interested in finding the arm that maximizes the \textbf{Normalized Pull Reward}, taking into account also the penalty imposed by the vacant periods.
+A cloud computing company has a new set of servers at its disposal and is facing the problem of deciding the daily price to rent a server. Once a specific price has been chosen, the company will disclose its offer online and, later, will enter into a contract of a fixed duration with the purchaser. Each day of the contract, the user will pay a fixed cost concerning the rent, in addition to a variable cost related to the resources usage. The company assumes that by publishing an offer with an high price it will take a long time to find a buyer, on the contrary, with a very low price it will immediately be able to rent it but with little profit. In this scenario, we see how the unused server time affects the income, therefore, not only the accumulated reward must be taken into account but also the time necessary to find a buyer. The problem is well modelled in 	\textbf{Tight Persistency}. Each arm $a_j$ is associated to a deterministic daily price $R_{j,t}$ and the delay $d_{j,t}$ of each peristency vector $\boldsymbol{Z_{j,t}}$ will represent the days between the publication of the offer and the stipulation of the contract. Hence, $R_{j,t}$ can be seen as the price of one day of full use of the service, and finally each positive component $Z_{j,t,m}$ will indicate the fraction of $R_{j,t}$ to be daily paid by the user. We are interested in finding the arm that maximizes the \textbf{Normalized Pull Reward}, taking into account also the penalty imposed by the vacant periods.
 
 \end{example}
 
@@ -113,10 +113,10 @@ In the same way, we assume that the normalized pull rewards $Y_{j,t_1}, Y_{j,t_2
 
 \subsection{ Performance measures}
 % policy
-The goal of a learning agent is to maximize its cumulated reward, the pulling strategy adopted to accomplish this task is referred as \emph{policy}.To measure the performance of a policy, we compare its beahviour with the one of a fictitious algorithm, called \emph{Oracle}, which for any horizon of $n$ time steps constantly plays the optimal arm. For this purpose, we introduce the concept of \emph{Regret}.
+The goal of a learning agent is to maximize its cumulated reward, the pulling strategy adopted to accomplish this task is referred as \emph{policy}. To measure the performance of a policy, we compare its behaviour with the one of a fictitious algorithm, called \emph{Oracle}, which for any horizon of $n$ time steps constantly plays the optimal arm. For this purpose, we introduce the concept of \emph{Regret}.
 % sampling regret + pseudo regret
 \begin{definition}[Regret]
-	The Regret of a policy cumulated after n plays is definied as:
+	The Regret of a policy cumulated after n plays is defined as:
 	
 		$$R_n=\max_{j = \{1,\dots,k\}} \sum_{t=1}^n{X_{j,t}} - \sum_{t=1}^{n} X_{a_t,t}  \ ,$$
 where  $a_t$ is the arm played by the learner at time t and the first term \\\ $\max_{j = \{1,\dots,k\}}\sum_{t=1}^n{X_{j,t}}$ represents the reward cumulated by the Oracle up to time n.
@@ -125,13 +125,13 @@ where  $a_t$ is the arm played by the learner at time t and the first term \\\ $
 Since both the rewards and the player's actions are stochastic, we introduce a form of average regret called \emph{pseudo-regret}.
 
 \begin{definition}[Pseudo-Regret]
-	The Pseudo-Regret of a policy cumulated after n plays is definied as:
+	The Pseudo-Regret of a policy cumulated after n plays is defined as:
 		$$\bm\bar{R}_{n}=n{\mu^{*}}- \sum_{t=1}^{n} \mu_{a_t} \ ,$$
 	where  $\mu^{*}=\max_{j = \{1,\dots,k\}} \mu_j$ is the expected reward of the optimal arm and $\mu_{a_t}$ is the expected reward of the arm played at time t.
 \end{definition}
 For clarity, we explicate the definition of \emph{Normalized-Pseudo Regret} in the following way:
 \begin{definition}[Normalized Pseudo-Regret]
-	The Normalized Pseudo-Regret of a policy cumulated after n plays is definied as:
+	The Normalized Pseudo-Regret of a policy cumulated after n plays is defined as:
 	$$\bm\bar{\mathit{NR}}_{n}=n{\eta^{*}}- \sum_{t=1}^{n} \eta_{a_t} \ , $$
 	where  $\eta^{*}=\max_{j = \{1,\dots,k\}} \eta_j$ is the expected normalized pull reward of the optimal arm and $\eta_{a_t}$ is the expected normalized pull reward of the arm played at time t.
 \end{definition}
@@ -182,7 +182,7 @@ When a new user accesses the system, a playlist is proposed. Subsequently, The u
 
 
 \subsection{The Rental Pricing problem}
-A company owns a large number of rooms with the same characteristics. These rooms are rented with fixed duration contracts and monthly fees. Once the contract has been signed, the tenant can choose to stay until the expiration date or to cancel, ending his stay before the expiry date. When the company publishes the rental announcement, it is aware that by setting a high fee for the room, it can have a long vacancy period. Furthermore, a high fee could discourage the tenant from staying until the end of the contract. At the same time, by setting a fee too low, the company could make unsatisfactory profits. The problem of choosing the best fee is modeled as a MAB-PR problem with the specifics reported below.
+A company owns a large number of rooms with the same characteristics. These rooms are rented with fixed duration contracts and monthly fees. Once the contract has been signed, the tenant can choose to stay until the expiration date or to cancel, ending his stay before the expiry date. When the company publishes the rental announcement, it is aware that by setting a high fee for the room, it can have a long vacancy period. Furthermore, a high fee could discourage the tenant from staying until the end of the contract. At the same time, by setting a fee too low, the company could make unsatisfactory profits. The problem of choosing the best fee is modelled as a MAB-PR problem with the specifics reported below.
 
 \begin{itemize}
 	\item Each arm $a_j$ is associated to a specific fee designed as a valid option.
@@ -191,7 +191,7 @@ A company owns a large number of rooms with the same characteristics. These room
 	\item Each realization of the persistency vector $\boldsymbol{Z_{j,t}}$ is characterized by a delay $d_{j,t}$ equal to the number of vacant months. The vacant months represent the period between the publication of the announcement and the signing of a new contract.
 	\item We define the maximum delay as $d_{max}$ and the maximum duration of a contract as $c_{max}$. The size of the persistency vector $\boldsymbol{Z_{j,t}}$ is $T_{max} = d_{max} + c_{max}$ and it is assumed to be known by the learner.
 	\item We want to find the fee that allows us to maximize our profit keeping in consideration the vacant periods, where we don't receive payments. For this purpose, we want to maximize the \emph{normalized pull reward}.
-	\item We assume that once a contract is canceled, it is not possible to re-enter. This implies that we are in \emph{tight persistency}. A realization of the persistency vector $\boldsymbol{Z_{j,t}}$ will be a sequence of zeros representing the delay $d_{j,t}$, followed by a sequence of ones representing the actual  contract, followed by a sequence of zeros with length = $T_{max}-l_{j,t}$. An example is provided in figure \ref{bucket_affitto}.
+	\item We assume that once a contract is cancelled, it is not possible to re-enter. This implies that we are in \emph{tight persistency}. A realization of the persistency vector $\boldsymbol{Z_{j,t}}$ will be a sequence of zeros representing the delay $d_{j,t}$, followed by a sequence of ones representing the actual  contract, followed by a sequence of zeros with length = $T_{max}-l_{j,t}$. An example is provided in figure \ref{bucket_affitto}.
 \end{itemize}
  	
 

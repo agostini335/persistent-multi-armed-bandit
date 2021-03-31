@@ -11,17 +11,17 @@ The MAB problem with Persistent Rewards (MAB-PR) that we are going to analyze in
 \begin{definition}[Instantaneous Reward]
 	We define the instantaneous reward achived at time $s$, consequently to the pull of the arm j at time t, as:	
 		$$r_{j,t,s} = R_{j,t} Z_{j,t,s-t+1} \ ,$$
-where $s \in \{t,\dots,t+T_{max}-1\}$ and $1\leq j \leq K$, $1\leq t \leq N$, $1\leq m \leq T_{max}$.
+where $s \in \{t,\dots,t+\Tmax-1\}$ and $1\leq j \leq K$, $1\leq t \leq N$, $1\leq m \leq \Tmax$.
 \end{definition}
-By setting the size of the vector $\boldsymbol{Z_{j,t}}$ to $T_{max}$, which is a fixed constant, we impose that the lasting of the feedback can be at most $T_{max}$ steps. According to the scenario we are dealing with, $T_{max}$ will be known or unknown to the agent. We do not have any preliminary knowledge regarding the distributions of $R_{j,t}$ and $\boldsymbol{Z_{j,t}}$, we only know that $R_{j,t}$ has support in $[R_{min},R_{max}]$ and $Z_{j,t,m}$ has support in $[0,1]$. Each realization of $\boldsymbol{Z_{j,t}}$ is characterized by the number of steps that we have to wait before having a positive component $Z_{j,t,m}$. We call this quantity \emph{delay} and we formalize it in the following way:
+By setting the size of the vector $\boldsymbol{Z_{j,t}}$ to $\Tmax$, which is a fixed constant, we impose that the lasting of the feedback can be at most $\Tmax$ steps. We assume $\Tmax$ to be known to the agent. We do not have any preliminary knowledge regarding the distributions of $R_{j,t}$ and $\boldsymbol{Z_{j,t}}$, we only know that $R_{j,t}$ has support in $[\Rmin,\Rmax]$ and $Z_{j,t,m}$ has support in $[0,1]$. Each realization of $\boldsymbol{Z_{j,t}}$ is characterized by the number of steps that we have to wait before having a positive component $Z_{j,t,m}$. We call this quantity \emph{delay} and we formalize it in the following way:
 \begin{definition}[Delay]
-	We define the delay of a realization $\boldsymbol{Z_{j,t}}$ as:$$d_{j,t} = \sum_{m=1}^{T_{max}}\mathds{1}_{\{Z_{j,t,m}=0\ \wedge\ \forall k<m\ Z_{j,t,k} = 0\}}\ .$$
+	We define the delay of a realization $\boldsymbol{Z_{j,t}}$ as:$$d_{j,t} = \sum_{m=1}^{\Tmax}\mathds{1}_{\{Z_{j,t,m}=0\ \wedge\ \forall k<m\ Z_{j,t,k} = 0\}}\ .$$
 
 \end{definition}
 We are also interested in the position of the last positive component of a realization $\boldsymbol{Z_{j,t}}$. This quantity represents the true number of steps that we need to wait to collect all the instantaneous rewards achievable after the pull of an arm. For this reason, we call it \emph{true length} and we define it as follows:
 \begin{definition}[True Length]
 	We define the true length of a realization $\boldsymbol{Z_{j,t}}$ as:
-		$$l_{j,t} = \sum_{m=1}^{T_{max}}\mathds{1}_{\{\exists k \ k\geq m \ \mid \ Z_{j,t,k} > 0\}} \ .$$
+		$$l_{j,t} = \sum_{m=1}^{\Tmax}\mathds{1}_{\{\exists k \ k\geq m \ \mid \ Z_{j,t,k} > 0\}} \ .$$
 \end{definition}
 
 
@@ -35,12 +35,12 @@ To better suit a variety of scenarios that require a persistence reward framewor
 	
 	\begin{center}
 		
-		$\sum_{m=1}^{T_{max}}\mathds{1}_{\{Z_{j,t,m}>0\}} = l_{j,t}-d_{j,t} \ .$
+		$\sum_{m=1}^{\Tmax}\mathds{1}_{\{Z_{j,t,m}>0\}} = l_{j,t}-d_{j,t} \ .$
 
 	
 	\end{center}
 	%\begin{center}
-	%	$\nexists i,m,k  \quad i<m<k\quad \text{s.t.}\quad Z_{j,t,i}>0 \wedge Z_{j,t,m}=0 \wedge \ Z_{j,t,k}>0 \quad \forall %i,m,k 	\in (1,\dots,T_{max})$.
+	%	$\nexists i,m,k  \quad i<m<k\quad \text{s.t.}\quad Z_{j,t,i}>0 \wedge Z_{j,t,m}=0 \wedge \ Z_{j,t,k}>0 \quad \forall %i,m,k 	\in (1,\dots,\Tmax)$.
 	%\end{center}
 \end{itemize}
 
@@ -52,12 +52,12 @@ To better suit a variety of scenarios that require a persistence reward framewor
 
 We now present two examples derived from practical cases with the aim to highlight the needs that motivate the two configurations mentioned above. 
 \begin{example}[Pricing of a magazine subscription]
-	We are the seller of an online magazine that works via subscription. To have access to our service, a new user can stipulate a contract with a fixed duration and monthly fees. We allow to suspend and restart the service at every moment during the contract, simply stopping or making the monthly payments. Intuitively, we think that high prices discourage a continuous usage of the service while low prices could lead to stable subscriptions but with the risk of generating unsatisfactory profit. We are facing the problem of finding the best monthly price to assign at the service to maximize the revenue. This scenario can be directly modelled as a MAB persistent problem in \textbf{General Persistency}. Each arm can be assigned to a specific fee designed as a valid option. When the agent pulls an arm the extracted feedback $R_{j,t}$ will be the price related to that arm. The persistency vector $\boldsymbol{Z_{j,t}}$, on the other side, will capture the adherence of the user to the service and will have a size of $T_{max}$ equal to the number of months of the contract. Every component of the vector will be a Bernoulli variable that takes the value 1 if the user has made the payment for a certain month or the value 0 in the opposite case.
+	We are the seller of an online magazine that works via subscription. To have access to our service, a new user can stipulate a contract with a fixed duration and monthly fees. We allow to suspend and restart the service at every moment during the contract, simply stopping or making the monthly payments. Intuitively, we think that high prices discourage a continuous usage of the service while low prices could lead to stable subscriptions but with the risk of generating unsatisfactory profit. We are facing the problem of finding the best monthly price to assign at the service to maximize the revenue. This scenario can be directly modelled as a MAB persistent problem in \textbf{General Persistency}. Each arm can be assigned to a specific fee designed as a valid option. When the agent pulls an arm the extracted feedback $R_{j,t}$ will be the price related to that arm. The persistency vector $\boldsymbol{Z_{j,t}}$, on the other side, will capture the adherence of the user to the service and will have a size of $\Tmax$ equal to the number of months of the contract. Every component of the vector will be a Bernoulli variable that takes the value 1 if the user has made the payment for a certain month or the value 0 in the opposite case.
 	\label{magazine}
 \end{example}
 \begin{example}[Medical Trial]
 	\label{trial}
-	We want to conduct an ethical clinical trial to define which is the best medical treatment for a specific chronic illness. Consider the case where we have two options available, a red pill and a blue one, hence we model them as two arms. Every day the agent must choose which one of the two therapies administer to a new patient on the basis of previous observations. Differently from prior MAB application for this task, in this setting we want to consider also the life quality of a patient in addition to his/her lifespan. For this reason after the treatment administration, a patient is tested every day and an index of his/her health status is computed. We assume that this index is ranging from 0 to 1, where 1 represents a perfect state of health and 0 means that the patient is dead. This scenario could be easily addressed as a MAB persistent problem in \textbf{Tight Persistency} configuration with delay steps equal to zero for each realization of the persistency vector. As a matter of fact, we can set $T_{max}$ at the maximum lifespan possible after the diagnosis of the considered ilness, and we can model every component of the vector $\boldsymbol{ Z_ {j, t}} $ as the health status index. For this scenario, $R_{j,t}$ could be fixed to a constant equal for each arm, letting the role of capturing the reward only to the persistency vector $\boldsymbol{ Z_ {j, t}}$. The Tight Peristency condition holds, as a matter of fact, it does not make sense to have a positive index health status after the death of the patient. 
+	We want to conduct an ethical clinical trial to define which is the best medical treatment for a specific chronic illness. Consider the case where we have two options available, a red pill and a blue one, hence we model them as two arms. Every day the agent must choose which one of the two therapies administer to a new patient on the basis of previous observations. Differently from prior MAB application for this task, in this setting we want to consider also the life quality of a patient in addition to his/her lifespan. For this reason after the treatment administration, a patient is tested every day and an index of his/her health status is computed. We assume that this index is ranging from 0 to 1, where 1 represents a perfect state of health and 0 means that the patient is dead. This scenario could be easily addressed as a MAB persistent problem in \textbf{Tight Persistency} configuration with delay steps equal to zero for each realization of the persistency vector. As a matter of fact, we can set $\Tmax$ at the maximum lifespan possible after the diagnosis of the considered ilness, and we can model every component of the vector $\boldsymbol{ Z_ {j, t}} $ as the health status index. For this scenario, $R_{j,t}$ could be fixed to a constant equal for each arm, letting the role of capturing the reward only to the persistency vector $\boldsymbol{ Z_ {j, t}}$. The Tight Peristency condition holds, as a matter of fact, it does not make sense to have a positive index health status after the death of the patient. 
 \end{example}
 
 % metrics
@@ -68,12 +68,12 @@ Formal definitions of rewards are provided below.
 
 \begin{definition}[Pull Reward]
 	We define the pull reward achived pulling the arm j at time t as:
-		$$X_{j,t} = \sum_{s=t}^{t+T_{max}-1} r_{j,t,s} \ .$$
+		$$X_{j,t} = \sum_{s=t}^{t+\Tmax-1} r_{j,t,s} \ .$$
 \end{definition}
 
 \begin{definition}[Normalized Pull Reward]
 	We define the normalized pull reward achived pulling the arm j at time t as:
-		$$Y_{j,t} = \dfrac{\sum_{s=t}^{t+T_{max}-1} r_{j,t,s}}{l_{j,t}} \ .$$
+		$$Y_{j,t} = \dfrac{\sum_{s=t}^{t+\Tmax-1} r_{j,t,s}}{l_{j,t}} \ .$$
 \end{definition}
 
 We now give an example of a scenario in which we are interested in maximizing the Normalized Pull Reward.
@@ -156,7 +156,7 @@ When a new user accesses the system, a playlist is proposed. Subsequently, The u
 	\item Each playlist is a set of 20 songs.
 	\item Each arm $a_j$ is associated to a playlist.
 	\item The feedback $R_{j,t}$ is fixed to a constant equal for each arm, since we are only interested in finding the playlist with the best persistency.
-	\item Based on an official dataset released from Spotify, it is known if a user listened a song for the first 25\%, 50\%, 75\% or 100\% of its duration. This granularity lead us to model each song with four adjacent components of the persistency vector $\boldsymbol{Z_{j,t}}$, where each component $Z_{j,t,m}$ represents a quarter of a song. Each component is a \emph{Bernoulli variable} that takes the value of 1 if the user has listened the song up to that quarter or 0 in the opposite case. The persistency vector will capture the adherence of the user during the playlist, hence its size $T_{max}$ will be equal to  the number of songs of a playlist times the granularity, in this case $T_{max} = 4 \times 20 = 80$. $T_{max}$ is assumed to be known by the learner.  An example of a realization of the persistency vector is provided in figure \ref{bucket_spotify}.
+	\item Based on an official dataset released from Spotify, it is known if a user listened a song for the first 25\%, 50\%, 75\% or 100\% of its duration. This granularity lead us to model each song with four adjacent components of the persistency vector $\boldsymbol{Z_{j,t}}$, where each component $Z_{j,t,m}$ represents a quarter of a song. Each component is a \emph{Bernoulli variable} that takes the value of 1 if the user has listened the song up to that quarter or 0 in the opposite case. The persistency vector will capture the adherence of the user during the playlist, hence its size $\Tmax$ will be equal to  the number of songs of a playlist times the granularity, in this case $\Tmax = 4 \times 20 = 80$. An example of a realization of the persistency vector is provided in figure \ref{bucket_spotify}.
 	\item We want to find the playlist that give us the highest listening time, hence we want to maxime the \emph{pull reward}.
 	
 \end{itemize}
@@ -189,9 +189,9 @@ A company owns a large number of rooms with the same characteristics. These room
 	\item The feedback $R_{j,t}$ is set equal to the fee of the arm $a_j$. It is deterministic, meaning that $R_{j,t} = R_j \ \forall t$.  
 	\item The persistency vector $\boldsymbol{Z_{j,t}}$ represents the period of time ranging from the publication of the rental announcement to the deadline of the contract. Each component of the vector $Z_{j,t,m}$ is a \emph{Bernoulli variable} that represents a month. It will take the value of 1 if the tenant has made the payment for a certain month or 0 in the opposite case.
 	\item Each realization of the persistency vector $\boldsymbol{Z_{j,t}}$ is characterized by a delay $d_{j,t}$ equal to the number of vacant months. The vacant months represent the period between the publication of the announcement and the signing of a new contract.
-	\item We define the maximum delay as $d_{max}$ and the maximum duration of a contract as $c_{max}$. The size of the persistency vector $\boldsymbol{Z_{j,t}}$ is $T_{max} = d_{max} + c_{max}$ and it is assumed to be known by the learner.
+	\item We define the maximum delay as $d_{max}$ and the maximum duration of a contract as $c_{max}$. The size of the persistency vector $\boldsymbol{Z_{j,t}}$ is $\Tmax = d_{max} + c_{max}$.
 	\item We want to find the fee that allows us to maximize our profit keeping in consideration the vacant periods, where we don't receive payments. For this purpose, we want to maximize the \emph{normalized pull reward}.
-	\item We assume that once a contract is cancelled, it is not possible to re-enter. This implies that we are in \emph{tight persistency}. A realization of the persistency vector $\boldsymbol{Z_{j,t}}$ will be a sequence of zeros representing the delay $d_{j,t}$, followed by a sequence of ones representing the actual  contract, followed by a sequence of zeros with length = $T_{max}-l_{j,t}$. An example is provided in figure \ref{bucket_affitto}.
+	\item We assume that once a contract is cancelled, it is not possible to re-enter. This implies that we are in \emph{tight persistency}. A realization of the persistency vector $\boldsymbol{Z_{j,t}}$ will be a sequence of zeros representing the delay $d_{j,t}$, followed by a sequence of ones representing the actual  contract, followed by a sequence of zeros with length = $\Tmax-l_{j,t}$. An example is provided in figure \ref{bucket_affitto}.
 \end{itemize}
  	
 
@@ -209,7 +209,7 @@ A company owns a large number of rooms with the same characteristics. These room
 	
 	
 	
-	\caption{Example of realization of the persistency vector in the Rental Pricing Problem. In this example $T_{max}=10$, the delay $d=2$, the true length $l=8$. The contract last for six months, since we have six ones. The last two zeros are not relevant, a possible interpretation could be that $c_{max}=6$ and $d_{max}=4$.}
+	\caption{Example of realization of the persistency vector in the Rental Pricing Problem. In this example $\Tmax=10$, the delay $d=2$, the true length $l=8$. The contract last for six months, since we have six ones. The last two zeros are not relevant, a possible interpretation could be that $c_{max}=6$ and $d_{max}=4$.}
 	\label{bucket_affitto}
 \end{figure}
 

@@ -24,10 +24,10 @@ In this chapter, we present the experimental results of our analysis. In particu
 \end{table}
 
 \section{Synthetic Experiment Settings}
-All the synthetic experiments analyzed are in \emph{tight persistency} with delay $d_{j,t}=0$ for each realization $\boldsymbol{Z_{j,t}} = (Z_{j,t,1},\dots,Z_{j,t,T_{max}})$ of the persistency vector, where each component $Z_{j,t,m}$ is a \emph{Bernoulli variable}. The feedback $R_{j, t}$ is assumed deterministic for each arm $a_j$, therefore we will omit the index $t$. $T_{max}$ is known by the learner. For each experiment we want to maximize the cumulated \emph{Pull Reward}, so we will evaluate the results in terms of \emph{Pseudo-Regret}. In this scenario, a generic realization of the persistency vector, informally called \emph{bucket}, will be a sequence of $T_{max}$ elements composed by a sub-sequence of ones followed by a sub-sequence of zeros. Note that, given a bucket $\boldsymbol{Z_{j,t}}$, since the delay $d_{j,t}$ is assumed to be 0 and we are in tight persistency, the length of the sub-sequence of ones is equal to the true length $l_{j,t}$.\\
+All the synthetic experiments analyzed are in \emph{tight persistency} with delay $d_{j,t}=0$ for each realization $\boldsymbol{Z_{j,t}} = (Z_{j,t,1},\dots,Z_{j,t,\Tmax})$ of the persistency vector, where each component $Z_{j,t,m}$ is a \emph{Bernoulli variable}. The feedback $R_{j, t}$ is assumed deterministic for each arm $a_j$, therefore we will omit the index $t$. $\Tmax$ is known by the learner. For each experiment we want to maximize the cumulated \emph{Pull Reward}, so we will evaluate the results in terms of \emph{Pseudo-Regret}. In this scenario, a generic realization of the persistency vector, informally called \emph{bucket}, will be a sequence of $\Tmax$ elements composed by a sub-sequence of ones followed by a sub-sequence of zeros. Note that, given a bucket $\boldsymbol{Z_{j,t}}$, since the delay $d_{j,t}$ is assumed to be 0 and we are in tight persistency, the length of the sub-sequence of ones is equal to the true length $l_{j,t}$.\\
 To generate synthetic data, at each time instant t, we sample the true length $l_{j,t}$ of a new bucket $\boldsymbol{Z_{j,t}}$ from a distribution associated to the pulled arm $a_j$. More precisely, each arm $a_j$ is associated to a distribution Beta($\alpha_j$,$\beta_j$), where the parameters $\alpha_j$ and $\beta_j$ are specified according to the considered setting. The expected pull reward $\mu_j$ of an arm $a_j$ is computed in the following way:
 
-$$\mu_j = R_j\sum_{i=1}^{T_{max}}i\bigg(F_j\bigg(\frac{i}{T_{max}}\bigg)-F_j\bigg(\frac{i-1}{T_{max}}\bigg)\bigg) \ ,$$
+$$\mu_j = R_j\sum_{i=1}^{\Tmax}i\bigg(F_j\bigg(\frac{i}{\Tmax}\bigg)-F_j\bigg(\frac{i-1}{\Tmax}\bigg)\bigg) \ ,$$
 where $F_j$ is the cumulative distribution function of the Beta($\alpha_j$,$\beta_j$).
 Below we present three significant settings analyzed: \emph{Synthetic A}, \emph{Synthetic B}, \emph{Synthetic C}.
 
@@ -36,13 +36,13 @@ Below we present three significant settings analyzed: \emph{Synthetic A}, \emph{
 	\begin{tabular}{llllllllll}
 		\cline{2-9}
 		\multicolumn{1}{l|}{} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} &  \\ \cline{2-9}
-		& \textit{1}             & \textit{}              &                        &                        &                        &                        & \multicolumn{3}{c}{\textit{ $T_{max}$}}                 
+		& \textit{1}             & \textit{}              &                        &                        &                        &                        & \multicolumn{3}{c}{\textit{ $\Tmax$}}                 
 	\end{tabular}
-	\caption{Example of bucket in synthetic setting. In this example $T_{max}=8$, the legth of the vector. The first 5 components are successes (1), meaning that the true length of the vector is $l=5$.}
+	\caption{Example of bucket in synthetic setting. In this example $\Tmax=8$, the legth of the vector. The first 5 components are successes (1), meaning that the true length of the vector is $l=5$.}
 \end{figure}
 %A lot of real problems can be easily represented in this way, furthermore, here we focus our attention on this scenario as it directly attacks the problem treated, givining a basic answer to the question we asked ourselves: "What happens if the reward is not a scalar but is persistent over time?"
 \subsection{Synthetic A}\label{SA}
-In this setting, the true length $l_{j,t}$ is sampled from a Beta distribution with parameters $a_j = b_j = 1$, for each arm $a_j$, for each time instant t. In this configuration the Beta distribution is equivalent to the uniform distribution. The feedback $R_j$ is set incrementally for each arm $a_j$. Here the best arm is the one with maximum feedback $R_j$. In fact, the magnitude of $R_j$ does not influence the true length $l_{j,t}$ which is generated uniformly at random.  We set $T_{max} = 50$. The experiment is repeated for 50 independent runs. The full description of the arms is provided in Table \ref{tabSA}.
+In this setting, the true length $l_{j,t}$ is sampled from a Beta distribution with parameters $a_j = b_j = 1$, for each arm $a_j$, for each time instant t. In this configuration the Beta distribution is equivalent to the uniform distribution. The feedback $R_j$ is set incrementally for each arm $a_j$. Here the best arm is the one with maximum feedback $R_j$. In fact, the magnitude of $R_j$ does not influence the true length $l_{j,t}$ which is generated uniformly at random.  We set $\Tmax = 50$. The experiment is repeated for 50 independent runs. The full description of the arms is provided in Table \ref{tabSA}.
 
 
 
@@ -60,7 +60,7 @@ In this setting, the true length $l_{j,t}$ is sampled from a Beta distribution w
 \label{tabSA}
 \end{table}
 \subsection{Synthetic B}
-In this setting, for each time instant t, the true length $l_{j,t}$ is sampled from a Beta distribution depending on the pulled arm $a_j$. For each arm $a_j$, the feedback is $R_j=1$. This implies that the best arm is the one which is associated to the Beta with the highest mean. We set $T_{max}=50$. The experiment is repeated for 50 independent runs. The full description of the arms is provided in Table \ref{tabSB}.
+In this setting, for each time instant t, the true length $l_{j,t}$ is sampled from a Beta distribution depending on the pulled arm $a_j$. For each arm $a_j$, the feedback is $R_j=1$. This implies that the best arm is the one which is associated to the Beta with the highest mean. We set $\Tmax=50$. The experiment is repeated for 50 independent runs. The full description of the arms is provided in Table \ref{tabSB}.
 
 
 \begin{table}[H]
@@ -87,7 +87,7 @@ In this setting, for each time instant t, the true length $l_{j,t}$ is sampled f
 
 \subsection{Synthetic C}
 
-In this setting, we model the common situation where high feedback discourage long persistency, as previously discussed in Chapter \ref{CF}. At each time t, the true length $l_{j,t}$ is sampled from a Beta distribution depending on the pulled arm $a_j$. For each arm $a_j$, the feedback is $R_j$ is set such that to higher Beta mean corresponds lower feedback. We set $T_{max}=50,100,150,200$. For each $T_{max}$ adopted, the experiment is repeated for 50 independent runs. The full description of the arms is provided in Table \ref{tabSC} where with $\mu_{T_{max}}$ we indicate the expected pull reward in the configuration where $T_{max}$ is adopted.
+In this setting, we model the common situation where high feedback discourage long persistency, as previously discussed in Chapter \ref{CF}. At each time t, the true length $l_{j,t}$ is sampled from a Beta distribution depending on the pulled arm $a_j$. For each arm $a_j$, the feedback is $R_j$ is set such that to higher Beta mean corresponds lower feedback. We set $\Tmax=50,100,150,200$. For each $\Tmax$ adopted, the experiment is repeated for 50 independent runs. The full description of the arms is provided in Table \ref{tabSC} where with $\mu_{\Tmax}$ we indicate the expected pull reward in the configuration where $\Tmax$ is adopted.
 
 
 

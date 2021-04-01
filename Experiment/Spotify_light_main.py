@@ -104,7 +104,7 @@ for run in range(n_runs):
     idea2_learner_p_h = Idea2PositiveSpotify(get_n_arms(),get_arms(),tmax,half=True)
     oracle = Oracle(get_n_arms(),get_arms(),tmax)
 
-    learners = [ baseline_learner_m, bound1_learner_m, bayesUCB, thompson_learner_baseline, idea2_learner,idea2_learner_p,idea2_learner_p_h]
+    learners = [ baseline_learner_m, bound1_learner_m, bayesUCB, thompson_learner_baseline, idea2_learner_p_h]
 
                 
     #EXECUTION

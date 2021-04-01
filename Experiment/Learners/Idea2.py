@@ -57,10 +57,14 @@ class Idea2(Learner):
                 
 
 class Idea2Positive(Learner):
-    def __init__(self, n_arms, arms, tmax,half=False):
-        name = "Idea2_ones"
+    def __init__(self, n_arms, arms, tmax,half=True,farsighted=False):
+        if ( half == False):
+            print("############################################################ERRORE")
+        name = "error"
         if(half):
-            name ="Idea2_0.5"
+            name ="PR-NT-UCB-P_myopic"
+        if(farsighted):
+            name = "PR-NT-UCB-P_farsighted"
         super().__init__(n_arms,arms,name)
         self.number_of_pulls = np.zeros(n_arms)
         self.criterion = np.zeros(n_arms)
@@ -68,6 +72,7 @@ class Idea2Positive(Learner):
         self.active_buckets_sum = np.zeros(n_arms)
         self.tmax=tmax
         self.half=half
+        self.farsighted = farsighted
 
 
     def pull_arm(self):
@@ -88,32 +93,60 @@ class Idea2Positive(Learner):
         super().update_observations(pulled_arm, bucket)
         self.number_of_pulls[pulled_arm.id_code] = self.number_of_pulls[pulled_arm.id_code] + 1
 
-        for arm in range(self.n_arms):
+        if( self.farsighted == False):
+            for arm in range(self.n_arms):
 
-            assert( arm == self.arms[arm].id_code)
-            active_buckets = []
-            self.active_buckets_sum[arm] = 0
+                assert( arm == self.arms[arm].id_code)
+                active_buckets = []
+                self.active_buckets_sum[arm] = 0
 
-            for b in self.arms[arm].buckets:
-                m = int(self.t - b.t_start)
-                if m < self.tmax:
-                    active_buckets.append(b)
-                    if (self.half==False):
-                        self.active_buckets_sum[arm] = self.active_buckets_sum[arm] + sum(b.values[0:m+1]) + (self.tmax-(m+1))
+                for b in self.arms[arm].buckets:
+                    m = int(self.t - b.t_start)
+                    if m < self.tmax:
+                        active_buckets.append(b)
+                        if (self.half==False):
+                            self.active_buckets_sum[arm] = self.active_buckets_sum[arm] + sum(b.values[0:m+1]) + (self.tmax-(m+1))
+                        else:
+                            self.active_buckets_sum[arm] = self.active_buckets_sum[arm] + sum(b.values[0:m+1]) + int((self.tmax-(m+1))/2)
                     else:
-                        self.active_buckets_sum[arm] = self.active_buckets_sum[arm] + sum(b.values[0:m+1]) + int((self.tmax-(m+1))/2)
-                else:
-                    assert(m == self.tmax)
-                    self.old_buckets_sum[arm] = self.old_buckets_sum[arm] + sum(b.values)
-            self.arms[arm].buckets = active_buckets            
+                        assert(m == self.tmax)
+                        self.old_buckets_sum[arm] = self.old_buckets_sum[arm] + sum(b.values)
+                self.arms[arm].buckets = active_buckets            
 
-            if(self.number_of_pulls[arm]>0):
-                first_term = np.sqrt((2*self.tmax*np.log(self.t))/ self.number_of_pulls[arm])
-                second_term = (self.tmax*(self.tmax-1))/(2*self.number_of_pulls[arm])
-                c = first_term + second_term
-            else:
-                c = np.inf 
-            self.criterion[arm] = self.arms[arm].reward*((self.old_buckets_sum[arm] + self.active_buckets_sum[arm])/self.number_of_pulls[arm] + c)
+                if(self.number_of_pulls[arm]>0):
+                    first_term = np.sqrt((2*self.tmax*np.log(self.t))/ self.number_of_pulls[arm])
+                    second_term = (self.tmax*(self.tmax-1))/(2*self.number_of_pulls[arm])
+                    c = first_term + second_term
+                else:
+                    c = np.inf 
+                self.criterion[arm] = self.arms[arm].reward*((self.old_buckets_sum[arm] + self.active_buckets_sum[arm])/self.number_of_pulls[arm] + c)
+        else:
+            for arm in range(self.n_arms):
+
+                assert( arm == self.arms[arm].id_code)
+                active_buckets = []
+                self.active_buckets_sum[arm] = 0
+
+                for b in self.arms[arm].buckets:
+                    m = int(self.t - b.t_start)
+                    if m < self.tmax and b.values[m]>0:
+                        active_buckets.append(b)
+                        if (self.half==False):
+                            self.active_buckets_sum[arm] = self.active_buckets_sum[arm] + sum(b.values[0:m+1]) + (self.tmax-(m+1))
+                        else:
+                            self.active_buckets_sum[arm] = self.active_buckets_sum[arm] + sum(b.values[0:m+1]) + int((self.tmax-(m+1))/2)
+                    else:
+                        self.old_buckets_sum[arm] = self.old_buckets_sum[arm] + sum(b.values)
+                self.arms[arm].buckets = active_buckets            
+
+                if(self.number_of_pulls[arm]>0):
+                    first_term = np.sqrt((2*self.tmax*np.log(self.t))/ self.number_of_pulls[arm])
+                    second_term = (self.tmax*(self.tmax-1))/(2*self.number_of_pulls[arm])
+                    c = first_term + second_term
+                else:
+                    c = np.inf 
+                self.criterion[arm] = self.arms[arm].reward*((self.old_buckets_sum[arm] + self.active_buckets_sum[arm])/self.number_of_pulls[arm] + c)
+
     
 
 class Idea2Spotify(Learner):

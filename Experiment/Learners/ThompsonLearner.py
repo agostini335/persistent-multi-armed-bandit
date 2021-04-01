@@ -378,7 +378,7 @@ class ThompsonLearnerSpotify(Learner):
 class ThompsonBaselineSpotify(Learner):
  
     def __init__(self, n_arms, arms, tmax, optimistic = False):
-        name = "Thompson_baseline"                
+        name = "PR-T-TS-P_myopic"                
         if optimistic == True:
             name += "_optim"
 
@@ -549,7 +549,7 @@ class ThompsonLearnerExplorerSpotify(Learner):
 class BayesUCBPersistentSpotify(Learner):
  
     def __init__(self, n_arms, arms, tmax):
-        name = "BayesUCBPersistent"        
+        name = "PR-BW-BayesUCB-P_myopic"        
         super().__init__(n_arms,arms,name)
       
         self.hits_table = np.zeros((tmax,n_arms))
@@ -603,7 +603,7 @@ class BayesUCBPersistentSpotify(Learner):
 class ThompsonBaseline(Learner):
  
     def __init__(self, n_arms, arms, tmax, optimistic = False, farsighted = False):
-        name = "Thompson_baseline"                
+        name = "PR-T-TS"                
         if optimistic == True:
             name += "_optim"
         if farsighted == True:
@@ -689,11 +689,11 @@ class ThompsonBaseline(Learner):
 class BayesUCBPersistent(Learner):
  
     def __init__(self, n_arms, arms, tmax, farsighted=False):
-        name = "BayesUCBPersistent" 
+        name = "PR-BW-BayesUCB-P" 
         if farsighted:
-            name += "farsighted"
+            name += "_farsighted"
         else:
-            name += "myopic"  
+            name += "_myopic"  
         super().__init__(n_arms,arms,name)
       
         self.hits_table = np.zeros((tmax,n_arms))

@@ -67,10 +67,10 @@ def save_experiment_description(cnfg_m):
 
 
 
-ex_list = ["210"]
+ex_list = ["experiment_A,experiment_B,experiment_C_200"]
 
 for ex in ex_list:
-    experiment_name = "experiment_C_"+ex
+    experiment_name = ex
     config_manager = ConfigManager(path ="Experiment/Parser/ConfigFiles", name = experiment_name+".json")
     env = Environment(config_manager.get_n_arms(), tmax = config_manager.get_tmax())
     T = config_manager.get_time()       
@@ -79,7 +79,7 @@ for ex in ex_list:
     print(T)
 
     for run in range(n_runs):
-        print("run number: "+str(run+1)+" of "+str(n_runs))
+        print("run number: "+str(run+1)+" of "+str(n_runs)+ experiment_name)
         #LEARNERS SET UP
         learners = []
 
@@ -108,7 +108,8 @@ for ex in ex_list:
         bayes_m = BayesUCBPersistent(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax())
         bayes_f = BayesUCBPersistent(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax(),farsighted=True)
         idea2 = Idea2(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax())
-        idea2_pos = Idea2Positive(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax())
+        idea2_pos_m = Idea2Positive(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax())
+        idea2_pos_f = Idea2Positive(config_manager.get_n_arms(),config_manager.get_arm_list(),config_manager.get_tmax(),farsighted=True)
 
         
 
@@ -117,7 +118,7 @@ for ex in ex_list:
 
         print("ORACLE:"+str(oracle.best_arm.value))
 
-        learners = [idea2,idea2_pos,baseline_learner_m,bound1_learner_m,baseline_learner_f,bound1_learner_f,thomposon_baseline_m,thomposon_baseline_f,bayes_f,bayes_m]
+        learners = [idea2_pos_m,idea2_pos_f,baseline_learner_m,baseline_learner_f,bound1_learner_m,bound1_learner_f,thomposon_baseline_m,thomposon_baseline_f,bayes_m,bayes_f]
             
         #EXECUTION
         for i in tqdm(range(T)):    

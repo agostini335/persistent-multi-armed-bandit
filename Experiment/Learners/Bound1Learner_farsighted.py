@@ -32,7 +32,7 @@ class Bound1Learner_farsighted(Learner):
     """
 
     def __init__(self, n_arms, arms, tmax):
-        super().__init__(n_arms,arms,"Bound1_farsighted")
+        super().__init__(n_arms,arms,"PR-BW-UCB-P_farsighted")
         self.hits_table = np.zeros((tmax,n_arms))
         self.visits_table = np.zeros((tmax,n_arms))
         self.bound1_criterion = np.zeros(n_arms)
@@ -84,7 +84,8 @@ class Bound1Learner_farsighted(Learner):
                 x_i = c_i = 1
                 if(self.visits_table[i][arm]>0):
                     x_i = self.hits_table[i][arm]/self.visits_table[i][arm]
-                    c_i = np.sqrt( 2 * np.log( self.t*np.power(self.tmax,1/4))/ self.visits_table[i][arm])                
+                    #c_i = np.sqrt( 2 * np.log( self.t*np.power(self.tmax,1/4))/ self.visits_table[i][arm])
+                    c_i = np.sqrt( 2 * np.log( self.t)/ self.visits_table[i][arm])                
                 
                 criterion += min(1,x_i+c_i)  
                  

@@ -1,5 +1,5 @@
 {
-    "tmax": 40,
+    "tmax": 200,
     "time": 20000,
     "n_runs":20,
     "arm_sets": [

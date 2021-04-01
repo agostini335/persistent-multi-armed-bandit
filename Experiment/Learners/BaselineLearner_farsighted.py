@@ -29,7 +29,7 @@ class BaselineLearner_farsighted (Learner):
     """
 
     def __init__(self, n_arms, arms, tmax, tmin):
-        super().__init__(n_arms,arms,"Baseline_farsighted")
+        super().__init__(n_arms,arms,"PR-T-UCB-P_farsighted")
         self.criterion = np.ones(n_arms) * np.inf
         self.expected_payoffs = np.zeros(n_arms)
         self.number_of_completed_buckets = np.zeros(n_arms)

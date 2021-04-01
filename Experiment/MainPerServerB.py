@@ -67,7 +67,7 @@ def save_experiment_description(cnfg_m):
 
 
 
-ex_list = ["experiment_A,experiment_B,experiment_C_200"]
+ex_list = ["experiment_C_50,experiment_C_100,experiment_C_150"]
 
 for ex in ex_list:
     experiment_name = ex

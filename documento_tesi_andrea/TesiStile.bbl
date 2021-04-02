@@ -51,17 +51,18 @@ R.~Burke.
 \newblock Hybrid recommender systems: Survey and experiments.
 \newblock \emph{User Modeling and User-Adapted Interaction}, 12, 2002.
 
+\bibitem[Joulani et~al.(2013)Joulani, Gyorgy, and Szepesv{\'a}ri]{joulani2013}
+P.~Joulani, A.~Gyorgy, and C.~Szepesv{\'a}ri.
+\newblock Online learning under delayed feedback.
+\newblock In \emph{International Conference on Machine Learning}, pages
+  1453--1461. PMLR, 2013.
+
 \bibitem[Kaufmann et~al.(2012)Kaufmann, Capp{\'e}, and
   Garivier]{kaufmann2012bayesian}
 E.~Kaufmann, O.~Capp{\'e}, and A.~Garivier.
 \newblock On bayesian upper confidence bounds for bandit problems.
 \newblock In \emph{Artificial intelligence and statistics}, pages 592--600.
   PMLR, 2012.
-
-\bibitem[Pooria~Joulani(2013)]{joulani2013}
-C.~S. Pooria~Joulani, Andr´as~Gy¨orgy.
-\newblock Online learning under delayed feedback.
-\newblock 2013.
 
 \bibitem[Robbins(1952)]{Robbins1952sequential}
 H.~Robbins.

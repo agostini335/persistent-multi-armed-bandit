@@ -17,12 +17,15 @@
 \contentsline {subsection}{\numberline {4.1.1}Farsighted and Myopic configuration}{24}{subsection.4.1.1}%
 \contentsline {section}{\numberline {4.2}Frequentist Algorithms}{24}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}PR-T-UCB (Frequentist Baseline Algorithm)}{25}{subsection.4.2.1}%
+\contentsline {subsubsection}{}{26}{section*.16}%
 \contentsline {subsection}{\numberline {4.2.2}PR-BW-UCB-P}{26}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Idea2}{30}{subsection.4.2.3}%
-\contentsline {section}{\numberline {4.3}Bayesian Algorithms}{31}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Baseline TS}{31}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Bayes UCB Peristent}{32}{subsection.4.3.2}%
-\contentsline {section}{\numberline {4.4}Adaptive version}{32}{section.4.4}%
+\contentsline {subsubsection}{PR-BW-UCB-P Theoretical Analysis}{28}{section*.17}%
+\contentsline {paragraph}{Proof of Theorem \ref {t_bw}}{28}{section*.18}%
+\contentsline {subsection}{\numberline {4.2.3}PR-NT-UCB-P}{30}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Bayesian Algorithms}{32}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}PR-T-TS (Bayesian Baseline Algorithm)}{32}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}PR-BW-BayesUCB-P}{32}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}PR-BW-BayesUCB-NP}{32}{subsection.4.3.3}%
 \contentsline {chapter}{\numberline {5}Experimental Analysis}{33}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Synthetic Experiment Settings}{33}{section.5.1}%
 \contentsline {subsection}{\numberline {5.1.1}Synthetic A}{34}{subsection.5.1.1}%
@@ -30,7 +33,7 @@
 \contentsline {subsection}{\numberline {5.1.3}Synthetic C}{35}{subsection.5.1.3}%
 \contentsline {section}{\numberline {5.2}Results}{36}{section.5.2}%
 \contentsline {subsection}{\numberline {5.2.1}Observations}{42}{subsection.5.2.1}%
-\contentsline {subsubsection}{spotify}{43}{section*.29}%
-\contentsline {subsubsection}{rent}{43}{section*.30}%
+\contentsline {subsubsection}{spotify}{43}{section*.32}%
+\contentsline {subsubsection}{rent}{43}{section*.33}%
 \contentsline {chapter}{\numberline {6}Conclusions}{45}{chapter.6}%
-\contentsline {chapter}{Bibliography}{47}{chapter*.31}%
+\contentsline {chapter}{Bibliography}{47}{chapter*.34}%

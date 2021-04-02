@@ -18,11 +18,11 @@
 \BOOKMARK [1][-]{section.4.2}{Frequentist Algorithms}{chapter.4}% 18
 \BOOKMARK [2][-]{subsection.4.2.1}{PR-T-UCB \(Frequentist Baseline Algorithm\)}{section.4.2}% 19
 \BOOKMARK [2][-]{subsection.4.2.2}{PR-BW-UCB-P}{section.4.2}% 20
-\BOOKMARK [2][-]{subsection.4.2.3}{Idea2}{section.4.2}% 21
+\BOOKMARK [2][-]{subsection.4.2.3}{PR-NT-UCB-P}{section.4.2}% 21
 \BOOKMARK [1][-]{section.4.3}{Bayesian Algorithms}{chapter.4}% 22
-\BOOKMARK [2][-]{subsection.4.3.1}{Baseline TS}{section.4.3}% 23
-\BOOKMARK [2][-]{subsection.4.3.2}{Bayes UCB Peristent}{section.4.3}% 24
-\BOOKMARK [1][-]{section.4.4}{Adaptive version}{chapter.4}% 25
+\BOOKMARK [2][-]{subsection.4.3.1}{PR-T-TS \(Bayesian Baseline Algorithm\)}{section.4.3}% 23
+\BOOKMARK [2][-]{subsection.4.3.2}{PR-BW-BayesUCB-P}{section.4.3}% 24
+\BOOKMARK [2][-]{subsection.4.3.3}{PR-BW-BayesUCB-NP}{section.4.3}% 25
 \BOOKMARK [0][-]{chapter.5}{Experimental Analysis}{}% 26
 \BOOKMARK [1][-]{section.5.1}{Synthetic Experiment Settings}{chapter.5}% 27
 \BOOKMARK [2][-]{subsection.5.1.1}{Synthetic A}{section.5.1}% 28
@@ -31,4 +31,4 @@
 \BOOKMARK [1][-]{section.5.2}{Results}{chapter.5}% 31
 \BOOKMARK [2][-]{subsection.5.2.1}{Observations}{section.5.2}% 32
 \BOOKMARK [0][-]{chapter.6}{Conclusions}{}% 33
-\BOOKMARK [0][-]{chapter*.31}{Bibliography}{}% 34
+\BOOKMARK [0][-]{chapter*.34}{Bibliography}{}% 34

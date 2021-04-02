@@ -24,7 +24,6 @@ The style file: abbrvnat.bst
 Reallocating 'name_of_file' (item size: 1) to 13 items.
 Database file #1: bibliografia.bib
 Warning--I didn't find a database entry for "Anderson1964"
-Warning--I didn't find a database entry for "joulani2013online"
 Too many commas in name 1 of "Bobadilla Sancho, Jesus Ortega Requena, Fernando Hernando Esteban, Antonio Bernal Bermúdez, Jesús" for entry recsys2
 while executing---line 1347 of file abbrvnat.bst
 Too many commas in name 1 of "Bobadilla Sancho, Jesus Ortega Requena, Fernando Hernando Esteban, Antonio Bernal Bermúdez, Jesús" for entry recsys2
@@ -42,46 +41,45 @@ Too many commas in name 1 of "Bobadilla Sancho, Jesus Ortega Requena, Fernando H
 while executing---line 1429 of file abbrvnat.bst
 Too many commas in name 1 of "Bobadilla Sancho, Jesus Ortega Requena, Fernando Hernando Esteban, Antonio Bernal Bermúdez, Jesús" for entry recsys2
 while executing---line 1429 of file abbrvnat.bst
-Warning--empty journal in joulani2013
 You've used 13 entries,
             2773 wiz_defined-function locations,
-            691 strings with 7168 characters,
-and the built_in function-call counts, 5635 in all, are:
-= -- 514
-> -- 252
+            692 strings with 7212 characters,
+and the built_in function-call counts, 6012 in all, are:
+= -- 557
+> -- 272
 < -- 13
-+ -- 88
-- -- 75
-* -- 407
-:= -- 854
-add.period$ -- 45
++ -- 94
+- -- 81
+* -- 441
+:= -- 895
+add.period$ -- 46
 call.type$ -- 13
-change.case$ -- 62
+change.case$ -- 64
 chr.to.int$ -- 13
-cite$ -- 28
-duplicate$ -- 294
-empty$ -- 504
-format.name$ -- 94
-if$ -- 1207
+cite$ -- 27
+duplicate$ -- 310
+empty$ -- 531
+format.name$ -- 100
+if$ -- 1302
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 15
 newline$ -- 77
 num.names$ -- 52
-pop$ -- 136
+pop$ -- 140
 preamble$ -- 1
-purify$ -- 51
+purify$ -- 53
 quote$ -- 0
-skip$ -- 220
+skip$ -- 236
 stack$ -- 0
-substring$ -- 203
-swap$ -- 41
-text.length$ -- 4
+substring$ -- 243
+swap$ -- 54
+text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 133
-warning$ -- 2
-while$ -- 54
+warning$ -- 1
+while$ -- 57
 width$ -- 0
-write$ -- 181
+write$ -- 184
 (There were 8 error messages)

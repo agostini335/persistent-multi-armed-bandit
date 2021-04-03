@@ -211,7 +211,7 @@ class Idea2PositiveSpotify(Learner):
     def __init__(self, n_arms, arms, tmax, half = False):
         name = "Idea2_ones"
         if(half):
-            name ="Idea2_0.5"
+            name ="PR-NT-UCB-P"
         super().__init__(n_arms,arms,name)
         self.number_of_pulls = np.zeros(n_arms)
         self.criterion = np.zeros(n_arms)

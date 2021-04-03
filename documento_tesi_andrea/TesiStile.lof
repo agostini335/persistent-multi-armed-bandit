@@ -6,13 +6,13 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Example of realization of the persistency vector in the Rental Pricing Problem. In this example $T_{\textnormal {max}}=10$, the delay $d=2$, the true length $l=8$. The contract last for six months, since we have six ones. The last two zeros are not relevant, a possible interpretation could be that $c_{max}=6$ and $d_{max}=4$.\relax }}{21}{figure.caption.15}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Example of bucket in synthetic setting. In this example $T_{\textnormal {max}}=8$, the legth of the vector. The first 5 components are successes (1), meaning that the true length of the vector is $l=5$.\relax }}{34}{figure.caption.20}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Probability density function and cumulative distribution function of the Beta distributions considered in settings Synthetic B and Synthetic C.\relax }}{35}{figure.caption.23}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Pseudo regret plot of the experiment Synthetic A.\relax }}{36}{figure.caption.25}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Pseudo regret plot of the experiment Synthetic B. \relax }}{37}{figure.caption.26}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Pseudo regret plot of the experiment Synthetic C.\relax }}{38}{figure.caption.27}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Pseudo regret plot of the experiment Spotify Playlist Problem.\relax }}{39}{figure.caption.28}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces PROVVISORIO Pseudo regret plot of the experiment Spotify Playlist Problem.\relax }}{40}{figure.caption.29}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces PROVVISORIO Normalized pseudo regret plot of the experiment Rental Pricing Problem.\relax }}{41}{figure.caption.30}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces PULLS IDEA2 ZEROS C\relax }}{42}{figure.caption.31}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Example of bucket in synthetic setting. In this example $T_{\textnormal {max}}=8$, the legth of the vector. The first 5 components are successes (1), meaning that the true length of the vector is $l=5$.\relax }}{38}{figure.caption.24}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Probability density function and cumulative distribution function of the Beta distributions considered in settings Synthetic B and Synthetic C.\relax }}{39}{figure.caption.27}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Pseudo regret plot of the experiment Synthetic A.\relax }}{40}{figure.caption.29}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Pseudo regret plot of the experiment Synthetic B. \relax }}{41}{figure.caption.30}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Pseudo regret plot of the experiment Synthetic C.\relax }}{42}{figure.caption.31}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Pseudo regret plot of the experiment Spotify Playlist Problem.\relax }}{43}{figure.caption.32}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces PROVVISORIO Pseudo regret plot of the experiment Spotify Playlist Problem.\relax }}{44}{figure.caption.33}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces PROVVISORIO Normalized pseudo regret plot of the experiment Rental Pricing Problem.\relax }}{45}{figure.caption.34}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces PULLS IDEA2 ZEROS C\relax }}{46}{figure.caption.35}%
 \addvspace {10\p@ }

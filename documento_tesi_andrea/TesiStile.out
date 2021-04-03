@@ -20,8 +20,8 @@
 \BOOKMARK [2][-]{subsection.4.2.2}{PR-BW-UCB-P}{section.4.2}% 20
 \BOOKMARK [2][-]{subsection.4.2.3}{PR-NT-UCB-P}{section.4.2}% 21
 \BOOKMARK [1][-]{section.4.3}{Bayesian Algorithms}{chapter.4}% 22
-\BOOKMARK [2][-]{subsection.4.3.1}{PR-T-TS \(Bayesian Baseline Algorithm\)}{section.4.3}% 23
-\BOOKMARK [2][-]{subsection.4.3.2}{PR-BW-BayesUCB-P}{section.4.3}% 24
+\BOOKMARK [2][-]{subsection.4.3.1}{PR-T-TS-P \(Bayesian Baseline Algorithm\)}{section.4.3}% 23
+\BOOKMARK [2][-]{subsection.4.3.2}{PR-T-TS-NP \(Bayesian Baseline Algorithm\)}{section.4.3}% 24
 \BOOKMARK [2][-]{subsection.4.3.3}{PR-BW-BayesUCB-NP}{section.4.3}% 25
 \BOOKMARK [0][-]{chapter.5}{Experimental Analysis}{}% 26
 \BOOKMARK [1][-]{section.5.1}{Synthetic Experiment Settings}{chapter.5}% 27
@@ -31,4 +31,4 @@
 \BOOKMARK [1][-]{section.5.2}{Results}{chapter.5}% 31
 \BOOKMARK [2][-]{subsection.5.2.1}{Observations}{section.5.2}% 32
 \BOOKMARK [0][-]{chapter.6}{Conclusions}{}% 33
-\BOOKMARK [0][-]{chapter*.34}{Bibliography}{}% 34
+\BOOKMARK [0][-]{chapter*.38}{Bibliography}{}% 34

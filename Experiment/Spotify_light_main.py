@@ -81,9 +81,9 @@ infile.close()
 play_dict = new_dict
 
 #SETUP CONFIG
-experiment_name = "experiment_spotify10k20r"
+experiment_name = "experiment_spotify_def"
 T = 20000 
-n_runs = 10
+n_runs = 50
 tmax = 80
 oracle = Oracle(get_n_arms(),get_arms(),tmax)
 

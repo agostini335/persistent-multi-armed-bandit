@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.10)  2 APR 2021 23:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.10)  4 APR 2021 01:06
 entering extended mode
 **./TesiStile.tex
 (TesiStile.tex
@@ -1375,10 +1375,15 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 ]
 Chapter 4.
-
-LaTeX Warning: Reference `algsumm' on page 23 undefined on input line 9.
-
 [23]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 14.
+
+
+Underfull \vbox (badness 4316) has occurred while \output is active []
+
+
 
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1388,6 +1393,9 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
 [24]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1397,7 +1405,19 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
 [25]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 110
+Underfull \vbox (badness 3989) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[26]
+LaTeX Font Info:    Trying to load font information for U+euf on input line 154
 .
  (C:\Users\agost\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
@@ -1410,20 +1430,7 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[26]
-
-Package fancyhdr Warning: \headheight is too small (12.3pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
-
 [27]
-Overfull \hbox (25.17627pt too wide) detected at line 196
-[]
- []
-
 
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1433,7 +1440,7 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
 [28]
-Overfull \hbox (97.7459pt too wide) detected at line 247
+Overfull \hbox (25.17627pt too wide) detected at line 240
 []
  []
 
@@ -1446,15 +1453,11 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
 [29]
+Overfull \hbox (97.7459pt too wide) detected at line 291
+[]
+ []
 
-Package fancyhdr Warning: \headheight is too small (12.3pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
-
-[30]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1466,7 +1469,29 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[31])
+[30]
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[31]
+Underfull \hbox (badness 10000) in paragraph at lines 348--352
+
+ []
+
+
+Overfull \hbox (74.04965pt too wide) detected at line 358
+[]
+ []
+
+
+Underfull \vbox (badness 1270) has occurred while \output is active []
+
+
 
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1476,6 +1501,49 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
 [32]
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[33]
+Overfull \hbox (53.68275pt too wide) detected at line 397
+\OML/cmm/m/it/10.95 n[] \OMS/cmsy/m/n/10.95  [][]\OT1/cmr/m/n/10.95 []\OML/cm
+m/m/it/10.95 T[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 T[] \OMS/cmsy/m/n/10.95
+   \OT1/cmr/m/n/10.95 1) + 4\OML/cmm/m/it/10.95 T[] []\OT1/cmr/m/n/10.95 (\OML/
+cmm/m/it/10.95 t\OT1/cmr/m/n/10.95 ) + [][]
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[34]
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[35])
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[36]
 \openout2 = `contents/ExperimentalAnalysis.aux'.
 
  (contents/ExperimentalAnalysis.tex
@@ -1485,7 +1553,7 @@ Overfull \hbox (23.35457pt too wide) in paragraph at lines 10--23
  [][] 
  []
 
-[33
+[37
 
 
 
@@ -1502,13 +1570,13 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[34]
-<./images/chart (1)-1.png, id=589, 1723.43875pt x 1505.625pt>
+[38]
+<./images/chart (1)-1.png, id=635, 1723.43875pt x 1505.625pt>
 File: ./images/chart (1)-1.png Graphic file (type png)
 <use ./images/chart (1)-1.png>
 Package pdftex.def Info: ./images/chart (1)-1.png  used on input line 83.
 (pdftex.def)             Requested size: 178.11409pt x 155.60262pt.
-<./images/chart (2)-1.png, id=590, 1723.43875pt x 1505.625pt>
+<./images/chart (2)-1.png, id=636, 1723.43875pt x 1505.625pt>
 File: ./images/chart (2)-1.png Graphic file (type png)
 <use ./images/chart (2)-1.png>
 Package pdftex.def Info: ./images/chart (2)-1.png  used on input line 83.
@@ -1522,8 +1590,8 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[35 <./images/chart (1)-1.png> <./images/chart (2)-1.png>]
-<./images/experiment_easy ANALYTICS.png, id=599, 680.7834pt x 378.57436pt>
+[39 <./images/chart (1)-1.png> <./images/chart (2)-1.png>]
+<./images/experiment_easy ANALYTICS.png, id=645, 680.7834pt x 378.57436pt>
 File: ./images/experiment_easy ANALYTICS.png Graphic file (type png)
 <use ./images/experiment_easy ANALYTICS.png>
 Package pdftex.def Info: ./images/experiment_easy ANALYTICS.png  used on input 
@@ -1534,7 +1602,7 @@ Overfull \hbox (95.24408pt too wide) in paragraph at lines 116--118
  [][] 
  []
 
-<./images/experiment_B ANALYTICS.png, id=601, 675.84496pt x 378.57436pt>
+<./images/experiment_B ANALYTICS.png, id=647, 675.84496pt x 378.57436pt>
 File: ./images/experiment_B ANALYTICS.png Graphic file (type png)
 <use ./images/experiment_B ANALYTICS.png>
 Package pdftex.def Info: ./images/experiment_B ANALYTICS.png  used on input lin
@@ -1557,26 +1625,26 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[36 <./images/experiment_easy ANALYTICS.png>]
-<./images/C/experiment_C_70 ANALYTICS.png, id=608, 680.7834pt x 378.57436pt>
+[40 <./images/experiment_easy ANALYTICS.png>]
+<./images/C/experiment_C_70 ANALYTICS.png, id=654, 680.7834pt x 378.57436pt>
 File: ./images/C/experiment_C_70 ANALYTICS.png Graphic file (type png)
 <use ./images/C/experiment_C_70 ANALYTICS.png>
 Package pdftex.def Info: ./images/C/experiment_C_70 ANALYTICS.png  used on inpu
 t line 128.
 (pdftex.def)             Requested size: 270.30118pt x 150.3064pt.
-<./images/C/experiment_C_110 ANALYTICS.png, id=609, 680.7834pt x 378.57436pt>
+<./images/C/experiment_C_110 ANALYTICS.png, id=655, 680.7834pt x 378.57436pt>
 File: ./images/C/experiment_C_110 ANALYTICS.png Graphic file (type png)
 <use ./images/C/experiment_C_110 ANALYTICS.png>
 Package pdftex.def Info: ./images/C/experiment_C_110 ANALYTICS.png  used on inp
 ut line 128.
 (pdftex.def)             Requested size: 270.30118pt x 150.3064pt.
-<./images/C/experiment_C_160 ANALYTICS.png, id=610, 680.7834pt x 378.57436pt>
+<./images/C/experiment_C_160 ANALYTICS.png, id=656, 680.7834pt x 378.57436pt>
 File: ./images/C/experiment_C_160 ANALYTICS.png Graphic file (type png)
 <use ./images/C/experiment_C_160 ANALYTICS.png>
 Package pdftex.def Info: ./images/C/experiment_C_160 ANALYTICS.png  used on inp
 ut line 129.
 (pdftex.def)             Requested size: 270.30118pt x 150.3064pt.
-<./images/C/experiment_C_210 ANALYTICS.png, id=611, 680.7834pt x 378.57436pt>
+<./images/C/experiment_C_210 ANALYTICS.png, id=657, 680.7834pt x 378.57436pt>
 File: ./images/C/experiment_C_210 ANALYTICS.png Graphic file (type png)
 <use ./images/C/experiment_C_210 ANALYTICS.png>
 Package pdftex.def Info: ./images/C/experiment_C_210 ANALYTICS.png  used on inp
@@ -1594,7 +1662,7 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[37 <./images/experiment_B ANALYTICS.png>]
+[41 <./images/experiment_B ANALYTICS.png>]
 Overfull \vbox (31.62538pt too high) has occurred while \output is active []
 
 
@@ -1606,10 +1674,10 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[38 <./images/C/experiment_C_70 ANALYTICS.png> <./images/C/experiment_C_110 ANA
+[42 <./images/C/experiment_C_70 ANALYTICS.png> <./images/C/experiment_C_110 ANA
 LYTICS.png> <./images/C/experiment_C_160 ANALYTICS.png> <./images/C/experiment_
 C_210 ANALYTICS.png>]
-<./images/experiment_spotify10k20r ANALYTICS.png, id=626, 633.92834pt x 378.574
+<./images/experiment_spotify10k20r ANALYTICS.png, id=671, 633.92834pt x 378.574
 36pt>
 File: ./images/experiment_spotify10k20r ANALYTICS.png Graphic file (type png)
 <use ./images/experiment_spotify10k20r ANALYTICS.png>
@@ -1621,7 +1689,7 @@ Overfull \hbox (95.24408pt too wide) in paragraph at lines 137--139
  [][] 
  []
 
-<./images/provvisori/experiment_spotify10k20r ANALYTICS.png, id=627, 633.92834p
+<./images/provvisori/experiment_spotify10k20r ANALYTICS.png, id=672, 633.92834p
 t x 378.57436pt>
 File: ./images/provvisori/experiment_spotify10k20r ANALYTICS.png Graphic file (
 type png)
@@ -1646,8 +1714,8 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[39 <./images/experiment_spotify10k20r ANALYTICS.png>]
-<./images/provvisori/RENT_provvisorio.png, id=633, 578.16pt x 397.485pt>
+[43 <./images/experiment_spotify10k20r ANALYTICS.png>]
+<./images/provvisori/RENT_provvisorio.png, id=679, 578.16pt x 397.485pt>
 File: ./images/provvisori/RENT_provvisorio.png Graphic file (type png)
 <use ./images/provvisori/RENT_provvisorio.png>
 Package pdftex.def Info: ./images/provvisori/RENT_provvisorio.png  used on inpu
@@ -1670,8 +1738,8 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[40 <./images/provvisori/experiment_spotify10k20r ANALYTICS.png>]
-<./images/PULLS/experiment_C_10Idea2_zeros cum_pulls.png, id=639, 554.67226pt x
+[44 <./images/provvisori/experiment_spotify10k20r ANALYTICS.png>]
+<./images/PULLS/experiment_C_10Idea2_zeros cum_pulls.png, id=685, 554.67226pt x
  378.57436pt>
 File: ./images/PULLS/experiment_C_10Idea2_zeros cum_pulls.png Graphic file (typ
 e png)
@@ -1679,7 +1747,7 @@ e png)
 Package pdftex.def Info: ./images/PULLS/experiment_C_10Idea2_zeros cum_pulls.pn
 g  used on input line 160.
 (pdftex.def)             Requested size: 170.71652pt x 116.51923pt.
-<./images/PULLS/experiment_C_40Idea2_zeros cum_pulls.png, id=640, 554.67226pt x
+<./images/PULLS/experiment_C_40Idea2_zeros cum_pulls.png, id=686, 554.67226pt x
  378.57436pt>
 File: ./images/PULLS/experiment_C_40Idea2_zeros cum_pulls.png Graphic file (typ
 e png)
@@ -1687,7 +1755,7 @@ e png)
 Package pdftex.def Info: ./images/PULLS/experiment_C_40Idea2_zeros cum_pulls.pn
 g  used on input line 161.
 (pdftex.def)             Requested size: 170.71652pt x 116.51923pt.
-<./images/PULLS/experiment_C_70Idea2_zeros cum_pulls.png, id=641, 554.67226pt x
+<./images/PULLS/experiment_C_70Idea2_zeros cum_pulls.png, id=687, 554.67226pt x
  378.57436pt>
 File: ./images/PULLS/experiment_C_70Idea2_zeros cum_pulls.png Graphic file (typ
 e png)
@@ -1695,7 +1763,7 @@ e png)
 Package pdftex.def Info: ./images/PULLS/experiment_C_70Idea2_zeros cum_pulls.pn
 g  used on input line 162.
 (pdftex.def)             Requested size: 170.71652pt x 116.51923pt.
-<./images/PULLS/experiment_C_110Idea2_zeros cum_pulls.png, id=642, 554.67226pt 
+<./images/PULLS/experiment_C_110Idea2_zeros cum_pulls.png, id=688, 554.67226pt 
 x 378.57436pt>
 File: ./images/PULLS/experiment_C_110Idea2_zeros cum_pulls.png Graphic file (ty
 pe png)
@@ -1703,7 +1771,7 @@ pe png)
 Package pdftex.def Info: ./images/PULLS/experiment_C_110Idea2_zeros cum_pulls.p
 ng  used on input line 162.
 (pdftex.def)             Requested size: 170.71652pt x 116.51923pt.
-<./images/PULLS/experiment_C_160Idea2_zeros cum_pulls.png, id=643, 554.67226pt 
+<./images/PULLS/experiment_C_160Idea2_zeros cum_pulls.png, id=689, 554.67226pt 
 x 378.57436pt>
 File: ./images/PULLS/experiment_C_160Idea2_zeros cum_pulls.png Graphic file (ty
 pe png)
@@ -1711,7 +1779,7 @@ pe png)
 Package pdftex.def Info: ./images/PULLS/experiment_C_160Idea2_zeros cum_pulls.p
 ng  used on input line 163.
 (pdftex.def)             Requested size: 170.71652pt x 116.51923pt.
-<./images/PULLS/experiment_C_210Idea2_zeros cum_pulls.png, id=644, 554.67226pt 
+<./images/PULLS/experiment_C_210Idea2_zeros cum_pulls.png, id=690, 554.67226pt 
 x 378.57436pt>
 File: ./images/PULLS/experiment_C_210Idea2_zeros cum_pulls.png Graphic file (ty
 pe png)
@@ -1731,7 +1799,7 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[41 <./images/provvisori/RENT_provvisorio.png>]
+[45 <./images/provvisori/RENT_provvisorio.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1740,7 +1808,7 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[42 <./images/PULLS/experiment_C_10Idea2_zeros cum_pulls.png> <./images/PULLS/e
+[46 <./images/PULLS/experiment_C_10Idea2_zeros cum_pulls.png> <./images/PULLS/e
 xperiment_C_40Idea2_zeros cum_pulls.png> <./images/PULLS/experiment_C_70Idea2_z
 eros cum_pulls.png> <./images/PULLS/experiment_C_110Idea2_zeros cum_pulls.png> 
 <./images/PULLS/experiment_C_160Idea2_zeros cum_pulls.png> <./images/PULLS/expe
@@ -1753,7 +1821,7 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[43]
+[47]
 \openout2 = `contents/capitolo6-conclusions.aux'.
 
  (contents/capitolo6-conclusions.tex
@@ -1765,14 +1833,14 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[44
+[48
 
 
 
 
 ]
 Chapter 6.
-) [45] (TesiStile.bbl
+) [49] (TesiStile.bbl
 
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1781,7 +1849,7 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[46
+[50
 
 
 
@@ -1791,7 +1859,7 @@ Underfull \hbox (badness 4531) in paragraph at lines 68--74
 ex-per-i-
  []
 
-[47])
+[51])
 
 Package natbib Warning: There were undefined citations.
 
@@ -1803,25 +1871,22 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[48] (TesiStile.aux (contents/frontespizio.aux) (contents/sommario.aux)
+[52] (TesiStile.aux (contents/frontespizio.aux) (contents/sommario.aux)
 (contents/abstract.aux) (contents/capitolo1-introduzione.aux)
 (contents/Preliminaries.aux) (contents/formalizzazione.aux)
 (contents/algorithms.aux) (contents/ExperimentalAnalysis.aux)
 (contents/capitolo6-conclusions.aux))
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `TesiStile.out' has not changed.
-(rerunfilecheck)             Checksum: BDDFF7FCD4C9C2625F509B16963154A1;2279.
+(rerunfilecheck)             Checksum: 03BD9198F7909D99E491548E377DAF98;2307.
  ) 
 Here is how much of TeX's memory you used:
- 31814 strings out of 479618
- 751435 string characters out of 2865026
- 1139509 words of memory out of 3000000
- 48095 multiletter control sequences out of 15000+200000
+ 31833 strings out of 479618
+ 751659 string characters out of 2865026
+ 1139508 words of memory out of 3000000
+ 48098 multiletter control sequences out of 15000+200000
  441455 words of font info for 126 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 87i,16n,89p,2290b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 87i,17n,89p,2290b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
 er-t1.enc}{C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-supe
 r/cm-super-ts1.enc}<C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/pu
@@ -1843,36 +1908,37 @@ st/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Us
 ers/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb
 ><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
 msy10.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmsy8.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/amsfonts/cm/cmti10.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/doublestroke/dsrom10.pfb><C:/Users/agost/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/agost/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/agost
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbi1095.pfb><C:/Use
-rs/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx0800.pfb
+onts/cm/cmsy6.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmsy8.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmti10.pfb><C:/Users/agost/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/doublestroke/dsrom10.pfb><C:/Users/agost/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/agost/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Use
+rs/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbi1095.pfb
 ><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx
-1095.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-su
-per/sfbx1200.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/cm-super/sfbx1440.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/public/cm-super/sfbx1728.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/
-fonts/type1/public/cm-super/sfbx2074.pfb><C:/Users/agost/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/cm-super/sfbx2488.pfb><C:/Users/agost/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/cm-super/sfcc0800.pfb><C:/Users/agost/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm0500.pfb><C:/Users/agos
-t/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm0600.pfb><C:/Us
-ers/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm0700.pf
+0800.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-su
+per/sfbx1095.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/cm-super/sfbx1200.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/cm-super/sfbx1440.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/cm-super/sfbx1728.pfb><C:/Users/agost/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/cm-super/sfbx2074.pfb><C:/Users/agost/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/cm-super/sfbx2488.pfb><C:/Users/agost/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfcc0800.pfb><C:/Users/agos
+t/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm0500.pfb><C:/Us
+ers/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm0600.pf
 b><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfr
-m0800.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-s
-uper/sfrm0900.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/cm-super/sfrm1095.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/cm-super/sfti0800.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/cm-super/sfti1000.pfb><C:/Users/agost/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/cm-super/sfti1095.pfb><C:/Users/agost/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/cm-super/sftt1095.pfb><C:/Users/agost/AppDa
-ta/Local/Programs/MiKTeX/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on TesiStile.pdf (60 pages, 8196232 bytes).
+m0700.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-s
+uper/sfrm0800.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/cm-super/sfrm0900.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/cm-super/sfrm1095.pfb><C:/Users/agost/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/cm-super/sfti0800.pfb><C:/Users/agost/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/cm-super/sfti1000.pfb><C:/Users/agost/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/cm-super/sfti1095.pfb><C:/Users/agost/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sftt1095.pfb><C:/Users/ago
+st/AppData/Local/Programs/MiKTeX/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on TesiStile.pdf (64 pages, 8230246 bytes).
 PDF statistics:
- 856 PDF objects out of 1000 (max. 8388607)
- 170 named destinations out of 1000 (max. 500000)
+ 908 PDF objects out of 1000 (max. 8388607)
+ 186 named destinations out of 1000 (max. 500000)
  375 words of extra memory for PDF output out of 10000 (max. 10000000)
 

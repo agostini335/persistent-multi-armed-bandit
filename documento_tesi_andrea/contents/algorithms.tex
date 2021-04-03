@@ -6,7 +6,36 @@ In this chapter we present in details the novel algorithms and their theoretical
 \section{Introduction to the Novel Algorithms}
 
 As outlined in \cite{banditalgowebopt}, Multi-armed Bandit algorithms have to actively select which data you should acquire and analyze that data in real-time. Indeed, bandit algorithms exemplify two types of learning: \emph{active learning}, which refers to algorithms that actively select which data they should receive; and \emph{online learning}, which refers to algorithms that analyze data in real-time and provide results on the fly. This means that to evaluate algorithms we need to design a simulation environment where we can mimic real-scenarios dynamics. Informally, we call \emph{bucket} a realization $\boldsymbol{Z_{j,t}}= (Z_{j,t,1},\dots, Z_{j,t,Tmax})$ of the persistency vector and we call \emph{bin}  the m-th element  $Z_{j,m,t}$  of the persistency vector $\boldsymbol{Z_{j,t}}$.   During the simulation, each bucket will be parsed according to the experiment time $t$, meaning that the learner can only visit the bin of the bucket containing the information gathered in the past. As stated in Chapter \ref{CF}, when at time $t$ an arm $a_j$ is played, the environment generates a bucket $\boldsymbol{Z_{j,t}}$ and a feedback $R_{j,t}$ that are collected by the learner.
-Changing the point of view, we can say that, during the experiment, each arm $a_j$ collects a sequence of pulls, characterized by the extracted feedback-bucket pairs $(R_ {j, t}, \boldsymbol{Z_ {j, t}})$. The algorithms described below have a structural difference from the standard ones designed for traditional Multi-armed Bandit. Indeed, in the presented framework, more than one arm can have a set of non-terminated buckets (not totally parsed yet) simultaneously.  This parallelism implies that at each time instant we need to update the terms of every arms and not only of the last one played. Some of the algorithms presented will work without distinction with both pull reward and normalized pull reward.  For the sake of clarity, we define a generic reward $W_{j,t}$ with unknown expectations $\omega_j$ that acts as a proxy variable. Depending on the setting addressed, $W_{j,t}$ will represent the pull reward $X_{j,t}$ or the normalized pull reward $Y_{j,t}$. The table \ref{algsumm} summarizes the algorithms presented and their operating characteristics.
+Changing the point of view, we can say that, during the experiment, each arm $a_j$ collects a sequence of pulls, characterized by the extracted feedback-bucket pairs $(R_ {j, t}, \boldsymbol{Z_ {j, t}})$. The algorithms described below have a structural difference from the standard ones designed for traditional Multi-armed Bandit. Indeed, in the presented framework, more than one arm can have a set of non-terminated buckets (not totally parsed yet) simultaneously.  This parallelism implies that at each time instant we need to update the terms of every arms and not only of the last one played. Some of the algorithms presented will work without distinction with both pull reward and normalized pull reward.  For the sake of clarity, we define a generic reward $W_{j,t}$ with unknown expectation $\omega_j$ that acts as a proxy variable. Depending on the setting addressed, $W_{j,t}$ will represent the pull reward $X_{j,t}$ or the normalized pull reward $Y_{j,t}$. The table \ref{t_summary} summarizes the algorithms presented and their operating characteristics.
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+	\centering
+	
+	
+	\caption{For each policy, we depict the operating characteristics: the family; the reward maximized; the exploitation of the partial information deriving from buckets not fully parsed. Note that the policies that do not exploit partial information are considered as baselines.}
+	\scalebox{0.8}{
+	\begin{tabular}{l|
+			>{\columncolor[HTML]{EFEFEF}}c |
+			>{\columncolor[HTML]{EFEFEF}}c |cc|
+			>{\columncolor[HTML]{EFEFEF}}c |
+			>{\columncolor[HTML]{EFEFEF}}c |}
+		\hhline{~|-|-|-|-|-|-|}
+		& \multicolumn{2}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{Family}} & \multicolumn{2}{c|}{\textbf{Reward}}                  & \multicolumn{2}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{\begin{tabular}[c]{@{}c@{}}Partial\\ Information\\ Exploit\end{tabular}}} \\ \hline
+		\multicolumn{1}{|c|}{\textbf{Policy}}           & \textit{Frequentist}           & \textit{Bayesian}           & \multicolumn{1}{c|}{\textit{P.R.}} & \textit{N.P.R.} & \textit{Yes}                                                     & \textit{No}                                                     \\ \hline
+		\multicolumn{1}{|l|}{\textbf{PR-T-UCB-P}}        & x                              &                             & \multicolumn{1}{c|}{x}             &                 &                                                                  & x                                                               \\
+		\multicolumn{1}{|l|}{\textbf{PR-T-UCB-NP}}       & x                              &                             & \multicolumn{1}{c|}{}              & x               &                                                                  & x                                                               \\
+		\multicolumn{1}{|l|}{\textbf{PR-BW-UCB-P}}       & x                              &                             & \multicolumn{1}{c|}{x}             &                 & x                                                                &                                                                 \\
+		\multicolumn{1}{|l|}{\textbf{PR-NT-UCB-P}}       & x                              &                             & \multicolumn{1}{c|}{x}             &                 & x                                                                &                                                                 \\
+		\multicolumn{1}{|l|}{\textbf{PR-T-TS-P}}         &                                & x                           & \multicolumn{1}{c|}{x}             &                 &                                                                  & x                                                               \\
+		\multicolumn{1}{|l|}{\textbf{PR-T-TS-NP}}        &                                & x                           & \multicolumn{1}{c|}{}              & x               &                                                                  & x                                                               \\
+		\multicolumn{1}{|l|}{\textbf{PR-BW-BayesUCB-P}}  &                                & x                           & \multicolumn{1}{c|}{x}             &                 & x                                                                &                                                                 \\
+		\multicolumn{1}{|l|}{\textbf{PR-BW-BayesUCB-NP}} &                                & x                           & \multicolumn{1}{c|}{}              & x               & x                                                                &                                                                 \\ \hline
+	\end{tabular}}
+	\label{t_summary}
+\end{table}
 
 \subsection{Farsighted and Myopic configuration}
 
@@ -33,7 +62,7 @@ We can consider a bucket $\boldsymbol{Z_{j,t}}$ terminated (fully parsed) accord
 
 \section{Frequentist Algorithms}
 To facilitate the understanding of the code, the algorithms described in this section will be decoupled into two functions: the \emph{Policy} and the \emph{Update}. The policy function will describe the interaction of the learner with the environment and will require an update function passed as an argument. The update function will be responsible to update the knowledge of the learner coming from new data and compute the indices needed by the policy to take decisions, concretizing the overall strategy. The pseudo-code of a generic frequentist policy is depicted in Algorithm \ref{alg:FreqPolicy}.  The first $k$ instants form the initialization phase, during which  each arm is chosen once. After the $k^{th}$ time instant the loop phase begins. Here, at time t, the agent plays the arm $a_j$ having the largest index $u_j$, the upper confidence bound of the arm $a_j$. After the play of an arm, the update function $U$ occurs.
-Algorithm \ref{alg:FreqPolicy} requires in input an arm set $A$, the time horizon $N$, and an update function $U$. Below we propose three update functions that can be passed in input to the generic policy depicted in Algorithm \ref{alg:FreqPolicy}, concretizing the following policies: PR-T-UCB, PR-BW-UCB-P, PR-NT-UCB-P.
+Algorithm \ref{alg:FreqPolicy} requires in input an arm set $A$, the time horizon $N$, and an update function $U$. Below we propose three update functions that can be passed in input to the generic policy depicted in Algorithm \ref{alg:FreqPolicy}, concretizing the following policies: PR-T-UCB, PR-BW-UCB-P, PR-NT-UCB-P. The theoretical guarantees obtained are summarized in Table \ref{t:garanzie}.
 
 \begin{algorithm}[H]
 	\caption{\texttt{Frequentist Policy}}
@@ -56,13 +85,28 @@ Algorithm \ref{alg:FreqPolicy} requires in input an arm set $A$, the time horizo
 	\label{alg:FreqPolicy}
 \end{algorithm}
 
+\begin{table}[H]
+	\caption{For each policy, we report the order of the bound on the expected regret when the number of pulls $t \rightarrow \infty$ . The policies are assumed in myopic configuration.}
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Policy}      & \textbf{Regret Bound Order} \\ \hline
+		\textbf{PR-T-UCB-P}  & $O(\Tmax^2\ln(t))$          \\
+		\textbf{PR-BW-UCB-P} & $O(\Tmax^2\ln(t))$          \\
+		\textbf{PR-NT-UCB-P} & $O(\Tmax\ln(t))$            \\ \hline
+	\end{tabular}
+	\label{t:garanzie}
+\end{table}
+
+
+
 
 
 \subsection{PR-T-UCB (Frequentist Baseline Algorithm)}
 %This algorithm can be used in both \emph{Tight Persistency} and \emph{General Persistency} configuration.
 
-PR-T-UCB (Persistent Reward - Terminated Buckets - UCB) is an algorithm that extends the idea of the well known UCB algorithm in the case of persistent reward. The reward is considered as a unique variable available after the termination of the bucket. The pseudo-code is provided in Algorithm \ref{alg:BaselineUCB}.
-This algorithm takes inspiration from the work of \cite{joulani2013} on delayed feedback. Indeed, evaluating the reward only after termination of the bucket reduces the persistent feedback problem to a delayed feedback problem. For this reason we consider it as a baseline algorithm with which the other proposed strategies are compared. It works for both the cases when we want to maximize the pull reward ($\omega_j = \mu_j$) or when we want to maximize the normalized pull reward ($\omega_j = \eta_j$). In the former we will extended the name of the algorithm to PR-T-UCB-P, in the latter to PR-T-UCB-NP.
+PR-T-UCB (Persistent Reward - Terminated Buckets - UCB) is an algorithm that extends the idea of the well known UCB1 algorithm in the case of persistent reward. The reward is considered as a unique variable available after the termination of the bucket. The pseudo-code is provided in Algorithm \ref{alg:BaselineUCB}.
+This algorithm takes inspiration from the work of \cite{joulani2013} on delayed feedback. Indeed, evaluating the reward only after termination of the bucket reduces the persistent feedback problem to a delayed feedback problem. For this reason we consider it as a baseline algorithm with which the other proposed strategies are compared. It works for both the cases when we want to maximize the pull reward ($\omega_j = \mu_j$) or when we want to maximize the normalized pull reward ($\omega_j = \eta_j$). In the former we will extend the name of the algorithm to PR-T-UCB-P, in the latter to PR-T-UCB-NP.
 For each arm $a_j$, the update function will detect the terminated buckets according to the configuration (farsighted or myopic) adopted. At each time $t$, for each arm $a_j$, the algorithm computes: the empirical mean reward $\hat{\omega}_j(t)$ obtained from the terminated buckets of the arm $a_j$, ignoring the non-terminated buckets (line 3); the exploration term $c_j(t)$ (line 4). Let $\epsilon(t) = \sqrt{\frac{2\ln t}{B_j(t)}} \ $, the exploration term  $c_j(t)$ is computed in the following way.
 \begin{itemize}
 	\item if we are maximizing the \emph{Pull Reward}:\\
@@ -106,12 +150,12 @@ For each arm $a_j$, the update function will detect the terminated buckets accor
 \cite{joulani2013} provide the Delayed-UCB1 algorithm, a modification of the UCB algorithm for MAB problem with delayed feedback. Delayed-UCB1 algorithm enjoys the same regret guarantees compared to its non-delayed version, up to an additive penalty depending on the delays. We can rewrite their result, adapting it to our setting with deterministic $R_j$, in the following way:
 
 \begin{theorem}
-	For $t \ge 1$, the expected regret of the PR-T-UCB-P algorithm is bounded by
-	\[ \mathbb{E}[\mathfrak{R}_t] \le \sum_{i:\Delta_i>0} \Bigg( \frac{8 R_i^2 (\Tmax-\Tmin)^2\ln t }{\Delta_i^2} + 1 + \frac{\pi^2}{3} \Bigg) + \sum_{i=1}^{K} \Delta_i \mathbb{E}[G^*_{i,n}],\]
+	For $K \ge 1$, if policy PR-T-UCB-P is run in myopic configuration on K arms having deterministic feedback $R_1,\dots,R_K$, then the expected regret after any number of pulls $t$ is at most:
+	\[ \mathbb{E}[\mathfrak{R}_t] \le \sum_{i:\Delta_i>0} \Bigg[ \frac{8 R_i^2 (\Tmax-\Tmin)^2\ln t }{\Delta_i}  + \Bigg( 1 + \frac{\pi^2}{3} \Bigg)\Delta_i\Bigg]  + \sum_{i=1}^{K} \Delta_i \mathbb{E}[G^*_{i,n}],\]
 	where $G^*_{i,n}$ is the maximum number of missing feedbacks from arm $i$ during the first $n$ time steps.
 \end{theorem} 
 Notice that in the Persistent Reward setting $G^*_{i,n}<\Tmax$ and we consider $\Tmin = 0$, therefore, in the worst case, the regret can be bounded by 
-\[ \mathbb{E}[\mathfrak{R}_t] \le \sum_{i:\Delta_i>0} \Bigg( \frac{8 R_i^2 \Tmax^2\ln t}{\Delta_i^2} + 1 + \frac{\pi^2}{3} \Bigg) + \Tmax\sum_{i=1}^{K} \Delta_i.\]
+\[ \mathbb{E}[\mathfrak{R}_t] \le \sum_{i:\Delta_i>0} \Bigg[ \frac{8 R_i^2 \Tmax^2\ln t}{\Delta_i} + \Bigg(1 + \frac{\pi^2}{3}\Bigg)\Delta_i \Bigg] + \Tmax\sum_{i=1}^{K} \Delta_i.\]
 
 
 
@@ -126,7 +170,7 @@ The algorithm PR-BW-UCB-P (Persistent - Bin-Wise - UCB - Pull Reward)  is tailor
 
 
 At each time $t$, for each arm $a_j$, for each position $m$, the algorithm computes $\overline{z}_{j,m}(t)$ and $c_{j,m}(t)$ (line 4 and line 5 respectively). $\overline{z}_{j,m}(t)$ is computed in the following way: $$\overline{z}_{j,m}(t) = \frac{1}{\vert V_{j,m}(t) \vert} \sum_{\boldsymbol{Z_{j,s}} \in V_{j,m}(t)} Z_{j,s,m}\ .$$
-Finally, for each arm $a_j$, the upper confidence bound $u_j(t)$ is calculated by multiplying the feedback $R_j$  with the sum, over $m$, of the average bin value $\overline{z}_{j,m}$ and the exploration term  $c_{j,m}(t)$  (line 7). Each element of the summation is upper bounded to 1. This is a help we give to the learner to speed up the learning process. Indeed, this is known a priori considering that each bin has support in [0,1]. 
+Finally, for each arm $a_j$, the upper confidence bound $u_j(t)$ is calculated by multiplying the feedback $R_j$  with the sum, over $m$, of the average bin value $\overline{z}_{j,m}(t)$ and the exploration term  $c_{j,m}(t)$  (line 7). Each element of the summation is upper bounded to 1. This is a help we give to the learner to speed up the learning process. Indeed, this is known a priori considering that each bin has support in [0,1]. 
 
 
 
@@ -169,7 +213,7 @@ Finally, for each arm $a_j$, the upper confidence bound $u_j(t)$ is calculated b
 \subsubsection{PR-BW-UCB-P Theoretical Analysis}
 
 \begin{theorem}
-	For $K \ge 1$, if policy PR-BW-UCB-P is run in myopic configuration on $K$ arms having deterministic feedback $R_1,\dots,R_K$, then the expected regret after any number of plays is at most:
+	For $K \ge 1$, if policy PR-BW-UCB-P is run in myopic configuration on $K$ arms having deterministic feedback $R_1,\dots,R_K$, then the expected regret after any number of pulls $t$ is at most:
 	\[ \mathbb{E}[\mathfrak{R}_t] \le \sum_{i:\tilde{\Delta}_i>0} \Bigg( \frac{8 R_i^2 \Tmax^2\ln t }{\tilde{\Delta_i}} \Bigg) + \Tmax\Bigg( 1 + \frac{\pi^2}{3} \Bigg)\sum_{i=1}^{K} \tilde{\Delta}_i\]
 	where $\tilde{\Delta}_i =$  $R^*\sum_{m=1}^{T_{max}}\gamma^*_{m} - R_i \sum_{m=1}^{T_{max}} \gamma_{i,m}$.
 	\label{t_bw}
@@ -217,7 +261,7 @@ Similarly, for all $m=1:T_{max}$, we bound the probability of event (\ref{diseq2
 	\mathbf{P}(R_i(\bar{z}^*_{s_i,m,t} - \gamma^*_m + c_{s_i,m,t}) \le 0) \le t^{-4}
 \end{align}
 
-Now we look for a $n_{s_i,t}$ so that inequality (\ref{diseq3}) does not hold. This is equilvalent to find a solution such that:
+Now we look for a $n_{s_i,t}$ so that inequality (\ref{diseq3}) does not hold. This is equivalent to find a solution such that:
 \begin{align}
 	&R^*\sum_{m=1}^{T_{max}}\gamma^*_{m} - R_i \sum_{m=1}^{T_{max}}\Bigg( \gamma_{i,m} +2\sqrt{\frac{2\ln(t)}{n_{s_i,m,t}}}\Bigg) \ge 0 \label{ineq_mag}.
 \end{align}
@@ -247,14 +291,14 @@ The bound on the average number of time we pull suboptimal arm $i$ is the follow
 \end{align}
 
 \subsection{PR-NT-UCB-P}
-Algorithm \ref{alg:Idea2} is tailored for scenarios where we want to maximize \emph{Pull Reward} and we have a deterministic feedback $R_j$ for each arm $a_j$. With this algorithm we want to exploit all the information of the buckets acquired during the learning process, considering both the terminated and non-terminated ones. To do that, at each time instant t, for each arm $a_j$, we fill the non-terminated buckets with fake realizations (line 5). To fill a non-terminated bucket $\boldsymbol{Z_{j,s}}$ means that we impose each component $Z_{j,s,m}$ not-parsed yet to be equal to a fake realization. At this point, we consider the altered bucket $\boldsymbol{Z_{j,s}}$ fully parsed. We designed two possible strategies to fill the non-terminated buckets: (i)
-fill the non-terminated buckets with zeros, having a pessimistic approach; (ii) fill the non-terminated buckets with ones, having an optimistic approach. We accompany the name of the algorithm with the adjective \emph{pessimistic} and \emph{optimistic} in case we are adopting (i) or (ii) respectively. At each time instant t, for each arm $a_j$, the exploration term $c_j$ and the index $u_j$ are computed in the following way (respectively at line 8 and at line 9):
-$$c_j = R_j \bigg( \sqrt{\frac{2\Tmax\ln{t}}{n_j(t)}} + \frac{\Tmax(\Tmax-1)}{2n_j(t)} \bigg) \ ,$$ 
+PR-NT-UCB-P (Persistent - Non-Terminated Buckets - UCB - Pull Reward) is an algorithm tailored for scenarios where we want to maximize \emph{Pull Reward} and we have a deterministic feedback $R_j$ for each arm $a_j$. With this algorithm we want to exploit all the information of the buckets acquired during the learning process, considering both the terminated and non-terminated ones. 
+To do that, at each time instant $t$, for each arm $a_j$, we fill the non-terminated buckets with fake realizations (line 5). To fill a non-terminated bucket $\boldsymbol{Z_{j,s}}$ means that we impose each component $Z_{j,s,m}$ not-parsed yet to be equal to a fake realization. At this point, we consider the altered bucket $\boldsymbol{Z_{j,s}}$ fully parsed. We fill half of the non-parsed components of a bucket with ones and half with zeros. At each time instant t, for each arm $a_j$, the exploration term $c_j(t)$ and the index $u_j(t)$ are computed in the following way (respectively at line 8 and at line 9):
+$$c_j(t) =  \sqrt{\frac{2\Tmax\ln{t}}{n_j(t)}} + \frac{\Tmax(\Tmax-1)}{2n_j(t)} \ ,$$ 
 $$
-u_j = R_j \bigg( \frac{\sum_{s=1}^{t}\sum_{m=1}^{\Tmax}Z_{j,s,m}}{n_j(t)}\bigg)+c_j   = \frac{\sum_{s=1}^{t} X_{j,s}}{n_j(t)} +c_j  ,
+u_j(t) = R_j \bigg( \frac{\sum_{s=1}^{t}\sum_{m=1}^{\Tmax}Z_{j,s,m}}{n_j(t)}+c_j(t) \bigg)  = \frac{\sum_{s=1}^{t} X_{j,s}}{n_j(t)} + R_jc_j(t)  ,
 $$
 
-where $n_j(t)$ is the number of pulls totalized by the arm $a_j$ at time t. The index $u_j$ is the sum of two terms: (i) the average Pull Reward computed considering all the acquired buckets; (ii) the exploration term  $c_j$. Once $u_j$ has been computed, all the fake realizations are removed from the buckets (line 11).
+where $n_j(t)$ is the number of pulls totalized by the arm $a_j$ at time $t$. The index $u_j(t)$ is the sum of two terms: (i) the average Pull Reward computed considering all the acquired buckets; (ii) the exploration term. Once $u_j(t)$ has been computed, all the fake realizations are removed from the buckets (line 11).
 
 \begin{algorithm}[H]
 	\caption{\texttt{PR-NT-UCB-P}}
@@ -292,15 +336,77 @@ where $n_j(t)$ is the number of pulls totalized by the arm $a_j$ at time t. The 
 	\label{alg:Idea2}
 \end{algorithm}
 
+\subsubsection{PR-NT-UCB-P Theoretical Analysis}
+
+\begin{theorem}
+	For $K \ge 1$, if policy PR-NT-UCB-P is run in myopic configuration on $K$ arms having deterministic feedback $R_1,\dots,R_K$, then the bound  on the expected regret, when the number of pulls $t \rightarrow \infty$, is of order $O(\Tmax\ln(t))$.	
+	\label{t_NT}
+\end{theorem} 	
+
+
+\paragraph{Proof of Theorem \ref{t_NT}}
+It is possible to show that any algorithm that uses an arbitrary combination of zeros and ones achieves a regret bound of the same order. When we fill half of the non-parsed components with ones and half with zeros we get the best regret bound, however, it differs from the worst-case bound only by a small multiplicative constant. Therefore, in the following, we analyze the case in which we substitute ones. Notice that the
+same proof can be extended to any other algorithm substituting combinations of zeros and ones.
+\\\\
+Simplifying the notation, we consider the bucket $\boldsymbol{z_i} = (z_{i,1},\dots,z_{i,\Tmax})$. We denote with $n_i$ the number of pulls of the arm $i$.
+\[ \phi(z_{1,1},\ldots,z_{1,T_{max}},\ldots,z_{n_i,1},\ldots,z_{n_i,T_{max}}) = \sum_{j=1}^{n_i}\sum_{k=1}^{T_{max}} z_{j,k}. 
+\]
+
+\begin{align}
+	&\sup_{z_{1,1},\ldots,z_{1,T_{max}},\ldots,z_{j,k},z_{j',k'},\ldots,z_{n_i,1},\ldots,z_{n_i,T_{max}}}|\phi(z_{1,1},\ldots,z_{1,T_{max}},\ldots,,z_{j,k},\ldots,z_{n_i,1},\ldots,z_{n_i,T_{max}})-\\
+	&\phi(z_{1,1},\ldots,z_{1,T_{max}},\ldots,z_{j',k'},\ldots,z_{n_i,1},\ldots,z_{n_i,T_{max}})|\le 1.
+\end{align}
+
+We apply McDiarmid's Inequality:
+
+\[ \mathbb{P}(\phi-\mathbb{E}[\phi]\ge\bar{\varepsilon}) \le \exp\Bigg({\frac{-2\bar{\varepsilon}^2}{\sum_{\ell=1}^{n_iT_{max}}1^2}}\Bigg) = \exp\Bigg({\frac{-2\bar{\varepsilon}^2}{n_iT_{max}}}\Bigg),
+\]
+
+\[ \mathbb{P}\bigg(\frac{\phi}{n_i}-\frac{\mathbb{E}[\phi]}{n_i}\ge\varepsilon\bigg) \le  \exp\Bigg({\frac{-2\varepsilon^2 n_i}{T_{max}}}\Bigg).
+\]
+
+Function $\phi$ is the approximation of the true function $\phi_v$. Function $\phi$ sums the fake elements used to complete the vectors, while $\phi_v$ uses the true realizations. Notice that, when filling the missing elements with ones, $\mathbb{E}[\phi]\ge\mathbb{E}[\phi_v]$.
+
+We need to bound the probability of the following events:
+\begin{itemize}
+	\item $\frac{\phi}{n_i}-\frac{\mathbb{E}[\phi_v]}{n_i}\le -\varepsilon$;
+	\item $\frac{\phi}{n_i}-\frac{\mathbb{E}[\phi_v]}{n_i}\ge \varepsilon$.
+\end{itemize}
+
+We fix the exploration term $\varepsilon$ as: 
+\[\varepsilon = c_{t,n_i}=\sqrt{\frac{2 T_{max}\ln t }{n_i}} + \frac{T_{max}(T_{max}-1)}{2n_i},\]
+so that the probability can be bounded as shown below.
+
+For the first event we show that:
+\begin{align}
+	&\mathbb{P}\Bigg(\frac{\phi}{n_i}-\frac{\mathbb{E}[\phi_v]}{n_i}\le -\varepsilon\Bigg) \le \mathbb{P}\Bigg(\frac{\phi}{n_i}-\frac{\mathbb{E}[\phi]}{n_i}\le -\varepsilon\Bigg) \le \exp \bigg(-\frac{2 \varepsilon^2 n_i}{T_{max}}\bigg) \le\\
+	& \exp \Bigg(-\frac{2 \Big(\sqrt{\frac{2 T_{max}\ln t }{n_i}}\Big)^2 n_i}{T_{max}}\Bigg) \le \exp (-4 \ln t) \le t^{-4}.
+\end{align}
+
+Second event:
+\begin{align}
+	&\mathbb{P}\Bigg(\frac{\phi}{n_i}-\frac{\mathbb{E}[\phi_v]}{n_i}\ge \varepsilon\Bigg) = \mathbb{P}\Bigg(\frac{\phi}{n_i}-\frac{\mathbb{E}[\phi]}{n_i}\ge \varepsilon+\frac{\mathbb{E}[\phi_v]}{n_i}-\frac{\mathbb{E}[\phi]}{n_i}\Bigg) \le \\
+	&\exp \Bigg(-\frac{2 \big(\varepsilon-\frac{\mathbb{E}[\phi]-\mathbb{E}[\phi_v]}{n_i}\big)^2 n_i}{T_{max}}\Bigg) \le \exp \Bigg(-\frac{2 \big(\varepsilon-\frac{T_{max}(T_{max}-1)}{2n_i}\big)^2 n_i}{T_{max}}\Bigg) \label{maxdif} \le \\
+	& \exp \Bigg(-\frac{2 \Big(\sqrt{\frac{2 T_{max}\ln t }{n_i}}\Big)^2 n_i}{T_{max}}\Bigg) \le \exp (-4 \ln t) \le t^{-4}.
+\end{align}
+
+In the bound at line \ref{maxdif} we use the maximum difference between $\mathbb{E}[\phi]$ and $\mathbb{E}[\phi_v]$. Assuming that $n_i \ge T_{max}$, the worst-case scenario is when arm $i$ has been pulled $T_{max}$ consecutive times. In this scenario there is a maximum number of missing elements equal to $\frac{T_{max}(T_{max}-1)}{2}$, that are all replaced by ones and summed in $\phi$. In the worst case the true realizations of are all equal to zero.
+
+Now we compute a $n_i$ such that the probability of event $\frac{\phi^*}{n_i}-\frac{\phi_i}{n_i}-2\varepsilon <0$ is equal to zero. We denote $\frac{\phi^*}{n_i}-\frac{\phi_i}{n_i}$ by $\Delta_i$.
+\[ n_i \ge \frac{1}{\Delta_i^2} \Bigg( \Delta_i T_{max}(T_{max}-1) + 4 T_{max} \ln(t) + \sqrt{16 T_{max}^2 \ln^2(t) + 8 \Delta_i T^2_{max}(T_{max}-1)\ln(t)} \Bigg)
+\]
+Notice that as $t \rightarrow \infty$, the bound is of order $O(\Tmax\ln(t))$.
+
 
 
 
 \section{Bayesian Algorithms}
-
-\subsection{PR-T-TS (Bayesian Baseline Algorithm)}
+In this section we present the novel algorithms that adopt a Bayesian approach. We developed the following policies: PR-T-TS-P, PR-T-TS-NP, PR-BW-BayesUCB-P, PR-BW-BayesUCB-NP.
+\subsection{PR-T-TS-P (Bayesian Baseline Algorithm)}
+PR-T-TS (Persistent - Terminated Buckets - Thompson Sampling - Pull Reward) is an algorithm that extends the idea of the well known Thompson Sampling algorithm in case of persistent reward and deterministic feedback $R_j$, where we want to maximize the pull reward. Similarly to Algorithm \ref{alg:BaselineUCB}, PR-T-TS considers the reward as a unique variable available after the termination of the bucket. The pseudo-code of PR-T-TS is provided in Algorithm \ref{alg:TSBASELINE}. The algorithm, for each arm $a_j$, has a Beta distribution representing the persistency $\mathfrak{p}_j=\frac{\mu_j}{R_jTmax}$. At each time $t$, having observed $S_j(t)$ success and $F_j(t)$ failures, the distributions on $\mathfrak{p}_j$ are updated as Beta($S_j(t),F_j(t)$). For each arm $a_j$, it is sampled $\theta_j$ from the distributions on $\mathfrak{p}_j$. The arm having the largest $\theta_jR_j$  is pulled. Note that $\mathfrak{p}_jR_j\Tmax = \mu_j$, hence we are trying to pull the arm that has the best expected reward based on the previous successes and failures (we do not consider $\Tmax$ in the choice of the arm since it is a costant). When a bucket $\boldsymbol{Z_{j,s}}$ of the arm $a_j$ is terminated, the persistency $\mathfrak{p}_{j,s}$ is computed as follows: $\mathfrak{p}_{j,s} = \frac{\sum_{m=1}^{\Tmax} Z_{j,s,m}}{\Tmax}$. At this point, the success and failures counters are updated based on a Bernoulli trial with success probability $\mathfrak{p}_{j,s}$. This implementation allows us to adopt the idea behind the stochastic TS algorithm proposed by \cite{agrawal2012analysis}.
 
 \begin{algorithm}[H]
-	\caption{\texttt{TS Baseline}}
+	\caption{\texttt{PR-T-TS}}
 	\begin{scriptsize}
 		\begin{algorithmic}[1]
 			
@@ -322,8 +428,8 @@ where $n_j(t)$ is the number of pulls totalized by the arm $a_j$ at time t. The 
 			\For{each arm $a_j \in  A$} \Comment{update phase}
 				\For{each bucket $\boldsymbol{Z_{j,s}} $}
 				\If {$\boldsymbol{Z_{j,s}} $ is terminated}
-				\State compute $\tilde{z}_{j,s}$
-				\State Perform a Bernoulli trial with success probability $\tilde{z}_{j,s}$ and observe output r
+				\State compute $\mathfrak{p}_{j,s}$
+				\State Perform a Bernoulli trial with success probability $\mathfrak{p}_{j,s}$ and observe output r
 				\If{ r = 1} \;
 				\State $S_j \gets S_j + 1$ \;
 				
@@ -345,7 +451,9 @@ where $n_j(t)$ is the number of pulls totalized by the arm $a_j$ at time t. The 
 	\label{alg:TSBASELINE}
 \end{algorithm}
 
-\subsection{PR-BW-BayesUCB-P}
+\subsection{PR-T-TS-NP (Bayesian Baseline Algorithm)}
+PR-T-TS-NP (Persistent - Terminated Buckets - Thompson Sampling - Normalized Pull Reward) is an algorithm that extends the idea of the well known Thompson Sampling algorithm in case of persistent reward and deterministic feedback $R_j$, where we want to maximize the normalized pull reward. It differs from PR-T-TS-P, previously described, only for the definition of the persistency $\mathfrak{p}_{j}$. Since we are dealing with the normalized pull reward, we consider $\mathfrak{p}_{j} = \frac{\eta_j}{R_j}$. When a bucket $\boldsymbol{Z_{j,s}}$ is terminated, $\mathfrak{p}_{j,s}$ is computed as follows: $\mathfrak{p}_{j,s} = \frac{\sum_{m=1}^{\Tmax} Z_{j,s,m}}{l_{j,s}}$, where $l_{j,s}$ is the true length. the pseudo code of PR-T-TS-NP  is depicted in Algorithm \ref{alg:TSBASELINE}.
+
 
 \subsection{PR-BW-BayesUCB-NP}
 

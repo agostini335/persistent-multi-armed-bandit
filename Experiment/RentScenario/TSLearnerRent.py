@@ -5,7 +5,7 @@ from scipy.stats import beta as scipybeta
 class ThompsonBaselineRent(RentLearner):
  
     def __init__(self, n_arms, arms, tmax, optimistic = False, farsighted = False):
-        name = "Thompson_baseline_rent"                
+        name = "PR-BW-NP"                
         if optimistic == True:
             name += "_optim"
         if farsighted == True:
@@ -89,8 +89,7 @@ class ThompsonBaselineRent(RentLearner):
 class BayesUCBPersistentRent(RentLearner):
  
     def __init__(self, n_arms, arms, tmax, farsighted=False, param = 3):
-        name = "PR-BW-BayesUCB-NP_"
-        name += str(param) 
+        name = "PR-BW-BayesUCB-NP" 
         if farsighted:
             name += "_farsighted"
         else:

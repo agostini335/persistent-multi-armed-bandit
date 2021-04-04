@@ -4,7 +4,7 @@ import numpy as np
 
 class RentUCBLearner_single_m(RentLearner):
     def __init__(self, n_arms, arms, t_global):
-        super().__init__(n_arms,arms,"Baseline_UCB_rent_myopic")
+        super().__init__(n_arms,arms,"PR-T-UCB-NP_myopic")
         self.criterion = np.ones(n_arms) * np.inf
         self.expected_payoffs = np.zeros(n_arms)
         self.number_of_completed_buckets = np.zeros(n_arms)
@@ -46,7 +46,7 @@ class RentUCBLearner_single_m(RentLearner):
 
 class RentUCBLearner_single_f(RentLearner):
     def __init__(self, n_arms, arms, t_global):
-        super().__init__(n_arms,arms,"Baseline_UCB_rent_farsighted")
+        super().__init__(n_arms,arms,"PR-T-UCB-NP_farsighted")
         self.criterion = np.ones(n_arms) * np.inf
         self.expected_payoffs = np.zeros(n_arms)
         self.number_of_completed_buckets = np.zeros(n_arms)

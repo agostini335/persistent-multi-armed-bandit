@@ -89,7 +89,7 @@ class ThompsonBaselineRent(RentLearner):
 class BayesUCBPersistentRent(RentLearner):
  
     def __init__(self, n_arms, arms, tmax, farsighted=False, param = 3):
-        name = "BayesUCBPersistent_"
+        name = "PR-BW-BayesUCB-NP_"
         name += str(param) 
         if farsighted:
             name += "_farsighted"

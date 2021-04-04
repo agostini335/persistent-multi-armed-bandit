@@ -16,14 +16,11 @@ from RentScenario.RentBound1Learner import RentBound1LearnerPartial
 from RentScenario.Idea2Rent import Idea2_rent
 from RentScenario.TSLearnerRent import ThompsonBaselineRent,BayesUCBPersistentRent
 from tqdm import tqdm
-plt.style.use("seaborn")
-
-from matplotlib import rcParams
-rcParams['axes.titlepad'] = 20 
 
 
-plt.rcParams['mathtext.fontset'] = 'stix'
-plt.rcParams['font.family'] = 'STIXGeneral'
+
+
+
 
 #%% DATASET EXTRACION
 
@@ -65,14 +62,7 @@ for c in canoni_distinct:
 
 confidence_interval = (2*np.array(std_sfitto))/np.sqrt(num_sfitto)
 
-plt.errorbar(canoni_distinct,avg_sfitto,yerr=confidence_interval)
-plt.xlabel("canone")
-plt.ylabel("durata media sfitto (in mesi)")
 
-plt.savefig("canoni_sfitto",dpi=400)
-plt.title("Durata Media Sfitto")
-plt.savefig("canoni_sfitto",dpi=400)
-plt.show()
 
 #contratto dict
 contratto_dict = {}
@@ -215,7 +205,7 @@ from RentScenario.RentBound1Learner import RentPersistentSingleExpl
 
 
 n_runs = 50
-experiment_name = "affitti"
+experiment_name = "affitti-def"
 T_HORIZON = 50000
 for run in range(n_runs):
         learners = []
@@ -271,19 +261,6 @@ for run in range(n_runs):
                 
              
                         
-        
-        print(oracle.value)
-        for l in learners:
-                plt.plot(calculate_cumulative_pseudo_regret(l.collected_arm_values,oracle.value),label = l.name)
-
-        plt.ylabel('cumulative pseudo regret')
-        plt.title('cumulative pseudo regret '+experiment_name+"_run")
-        plt.legend(loc='lower left')
-        plt.xlabel('Time t')
-        plt_name = "Results/"+experiment_name+"_run"+str(run)
-        plt.savefig(plt_name, bbox_inches='tight')
-        #plt.show()
-        plt.clf()
 
         
         #SAVE CSV
@@ -292,84 +269,3 @@ for run in range(n_runs):
 
 
 
-#%%
-#ANALYTICS
-#-------------------------CONFIG----------------------------------#
-
-N_RUNS = n_runs
-time = T_HORIZON
-Oracle_best_arm_value = oracle.value  #TODO CONTROLLARE
-print(Oracle_best_arm_value)
-learner_names=[]
-for learner in learners:
-    learner_names.append(learner.name)
-
-exp_name = experiment_name
-step = ""
-
-print(len(learner_names))
-#dict learner-> list of list of played arms
-learner_arm_value_dict = {}
-for l in range(len(learner_names)):
-    print(l)
-    results_list_of_l = [] #it must have n_runs element
-    for i in range(N_RUNS):
-        full_name="Results/"+exp_name+"_arm_value_results_run_"+str(i)+".csv"
-        data = pd.read_csv(full_name)
-        arm_values_of_l_on_run_i = data[learner_names[l]]
-        assert(len(arm_values_of_l_on_run_i) == time)
-        #print(arm_values_of_l_on_run_i.head)
-        results_list_of_l.append(arm_values_of_l_on_run_i)
-    learner_arm_value_dict[learner_names[l]] = results_list_of_l
-
-    #PLOT SINGLE RUN di VERIFICA
-for run_id in range(N_RUNS):
-    for l in learner_names:
-        if l.__contains__('Thompson'):
-            if l.__contains__("adp"):
-                plt.plot(calculate_cumulative_pseudo_regret(learner_arm_value_dict[l][run_id],Oracle_best_arm_value),label = l, ls='--' )
-            else:
-                plt.plot(calculate_cumulative_pseudo_regret(learner_arm_value_dict[l][run_id],Oracle_best_arm_value),label = l, ls='-' )
-        else:
-            plt.plot(calculate_cumulative_pseudo_regret(learner_arm_value_dict[l][run_id],Oracle_best_arm_value),label = l)
-    
-    plt.ylabel('cumulative pseudo regret')
-    plt.title('cumulative pseudo regret '+"exp_0_"+str(step)+"_run"+str(run_id))
-    plt.legend(loc='lower left')
-    plt.xlabel('Time t')
-    plt_name = "Results/VERIFICA"+"experiment_4_"+str(step)+"_run_"+str(run_id)+".png"
-    plt.savefig(plt_name, bbox_inches='tight')
-    plt.clf()
-
-output_name = str(step)
-    #avg
-compute_experiment_pseudo_regret(learner_names=learner_names,learner_arm_value_dict=learner_arm_value_dict,oracle_value=Oracle_best_arm_value,n_runs=N_RUNS,file_name=step)
-
-
-
-
-#%%
-
-
-
-
-
-#%%
-
-'''
-[208.02683778 208.07239923 207.04134643 207.47536585 207.94585271
- 207.78641398 207.92377817 207.91783381]
-[478.08757739 464.81777379 489.12984823 485.2        463.9258644
- 513.26479258 536.68793059 442.04132231]
-
-[547.78746349 540.91662088 545.78323737 545.23799396 546.71901628
- 548.00952328 548.2359394  546.11583152]
- 
- [191.56661726 191.82326437 191.37548913 191.48939337 191.13694215
- 191.50325515 191.17223931 191.58589174]
-[477.14580527 461.9750113  492.04747625 483.41938164 470.79294247
- 512.7570863  531.58371952 444.44872783]
-
-[530.95592436 530.66131633 530.25776321 531.19045545 530.49852292
- 531.49446044 531.41619469 529.56889278]
- '''

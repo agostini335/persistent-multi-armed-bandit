@@ -47,18 +47,6 @@ def get_n_arms():
     return len(selected_playlist_rids)
 
 def save_and_plot_run_results(show):
-    for l in learners:
-        plt.plot(Utils.calculate_cumulative_pseudo_regret(l.collected_arm_values,oracle.best_arm.value),label = l.name)
-    plt.ylabel('cumulative pseudo regret')
-    plt.title('cumulative pseudo regret '+experiment_name+"_run"+str(run))
-    plt.legend(loc='lower left')
-    plt.xlabel('Time t')
-    plt_name = "Results/"+experiment_name+"_run"+str(run)+".png"
-    plt.savefig(plt_name, bbox_inches='tight')
-    if show:
-        plt.show()
-    plt.clf()
-    #SAVE CSV
     Utils.save_run_results(learners=learners ,run_id=run,exp_name=experiment_name)
 
 

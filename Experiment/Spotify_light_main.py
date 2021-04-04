@@ -82,7 +82,7 @@ play_dict = new_dict
 
 #SETUP CONFIG
 experiment_name = "experiment_spotify_def"
-T = 20000 
+T = 50000 
 n_runs = 50
 tmax = 80
 oracle = Oracle(get_n_arms(),get_arms(),tmax)
@@ -117,7 +117,7 @@ for run in range(n_runs):
     save_and_plot_run_results(show = False)
 
 #%% ANALYTICS
-Utils.compute_full_analytics(n_runs=n_runs,time_horizon=T,oracle=oracle,_learners=learners,experiment_name=experiment_name)
+#Utils.compute_full_analytics(n_runs=n_runs,time_horizon=T,oracle=oracle,_learners=learners,experiment_name=experiment_name)
 
 
 

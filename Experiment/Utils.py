@@ -8,16 +8,16 @@ from Parser.ArmSet import ArmSet
 from Parser.ExperimentDescription import ExperimentDescription
 from matplotlib import rc
 import matplotlib.pyplot as plt
-plt.style.use("seaborn")
+#plt.style.use("seaborn")
 
 from matplotlib import rcParams
-rcParams['axes.titlepad'] = 20 
+#rcParams['axes.titlepad'] = 20 
 
 
-plt.rcParams['mathtext.fontset'] = 'stix'
-plt.rcParams['font.family'] = 'STIXGeneral'
+#plt.rcParams['mathtext.fontset'] = 'stix'
+#plt.rcParams['font.family'] = 'STIXGeneral'
 
-color_list = ["purple","violet","darkred","red","mediumblue","dodgerblue","darkorange","gold","darkgreen","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
+#color_list = ["purple","violet","darkred","red","mediumblue","dodgerblue","darkorange","gold","darkgreen","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
 
 #color_list = ["purple","violet","darkred","mediumblue","darkorange","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
 

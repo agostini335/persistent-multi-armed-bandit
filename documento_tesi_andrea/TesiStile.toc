@@ -7,11 +7,11 @@
 \contentsline {section}{\numberline {2.2}The Multi-Armed Bandit Problem}{6}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Introducing Persistent Rewards}{10}{section.2.3}%
 \contentsline {chapter}{\numberline {3}Problem Formulation}{13}{chapter.3}%
-\contentsline {section}{\numberline {3.1}The MAB-PR problem}{13}{section.3.1}%
+\contentsline {section}{\numberline {3.1}The MAB-PR Problem}{13}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1} Performance measures}{17}{subsection.3.1.1}%
 \contentsline {section}{\numberline {3.2}Modeling of real-world scenarios}{18}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}The Spotify Playlist problem}{18}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}The Rental Pricing problem}{20}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.1}The Spotify Playlist Problem}{18}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}The Rental Pricing Problem}{20}{subsection.3.2.2}%
 \contentsline {chapter}{\numberline {4}Novel Algorithms}{23}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Introduction to the Novel Algorithms}{23}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}Farsighted and Myopic configuration}{24}{subsection.4.1.1}%
@@ -27,15 +27,16 @@
 \contentsline {section}{\numberline {4.3}Bayesian Algorithms}{34}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}PR-T-TS-P (Bayesian Baseline Algorithm)}{34}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}PR-T-TS-NP (Bayesian Baseline Algorithm)}{35}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}PR-BW-BayesUCB-NP}{36}{subsection.4.3.3}%
-\contentsline {chapter}{\numberline {5}Experimental Analysis}{37}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Synthetic Experiment Settings}{37}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Synthetic A}{38}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Synthetic B}{39}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Synthetic C}{39}{subsection.5.1.3}%
-\contentsline {section}{\numberline {5.2}Results}{40}{section.5.2}%
+\contentsline {subsection}{\numberline {4.3.3}PR-BW-BayesUCB-P}{36}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}PR-BW-BayesUCB-NP}{37}{subsection.4.3.4}%
+\contentsline {chapter}{\numberline {5}Experimental Analysis}{39}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Synthetic Experiment Settings}{39}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Synthetic A}{40}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Synthetic B}{41}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Synthetic C}{41}{subsection.5.1.3}%
+\contentsline {section}{\numberline {5.2}Results}{42}{section.5.2}%
 \contentsline {subsection}{\numberline {5.2.1}Observations}{46}{subsection.5.2.1}%
-\contentsline {subsubsection}{spotify}{47}{section*.36}%
-\contentsline {subsubsection}{rent}{47}{section*.37}%
+\contentsline {subsubsection}{spotify}{47}{section*.34}%
+\contentsline {subsubsection}{rent}{47}{section*.35}%
 \contentsline {chapter}{\numberline {6}Conclusions}{49}{chapter.6}%
-\contentsline {chapter}{Bibliography}{51}{chapter*.38}%
+\contentsline {chapter}{Bibliography}{51}{chapter*.36}%

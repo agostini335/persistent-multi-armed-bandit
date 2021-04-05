@@ -6,8 +6,8 @@
 \contentsline {table}{\numberline {4.1}{\ignorespaces For each policy, we depict the operating characteristics: the family; the reward maximized; the exploitation of the partial information deriving from buckets not fully parsed. Note that the policies that do not exploit partial information are considered as baselines.\relax }}{24}{table.caption.16}%
 \contentsline {table}{\numberline {4.2}{\ignorespaces For each policy, we report the order of the bound on the expected regret when the number of pulls $t \rightarrow \infty $ . The policies are assumed in myopic configuration.\relax }}{25}{table.caption.17}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Experimental Analysis Summary.\relax }}{37}{table.caption.23}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces Description of the arms in setting Synthetic A.\relax }}{38}{table.caption.25}%
-\contentsline {table}{\numberline {5.3}{\ignorespaces Description of the arms in setting Synthetic B.\relax }}{39}{table.caption.26}%
-\contentsline {table}{\numberline {5.4}{\ignorespaces Description of the arms in setting Synthetic C.\relax }}{40}{table.caption.28}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Experimental Analysis Summary.\relax }}{39}{table.caption.23}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Description of the arms in setting Synthetic A.\relax }}{40}{table.caption.25}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Description of the arms in setting Synthetic B.\relax }}{41}{table.caption.26}%
+\contentsline {table}{\numberline {5.4}{\ignorespaces Description of the arms in setting Synthetic C.\relax }}{42}{table.caption.28}%
 \addvspace {10\p@ }

@@ -5,7 +5,7 @@
 In this chapter we formally introduce the Multi-Armed Bandit problem with persistent rewards. After defining all the elements and details necessary to depict the interaction between the learning agent and the environment, we specify the performance measures adopted. Finally, we formalize two real-world scenarios which will be deeply analyzed throughout the thesis.
 
 
-\section{The MAB-PR problem}
+\section{The MAB-PR Problem}
 
 The MAB problem with Persistent Rewards (MAB-PR) that we are going to analyze in this thesis is formalized in this section. Over a finite time horizon, composed of $N$ time instants, at each time instant $t$, an agent must pull (choose) an arm (action) $a_t$ from an arm set $A =\{1, \dots, K\} $. When we pull an arm $a_j$ at time $t$, the environment returns a realization of a random variable $R_{j,t}$ and one of a random vector $\boldsymbol{Z_{j,t}}= (Z_{j,t,1},\dots, Z_{j,t,Tmax})$. The vector $\boldsymbol{Z_{j,t}}$ represents the persistency of the feedback $R_{j,t}$, meaning that each component $Z_{j,t,m}$ describes which fraction of $R_{j,t}$ the agent will collect at the m-step. At each time instant from the pull of an arm, the learner will collect a reward called \emph{instantaneous reward} defined as follows:
 \begin{definition}[Instantaneous Reward]
@@ -144,10 +144,10 @@ The Pseudo-Regret form is more suitable for the purpose of our analysis respect 
 %example table
 
 \section{Modeling of real-world scenarios}
-\subsection{The Spotify Playlist problem}
+\subsection{The Spotify Playlist Problem}
 
 Recommender systems represent user preferences for the purpose of suggesting items to purchase or examine. They have become fundamental applications in electronic commerce and information access, providing suggestions that effectively prune large information spaces so that users are directed toward those items that best meet their needs and preferences \citep{recsys1}. One of the most common problems in recommender systems is the \emph{cold-start} problem. The cold-start problem typically happens when the system does not have any form of data on new users and on
-new items \citep{recsys2}. There are two distinct categories of cold start: the product cold start and the user cold starts. The new user case refers to when a new user enrolls in the system and for a certain period of time the recommender has to provide recommendations without relying on the user's past interactions, since none has occurred yet \citep{recsys3}. This problem is particularly important when the recommender is part of the service offered to users, since a user who is faced with recommendations of poor quality might soon decide to stop using the system before providing enough interaction to allow the recommender to understand his/her interests. Spotify is a digital music service which has a great interest in recommender systems. In 2018 it was the organizer of the ACM Conference on recommender systems.\\
+new items \citep{recsys2}. There are two distinct categories of cold start: the item cold start and the user cold start. The new user case refers to when a new user enrolls in the system and for a certain period of time the recommender has to provide recommendations without relying on the user's past interactions, since none has occurred yet \citep{recsys3}. This problem is particularly important when the recommender is part of the service offered to users, since a user who is faced with recommendations of poor quality might soon decide to stop using the system before providing enough interaction to allow the recommender to understand his/her interests. Spotify is a digital music service which has a great interest in recommender systems. In 2018 it was the organizer of the ACM Conference on recommender systems.\\
 We model the problem of recommending a playlist to a new Spotify user as a MAB-PR problem, proposing a new approach to mitigate the cold-start problem.
 
 \subsubsection*{Formulation}
@@ -181,7 +181,7 @@ When a new user accesses the system, a playlist is proposed. Subsequently, The u
 
 
 
-\subsection{The Rental Pricing problem}
+\subsection{The Rental Pricing Problem}
 A company owns a large number of rooms with the same characteristics. These rooms are rented with fixed duration contracts and monthly fees. Once the contract has been signed, the tenant can choose to stay until the expiration date or to cancel, ending his stay before the expiry date. When the company publishes the rental announcement, it is aware that by setting a high fee for the room, it can have a long vacancy period. Furthermore, a high fee could discourage the tenant from staying until the end of the contract. At the same time, by setting a fee too low, the company could make unsatisfactory profits. The problem of choosing the best fee is modelled as a MAB-PR problem with the specifics reported below.
 
 \begin{itemize}

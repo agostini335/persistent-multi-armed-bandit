@@ -1,0 +1,61 @@
+{
+    "n_runs": 20,
+    "tmax": 100,
+    "time": 20000,
+    "arm_sets": [
+        {
+            "quantity": 1,
+            "alpha": 2,
+            "beta": 8,
+            "arm_value": 123.00000839880005,
+            "starting_reward": 6,
+            "reward_incrment_step": 0,
+            "id_code": 0
+        },
+        {
+            "quantity": 1,
+            "alpha": 4,
+            "beta": 8,
+            "arm_value": 169.16666666300145,
+            "starting_reward": 5,
+            "reward_incrment_step": 0,
+            "id_code": 1
+        },
+        {
+            "quantity": 1,
+            "alpha": 6,
+            "beta": 8,
+            "arm_value": 173.4285714285732,
+            "starting_reward": 4,
+            "reward_incrment_step": 0,
+            "id_code": 2
+        },
+        {
+            "quantity": 1,
+            "alpha": 8,
+            "beta": 8,
+            "arm_value": 151.49999999999994,
+            "starting_reward": 3,
+            "reward_incrment_step": 0,
+            "id_code": 3
+        },
+        {
+            "quantity": 1,
+            "alpha": 10,
+            "beta": 8,
+            "arm_value": 112.11111111111109,
+            "starting_reward": 2,
+            "reward_incrment_step": 0,
+            "id_code": 4
+        },
+        {
+            "quantity": 1,
+            "alpha": 12,
+            "beta": 8,
+            "arm_value": 60.50000000000001,
+            "starting_reward": 1,
+            "reward_incrment_step": 0,
+            "id_code": 5
+        }
+    ]
+}

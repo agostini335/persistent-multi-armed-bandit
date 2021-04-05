@@ -91,9 +91,9 @@ Algorithm \ref{alg:FreqPolicy} requires in input an arm set $A$, the time horizo
 	\begin{tabular}{|c|c|}
 		\hline
 		\textbf{Policy}      & \textbf{Regret Bound Order} \\ \hline
-		\textbf{PR-T-UCB-P}  & $O(\Tmax^2\ln(t))$          \\
-		\textbf{PR-BW-UCB-P} & $O(\Tmax^2\ln(t))$          \\
-		\textbf{PR-NT-UCB-P} & $O(\Tmax\ln(t))$            \\ \hline
+		\textbf{PR-T-UCB-P}  & $O(\Rmax^2\Tmax^2\ln(t))$          \\
+		\textbf{PR-BW-UCB-P} & $O(\Rmax^2\Tmax^2\ln(t))$          \\
+		\textbf{PR-NT-UCB-P} & $O(\Rmax^2\Tmax\ln(t))$            \\ \hline
 	\end{tabular}
 	\label{t:garanzie}
 \end{table}
@@ -164,7 +164,7 @@ Notice that in the Persistent Reward setting $G^*_{i,n}<\Tmax$ and we consider $
 \subsection{PR-BW-UCB-P}
 The algorithm PR-BW-UCB-P (Persistent - Bin-Wise - UCB - Pull Reward)  is tailored for scenarios where we want to maximize \emph{Pull Reward} and we have a deterministic feedback $R_j$ for each arm $a_j$. Our goal is to exploit also the information given by the non-terminated buckets using bin-wise upper confidence bounds. The idea behind Algorithm \ref{alg:Bound1} is to estimate the average bin value $\overline{z}_{j,m}(t)$ given by the $m$-th bins of the buckets gained by pulling the arm $a_j$. To compute $\overline{z}_{j,m}(t)$, the algorithm considers only the buckets gained by $a_j$ that have been already parsed at position $m$ (informally called "available buckets" at line 4). We indicate with $V_{j,m}(t)$ the set of buckets $\boldsymbol{Z_{j,s}}$ that at time $t$ have been already parsed at position $m$. Depending on the configuration adopted, we say that:
 \begin{itemize}
-	\item In \emph{myopic} configuration  $\boldsymbol{Z_{j,s}} \in V_{j,m}(t) \ if \ t\geq s+m-1$
+	\item In \emph{myopic} configuration  $\boldsymbol{Z_{j,s}} \in V_{j,m}(t) \ if \ t\geq s+m-1$;
 	\item In \emph{farsighted} configuration  $\boldsymbol{Z_{j,s}} \in V_{j,m}(t) \ if \ t\geq s+m-1 \vee \ t \geq s+l_{j,s} $. As a matter of facts, the farsighted configuration allow us to consider a bucket $\boldsymbol{Z_{j,t}}$ fully parsed after that it has been parsed at position true length $l_{j,t}$. 
 \end{itemize}
 
@@ -403,7 +403,7 @@ Notice that as $t \rightarrow \infty$, the bound is of order $O(\Tmax\ln(t))$.
 \section{Bayesian Algorithms}
 In this section we present the novel algorithms that adopt a Bayesian approach. We developed the following policies: PR-T-TS-P, PR-T-TS-NP, PR-BW-BayesUCB-P, PR-BW-BayesUCB-NP.
 \subsection{PR-T-TS-P (Bayesian Baseline Algorithm)}
-PR-T-TS (Persistent - Terminated Buckets - Thompson Sampling - Pull Reward) is an algorithm that extends the idea of the well known Thompson Sampling algorithm in case of persistent reward and deterministic feedback $R_j$, where we want to maximize the pull reward. Similarly to Algorithm \ref{alg:BaselineUCB}, PR-T-TS considers the reward as a unique variable available after the termination of the bucket. The pseudo-code of PR-T-TS is provided in Algorithm \ref{alg:TSBASELINE}. The algorithm, for each arm $a_j$, has a Beta distribution representing the persistency $\mathfrak{p}_j=\frac{\mu_j}{R_jTmax}$. At each time $t$, having observed $S_j(t)$ success and $F_j(t)$ failures, the distributions on $\mathfrak{p}_j$ are updated as Beta($S_j(t),F_j(t)$). For each arm $a_j$, it is sampled $\theta_j$ from the distributions on $\mathfrak{p}_j$. The arm having the largest $\theta_jR_j$  is pulled. Note that $\mathfrak{p}_jR_j\Tmax = \mu_j$, hence we are trying to pull the arm that has the best expected reward based on the previous successes and failures (we do not consider $\Tmax$ in the choice of the arm since it is a costant). When a bucket $\boldsymbol{Z_{j,s}}$ of the arm $a_j$ is terminated, the persistency $\mathfrak{p}_{j,s}$ is computed as follows: $\mathfrak{p}_{j,s} = \frac{\sum_{m=1}^{\Tmax} Z_{j,s,m}}{\Tmax}$. At this point, the success and failures counters are updated based on a Bernoulli trial with success probability $\mathfrak{p}_{j,s}$. This implementation allows us to adopt the idea behind the stochastic TS algorithm proposed by \cite{agrawal2012analysis}.
+PR-T-TS (Persistent - Terminated Buckets - Thompson Sampling - Pull Reward) is an algorithm that extends the idea of the well known Thompson Sampling algorithm in case of persistent reward and deterministic feedback $R_j$, where we want to maximize the pull reward. Similarly to Algorithm \ref{alg:BaselineUCB}, PR-T-TS considers the reward as a unique variable available after the termination of the bucket. The pseudo-code of PR-T-TS is provided in Algorithm \ref{alg:TSBASELINE}. The algorithm, for each arm $a_j$, has a Beta distribution representing the persistency $\mathfrak{p}_j=\frac{\mu_j}{R_jTmax}$. At each time $t$, having observed $S_j(t)$ successes and $F_j(t)$ failures, the distributions on $\mathfrak{p}_j$ are updated as Beta($S_j(t),F_j(t)$). For each arm $a_j$, it is sampled $\theta_j$ from the distributions on $\mathfrak{p}_j$. The arm having the largest $\theta_jR_j$  is pulled. Note that $\mathfrak{p}_jR_j\Tmax = \mu_j$, hence we are trying to pull the arm that has the best expected reward based on the previous successes and failures (we do not consider $\Tmax$ in the choice of the arm since it is a constant). When a bucket $\boldsymbol{Z_{j,s}}$ of the arm $a_j$ is terminated, the persistency $\mathfrak{p}_{j,s}$ is computed as follows: $\mathfrak{p}_{j,s} = \frac{\sum_{m=1}^{\Tmax} Z_{j,s,m}}{\Tmax}$. At this point, the success and failures counters are updated based on a Bernoulli trial with success probability $\mathfrak{p}_{j,s}$. This implementation allows us to adopt the idea behind the stochastic TS algorithm proposed by \cite{agrawal2012analysis}.
 
 \begin{algorithm}[H]
 	\caption{\texttt{PR-T-TS}}
@@ -411,7 +411,8 @@ PR-T-TS (Persistent - Terminated Buckets - Thompson Sampling - Pull Reward) is a
 		\begin{algorithmic}[1]
 			
 			
-			\Require{bucket size $\Tmax$}
+			\Require{arm set $A = \{a_1, a_2, \ldots, a_k\}$, time horizon $N$, bucket size $\Tmax$}
+
 			
 			
 			\Function{policy}{$\Tmax$}
@@ -452,10 +453,121 @@ PR-T-TS (Persistent - Terminated Buckets - Thompson Sampling - Pull Reward) is a
 \end{algorithm}
 
 \subsection{PR-T-TS-NP (Bayesian Baseline Algorithm)}
-PR-T-TS-NP (Persistent - Terminated Buckets - Thompson Sampling - Normalized Pull Reward) is an algorithm that extends the idea of the well known Thompson Sampling algorithm in case of persistent reward and deterministic feedback $R_j$, where we want to maximize the normalized pull reward. It differs from PR-T-TS-P, previously described, only for the definition of the persistency $\mathfrak{p}_{j}$. Since we are dealing with the normalized pull reward, we consider $\mathfrak{p}_{j} = \frac{\eta_j}{R_j}$. When a bucket $\boldsymbol{Z_{j,s}}$ is terminated, $\mathfrak{p}_{j,s}$ is computed as follows: $\mathfrak{p}_{j,s} = \frac{\sum_{m=1}^{\Tmax} Z_{j,s,m}}{l_{j,s}}$, where $l_{j,s}$ is the true length. the pseudo code of PR-T-TS-NP  is depicted in Algorithm \ref{alg:TSBASELINE}.
+PR-T-TS-NP (Persistent - Terminated Buckets - Thompson Sampling - Normalized Pull Reward) is an algorithm that extends the idea of the well known Thompson Sampling algorithm in case of persistent reward. It is tailored for scenarios where we want to maximize the normalized pull reward and we have deterministic feedback $R_j$. It differs from PR-T-TS-P, previously described, only for the definition of the persistency $\mathfrak{p}_{j}$. Since we are dealing with the normalized pull reward, we consider $\mathfrak{p}_{j} = \frac{\eta_j}{R_j}$. When a bucket $\boldsymbol{Z_{j,s}}$ is terminated, $\mathfrak{p}_{j,s}$ is computed as follows: $\mathfrak{p}_{j,s} = \frac{\sum_{m=1}^{\Tmax} Z_{j,s,m}}{l_{j,s}}$, where $l_{j,s}$ is the true length. the pseudo code of PR-T-TS-NP  is depicted in Algorithm \ref{alg:TSBASELINE}.
+
+
+\subsection{PR-BW-BayesUCB-P}
+PR-BW-BayesUCB-P (Persistent - Bin-Wise - BayesUCB - Pull Reward) is an algorithm based on the BayesUCB algorithm proposed by \cite{kaufmann2012bayesian}. It maximizes the pull reward and assumes deterministic feedback $R_j$. We want to exploit the partial information deriving from the non-terminated buckets, trying to learn the distribution of each single bin of a bucket. More precisely, for each arm $a_j$, we maintain a Beta distribution for each bin $Z_{j,m}$ with $m = 1,\dots,\Tmax$. At each time $t$, having observed $S_{j,m}(t)$ successes and $F_{j,m}(t)$ failures, the distributions of $Z_{j,m}$ are updated as Beta($S_{j,m}(t)$,$F_{j,m}(t)$). At each time $t$, we compute $q_{j,m}(t) = Q(1-\frac{1}{t},Beta(S_{j,m}(t),F_{j,m}(t)))$, where with $Q(\alpha,\rho)$ we indicate the quantile function associated to the distribution $\rho$.
+The arm $a_j$ which has the largest $\tilde{\mu_j}(t) = R_j \sum_{m=1}^{\Tmax}q_{j,m}(t) $ is pulled. The counters  $S_{j,m}(t)$ and $F_{j,m}(t)$ are updated every time a component $Z_{j,s,m}$ is parsed. More precisely, depending on the configuration we will have that:
+
+\begin{itemize}
+	\item in \emph{myopic} configuration: $Z_{j,s,m}$ is parsed when: $t=s+m-1$;
+	\item in \emph{farsighted} configuration: $Z_{j,s,m}$ is parsed when: $t=s+m-1 \vee (t = s + l_{j,s} -1 \wedge m \geq l_{j,s})$.
+\end{itemize}
+
+The update is done according to a Bernoulli Trial with success probability $Z_{j,s,m}$. The pseudo-code of the PR-BW-BayesUCB-NP is provided in Algorithm \ref{alg:BayesP}.
+
+\begin{algorithm}[H]
+	\caption{\texttt{PR-BW-BayesUCB-P}}
+	\begin{scriptsize}
+		\begin{algorithmic}[1]
+			
+			
+			\Require{arm set $A = \{a_1, a_2, \ldots, a_k\}$, time horizon $N$, bucket size $\Tmax$}
+			
+			
+			
+			\Function{policy}{$\Tmax$}
+			
+			\For{each arm $a_j \in  A$} \Comment{init phase}
+			\State \textbf{for} each $m \in (0,\dots,\Tmax)$ \textbf{do} $S_{j,m} \gets 1$ and $F_{j,m} \gets 1$ \textbf{end for}
+			\EndFor
+			
+			\For { $t \in  \{1, \ldots,N\}$}  \Comment{loop phase}
+			\For{each arm $a_j \in  A$}
+			\State \textbf{for} each $m \in (0,\dots,\Tmax)$ \textbf{do} compute $q_{j,m}$  \textbf{end for}
+			\EndFor
+			\State pull arm $a_j$ such that $j = \argmax_i \sum_{m=1}^{\Tmax}q_{i,m}R_i$
+			\For{each component $Z_{j,s,m}$ parsed at time $t$} \Comment{update phase}
+					\State Perform a Bernoulli trial with success probability $Z_{j,s,m}$ and observe output r
+			\If{ r = 1} \;
+			\State $S_{j,m} \gets S_{j,m} + 1$ \;			
+			\Else
+			\State $F_{j,m} \gets F_{j,m} + 1$ \;
+			
+			\EndIf
+
+			
+			\EndFor
+			\EndFor
+			
+			
+			\EndFunction
+			
+		\end{algorithmic}
+	\end{scriptsize}
+	\label{alg:BayesP}
+\end{algorithm}
 
 
 \subsection{PR-BW-BayesUCB-NP}
+PR-BW-BayesUCB-NP (Persistent - Bin-Wise - BayesUCB - Normalized Pull Reward) is an algorithm based on the BayesUCB algorithm. It maximizes the normalized pull reward and assumes deterministic feedback $R_j$. The pseudo-code of PR-BW-BayesUCB-NP is provided in Algorithm \ref{alg:BayesNP}. Similarly to the pull reward version (PR-BW-BayesUCB-P) previously described, we want to exploit the partial information deriving from the non-terminated buckets. More precisely, for each arm $a_j$ and for each $m=1,\dots,\Tmax$, the algorithm maintains a Beta distribution for the delay $d_{j,m}$ and one for the bin $Z_{j,m}$. At each time $t$, having observed $S_{j,m}(t)^{d}$, $S_{j,m}(t)^{z}$ successes and $F_{j,m}(t)^d$, $F_{j,m}(t)^z$ failures, the distributions of $Z_{j,m}$ are updated as Beta($S_{j,m}(t)^z$,$F_{j,m}(t)^z$) and the ones of $d_{j,m}$ are updated as Beta($S_{j,m}(t)^d$,$F_{j,m}(t)^d$). At each time $t$, we compute:
+\begin{itemize}
+	\item $q_{j,m}(t)^{z_{ucb}} = Q(1-\frac{1}{3t},Beta(S_{j,m}(t)^z,F_{j,m}(t)^z))$;
+	\item $q_{j,m}(t)^{z_{lcb}} = Q(\frac{1}{3t},Beta(S_{j,m}(t)^z,F_{j,m}(t)^z))$;
+	\item $q_{j,m}(t)^{d_{lcb}} = Q(\frac{1}{3t},Beta(S_{j,m}(t)^d,F_{j,m}(t)^d))$. 
+\end{itemize}
+With $Q(\alpha,\rho)$ we indicate the quantile function associated to the distribution $\rho$. At this point, a lower confidence bound of the true length $\tilde{l}_j(t)$ is computed as $\tilde{l}_j(t)= \sum_{m=1}^{\Tmax} q_{j,m}(t)^{z_{lcb}} + q_{j,m}(t)^{d_{lcb}}$. Finally, an upper confidence bound on the normalized pull reward is computed as $\tilde{\eta_j}(t) = \frac{R_j\sum_{m=1}^{\Tmax}q_{j,m}(t)^{z_{ucb}}}{\tilde{l}_j(t)}$. At each time $t$, the arm $a_j$ having the largest $\tilde{\eta_j}(t)$ is pulled. The update of the failures and success counters is done in the same way of the algorithm PR-BW-BayesUCB-P, with the required adaptation for the delay $d_{j,m}$ (line 11 - 22). 
+
+\begin{algorithm}[H]
+	\caption{\texttt{PR-BW-BayesUCB-NP}}
+	\begin{scriptsize}
+		\begin{algorithmic}[1]
+			
+			
+			\Require{arm set $A = \{a_1, a_2, \ldots, a_k\}$, time horizon $N$, bucket size $\Tmax$}
+			
+			
+			
+			\Function{policy}{$\Tmax$}
+			
+			\For{each arm $a_j \in  A$} \Comment{init phase}
+			\State \textbf{for} each $m \in (0,\dots,\Tmax)$ \textbf{do} $S_{j,m}^z \gets 1$ and $F_{j,m}^z \gets 1$ \textbf{end for}
+			\State \textbf{for} each $m \in (0,\dots,\Tmax)$ \textbf{do} $S_{j,m}^d \gets 1$ and $F_{j,m}^d \gets 1$ \textbf{end for}
+			\EndFor
+			
+			\For { $t \in  \{1, \ldots,N\}$}  \Comment{loop phase}
+			\For{each arm $a_j \in  A$}
+			\State \textbf{for} each $m \in (0,\dots,\Tmax)$ \textbf{do} compute $q_{j,m}^{z_{ucb}}, q_{j,m}^{z_{lcb}}, q_{j,m}^{d_{lcb}}$ \textbf{end for}
+			\EndFor
+			\State pull arm $a_j$ such that $j = \argmax_i  \tilde{\eta_i}$
+			\For{each component $Z_{j,s,m}$ parsed at time $t$} \Comment{update phase}
+			\State Perform a Bernoulli trial with success probability $Z_{j,s,m}$ and observe output r
+			\If{ r = 1} \;
+			\State $S_{j,m}^z \gets S_{j,m}^z + 1$ \;			
+			\Else
+			\State $F_{j,m}^z \gets F_{j,m}^z + 1$ \;			
+			\EndIf
+			\If {$m \leq d_{j,s}$}
+			\State $S_{j,m}^d \gets S_{j,m}^d + 1$ \;			
+			\Else
+			\State $F_{j,m}^d \gets F_{j,m}^d + 1$ \;			
+			\EndIf
+			
+				
+			
+	
+			\EndFor
+			\EndFor
+			
+			
+			\EndFunction
+			
+		\end{algorithmic}
+	\end{scriptsize}
+	\label{alg:BayesNP}
+\end{algorithm}
+
 
 
 

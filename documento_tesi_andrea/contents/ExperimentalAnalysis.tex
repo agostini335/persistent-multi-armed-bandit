@@ -7,17 +7,17 @@ In this chapter, we present the experimental results of our analysis. In particu
 \begin{table}[h]
 	\centering
 	\caption{Experimental Analysis Summary.}
-	\begin{tabular}{|c|c|c|c|c|c|c|} 
-		\hhline{~------|}
-		\multicolumn{1}{l|}{}     & \multicolumn{2}{c|}{{\cellcolor[rgb]{0.878,0.878,0.878}}\textbf{Persistency}}                              & \multicolumn{2}{c|}{\textbf{Tmax}} & \multicolumn{2}{c|}{{\cellcolor[rgb]{0.878,0.878,0.878}}\textbf{Reward}}                                 \\ 
+	\begin{tabular}{|c|c|c|c|c|} 
+		\hhline{~----|}
+		\multicolumn{1}{l|}{}     & \multicolumn{2}{c|}{{\cellcolor[rgb]{1,1,1}}\textbf{Persistency}}                               & \multicolumn{2}{c|}{{\cellcolor[rgb]{1,1,1}}\textbf{Reward}}                                 \\ 
 		\hline
-		\textbf{Experiment name}  & {\cellcolor[rgb]{0.878,0.878,0.878}}\textit{General} & {\cellcolor[rgb]{0.878,0.878,0.878}}\textit{Tight} & \textit{Known} & \textit{Unknown}  & {\cellcolor[rgb]{0.878,0.878,0.878}}\textit{P.R.} & {\cellcolor[rgb]{0.878,0.878,0.878}}\textit{N.P.R.}  \\ 
+		\textbf{Experiment name}  & {\cellcolor[rgb]{1,1,1}}\textit{General} & {\cellcolor[rgb]{1,1,1}}\textit{Tight}   & {\cellcolor[rgb]{1,1,1}}\textit{P.R.} & {\cellcolor[rgb]{1,1,1}}\textit{N.P.R.}  \\ 
 		\hline
-		\textit{synthetic A,B,C}      & {\cellcolor[rgb]{0.878,0.878,0.878}}                 & {\cellcolor[rgb]{0.878,0.878,0.878}}x               & x              &                   & {\cellcolor[rgb]{0.878,0.878,0.878}}x             & {\cellcolor[rgb]{0.878,0.878,0.878}}                 \\ 
+		\textit{synthetic A,B,C}      & {\cellcolor[rgb]{1,1,1}}                 & {\cellcolor[rgb]{1,1,1}}x                               & {\cellcolor[rgb]{1,1,1}}x             & {\cellcolor[rgb]{1,1,1}}                 \\ 
 		\hline
-		\textit{Spotify Scenario} & {\cellcolor[rgb]{0.878,0.878,0.878}}x                & {\cellcolor[rgb]{0.878,0.878,0.878}}                & x              &                   & {\cellcolor[rgb]{0.878,0.878,0.878}}x             & {\cellcolor[rgb]{0.878,0.878,0.878}}                 \\ 
+		\textit{Spotify Scenario} & {\cellcolor[rgb]{1,1,1}}x                & {\cellcolor[rgb]{1,1,1}}                                   & {\cellcolor[rgb]{1,1,1}}x             & {\cellcolor[rgb]{1,1,1}}                 \\ 
 		\hline
-		\textit{Rent Scenario}    & {\cellcolor[rgb]{0.878,0.878,0.878}}                 & {\cellcolor[rgb]{0.878,0.878,0.878}}x               & x              &                   & {\cellcolor[rgb]{0.878,0.878,0.878}}              & {\cellcolor[rgb]{0.878,0.878,0.878}}x                \\
+		\textit{Rent Scenario}    & {\cellcolor[rgb]{1,1,1}}                 & {\cellcolor[rgb]{1,1,1}}x                                 & {\cellcolor[rgb]{1,1,1}}              & {\cellcolor[rgb]{1,1,1}}x                \\
 		\hline
 	\end{tabular}
 
@@ -101,43 +101,45 @@ In this setting, we model the common situation where high feedback discourage lo
 		\textbf{R}            & 6     & 5     & 4     & 3     & 2     & 1     \\
 		$\boldsymbol{\alpha}$ & 2     & 4     & 6     & 8     & 10    & 12    \\
 		$\boldsymbol{\beta}$  & 8     & 8     & 8     & 8     & 8     & 8     \\
-		$\boldsymbol{\mu_{50}}$    & 10.50 & 17.17 & 21.93 & 25.50 & 28.28 & 30.3  \\ 
-		$\boldsymbol{\mu_{100}}$    & 10.50 & 17.17 & 21.93 & 25.50 & 28.28 & 30.3  \\ 
-		$\boldsymbol{\mu_{150}}$    & 10.50 & 17.17 & 21.93 & 25.50 & 28.28 & 30.3  \\ 
-		$\boldsymbol{\mu_{200}}$    & 10.50 & 17.17 & 21.93 & 25.50 & 28.28 & 30.3  \\ \hline
+		$\boldsymbol{\mu_{50}}$    & 63.00 & 85.83 & 87.71 & 76.50 & 56.55 & 30.50  \\ 
+		$\boldsymbol{\mu_{100}}$    & 123.00 & 169.16 & 173.43 & 151.50 & 112.11 & 60.50  \\ 
+		$\boldsymbol{\mu_{150}}$    & 183.00 & 252.50 & 259.14 & 226.50 & 167.67 & 90.5  \\ 
+		$\boldsymbol{\mu_{200}}$    & 243.00 & 335.83 & 344.85 & 301.50 & 223.22 & 120.50  \\ \hline
 	\end{tabular}
 	
 	\label{tabSC}
 \end{table}
 
+%\section{The Spotify Playlist Problem Setting}
+%
+%\section{The Rental Pricing Problem Setting}
+
+
+
 \section{Results}
 
 \begin{figure}[H]
-	\includegraphics[width=16cm]{./images/experiment_easy ANALYTICS.png}
+	\includegraphics[width=16cm]{./images/ANALYTICS/experiment_A ANALYTICS.png}
 	\centering	
 	\caption{Pseudo regret plot of the experiment Synthetic A.}
 \end{figure}
 \begin{figure}[H]
-	\includegraphics[width=16cm]{./images/experiment_B ANALYTICS.png}
+	\includegraphics[width=16cm]{./images/ANALYTICS/experiment_B ANALYTICS.png}
 	\centering	
 	\caption{Pseudo regret plot of the experiment Synthetic B. }
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=9.5cm]{./images/C/experiment_C_70 ANALYTICS.png}\quad\includegraphics[width=9.5cm]{./images/C/experiment_C_110 ANALYTICS.png}
-	\includegraphics[width=9.5cm]{./images/C/experiment_C_160 ANALYTICS.png}\quad\includegraphics[width=9.5cm]{./images/C/experiment_C_210 ANALYTICS.png}
+	\includegraphics[width=9.5cm]{./images/ANALYTICS/experiment_C_50 ANALYTICS.png}\quad\includegraphics[width=9.5cm]{./images/ANALYTICS/experiment_C_100 ANALYTICS.png}
+	\includegraphics[width=9.5cm]{./images/ANALYTICS/experiment_C_150 ANALYTICS.png}\quad\includegraphics[width=9.5cm]{./images/ANALYTICS/experiment_C_200 ANALYTICS.png}
 	\caption{Pseudo regret plot of the experiment Synthetic C.}
 	
 \end{figure}
 
 %SPOTIFY
 
-\begin{figure}[H]
-	\includegraphics[width=16cm]{./images/experiment_spotify10k20r ANALYTICS.png}
-	\centering	
-	\caption{Pseudo regret plot of the experiment Spotify Playlist Problem.}
-\end{figure}
+
 
 \begin{figure}[H]
 	\includegraphics[width=16cm]{./images/provvisori/experiment_spotify10k20r ANALYTICS.png}
@@ -155,16 +157,7 @@ In this setting, we model the common situation where high feedback discourage lo
 \end{figure}
 
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=6cm]{./images/PULLS/experiment_C_10Idea2_zeros cum_pulls.png }\quad\includegraphics[width=6cm]{./images/PULLS/experiment_C_40Idea2_zeros cum_pulls.png
-	} 
-	\includegraphics[width=6cm]{./images/PULLS/experiment_C_70Idea2_zeros cum_pulls.png}\quad\includegraphics[width=6cm]{./images/PULLS/experiment_C_110Idea2_zeros cum_pulls.png}
-	\includegraphics[width=6cm]{./images/PULLS/experiment_C_160Idea2_zeros cum_pulls.png}\quad\includegraphics[width=6cm]{./images/PULLS/experiment_C_210Idea2_zeros cum_pulls.png}
 
-	\caption{PULLS IDEA2 ZEROS C}
-	
-\end{figure}
 
 \subsection{Observations}
 \begin{itemize}

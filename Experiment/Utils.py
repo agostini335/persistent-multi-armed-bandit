@@ -8,16 +8,16 @@ from Parser.ArmSet import ArmSet
 from Parser.ExperimentDescription import ExperimentDescription
 from matplotlib import rc
 import matplotlib.pyplot as plt
-#plt.style.use("seaborn")
+plt.style.use("seaborn")
 
 from matplotlib import rcParams
-#rcParams['axes.titlepad'] = 20 
+rcParams['axes.titlepad'] = 20 
 
 
-#plt.rcParams['mathtext.fontset'] = 'stix'
-#plt.rcParams['font.family'] = 'STIXGeneral'
+plt.rcParams['mathtext.fontset'] = 'stix'
+plt.rcParams['font.family'] = 'STIXGeneral'
 
-#color_list = ["purple","violet","darkred","red","mediumblue","dodgerblue","darkorange","gold","darkgreen","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
+color_list = ["purple","violet","darkred","red","mediumblue","dodgerblue","darkorange","gold","darkgreen","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
 
 #color_list = ["purple","violet","darkred","mediumblue","darkorange","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
 
@@ -40,7 +40,7 @@ def calculate_cumulative_pseudo_regret(collected_arm_values,oracle_arm_value):
         cumulative_regret[i]=cumulative_regret[i-1]+istant_regret[i]
     return cumulative_regret
 
-def compute_experiment_pseudo_regret(learner_names,learner_arm_value_dict,oracle_value,n_runs,file_name):
+def compute_experiment_pseudo_regret(learner_names,learner_arm_value_dict,oracle_value,n_runs,file_name,title):
     learner_pseudo_regret_dict = {}
     learner_average_pseudo_regret = {}
     learner_std = {}
@@ -62,7 +62,7 @@ def compute_experiment_pseudo_regret(learner_names,learner_arm_value_dict,oracle
         for cap in caps:
             cap.set_markeredgewidth(1)
     plt.ylabel('Pseudo Regret')
-    plt.title(str(file_name))
+    plt.title(str(title))
     plt.legend(loc='upper left')
     lgd = plt.legend(loc='center left', bbox_to_anchor=(1, 0.5),fancybox = False, shadow = False)
 
@@ -114,7 +114,7 @@ def save_experiment_description(cnfg_m):
         json.dump(experiment_desc,   f, default=lambda o: o.__dict__,ensure_ascii=False, indent=4)
 
 
-def compute_full_analytics(n_runs,time_horizon,oracle,_learners,experiment_name):
+def compute_full_analytics(n_runs,time_horizon,oracle,_learners,experiment_name,title):
     N_RUNS = n_runs
     time = time_horizon
     Oracle_best_arm_value = oracle.best_arm.value  
@@ -152,7 +152,7 @@ def compute_full_analytics(n_runs,time_horizon,oracle,_learners,experiment_name)
         plt.savefig(plt_name, bbox_inches='tight')
         plt.clf()
 
-    compute_experiment_pseudo_regret(learner_names=learner_names,learner_arm_value_dict=learner_arm_value_dict,oracle_value=Oracle_best_arm_value,n_runs=N_RUNS,file_name=exp_name)
+    compute_experiment_pseudo_regret(learner_names=learner_names,learner_arm_value_dict=learner_arm_value_dict,oracle_value=Oracle_best_arm_value,n_runs=N_RUNS,file_name=exp_name,title=title)
     print("DONE")
 
 
@@ -252,7 +252,7 @@ def compute_experiment_pulled_arms(n_runs,time_horizon,ids,learner_names,experim
         
 
 
-def compute_full_analytics_from_files(n_runs,time_horizon,Oracle_best_arm_value,learner_names,experiment_name):
+def compute_full_analytics_from_files(n_runs,time_horizon,Oracle_best_arm_value,learner_names,experiment_name,title):
     N_RUNS = n_runs
     time = time_horizon
     Oracle_best_arm_value
@@ -288,22 +288,31 @@ def compute_full_analytics_from_files(n_runs,time_horizon,Oracle_best_arm_value,
         plt.savefig(plt_name, bbox_inches='tight')
         plt.clf()
 
-    compute_experiment_pseudo_regret(learner_names=learner_names,learner_arm_value_dict=learner_arm_value_dict,oracle_value=Oracle_best_arm_value,n_runs=N_RUNS,file_name="ANALYTICS/"+exp_name)
+    compute_experiment_pseudo_regret(learner_names=learner_names,learner_arm_value_dict=learner_arm_value_dict,oracle_value=Oracle_best_arm_value,n_runs=N_RUNS,file_name="ANALYTICS/"+exp_name,title=title)
     print("DONE")
 
 
 
 
 
-'''
-ln = ["Idea2_zeros","Idea2_ones","Baseline_myopic","Baseline_farsighted","Bound1_myopic","Bound1_farsighted","Thompson_baseline_myopic","Thompson_baseline_farsighted","BayesUCBPersistentfarsighted","BayesUCBPersistentmyopic"]
+
+ln = ["PR-T-UCB-P_myopic","PR-T-UCB-P_farsighted","PR-BW-UCB-P_myopic","PR-BW-UCB-P_farsighted","PR-NT-UCB-P_myopic","PR-NT-UCB-P_farsighted","PR-T-TS_myopic","PR-T-TS_farsighted","PR-BW-BayesUCB-P_myopic","PR-BW-BayesUCB-P_farsighted"]
 
 #ln = ["Idea2_zeros","Idea2_ones","Baseline_myopic","Bound1_myopic","Thompson_baseline","BayesUCBPersistent"]
 
 avg_list = []
 std_list = []
 
-compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=10.823308799999998,learner_names=ln,experiment_name="experiment_C_5")
+compute_full_analytics_from_files(n_runs=50,time_horizon=20000,Oracle_best_arm_value=30.500000000002828,learner_names=ln,experiment_name="experiment_B",title="Pseudo Regret Synthetic B")
+compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=87.71428571450483,learner_names=ln,experiment_name="experiment_C_50",title="Pseudo Regret Synthetic C with Tmax = 50 ")
+compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=173.4285714285732,learner_names=ln,experiment_name="experiment_C_100",title="Pseudo Regret Synthetic C with Tmax = 100 ")
+compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=259.1428571428575,learner_names=ln,experiment_name="experiment_C_150",title="Pseudo Regret Synthetic C with Tmax = 150 ")
+compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=344.85714285714306,learner_names=ln,experiment_name="experiment_C_200",title="Pseudo Regret Synthetic C with Tmax = 200 ")
+
+
+
+
+'''
 compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=19.166313650000003,learner_names=ln,experiment_name="experiment_C_10")
 compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=36.28571441774977,learner_names=ln,experiment_name="experiment_C_20")
 compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=70.57142857247196,learner_names=ln,experiment_name="experiment_C_40")

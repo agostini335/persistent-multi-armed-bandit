@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.10)  4 APR 2021 01:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.10)  5 APR 2021 03:02
 entering extended mode
 **./TesiStile.tex
 (TesiStile.tex
@@ -1026,7 +1026,7 @@ enefit from \pgfplotsset{compat=1.17} (current compat level: 1.15).
 \openout2 = `contents/frontespizio.aux'.
 
 (contents/frontespizio.tex
-<./images/logopm.pdf, id=142, 578.20877pt x 578.08434pt>
+<./images/logopm.pdf, id=146, 578.20877pt x 578.08434pt>
 File: ./images/logopm.pdf Graphic file (type pdf)
 <use ./images/logopm.pdf>
 Package pdftex.def Info: ./images/logopm.pdf  used on input line 13.
@@ -1331,6 +1331,9 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 [18]
 
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
 (fancyhdr)                \setlength{\headheight}{13.59999pt}.
@@ -1534,7 +1537,10 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[35])
+[35]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1544,16 +1550,39 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
 [36]
+Overfull \hbox (70.2572pt too wide) in paragraph at lines 514--516
+\T1/cmr/m/n/10.95 dated as Beta($\OML/cmm/m/it/10.95 S[]\OT1/cmr/m/n/10.95 (\OM
+L/cmm/m/it/10.95 t\OT1/cmr/m/n/10.95 )[]$\T1/cmr/m/n/10.95 ,$\OML/cmm/m/it/10.9
+5 F[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t\OT1/cmr/m/n/10.95 )[]$\T1/cmr/m/
+n/10.95 ) and the ones of $\OML/cmm/m/it/10.95 d[]$ \T1/cmr/m/n/10.95 are up-da
+ted as Beta($\OML/cmm/m/it/10.95 S[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t\O
+T1/cmr/m/n/10.95 )[]$\T1/cmr/m/n/10.95 ,$\OML/cmm/m/it/10.95 F[]\OT1/cmr/m/n/10
+.95 (\OML/cmm/m/it/10.95 t\OT1/cmr/m/n/10.95 )[]$\T1/cmr/m/n/10.95 ).
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[37])
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[38]
 \openout2 = `contents/ExperimentalAnalysis.aux'.
 
  (contents/ExperimentalAnalysis.tex
 Chapter 5.
-
-Overfull \hbox (23.35457pt too wide) in paragraph at lines 10--23
- [][] 
- []
-
-[37
+[39
 
 
 
@@ -1570,13 +1599,13 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[38]
-<./images/chart (1)-1.png, id=635, 1723.43875pt x 1505.625pt>
+[40]
+<./images/chart (1)-1.png, id=651, 1723.43875pt x 1505.625pt>
 File: ./images/chart (1)-1.png Graphic file (type png)
 <use ./images/chart (1)-1.png>
 Package pdftex.def Info: ./images/chart (1)-1.png  used on input line 83.
 (pdftex.def)             Requested size: 178.11409pt x 155.60262pt.
-<./images/chart (2)-1.png, id=636, 1723.43875pt x 1505.625pt>
+<./images/chart (2)-1.png, id=652, 1723.43875pt x 1505.625pt>
 File: ./images/chart (2)-1.png Graphic file (type png)
 <use ./images/chart (2)-1.png>
 Package pdftex.def Info: ./images/chart (2)-1.png  used on input line 83.
@@ -1590,26 +1619,28 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[39 <./images/chart (1)-1.png> <./images/chart (2)-1.png>]
-<./images/experiment_easy ANALYTICS.png, id=645, 680.7834pt x 378.57436pt>
-File: ./images/experiment_easy ANALYTICS.png Graphic file (type png)
-<use ./images/experiment_easy ANALYTICS.png>
-Package pdftex.def Info: ./images/experiment_easy ANALYTICS.png  used on input 
-line 116.
-(pdftex.def)             Requested size: 455.24408pt x 253.15248pt.
+[41 <./images/chart (1)-1.png> <./images/chart (2)-1.png>]
+<./images/ANALYTICS/experiment_A ANALYTICS.png, id=661, 689.2149pt x 378.6948pt
+>
+File: ./images/ANALYTICS/experiment_A ANALYTICS.png Graphic file (type png)
+<use ./images/ANALYTICS/experiment_A ANALYTICS.png>
+Package pdftex.def Info: ./images/ANALYTICS/experiment_A ANALYTICS.png  used on
+ input line 122.
+(pdftex.def)             Requested size: 455.24408pt x 250.14157pt.
 
-Overfull \hbox (95.24408pt too wide) in paragraph at lines 116--118
+Overfull \hbox (95.24408pt too wide) in paragraph at lines 122--124
  [][] 
  []
 
-<./images/experiment_B ANALYTICS.png, id=647, 675.84496pt x 378.57436pt>
-File: ./images/experiment_B ANALYTICS.png Graphic file (type png)
-<use ./images/experiment_B ANALYTICS.png>
-Package pdftex.def Info: ./images/experiment_B ANALYTICS.png  used on input lin
-e 121.
-(pdftex.def)             Requested size: 455.24408pt x 255.01254pt.
+<./images/ANALYTICS/experiment_B ANALYTICS.png, id=663, 684.156pt x 378.6948pt>
 
-Overfull \hbox (95.24408pt too wide) in paragraph at lines 121--123
+File: ./images/ANALYTICS/experiment_B ANALYTICS.png Graphic file (type png)
+<use ./images/ANALYTICS/experiment_B ANALYTICS.png>
+Package pdftex.def Info: ./images/ANALYTICS/experiment_B ANALYTICS.png  used on
+ input line 127.
+(pdftex.def)             Requested size: 455.24408pt x 251.99644pt.
+
+Overfull \hbox (95.24408pt too wide) in paragraph at lines 127--129
  [][] 
  []
 
@@ -1625,31 +1656,38 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[40 <./images/experiment_easy ANALYTICS.png>]
-<./images/C/experiment_C_70 ANALYTICS.png, id=654, 680.7834pt x 378.57436pt>
-File: ./images/C/experiment_C_70 ANALYTICS.png Graphic file (type png)
-<use ./images/C/experiment_C_70 ANALYTICS.png>
-Package pdftex.def Info: ./images/C/experiment_C_70 ANALYTICS.png  used on inpu
-t line 128.
-(pdftex.def)             Requested size: 270.30118pt x 150.3064pt.
-<./images/C/experiment_C_110 ANALYTICS.png, id=655, 680.7834pt x 378.57436pt>
-File: ./images/C/experiment_C_110 ANALYTICS.png Graphic file (type png)
-<use ./images/C/experiment_C_110 ANALYTICS.png>
-Package pdftex.def Info: ./images/C/experiment_C_110 ANALYTICS.png  used on inp
-ut line 128.
-(pdftex.def)             Requested size: 270.30118pt x 150.3064pt.
-<./images/C/experiment_C_160 ANALYTICS.png, id=656, 680.7834pt x 378.57436pt>
-File: ./images/C/experiment_C_160 ANALYTICS.png Graphic file (type png)
-<use ./images/C/experiment_C_160 ANALYTICS.png>
-Package pdftex.def Info: ./images/C/experiment_C_160 ANALYTICS.png  used on inp
-ut line 129.
-(pdftex.def)             Requested size: 270.30118pt x 150.3064pt.
-<./images/C/experiment_C_210 ANALYTICS.png, id=657, 680.7834pt x 378.57436pt>
-File: ./images/C/experiment_C_210 ANALYTICS.png Graphic file (type png)
-<use ./images/C/experiment_C_210 ANALYTICS.png>
-Package pdftex.def Info: ./images/C/experiment_C_210 ANALYTICS.png  used on inp
-ut line 129.
-(pdftex.def)             Requested size: 270.30118pt x 150.3064pt.
+[42 <./images/ANALYTICS/experiment_A ANALYTICS.png>]
+<./images/ANALYTICS/experiment_C_50 ANALYTICS.png, id=670, 684.156pt x 378.8152
+5pt>
+File: ./images/ANALYTICS/experiment_C_50 ANALYTICS.png Graphic file (type png)
+<use ./images/ANALYTICS/experiment_C_50 ANALYTICS.png>
+Package pdftex.def Info: ./images/ANALYTICS/experiment_C_50 ANALYTICS.png  used
+ on input line 134.
+(pdftex.def)             Requested size: 270.30118pt x 149.66795pt.
+<./images/ANALYTICS/experiment_C_100 ANALYTICS.png, id=671, 689.09445pt x 378.6
+948pt>
+File: ./images/ANALYTICS/experiment_C_100 ANALYTICS.png Graphic file (type png)
+
+<use ./images/ANALYTICS/experiment_C_100 ANALYTICS.png>
+Package pdftex.def Info: ./images/ANALYTICS/experiment_C_100 ANALYTICS.png  use
+d on input line 134.
+(pdftex.def)             Requested size: 270.30118pt x 148.55135pt.
+<./images/ANALYTICS/experiment_C_150 ANALYTICS.png, id=672, 689.2149pt x 378.81
+525pt>
+File: ./images/ANALYTICS/experiment_C_150 ANALYTICS.png Graphic file (type png)
+
+<use ./images/ANALYTICS/experiment_C_150 ANALYTICS.png>
+Package pdftex.def Info: ./images/ANALYTICS/experiment_C_150 ANALYTICS.png  use
+d on input line 135.
+(pdftex.def)             Requested size: 270.30118pt x 148.5697pt.
+<./images/ANALYTICS/experiment_C_200 ANALYTICS.png, id=673, 689.2149pt x 378.69
+48pt>
+File: ./images/ANALYTICS/experiment_C_200 ANALYTICS.png Graphic file (type png)
+
+<use ./images/ANALYTICS/experiment_C_200 ANALYTICS.png>
+Package pdftex.def Info: ./images/ANALYTICS/experiment_C_200 ANALYTICS.png  use
+d on input line 135.
+(pdftex.def)             Requested size: 270.30118pt x 148.52246pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1662,8 +1700,8 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[41 <./images/experiment_B ANALYTICS.png>]
-Overfull \vbox (31.62538pt too high) has occurred while \output is active []
+[43 <./images/ANALYTICS/experiment_B ANALYTICS.png>]
+Overfull \vbox (25.71126pt too high) has occurred while \output is active []
 
 
 
@@ -1674,55 +1712,30 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[42 <./images/C/experiment_C_70 ANALYTICS.png> <./images/C/experiment_C_110 ANA
-LYTICS.png> <./images/C/experiment_C_160 ANALYTICS.png> <./images/C/experiment_
-C_210 ANALYTICS.png>]
-<./images/experiment_spotify10k20r ANALYTICS.png, id=671, 633.92834pt x 378.574
-36pt>
-File: ./images/experiment_spotify10k20r ANALYTICS.png Graphic file (type png)
-<use ./images/experiment_spotify10k20r ANALYTICS.png>
-Package pdftex.def Info: ./images/experiment_spotify10k20r ANALYTICS.png  used 
-on input line 137.
-(pdftex.def)             Requested size: 455.24408pt x 271.87436pt.
-
-Overfull \hbox (95.24408pt too wide) in paragraph at lines 137--139
- [][] 
- []
-
-<./images/provvisori/experiment_spotify10k20r ANALYTICS.png, id=672, 633.92834p
+[44 <./images/ANALYTICS/experiment_C_50 ANALYTICS.png> <./images/ANALYTICS/expe
+riment_C_100 ANALYTICS.png> <./images/ANALYTICS/experiment_C_150 ANALYTICS.png>
+ <./images/ANALYTICS/experiment_C_200 ANALYTICS.png>]
+<./images/provvisori/experiment_spotify10k20r ANALYTICS.png, id=688, 633.92834p
 t x 378.57436pt>
 File: ./images/provvisori/experiment_spotify10k20r ANALYTICS.png Graphic file (
 type png)
 <use ./images/provvisori/experiment_spotify10k20r ANALYTICS.png>
 Package pdftex.def Info: ./images/provvisori/experiment_spotify10k20r ANALYTICS
-.png  used on input line 143.
+.png  used on input line 145.
 (pdftex.def)             Requested size: 455.24408pt x 271.87436pt.
 
-Overfull \hbox (95.24408pt too wide) in paragraph at lines 143--145
+Overfull \hbox (95.24408pt too wide) in paragraph at lines 145--147
  [][] 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.3pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
-
-[43 <./images/experiment_spotify10k20r ANALYTICS.png>]
-<./images/provvisori/RENT_provvisorio.png, id=679, 578.16pt x 397.485pt>
+<./images/provvisori/RENT_provvisorio.png, id=689, 578.16pt x 397.485pt>
 File: ./images/provvisori/RENT_provvisorio.png Graphic file (type png)
 <use ./images/provvisori/RENT_provvisorio.png>
 Package pdftex.def Info: ./images/provvisori/RENT_provvisorio.png  used on inpu
-t line 152.
+t line 154.
 (pdftex.def)             Requested size: 455.24408pt x 312.97864pt.
 
-Overfull \hbox (95.24408pt too wide) in paragraph at lines 152--153
+Overfull \hbox (95.24408pt too wide) in paragraph at lines 154--155
  [][] 
  []
 
@@ -1738,59 +1751,7 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[44 <./images/provvisori/experiment_spotify10k20r ANALYTICS.png>]
-<./images/PULLS/experiment_C_10Idea2_zeros cum_pulls.png, id=685, 554.67226pt x
- 378.57436pt>
-File: ./images/PULLS/experiment_C_10Idea2_zeros cum_pulls.png Graphic file (typ
-e png)
-<use ./images/PULLS/experiment_C_10Idea2_zeros cum_pulls.png>
-Package pdftex.def Info: ./images/PULLS/experiment_C_10Idea2_zeros cum_pulls.pn
-g  used on input line 160.
-(pdftex.def)             Requested size: 170.71652pt x 116.51923pt.
-<./images/PULLS/experiment_C_40Idea2_zeros cum_pulls.png, id=686, 554.67226pt x
- 378.57436pt>
-File: ./images/PULLS/experiment_C_40Idea2_zeros cum_pulls.png Graphic file (typ
-e png)
-<use ./images/PULLS/experiment_C_40Idea2_zeros cum_pulls.png>
-Package pdftex.def Info: ./images/PULLS/experiment_C_40Idea2_zeros cum_pulls.pn
-g  used on input line 161.
-(pdftex.def)             Requested size: 170.71652pt x 116.51923pt.
-<./images/PULLS/experiment_C_70Idea2_zeros cum_pulls.png, id=687, 554.67226pt x
- 378.57436pt>
-File: ./images/PULLS/experiment_C_70Idea2_zeros cum_pulls.png Graphic file (typ
-e png)
-<use ./images/PULLS/experiment_C_70Idea2_zeros cum_pulls.png>
-Package pdftex.def Info: ./images/PULLS/experiment_C_70Idea2_zeros cum_pulls.pn
-g  used on input line 162.
-(pdftex.def)             Requested size: 170.71652pt x 116.51923pt.
-<./images/PULLS/experiment_C_110Idea2_zeros cum_pulls.png, id=688, 554.67226pt 
-x 378.57436pt>
-File: ./images/PULLS/experiment_C_110Idea2_zeros cum_pulls.png Graphic file (ty
-pe png)
-<use ./images/PULLS/experiment_C_110Idea2_zeros cum_pulls.png>
-Package pdftex.def Info: ./images/PULLS/experiment_C_110Idea2_zeros cum_pulls.p
-ng  used on input line 162.
-(pdftex.def)             Requested size: 170.71652pt x 116.51923pt.
-<./images/PULLS/experiment_C_160Idea2_zeros cum_pulls.png, id=689, 554.67226pt 
-x 378.57436pt>
-File: ./images/PULLS/experiment_C_160Idea2_zeros cum_pulls.png Graphic file (ty
-pe png)
-<use ./images/PULLS/experiment_C_160Idea2_zeros cum_pulls.png>
-Package pdftex.def Info: ./images/PULLS/experiment_C_160Idea2_zeros cum_pulls.p
-ng  used on input line 163.
-(pdftex.def)             Requested size: 170.71652pt x 116.51923pt.
-<./images/PULLS/experiment_C_210Idea2_zeros cum_pulls.png, id=690, 554.67226pt 
-x 378.57436pt>
-File: ./images/PULLS/experiment_C_210Idea2_zeros cum_pulls.png Graphic file (ty
-pe png)
-<use ./images/PULLS/experiment_C_210Idea2_zeros cum_pulls.png>
-Package pdftex.def Info: ./images/PULLS/experiment_C_210Idea2_zeros cum_pulls.p
-ng  used on input line 163.
-(pdftex.def)             Requested size: 170.71652pt x 116.51923pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
+[45 <./images/provvisori/experiment_spotify10k20r ANALYTICS.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1799,20 +1760,7 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[45 <./images/provvisori/RENT_provvisorio.png>]
-
-Package fancyhdr Warning: \headheight is too small (12.3pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
-
-[46 <./images/PULLS/experiment_C_10Idea2_zeros cum_pulls.png> <./images/PULLS/e
-xperiment_C_40Idea2_zeros cum_pulls.png> <./images/PULLS/experiment_C_70Idea2_z
-eros cum_pulls.png> <./images/PULLS/experiment_C_110Idea2_zeros cum_pulls.png> 
-<./images/PULLS/experiment_C_160Idea2_zeros cum_pulls.png> <./images/PULLS/expe
-riment_C_210Idea2_zeros cum_pulls.png>])
+[46 <./images/provvisori/RENT_provvisorio.png>])
 
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1877,13 +1825,13 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 (contents/algorithms.aux) (contents/ExperimentalAnalysis.aux)
 (contents/capitolo6-conclusions.aux))
 Package rerunfilecheck Info: File `TesiStile.out' has not changed.
-(rerunfilecheck)             Checksum: 03BD9198F7909D99E491548E377DAF98;2307.
+(rerunfilecheck)             Checksum: 179DD3CF14B8DECC5A98AB27C79B8E91;2377.
  ) 
 Here is how much of TeX's memory you used:
- 31833 strings out of 479618
- 751659 string characters out of 2865026
+ 31795 strings out of 479618
+ 749650 string characters out of 2865026
  1139508 words of memory out of 3000000
- 48098 multiletter control sequences out of 15000+200000
+ 48066 multiletter control sequences out of 15000+200000
  441455 words of font info for 126 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  87i,17n,89p,2290b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1936,9 +1884,9 @@ s/MiKTeX/fonts/type1/public/cm-super/sfti1000.pfb><C:/Users/agost/AppData/Local
 /Programs/MiKTeX/fonts/type1/public/cm-super/sfti1095.pfb><C:/Users/agost/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sftt1095.pfb><C:/Users/ago
 st/AppData/Local/Programs/MiKTeX/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on TesiStile.pdf (64 pages, 8230246 bytes).
+Output written on TesiStile.pdf (64 pages, 5904700 bytes).
 PDF statistics:
- 908 PDF objects out of 1000 (max. 8388607)
- 186 named destinations out of 1000 (max. 500000)
- 375 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 903 PDF objects out of 1000 (max. 8388607)
+ 187 named destinations out of 1000 (max. 500000)
+ 348 words of extra memory for PDF output out of 10000 (max. 10000000)
 

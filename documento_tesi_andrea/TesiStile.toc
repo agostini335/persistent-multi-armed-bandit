@@ -35,8 +35,6 @@
 \contentsline {subsection}{\numberline {5.1.2}Synthetic B}{41}{subsection.5.1.2}%
 \contentsline {subsection}{\numberline {5.1.3}Synthetic C}{41}{subsection.5.1.3}%
 \contentsline {section}{\numberline {5.2}Results}{42}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Observations}{46}{subsection.5.2.1}%
-\contentsline {subsubsection}{spotify}{47}{section*.34}%
-\contentsline {subsubsection}{rent}{47}{section*.35}%
+\contentsline {section}{\numberline {5.3}Observations}{46}{section.5.3}%
 \contentsline {chapter}{\numberline {6}Conclusions}{49}{chapter.6}%
-\contentsline {chapter}{Bibliography}{51}{chapter*.36}%
+\contentsline {chapter}{Bibliography}{51}{chapter*.34}%

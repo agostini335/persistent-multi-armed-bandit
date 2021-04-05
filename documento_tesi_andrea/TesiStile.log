@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.10)  5 APR 2021 03:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.10)  6 APR 2021 01:17
 entering extended mode
 **./TesiStile.tex
 (TesiStile.tex
@@ -1603,12 +1603,12 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 <./images/chart (1)-1.png, id=651, 1723.43875pt x 1505.625pt>
 File: ./images/chart (1)-1.png Graphic file (type png)
 <use ./images/chart (1)-1.png>
-Package pdftex.def Info: ./images/chart (1)-1.png  used on input line 83.
+Package pdftex.def Info: ./images/chart (1)-1.png  used on input line 84.
 (pdftex.def)             Requested size: 178.11409pt x 155.60262pt.
 <./images/chart (2)-1.png, id=652, 1723.43875pt x 1505.625pt>
 File: ./images/chart (2)-1.png Graphic file (type png)
 <use ./images/chart (2)-1.png>
-Package pdftex.def Info: ./images/chart (2)-1.png  used on input line 83.
+Package pdftex.def Info: ./images/chart (2)-1.png  used on input line 84.
 (pdftex.def)             Requested size: 170.71652pt x 149.12396pt.
 
 
@@ -1625,10 +1625,10 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 File: ./images/ANALYTICS/experiment_A ANALYTICS.png Graphic file (type png)
 <use ./images/ANALYTICS/experiment_A ANALYTICS.png>
 Package pdftex.def Info: ./images/ANALYTICS/experiment_A ANALYTICS.png  used on
- input line 122.
+ input line 123.
 (pdftex.def)             Requested size: 455.24408pt x 250.14157pt.
 
-Overfull \hbox (95.24408pt too wide) in paragraph at lines 122--124
+Overfull \hbox (95.24408pt too wide) in paragraph at lines 123--125
  [][] 
  []
 
@@ -1637,10 +1637,10 @@ Overfull \hbox (95.24408pt too wide) in paragraph at lines 122--124
 File: ./images/ANALYTICS/experiment_B ANALYTICS.png Graphic file (type png)
 <use ./images/ANALYTICS/experiment_B ANALYTICS.png>
 Package pdftex.def Info: ./images/ANALYTICS/experiment_B ANALYTICS.png  used on
- input line 127.
+ input line 129.
 (pdftex.def)             Requested size: 455.24408pt x 251.99644pt.
 
-Overfull \hbox (95.24408pt too wide) in paragraph at lines 127--129
+Overfull \hbox (95.24408pt too wide) in paragraph at lines 129--131
  [][] 
  []
 
@@ -1662,7 +1662,7 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 File: ./images/ANALYTICS/experiment_C_50 ANALYTICS.png Graphic file (type png)
 <use ./images/ANALYTICS/experiment_C_50 ANALYTICS.png>
 Package pdftex.def Info: ./images/ANALYTICS/experiment_C_50 ANALYTICS.png  used
- on input line 134.
+ on input line 138.
 (pdftex.def)             Requested size: 270.30118pt x 149.66795pt.
 <./images/ANALYTICS/experiment_C_100 ANALYTICS.png, id=671, 689.09445pt x 378.6
 948pt>
@@ -1670,7 +1670,7 @@ File: ./images/ANALYTICS/experiment_C_100 ANALYTICS.png Graphic file (type png)
 
 <use ./images/ANALYTICS/experiment_C_100 ANALYTICS.png>
 Package pdftex.def Info: ./images/ANALYTICS/experiment_C_100 ANALYTICS.png  use
-d on input line 134.
+d on input line 138.
 (pdftex.def)             Requested size: 270.30118pt x 148.55135pt.
 <./images/ANALYTICS/experiment_C_150 ANALYTICS.png, id=672, 689.2149pt x 378.81
 525pt>
@@ -1678,7 +1678,7 @@ File: ./images/ANALYTICS/experiment_C_150 ANALYTICS.png Graphic file (type png)
 
 <use ./images/ANALYTICS/experiment_C_150 ANALYTICS.png>
 Package pdftex.def Info: ./images/ANALYTICS/experiment_C_150 ANALYTICS.png  use
-d on input line 135.
+d on input line 139.
 (pdftex.def)             Requested size: 270.30118pt x 148.5697pt.
 <./images/ANALYTICS/experiment_C_200 ANALYTICS.png, id=673, 689.2149pt x 378.69
 48pt>
@@ -1686,7 +1686,7 @@ File: ./images/ANALYTICS/experiment_C_200 ANALYTICS.png Graphic file (type png)
 
 <use ./images/ANALYTICS/experiment_C_200 ANALYTICS.png>
 Package pdftex.def Info: ./images/ANALYTICS/experiment_C_200 ANALYTICS.png  use
-d on input line 135.
+d on input line 139.
 (pdftex.def)             Requested size: 270.30118pt x 148.52246pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1701,7 +1701,7 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
 [43 <./images/ANALYTICS/experiment_B ANALYTICS.png>]
-Overfull \vbox (25.71126pt too high) has occurred while \output is active []
+Overfull \vbox (38.91133pt too high) has occurred while \output is active []
 
 
 
@@ -1715,32 +1715,33 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 [44 <./images/ANALYTICS/experiment_C_50 ANALYTICS.png> <./images/ANALYTICS/expe
 riment_C_100 ANALYTICS.png> <./images/ANALYTICS/experiment_C_150 ANALYTICS.png>
  <./images/ANALYTICS/experiment_C_200 ANALYTICS.png>]
-<./images/provvisori/experiment_spotify10k20r ANALYTICS.png, id=688, 633.92834p
-t x 378.57436pt>
-File: ./images/provvisori/experiment_spotify10k20r ANALYTICS.png Graphic file (
-type png)
-<use ./images/provvisori/experiment_spotify10k20r ANALYTICS.png>
-Package pdftex.def Info: ./images/provvisori/experiment_spotify10k20r ANALYTICS
-.png  used on input line 145.
-(pdftex.def)             Requested size: 455.24408pt x 271.87436pt.
+<./images/ANALYTICS/experiment_spotify_def ANALYTICS.png, id=688, 674.0382pt x 
+378.57436pt>
+File: ./images/ANALYTICS/experiment_spotify_def ANALYTICS.png Graphic file (typ
+e png)
+<use ./images/ANALYTICS/experiment_spotify_def ANALYTICS.png>
+Package pdftex.def Info: ./images/ANALYTICS/experiment_spotify_def ANALYTICS.pn
+g  used on input line 148.
+(pdftex.def)             Requested size: 455.24408pt x 255.6884pt.
 
-Overfull \hbox (95.24408pt too wide) in paragraph at lines 145--147
+Overfull \hbox (95.24408pt too wide) in paragraph at lines 148--150
  [][] 
  []
 
-<./images/provvisori/RENT_provvisorio.png, id=689, 578.16pt x 397.485pt>
-File: ./images/provvisori/RENT_provvisorio.png Graphic file (type png)
-<use ./images/provvisori/RENT_provvisorio.png>
-Package pdftex.def Info: ./images/provvisori/RENT_provvisorio.png  used on inpu
-t line 154.
-(pdftex.def)             Requested size: 455.24408pt x 312.97864pt.
+<./images/ANALYTICS/affitti-def ANALYTICS.png, id=689, 678.8562pt x 378.57436pt
+>
+File: ./images/ANALYTICS/affitti-def ANALYTICS.png Graphic file (type png)
+<use ./images/ANALYTICS/affitti-def ANALYTICS.png>
+Package pdftex.def Info: ./images/ANALYTICS/affitti-def ANALYTICS.png  used on 
+input line 160.
+(pdftex.def)             Requested size: 455.24408pt x 253.87456pt.
 
-Overfull \hbox (95.24408pt too wide) in paragraph at lines 154--155
+Overfull \hbox (95.24408pt too wide) in paragraph at lines 160--161
  [][] 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 5091) has occurred while \output is active []
 
 
 
@@ -1751,7 +1752,8 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[45 <./images/provvisori/experiment_spotify10k20r ANALYTICS.png>]
+[45 <./images/ANALYTICS/experiment_spotify_def ANALYTICS.png> <./images/ANALYTI
+CS/affitti-def ANALYTICS.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1760,7 +1762,7 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[46 <./images/provvisori/RENT_provvisorio.png>])
+[46])
 
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1825,13 +1827,13 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 (contents/algorithms.aux) (contents/ExperimentalAnalysis.aux)
 (contents/capitolo6-conclusions.aux))
 Package rerunfilecheck Info: File `TesiStile.out' has not changed.
-(rerunfilecheck)             Checksum: 179DD3CF14B8DECC5A98AB27C79B8E91;2377.
+(rerunfilecheck)             Checksum: 4EDFA630DD32032B1505C7218025C9AD;2370.
  ) 
 Here is how much of TeX's memory you used:
- 31795 strings out of 479618
- 749650 string characters out of 2865026
+ 31802 strings out of 479618
+ 749667 string characters out of 2865026
  1139508 words of memory out of 3000000
- 48066 multiletter control sequences out of 15000+200000
+ 48076 multiletter control sequences out of 15000+200000
  441455 words of font info for 126 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  87i,17n,89p,2290b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1884,9 +1886,9 @@ s/MiKTeX/fonts/type1/public/cm-super/sfti1000.pfb><C:/Users/agost/AppData/Local
 /Programs/MiKTeX/fonts/type1/public/cm-super/sfti1095.pfb><C:/Users/agost/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sftt1095.pfb><C:/Users/ago
 st/AppData/Local/Programs/MiKTeX/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on TesiStile.pdf (64 pages, 5904700 bytes).
+Output written on TesiStile.pdf (64 pages, 6299292 bytes).
 PDF statistics:
- 903 PDF objects out of 1000 (max. 8388607)
- 187 named destinations out of 1000 (max. 500000)
+ 912 PDF objects out of 1000 (max. 8388607)
+ 185 named destinations out of 1000 (max. 500000)
  348 words of extra memory for PDF output out of 10000 (max. 10000000)
 

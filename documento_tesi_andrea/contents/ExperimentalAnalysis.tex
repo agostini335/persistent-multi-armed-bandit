@@ -39,6 +39,7 @@ Below we present three significant settings analyzed: \emph{Synthetic A}, \emph{
 		& \textit{1}             & \textit{}              &                        &                        &                        &                        & \multicolumn{3}{c}{\textit{ $\Tmax$}}                 
 	\end{tabular}
 	\caption{Example of bucket in synthetic setting. In this example $\Tmax=8$, the legth of the vector. The first 5 components are successes (1), meaning that the true length of the vector is $l=5$.}
+	\label{sbucket}
 \end{figure}
 %A lot of real problems can be easily represented in this way, furthermore, here we focus our attention on this scenario as it directly attacks the problem treated, givining a basic answer to the question we asked ourselves: "What happens if the reward is not a scalar but is persistent over time?"
 \subsection{Synthetic A}\label{SA}
@@ -59,7 +60,7 @@ In this setting, the true length $l_{j,t}$ is sampled from a Beta distribution w
 	
 \label{tabSA}
 \end{table}
-\subsection{Synthetic B}
+\subsection{Synthetic B}\label{SB}
 In this setting, for each time instant t, the true length $l_{j,t}$ is sampled from a Beta distribution depending on the pulled arm $a_j$. For each arm $a_j$, the feedback is $R_j=1$. This implies that the best arm is the one which is associated to the Beta with the highest mean. We set $\Tmax=50$. The experiment is repeated for 50 independent runs. The full description of the arms is provided in Table \ref{tabSB}.
 
 
@@ -85,7 +86,7 @@ In this setting, for each time instant t, the true length $l_{j,t}$ is sampled f
 	\label{beta}
 \end{figure}
 
-\subsection{Synthetic C}
+\subsection{Synthetic C}\label{SC}
 
 In this setting, we model the common situation where high feedback discourage long persistency, as previously discussed in Chapter \ref{CF}. At each time t, the true length $l_{j,t}$ is sampled from a Beta distribution depending on the pulled arm $a_j$. For each arm $a_j$, the feedback is $R_j$ is set such that to higher Beta mean corresponds lower feedback. We set $\Tmax=50,100,150,200$. For each $\Tmax$ adopted, the experiment is repeated for 50 independent runs. The full description of the arms is provided in Table \ref{tabSC} where with $\mu_{\Tmax}$ we indicate the expected pull reward in the configuration where $\Tmax$ is adopted.
 
@@ -122,75 +123,62 @@ In this setting, we model the common situation where high feedback discourage lo
 	\includegraphics[width=16cm]{./images/ANALYTICS/experiment_A ANALYTICS.png}
 	\centering	
 	\caption{Pseudo regret plot of the experiment Synthetic A.}
+	\label{f:a}
 \end{figure}
 \begin{figure}[H]
 	\includegraphics[width=16cm]{./images/ANALYTICS/experiment_B ANALYTICS.png}
 	\centering	
 	\caption{Pseudo regret plot of the experiment Synthetic B. }
+	\label{f:b}
 \end{figure}
 
 \begin{figure}[H]
+	
 	\centering
 	\includegraphics[width=9.5cm]{./images/ANALYTICS/experiment_C_50 ANALYTICS.png}\quad\includegraphics[width=9.5cm]{./images/ANALYTICS/experiment_C_100 ANALYTICS.png}
 	\includegraphics[width=9.5cm]{./images/ANALYTICS/experiment_C_150 ANALYTICS.png}\quad\includegraphics[width=9.5cm]{./images/ANALYTICS/experiment_C_200 ANALYTICS.png}
-	\caption{Pseudo regret plot of the experiment Synthetic C.}
+	\caption{Pseudo regret plots of the experiment Synthetic C. From the top: $\Tmax = 50, 100, 150, 200$.}
+	\label{f:c}
 	
 \end{figure}
 
 %SPOTIFY
 
-
-
 \begin{figure}[H]
-	\includegraphics[width=16cm]{./images/provvisori/experiment_spotify10k20r ANALYTICS.png}
-	\centering	
-	\caption{PROVVISORIO Pseudo regret plot of the experiment Spotify Playlist Problem.}
+		\includegraphics[width=16cm]{./images/ANALYTICS/experiment_spotify_def ANALYTICS.png}
+		\centering	
+		\caption{Pseudo regret plot of the experiment Spotify Playlist Problem.}
+		\label{f:s}
 \end{figure}
+
+
 
 
 %RENT
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=16cm]{./images/provvisori/RENT_provvisorio.png}
+	\includegraphics[width=16cm]{./images/ANALYTICS/affitti-def ANALYTICS.png}
 		
-	\caption{PROVVISORIO Normalized pseudo regret plot of the experiment Rental Pricing Problem.}
+	\caption{Normalized pseudo regret plot of the experiment Rental Pricing Problem.}
+	\label{f:r}
 \end{figure}
 
 
 
 
-\subsection{Observations}
-\begin{itemize}
-	
-	\item in tutti gli scenari sintentici e reali, l' approccio baysiano è vincente sull'approccio frequentista.
-	
-	\item gli scenari sintetici sono rappresentativi di molti problemi pratici: B->Medical trial, C->Subscription.
-	
-	\item myopic non è mai meglio di farsighted per tutti gli algoritmi testati, in tutti gli scenari sintetici. Tuttavia solo in alcuni casi farsighted si distingue in modo evidente da myopic: Baseline in SA, Baseline in SB, Bound1 in SB, BayesUcb in C a Tmax 200. Negli scenari analizzati la configurazione non discrimina se un algoritmo è meglio di dell'altro.
-	
-	\item idea2 sempre peggio di idea1... capire come fare fars/myopic O idea 0.5
-	
-	
-	\item i primi due scenari sintetici ( A e B) pur avendo una diversa concenzione, presentano lo stesso ranking disegnando una situazione molto simile. BayesUcb vince su tutti. A seguire TS -I2 - B1-Baseline.
-	
-	\item mentre bound1 e baseline hanno un andamento simile nel piegare, idea 2 ha una forte esplorazione nella fase iniziale per poi piegare bruscamente. (piegare= imparare arm migliore) . Potrebbe essere la costante che moltiplica $\ln t$ nel bound?
-	
-	\item lo scenario c evidenzia una situazione interessante, ci fa vedere come idea 2 soffra maggiormente l'aumento di tmax a parità di scenario. bound1 in questo scenario è quasi indistinguibile alla baseline.
-	
-	\subsubsection{spotify}
-	
-	\item bound1 e baseline non sono distinguibili -> ragionevole, siamo in general peristency e il reward è distribuito con stessa probabilità dall'inizio alla fine il vantaggio di anticipare è ridotto (non c'è).
-	\item anche sui bayesiani si riflette in quanto TS si scambia con ByesUCB
-	
-	\item in generale gli algoritmi imparano e dopo 2500 iterazione TS smette di crescere, ovvero riesce a consigliare quasi sempre la playlist migliore. Promettente per implementazioni più approfondite.
-	
-	\subsubsection{rent}
-	\item il problema appare molto più difficile, in quanto ne la baseline ne TS riescono ad imparare nell'orizzonte prefissato. BayesUCB performa molto meglio superando entrambi.
-	
-	\item nel caso degli affitti risulta inappropriato l'utilizzo di mab persistent con questi valori. la simulazione affitta ad ogni mese una nuova casa, e dopo 50000 mesi il prezzo ottimo ""non è stato ancora trovato"". Tuttavia semplificando il problema alterando i dati...
-	
-	
-	
-		
-	
-\end{itemize}
+\section{Observations}
+Empirical evidence shows that, in the majority of the addressed settings, the policies that adopt a Bayesian approach achieves better performance compared to ones that adopt the Frequentist approach.
+
+In the settings Synthetic A and Synthetic B, respectively described in Sections \ref{SA} and \ref{SB}, the Frequentist algorithms which exploit partial information outperforms the Frequentist baselines. Also for the Bayesian algorithms, although less evident, the baselines have worse performance compared to the algorithms that exploit partial information. Settings Synthetic A and Synthetic B, despite having different characteristics, obtain the same algorithms ranking where PR-BW-BayesUCB-P is the best overall and PR-NT-UCB-P is the best among the Frequentist ones. 
+
+The setting Synthetic C, described in Section \ref{SC}, shows an interesting situation. It results that the algorithm PR-NT-UCB-P suffers the magnitude of $\Tmax$ more than the other algorithms. In Figure \ref{f:c} we notice that, when $Tmax=50$, PR-NT-UCB-P is the best Frequentist algorithm, then, as $\Tmax$ increases, it performs worse than the others. For the other algorithms we have a result comparable to the one obtained in Synthetic A and Synthetic B.
+
+All the synthetic settings presented are designed as an abstraction of possible real problems. For example the setting Synthetic B, could be seen as a simplified version of the Medical Trial problem proposed in Example \ref{trial}. The setting Synthetic C exemplifies the scenario of the dynamic pricing problem of a subscription-based service, behind the assumption that high prices discourage long persistency. In all the synthetic settings,  the best algorithm is the Bayesian PR-BW-BayesUCB-P, which exploits partial information during the reward acquisition process.
+
+The experimental results show that an algorithm in farsighted configuration performs better than the same in myopic configuration. This is what we expected intuitively since the farsighted configuration anticipates information to the learner. However, this improvement is clearly noticeable only in a few cases, for example: PR-T-UCB-P in Figure \ref{f:a}, PR-BW-BayesUCB-P in Figure \ref{f:c} with $\Tmax=200$. This distinction is not relevant for the performance analysis of the algorithms.
+
+While the synthetic settings analyzed are in tight-persistency, the Spotify Playlist problem described in Section \ref{spotify} is in general-persistency. The results of the Spotify experiment in Figure \ref{f:s} depict a different situation from the synthetic ones. In the Frequentist algorithms PR-BW-UCB-P is really close to the baseline PR-T-UCB-P and, in the Bayesian ones, the baseline PR-T-TS-P overtakes PR-BW-BayesUCB-P. This result leads us to think that the bin-wise approach suffers the general-persistency. As a matter of facts, while in the synthetic settings the reward is concentrated at the start of the buckets as depicted in Figure \ref{sbucket}, in this scenario the reward is uniformly distributed over the bucket. This nullifies the advantage of the bin-wise approach. The algorithm PR-NT-UCB-P, which exploit the non terminated buckets filling them with fake realizations, does not suffer the issue of the reward distribution along the bucket and outperforms both the baseline PR-T-UCB-P and the bin-wise Frequentist algorithm PR-BW-UCB-P.
+
+The Rental Pricing problem described in Section \ref{rental}, appears more difficult than the other settings. Both the Frequentist and Bayesian baselines are not able to identify the best arm quickly, since they do not curve in the normalized pseudo-regret plot (Figure \ref{f:r}). Although the difficulty of the proposed scenario, the algorithm PR-BW-BayesUCB-NP outperforms the other ones.
+
+

@@ -17,9 +17,13 @@ rcParams['axes.titlepad'] = 20
 plt.rcParams['mathtext.fontset'] = 'stix'
 plt.rcParams['font.family'] = 'STIXGeneral'
 
-color_list = ["purple","violet","darkred","red","mediumblue","dodgerblue","darkorange","gold","darkgreen","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
+#color_list = ["purple","violet","darkred","red","mediumblue","dodgerblue","darkorange","gold","darkgreen","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
 
-#color_list = ["purple","violet","darkred","mediumblue","darkorange","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
+#spotify
+#color_list = ["purple","darkred","mediumblue","darkorange","darkgreen","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
+color_list = ['fuchsia', 'red', 'gold',  'darkorange', 'darkgreen', 'limegreen']
+
+#color_list = ["purple","violet","darkred","red","mediumblue","dodgerblue","darkorange","gold","darkgreen","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
 
 import json
 
@@ -55,13 +59,20 @@ def compute_experiment_pseudo_regret(learner_names,learner_arm_value_dict,oracle
         learner_std[learner] = np.std(pseudo_regret_of_learner,axis = 0)
     i = 0
     for learner in learner_names:
+        
         x = np.arange(len(learner_average_pseudo_regret[learner]))
         confidence_interval = 2*learner_std[learner]/np.sqrt(n_runs)
-        (_, caps, _) =plt.errorbar(x,learner_average_pseudo_regret[learner],confidence_interval,elinewidth=0.9,capsize=3, errorevery=4000 ,label = learner,color=color_list[i])
+        if learner == "PR-BW-NP_myopic":
+            (_, caps, _) =plt.errorbar(x,learner_average_pseudo_regret[learner],confidence_interval,elinewidth=0.9,capsize=3, errorevery=4000 ,label = "PR-T-TS-NP_myopic",color=color_list[i])
+        else:
+            if learner == "PR-BW-NP_farsighted":
+                (_, caps, _) =plt.errorbar(x,learner_average_pseudo_regret[learner],confidence_interval,elinewidth=0.9,capsize=3, errorevery=4000 ,label = "PR-T-TS-NP_farsighted",color=color_list[i])
+            else:
+                (_, caps, _) =plt.errorbar(x,learner_average_pseudo_regret[learner],confidence_interval,elinewidth=0.9,capsize=3, errorevery=4000 ,label = learner,color=color_list[i])
         i = i+1
         for cap in caps:
             cap.set_markeredgewidth(1)
-    plt.ylabel('Pseudo Regret')
+    plt.ylabel('Normalized Pseudo Regret')#todo remove
     plt.title(str(title))
     plt.legend(loc='upper left')
     lgd = plt.legend(loc='center left', bbox_to_anchor=(1, 0.5),fancybox = False, shadow = False)
@@ -296,14 +307,17 @@ def compute_full_analytics_from_files(n_runs,time_horizon,Oracle_best_arm_value,
 
 
 
-ln = ["PR-T-UCB-P_myopic","PR-T-UCB-P_farsighted","PR-BW-UCB-P_myopic","PR-BW-UCB-P_farsighted","PR-NT-UCB-P_myopic","PR-NT-UCB-P_farsighted","PR-T-TS_myopic","PR-T-TS_farsighted","PR-BW-BayesUCB-P_myopic","PR-BW-BayesUCB-P_farsighted"]
+#ln = ["PR-T-UCB-P_myopic","PR-T-UCB-P_farsighted","PR-BW-UCB-P_myopic","PR-BW-UCB-P_farsighted","PR-NT-UCB-P_myopic","PR-NT-UCB-P_farsighted","PR-T-TS_myopic","PR-T-TS_farsighted","PR-BW-BayesUCB-P_myopic","PR-BW-BayesUCB-P_farsighted"]
 
-#ln = ["Idea2_zeros","Idea2_ones","Baseline_myopic","Bound1_myopic","Thompson_baseline","BayesUCBPersistent"]
+#spotify
+ln = ["PR-T-UCB-NP_myopic","PR-T-UCB-NP_farsighted","PR-BW-NP_myopic","PR-BW-NP_farsighted","PR-BW-BayesUCB-NP_myopic","PR-BW-BayesUCB-NP_farsighted"]
 
 avg_list = []
 std_list = []
 
-compute_full_analytics_from_files(n_runs=50,time_horizon=20000,Oracle_best_arm_value=30.500000000002828,learner_names=ln,experiment_name="experiment_B",title="Pseudo Regret Synthetic B")
+compute_full_analytics_from_files(n_runs=40,time_horizon=50000,Oracle_best_arm_value=530.1869158878505,learner_names=ln,experiment_name="affitti-def",title="Normalized Pseudo Regret Rental Scenario")
+
+'''
 compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=87.71428571450483,learner_names=ln,experiment_name="experiment_C_50",title="Pseudo Regret Synthetic C with Tmax = 50 ")
 compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=173.4285714285732,learner_names=ln,experiment_name="experiment_C_100",title="Pseudo Regret Synthetic C with Tmax = 100 ")
 compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=259.1428571428575,learner_names=ln,experiment_name="experiment_C_150",title="Pseudo Regret Synthetic C with Tmax = 150 ")
@@ -312,7 +326,7 @@ compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_v
 
 
 
-'''
+
 compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=19.166313650000003,learner_names=ln,experiment_name="experiment_C_10")
 compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=36.28571441774977,learner_names=ln,experiment_name="experiment_C_20")
 compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=70.57142857247196,learner_names=ln,experiment_name="experiment_C_40")

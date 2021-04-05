@@ -1,6 +1,6 @@
 {
     "tmax": 50,
-    "time": 20000,
+    "time": 100000,
     "n_runs":20,
     "arm_sets": [
         {

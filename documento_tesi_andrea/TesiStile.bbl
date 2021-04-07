@@ -1,15 +1,28 @@
-\begin{thebibliography}{13}
+\begin{thebibliography}{36}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
+\bibitem[Agarwal et~al.(2014)Agarwal, Hsu, Kale, Langford, Li, and
+  Schapire]{contextual}
+A.~Agarwal, D.~Hsu, S.~Kale, J.~Langford, L.~Li, and R.~Schapire.
+\newblock Taming the monster: A fast and simple algorithm for contextual
+  bandits.
+\newblock In \emph{International Conference on Machine Learning}, pages
+  1638--1646. PMLR, 2014.
+
 \bibitem[Agrawal and Goyal(2012)]{agrawal2012analysis}
 S.~Agrawal and N.~Goyal.
 \newblock Analysis of thompson sampling for the multi-armed bandit problem.
 \newblock In \emph{Conference on learning theory}, pages 39--1. JMLR Workshop
   and Conference Proceedings, 2012.
+
+\bibitem[Amin et~al.(2013)Amin, Rostamizadeh, and Syed]{amin2013learning}
+K.~Amin, A.~Rostamizadeh, and U.~Syed.
+\newblock Learning prices for repeated auctions with strategic buyers.
+\newblock \emph{arXiv preprint arXiv:1311.6838}, 2013.
 
 \bibitem[{Anantharam} et~al.(1987){Anantharam}, {Varaiya}, and
   {Walrand}]{Anantharam1987Markovian}
@@ -19,6 +32,12 @@ V.~{Anantharam}, P.~{Varaiya}, and J.~{Walrand}.
 \newblock \emph{IEEE Transactions on Automatic Control}, 32\penalty0
   (11):\penalty0 977--982, 1987.
 \newblock \doi{10.1109/TAC.1987.1104485}.
+
+\bibitem[Anderson(1964)]{anderson1964sequential}
+T.~Anderson.
+\newblock Sequential analysis with delayed observations.
+\newblock \emph{Journal of the American Statistical Association}, 59\penalty0
+  (308):\penalty0 1006--1015, 1964.
 
 \bibitem[{Auer} et~al.(1995){Auer}, {Cesa-Bianchi}, {Freund}, and
   {Schapire}]{Auer1995Adversarial}
@@ -34,11 +53,46 @@ P.~Auer, N.~Cesa-Bianchi, and P.~Fischer.
 \newblock Finite-time analysis of the multiarmed bandit problem.
 \newblock \emph{Machine learning}, 47\penalty0 (2):\penalty0 235--256, 2002.
 
+\bibitem[Avadhanula et~al.(2021)Avadhanula, Colini-Baldeschi, Leonardi,
+  Sankararaman, and Schrijvers]{avadhanula2021stochastic}
+V.~Avadhanula, R.~Colini-Baldeschi, S.~Leonardi, K.~A. Sankararaman, and
+  O.~Schrijvers.
+\newblock Stochastic bandits for multi-platform budget optimization in online
+  advertising.
+\newblock \emph{arXiv preprint arXiv:2103.10246}, 2021.
+
+\bibitem[Babaioff et~al.(2015)Babaioff, Dughmi, Kleinberg, and
+  Slivkins]{babaioff2015dynamic}
+M.~Babaioff, S.~Dughmi, R.~Kleinberg, and A.~Slivkins.
+\newblock Dynamic pricing with limited supply, 2015.
+
+\bibitem[Babaioff et~al.(2017)Babaioff, Blumrosen, Dughmi, and
+  Singer]{babaioff2017posting}
+M.~Babaioff, L.~Blumrosen, S.~Dughmi, and Y.~Singer.
+\newblock Posting prices with unknown distributions.
+\newblock \emph{ACM Transactions on Economics and Computation (TEAC)},
+  5\penalty0 (2):\penalty0 1--20, 2017.
+
+\bibitem[Badanidiyuru et~al.(2013)Badanidiyuru, Kleinberg, and
+  Slivkins]{badanidiyuru2013bandits}
+A.~Badanidiyuru, R.~Kleinberg, and A.~Slivkins.
+\newblock Bandits with knapsacks.
+\newblock In \emph{2013 IEEE 54th Annual Symposium on Foundations of Computer
+  Science}, pages 207--216. IEEE, 2013.
+
 \bibitem[Bakhshandegan~Moghaddam and Elahi(2019)]{recsys3}
 F.~Bakhshandegan~Moghaddam and M.~Elahi.
 \newblock Cold start solutions for recommendation systems.
 \newblock 05 2019.
 \newblock \doi{10.13140/RG.2.2.27407.02725}.
+
+\bibitem[Bisi et~al.(2017)Bisi, De~Nittis, Trov{\`{o}}, Restelli, and
+  Gatti]{bisi2017regret}
+L.~Bisi, G.~De~Nittis, F.~Trov{\`{o}}, M.~Restelli, and N.~Gatti.
+\newblock Regret minimization algorithms for the followers behaviour
+  identification in leadership games.
+\newblock In \emph{Proceedings of the Conference on Uncertainty in Artificial
+  (UAI)}, pages 1--10, 2017.
 
 \bibitem[Bobadilla~Sancho(2012)]{recsys2}
 F.~H. E. A. B. B.~J. Bobadilla~Sancho, Jesus Ortega~Requena.
@@ -50,6 +104,35 @@ F.~H. E. A. B. B.~J. Bobadilla~Sancho, Jesus Ortega~Requena.
 R.~Burke.
 \newblock Hybrid recommender systems: Survey and experiments.
 \newblock \emph{User Modeling and User-Adapted Interaction}, 12, 2002.
+
+\bibitem[Chapelle and Li(2011)]{Chapelle2011Thompson}
+O.~Chapelle and L.~Li.
+\newblock An empirical evaluation of thompson sampling.
+\newblock In J.~Shawe-Taylor, R.~Zemel, P.~Bartlett, F.~Pereira, and K.~Q.
+  Weinberger, editors, \emph{Advances in Neural Information Processing
+  Systems}, volume~24. Curran Associates, Inc., 2011.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper/2011/file/e53a0a2978c28872a4505bdb51db06dc-Paper.pdf}.
+
+\bibitem[Di~Benedetto et~al.(2020)Di~Benedetto, Bellini, and
+  Zappella]{di2020linear}
+G.~Di~Benedetto, V.~Bellini, and G.~Zappella.
+\newblock A linear bandit for seasonal environments.
+\newblock \emph{arXiv preprint arXiv:2004.13576}, 2020.
+
+\bibitem[Gael et~al.(2020)Gael, Vernade, Carpentier, and
+  Valko]{gael2020stochastic}
+M.~A. Gael, C.~Vernade, A.~Carpentier, and M.~Valko.
+\newblock Stochastic bandits with arm-dependent delays.
+\newblock In \emph{International Conference on Machine Learning}, pages
+  3348--3356. PMLR, 2020.
+
+\bibitem[Gatti et~al.(2015)Gatti, Lazaric, Rocco, and
+  Trov\`o]{gatti2015truthful}
+N.~Gatti, A.~Lazaric, M.~Rocco, and F.~Trov\`o.
+\newblock Truthful learning mechanisms for multi-slot sponsored search auctions
+  with externalities.
+\newblock \emph{ARTIF INTELL}, 227:\penalty0 93--139, 2015.
 
 \bibitem[Joulani et~al.(2013)Joulani, Gyorgy, and Szepesv{\'a}ri]{joulani2013}
 P.~Joulani, A.~Gyorgy, and C.~Szepesv{\'a}ri.
@@ -64,6 +147,41 @@ E.~Kaufmann, O.~Capp{\'e}, and A.~Garivier.
 \newblock In \emph{Artificial intelligence and statistics}, pages 592--600.
   PMLR, 2012.
 
+\bibitem[Li et~al.(2016)Li, Wang, Zhang, and Chen]{li2016contextual}
+S.~Li, B.~Wang, S.~Zhang, and W.~Chen.
+\newblock Contextual combinatorial cascading bandits.
+\newblock In \emph{International conference on machine learning}, pages
+  1245--1253. PMLR, 2016.
+
+\bibitem[Nuara et~al.(2018)Nuara, Trovo, Gatti, and
+  Restelli]{nuara2018combinatorial}
+A.~Nuara, F.~Trovo, N.~Gatti, and M.~Restelli.
+\newblock A combinatorial-bandit algorithm for the online joint bid/budget
+  optimization of pay-per-click advertising campaigns.
+\newblock In \emph{Proceedings of the AAAI Conference on Artificial
+  Intelligence}, volume~32, 2018.
+
+\bibitem[Nuara et~al.(2019)Nuara, Sosio, Trov\`o, Zaccardi, Gatti, and
+  Restelli]{nuara2019dealing}
+A.~Nuara, N.~Sosio, F.~Trov\`o, M.~C. Zaccardi, N.~Gatti, and M.~Restelli.
+\newblock Dealing with interdependencies and uncertainty in multi-channel
+  advertising campaigns optimization.
+\newblock In \emph{The World Wide Web Conference}, pages 1376--1386, 2019.
+
+\bibitem[Nuara et~al.(2020)Nuara, Trov{\`o}, Gatti, and
+  Restelli]{nuara2020online}
+A.~Nuara, F.~Trov{\`o}, N.~Gatti, and M.~Restelli.
+\newblock Online joint bid/daily budget optimization of internet advertising
+  campaigns.
+\newblock \emph{arXiv preprint arXiv:2003.01452}, 2020.
+
+\bibitem[Pike-Burke et~al.(2018)Pike-Burke, Agrawal, Szepesvari, and
+  Grunewalder]{pike2018bandits}
+C.~Pike-Burke, S.~Agrawal, C.~Szepesvari, and S.~Grunewalder.
+\newblock Bandits with delayed, aggregated anonymous feedback.
+\newblock In \emph{International Conference on Machine Learning}, pages
+  4105--4113. PMLR, 2018.
+
 \bibitem[Robbins(1952)]{Robbins1952sequential}
 H.~Robbins.
 \newblock Some aspects of the sequential design of experiments.
@@ -71,6 +189,12 @@ H.~Robbins.
   (5):\penalty0 527--535, 1952.
 \newblock URL
   \url{http://www.projecteuclid.org/DPubS/Repository/1.0/Disseminate?view=body&id=pdf_1&handle=euclid.bams/1183517370}.
+
+\bibitem[Romano et~al.(2020)Romano, Tartaglia, Marchesi, and
+  Gatti]{romano2020online}
+G.~Romano, G.~Tartaglia, A.~Marchesi, and N.~Gatti.
+\newblock Online posted pricing with unknown time-discounted valuations.
+\newblock \emph{arXiv preprint arXiv:2012.05774}, 2020.
 
 \bibitem[Sutton and Barto(2018)]{sutton2018reinforcement}
 R.~S. Sutton and A.~G. Barto.
@@ -82,6 +206,41 @@ W.~R. Thompson.
 \newblock On the likelihood that one unknown probability exceeds another in
   view of the evidence of two samples.
 \newblock \emph{Biometrika}, 25\penalty0 (3/4):\penalty0 285--294, 1933.
+
+\bibitem[Trov{\`o} et~al.(2018)Trov{\`o}, Paladino, Restelli, and
+  Gatti]{trovo2018improving}
+F.~Trov{\`o}, S.~Paladino, M.~Restelli, and N.~Gatti.
+\newblock Improving multi-armed bandit algorithms in online pricing settings.
+\newblock \emph{International Journal of Approximate Reasoning}, 98:\penalty0
+  196--235, 2018.
+
+\bibitem[Trovo et~al.(2020)Trovo, Paladino, Restelli, and
+  Gatti]{trovo2020sliding}
+F.~Trovo, S.~Paladino, M.~Restelli, and N.~Gatti.
+\newblock Sliding-window thompson sampling for non-stationary settings.
+\newblock \emph{Journal of Artificial Intelligence Research}, 68:\penalty0
+  311--364, 2020.
+
+\bibitem[Vernade et~al.(2017)Vernade, Capp{\'e}, and
+  Perchet]{vernade2017stochastic}
+C.~Vernade, O.~Capp{\'e}, and V.~Perchet.
+\newblock Stochastic bandit models for delayed conversions.
+\newblock \emph{arXiv preprint arXiv:1706.09186}, 2017.
+
+\bibitem[Vernade et~al.(2020{\natexlab{a}})Vernade, Carpentier, Lattimore,
+  Zappella, Ermis, and Brueckner]{vernade2020linear}
+C.~Vernade, A.~Carpentier, T.~Lattimore, G.~Zappella, B.~Ermis, and
+  M.~Brueckner.
+\newblock Linear bandits with stochastic delayed feedback.
+\newblock In \emph{International Conference on Machine Learning}, pages
+  9712--9721. PMLR, 2020{\natexlab{a}}.
+
+\bibitem[Vernade et~al.(2020{\natexlab{b}})Vernade, Gyorgy, and
+  Mann]{vernade2020non}
+C.~Vernade, A.~Gyorgy, and T.~Mann.
+\newblock Non-stationary delayed bandits with intermediate observations.
+\newblock In \emph{International Conference on Machine Learning}, pages
+  9722--9732. PMLR, 2020{\natexlab{b}}.
 
 \bibitem[White(2012)]{banditalgowebopt}
 J.~M. White.

@@ -6,30 +6,31 @@
 \BOOKMARK [1][-]{section.2.1}{The Exploration-Exploitation Dilemma}{chapter.2}% 6
 \BOOKMARK [1][-]{section.2.2}{The Multi-Armed Bandit Problem}{chapter.2}% 7
 \BOOKMARK [1][-]{section.2.3}{Introducing Persistent Rewards}{chapter.2}% 8
-\BOOKMARK [0][-]{chapter.3}{Problem Formulation}{}% 9
-\BOOKMARK [1][-]{section.3.1}{The MAB-PR Problem}{chapter.3}% 10
-\BOOKMARK [2][-]{subsection.3.1.1}{ Performance measures}{section.3.1}% 11
-\BOOKMARK [1][-]{section.3.2}{Modeling of real-world scenarios}{chapter.3}% 12
-\BOOKMARK [2][-]{subsection.3.2.1}{The Spotify Playlist Problem}{section.3.2}% 13
-\BOOKMARK [2][-]{subsection.3.2.2}{The Rental Pricing Problem}{section.3.2}% 14
-\BOOKMARK [0][-]{chapter.4}{Novel Algorithms}{}% 15
-\BOOKMARK [1][-]{section.4.1}{Introduction to the Novel Algorithms}{chapter.4}% 16
-\BOOKMARK [2][-]{subsection.4.1.1}{Farsighted and Myopic configuration}{section.4.1}% 17
-\BOOKMARK [1][-]{section.4.2}{Frequentist Algorithms}{chapter.4}% 18
-\BOOKMARK [2][-]{subsection.4.2.1}{PR-T-UCB \(Frequentist Baseline Algorithm\)}{section.4.2}% 19
-\BOOKMARK [2][-]{subsection.4.2.2}{PR-BW-UCB-P}{section.4.2}% 20
-\BOOKMARK [2][-]{subsection.4.2.3}{PR-NT-UCB-P}{section.4.2}% 21
-\BOOKMARK [1][-]{section.4.3}{Bayesian Algorithms}{chapter.4}% 22
-\BOOKMARK [2][-]{subsection.4.3.1}{PR-T-TS-P \(Bayesian Baseline Algorithm\)}{section.4.3}% 23
-\BOOKMARK [2][-]{subsection.4.3.2}{PR-T-TS-NP \(Bayesian Baseline Algorithm\)}{section.4.3}% 24
-\BOOKMARK [2][-]{subsection.4.3.3}{PR-BW-BayesUCB-P}{section.4.3}% 25
-\BOOKMARK [2][-]{subsection.4.3.4}{PR-BW-BayesUCB-NP}{section.4.3}% 26
-\BOOKMARK [0][-]{chapter.5}{Experimental Analysis}{}% 27
-\BOOKMARK [1][-]{section.5.1}{Synthetic Experiment Settings}{chapter.5}% 28
-\BOOKMARK [2][-]{subsection.5.1.1}{Synthetic A}{section.5.1}% 29
-\BOOKMARK [2][-]{subsection.5.1.2}{Synthetic B}{section.5.1}% 30
-\BOOKMARK [2][-]{subsection.5.1.3}{Synthetic C}{section.5.1}% 31
-\BOOKMARK [1][-]{section.5.2}{Results}{chapter.5}% 32
-\BOOKMARK [1][-]{section.5.3}{Observations}{chapter.5}% 33
-\BOOKMARK [0][-]{chapter.6}{Conclusions}{}% 34
-\BOOKMARK [0][-]{chapter*.34}{Bibliography}{}% 35
+\BOOKMARK [1][-]{section.2.4}{Related works}{chapter.2}% 9
+\BOOKMARK [0][-]{chapter.3}{Problem Formulation}{}% 10
+\BOOKMARK [1][-]{section.3.1}{The MAB-PR Problem}{chapter.3}% 11
+\BOOKMARK [2][-]{subsection.3.1.1}{ Performance measures}{section.3.1}% 12
+\BOOKMARK [1][-]{section.3.2}{Modeling of real-world scenarios}{chapter.3}% 13
+\BOOKMARK [2][-]{subsection.3.2.1}{The Spotify Playlist Problem}{section.3.2}% 14
+\BOOKMARK [2][-]{subsection.3.2.2}{The Rental Pricing Problem}{section.3.2}% 15
+\BOOKMARK [0][-]{chapter.4}{Novel Algorithms}{}% 16
+\BOOKMARK [1][-]{section.4.1}{Introduction to the Novel Algorithms}{chapter.4}% 17
+\BOOKMARK [2][-]{subsection.4.1.1}{Farsighted and Myopic configuration}{section.4.1}% 18
+\BOOKMARK [1][-]{section.4.2}{Frequentist Algorithms}{chapter.4}% 19
+\BOOKMARK [2][-]{subsection.4.2.1}{PR-T-UCB \(Frequentist Baseline Algorithm\)}{section.4.2}% 20
+\BOOKMARK [2][-]{subsection.4.2.2}{PR-BW-UCB-P}{section.4.2}% 21
+\BOOKMARK [2][-]{subsection.4.2.3}{PR-NT-UCB-P}{section.4.2}% 22
+\BOOKMARK [1][-]{section.4.3}{Bayesian Algorithms}{chapter.4}% 23
+\BOOKMARK [2][-]{subsection.4.3.1}{PR-T-TS-P \(Bayesian Baseline Algorithm\)}{section.4.3}% 24
+\BOOKMARK [2][-]{subsection.4.3.2}{PR-T-TS-NP \(Bayesian Baseline Algorithm\)}{section.4.3}% 25
+\BOOKMARK [2][-]{subsection.4.3.3}{PR-BW-BayesUCB-P}{section.4.3}% 26
+\BOOKMARK [2][-]{subsection.4.3.4}{PR-BW-BayesUCB-NP}{section.4.3}% 27
+\BOOKMARK [0][-]{chapter.5}{Experimental Analysis}{}% 28
+\BOOKMARK [1][-]{section.5.1}{Synthetic Experiment Settings}{chapter.5}% 29
+\BOOKMARK [2][-]{subsection.5.1.1}{Synthetic A}{section.5.1}% 30
+\BOOKMARK [2][-]{subsection.5.1.2}{Synthetic B}{section.5.1}% 31
+\BOOKMARK [2][-]{subsection.5.1.3}{Synthetic C}{section.5.1}% 32
+\BOOKMARK [1][-]{section.5.2}{Results}{chapter.5}% 33
+\BOOKMARK [1][-]{section.5.3}{Observations}{chapter.5}% 34
+\BOOKMARK [0][-]{chapter.6}{Conclusions}{}% 35
+\BOOKMARK [0][-]{chapter*.33}{Bibliography}{}% 36

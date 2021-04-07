@@ -17,11 +17,11 @@ rcParams['axes.titlepad'] = 20
 plt.rcParams['mathtext.fontset'] = 'stix'
 plt.rcParams['font.family'] = 'STIXGeneral'
 
-#color_list = ["purple","violet","darkred","red","mediumblue","dodgerblue","darkorange","gold","darkgreen","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
+color_list = ["purple","violet","darkred","red","mediumblue","dodgerblue","darkorange","gold","darkgreen","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
 
 #spotify
 #color_list = ["purple","darkred","mediumblue","darkorange","darkgreen","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
-color_list = ['fuchsia', 'red', 'gold',  'darkorange', 'darkgreen', 'limegreen']
+#color_list = ['fuchsia', 'red', 'gold',  'darkorange', 'darkgreen', 'limegreen']
 
 #color_list = ["purple","violet","darkred","red","mediumblue","dodgerblue","darkorange","gold","darkgreen","limegreen","black","dimgray","purple","fuchsia","purple","fuchsia","purple","fuchsia"]
 
@@ -307,22 +307,23 @@ def compute_full_analytics_from_files(n_runs,time_horizon,Oracle_best_arm_value,
 
 
 
-#ln = ["PR-T-UCB-P_myopic","PR-T-UCB-P_farsighted","PR-BW-UCB-P_myopic","PR-BW-UCB-P_farsighted","PR-NT-UCB-P_myopic","PR-NT-UCB-P_farsighted","PR-T-TS_myopic","PR-T-TS_farsighted","PR-BW-BayesUCB-P_myopic","PR-BW-BayesUCB-P_farsighted"]
+ln = ["PR-T-UCB-P_myopic","PR-T-UCB-P_farsighted","PR-BW-UCB-P_myopic","PR-BW-UCB-P_farsighted","PR-NT-UCB-P_myopic","PR-NT-UCB-P_farsighted","PR-T-TS_myopic","PR-T-TS_farsighted","PR-BW-BayesUCB-P_myopic","PR-BW-BayesUCB-P_farsighted"]
 
 #spotify
-ln = ["PR-T-UCB-NP_myopic","PR-T-UCB-NP_farsighted","PR-BW-NP_myopic","PR-BW-NP_farsighted","PR-BW-BayesUCB-NP_myopic","PR-BW-BayesUCB-NP_farsighted"]
+#ln = ["PR-T-UCB-NP_myopic","PR-T-UCB-NP_farsighted","PR-BW-NP_myopic","PR-BW-NP_farsighted","PR-BW-BayesUCB-NP_myopic","PR-BW-BayesUCB-NP_farsighted"]
 
 avg_list = []
 std_list = []
-
+'''
 compute_full_analytics_from_files(n_runs=40,time_horizon=50000,Oracle_best_arm_value=530.1869158878505,learner_names=ln,experiment_name="affitti-def",title="Normalized Pseudo Regret Rental Scenario")
 
-'''
+
 compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=87.71428571450483,learner_names=ln,experiment_name="experiment_C_50",title="Pseudo Regret Synthetic C with Tmax = 50 ")
 compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=173.4285714285732,learner_names=ln,experiment_name="experiment_C_100",title="Pseudo Regret Synthetic C with Tmax = 100 ")
 compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=259.1428571428575,learner_names=ln,experiment_name="experiment_C_150",title="Pseudo Regret Synthetic C with Tmax = 150 ")
-compute_full_analytics_from_files(n_runs=20,time_horizon=20000,Oracle_best_arm_value=344.85714285714306,learner_names=ln,experiment_name="experiment_C_200",title="Pseudo Regret Synthetic C with Tmax = 200 ")
-
+'''
+compute_full_analytics_from_files(n_runs=1,time_horizon=100000,Oracle_best_arm_value=344.85714285714306,learner_names=ln,experiment_name="experiment_C_200",title="Pseudo Regret Synthetic C with Tmax = 200 ")
+'''
 
 
 

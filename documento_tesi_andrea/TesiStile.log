@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.10)  6 APR 2021 01:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.2.10)  7 APR 2021 06:16
 entering extended mode
 **./TesiStile.tex
 (TesiStile.tex
@@ -1026,7 +1026,7 @@ enefit from \pgfplotsset{compat=1.17} (current compat level: 1.15).
 \openout2 = `contents/frontespizio.aux'.
 
 (contents/frontespizio.tex
-<./images/logopm.pdf, id=146, 578.20877pt x 578.08434pt>
+<./images/logopm.pdf, id=150, 578.20877pt x 578.08434pt>
 File: ./images/logopm.pdf Graphic file (type pdf)
 <use ./images/logopm.pdf>
 Package pdftex.def Info: ./images/logopm.pdf  used on input line 13.
@@ -1192,9 +1192,9 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 [6]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 35.
+put line 36.
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 3
-5.
+6.
  (C:\Users\agost\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
@@ -1238,10 +1238,14 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 [10]
 
-Package natbib Warning: Citation `Anderson1964' on page 11 undefined on input l
-ine 129.
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-)
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[11])
 
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1250,26 +1254,17 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[11]
+[12]
 \openout2 = `contents/formalizzazione.aux'.
 
  (contents/formalizzazione.tex
-
-Package fancyhdr Warning: \headheight is too small (12.3pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
-
-[12
+Chapter 3.
+[13
 
 
 
 
 ]
-Chapter 3.
-[13]
 LaTeX Font Info:    Trying to load font information for U+dsrom on input line 1
 8.
 
@@ -1600,12 +1595,12 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
 [40]
-<./images/chart (1)-1.png, id=651, 1723.43875pt x 1505.625pt>
+<./images/chart (1)-1.png, id=718, 1723.43875pt x 1505.625pt>
 File: ./images/chart (1)-1.png Graphic file (type png)
 <use ./images/chart (1)-1.png>
 Package pdftex.def Info: ./images/chart (1)-1.png  used on input line 84.
 (pdftex.def)             Requested size: 178.11409pt x 155.60262pt.
-<./images/chart (2)-1.png, id=652, 1723.43875pt x 1505.625pt>
+<./images/chart (2)-1.png, id=719, 1723.43875pt x 1505.625pt>
 File: ./images/chart (2)-1.png Graphic file (type png)
 <use ./images/chart (2)-1.png>
 Package pdftex.def Info: ./images/chart (2)-1.png  used on input line 84.
@@ -1620,7 +1615,7 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
 [41 <./images/chart (1)-1.png> <./images/chart (2)-1.png>]
-<./images/ANALYTICS/experiment_A ANALYTICS.png, id=661, 689.2149pt x 378.6948pt
+<./images/ANALYTICS/experiment_A ANALYTICS.png, id=728, 689.2149pt x 378.6948pt
 >
 File: ./images/ANALYTICS/experiment_A ANALYTICS.png Graphic file (type png)
 <use ./images/ANALYTICS/experiment_A ANALYTICS.png>
@@ -1632,7 +1627,7 @@ Overfull \hbox (95.24408pt too wide) in paragraph at lines 123--125
  [][] 
  []
 
-<./images/ANALYTICS/experiment_B ANALYTICS.png, id=663, 684.156pt x 378.6948pt>
+<./images/ANALYTICS/experiment_B ANALYTICS.png, id=730, 684.156pt x 378.6948pt>
 
 File: ./images/ANALYTICS/experiment_B ANALYTICS.png Graphic file (type png)
 <use ./images/ANALYTICS/experiment_B ANALYTICS.png>
@@ -1657,14 +1652,14 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
 [42 <./images/ANALYTICS/experiment_A ANALYTICS.png>]
-<./images/ANALYTICS/experiment_C_50 ANALYTICS.png, id=670, 684.156pt x 378.8152
+<./images/ANALYTICS/experiment_C_50 ANALYTICS.png, id=737, 684.156pt x 378.8152
 5pt>
 File: ./images/ANALYTICS/experiment_C_50 ANALYTICS.png Graphic file (type png)
 <use ./images/ANALYTICS/experiment_C_50 ANALYTICS.png>
 Package pdftex.def Info: ./images/ANALYTICS/experiment_C_50 ANALYTICS.png  used
  on input line 138.
 (pdftex.def)             Requested size: 270.30118pt x 149.66795pt.
-<./images/ANALYTICS/experiment_C_100 ANALYTICS.png, id=671, 689.09445pt x 378.6
+<./images/ANALYTICS/experiment_C_100 ANALYTICS.png, id=738, 689.09445pt x 378.6
 948pt>
 File: ./images/ANALYTICS/experiment_C_100 ANALYTICS.png Graphic file (type png)
 
@@ -1672,7 +1667,7 @@ File: ./images/ANALYTICS/experiment_C_100 ANALYTICS.png Graphic file (type png)
 Package pdftex.def Info: ./images/ANALYTICS/experiment_C_100 ANALYTICS.png  use
 d on input line 138.
 (pdftex.def)             Requested size: 270.30118pt x 148.55135pt.
-<./images/ANALYTICS/experiment_C_150 ANALYTICS.png, id=672, 689.2149pt x 378.81
+<./images/ANALYTICS/experiment_C_150 ANALYTICS.png, id=739, 689.2149pt x 378.81
 525pt>
 File: ./images/ANALYTICS/experiment_C_150 ANALYTICS.png Graphic file (type png)
 
@@ -1680,7 +1675,7 @@ File: ./images/ANALYTICS/experiment_C_150 ANALYTICS.png Graphic file (type png)
 Package pdftex.def Info: ./images/ANALYTICS/experiment_C_150 ANALYTICS.png  use
 d on input line 139.
 (pdftex.def)             Requested size: 270.30118pt x 148.5697pt.
-<./images/ANALYTICS/experiment_C_200 ANALYTICS.png, id=673, 689.2149pt x 378.69
+<./images/ANALYTICS/experiment_C_200 ANALYTICS.png, id=740, 689.2149pt x 378.69
 48pt>
 File: ./images/ANALYTICS/experiment_C_200 ANALYTICS.png Graphic file (type png)
 
@@ -1715,7 +1710,7 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 [44 <./images/ANALYTICS/experiment_C_50 ANALYTICS.png> <./images/ANALYTICS/expe
 riment_C_100 ANALYTICS.png> <./images/ANALYTICS/experiment_C_150 ANALYTICS.png>
  <./images/ANALYTICS/experiment_C_200 ANALYTICS.png>]
-<./images/ANALYTICS/experiment_spotify_def ANALYTICS.png, id=688, 674.0382pt x 
+<./images/ANALYTICS/experiment_spotify_def ANALYTICS.png, id=755, 674.0382pt x 
 378.57436pt>
 File: ./images/ANALYTICS/experiment_spotify_def ANALYTICS.png Graphic file (typ
 e png)
@@ -1728,7 +1723,7 @@ Overfull \hbox (95.24408pt too wide) in paragraph at lines 148--150
  [][] 
  []
 
-<./images/ANALYTICS/affitti-def ANALYTICS.png, id=689, 678.8562pt x 378.57436pt
+<./images/ANALYTICS/affitti-def ANALYTICS.png, id=756, 678.8562pt x 378.57436pt
 >
 File: ./images/ANALYTICS/affitti-def ANALYTICS.png Graphic file (type png)
 <use ./images/ANALYTICS/affitti-def ANALYTICS.png>
@@ -1790,7 +1785,10 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 ]
 Chapter 6.
-) [49] (TesiStile.bbl
+
+Underfull \vbox (badness 1742) has occurred while \output is active []
+
+ [49]
 
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1799,19 +1797,48 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[50
+[50])
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[51] (TesiStile.bbl
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[52
 
 
 
-]
-Underfull \hbox (badness 4531) in paragraph at lines 68--74
+] [53]
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[54]
+Underfull \hbox (badness 4531) in paragraph at lines 186--192
 []\T1/cmr/m/n/10.95 H. Rob-bins.  Some as-pects of the se-quen-tial de-sign of 
 ex-per-i-
  []
 
-[51])
 
-Package natbib Warning: There were undefined citations.
+Underfull \hbox (badness 1888) in paragraph at lines 195--198
+\T1/cmr/m/n/10.95 pric-ing with un-known time-discounted val-u-a-tions.  \T1/cm
+r/m/it/10.95 arXiv preprint
+ []
 
 
 Package fancyhdr Warning: \headheight is too small (12.3pt): 
@@ -1821,19 +1848,28 @@ Package fancyhdr Warning: \headheight is too small (12.3pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
 
-[52] (TesiStile.aux (contents/frontespizio.aux) (contents/sommario.aux)
+[55])
+
+Package fancyhdr Warning: \headheight is too small (12.3pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.29999pt}.
+
+[56] (TesiStile.aux (contents/frontespizio.aux) (contents/sommario.aux)
 (contents/abstract.aux) (contents/capitolo1-introduzione.aux)
 (contents/Preliminaries.aux) (contents/formalizzazione.aux)
 (contents/algorithms.aux) (contents/ExperimentalAnalysis.aux)
 (contents/capitolo6-conclusions.aux))
 Package rerunfilecheck Info: File `TesiStile.out' has not changed.
-(rerunfilecheck)             Checksum: 4EDFA630DD32032B1505C7218025C9AD;2370.
+(rerunfilecheck)             Checksum: 88F0C4D9C975689F8C9F404760A9BDAD;2430.
  ) 
 Here is how much of TeX's memory you used:
- 31802 strings out of 479618
- 749667 string characters out of 2865026
+ 31899 strings out of 479618
+ 751975 string characters out of 2865026
  1139508 words of memory out of 3000000
- 48076 multiletter control sequences out of 15000+200000
+ 48146 multiletter control sequences out of 15000+200000
  441455 words of font info for 126 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  87i,17n,89p,2290b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1886,9 +1922,9 @@ s/MiKTeX/fonts/type1/public/cm-super/sfti1000.pfb><C:/Users/agost/AppData/Local
 /Programs/MiKTeX/fonts/type1/public/cm-super/sfti1095.pfb><C:/Users/agost/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sftt1095.pfb><C:/Users/ago
 st/AppData/Local/Programs/MiKTeX/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on TesiStile.pdf (64 pages, 6299292 bytes).
+Output written on TesiStile.pdf (68 pages, 6331649 bytes).
 PDF statistics:
- 912 PDF objects out of 1000 (max. 8388607)
- 185 named destinations out of 1000 (max. 500000)
- 348 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1013 PDF objects out of 1200 (max. 8388607)
+ 212 named destinations out of 1000 (max. 500000)
+ 356 words of extra memory for PDF output out of 10000 (max. 10000000)
 

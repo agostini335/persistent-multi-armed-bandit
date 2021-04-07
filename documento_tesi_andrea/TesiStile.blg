@@ -23,7 +23,14 @@ Reallocating 'name_of_file' (item size: 1) to 9 items.
 The style file: abbrvnat.bst
 Reallocating 'name_of_file' (item size: 1) to 13 items.
 Database file #1: bibliografia.bib
-Warning--I didn't find a database entry for "Anderson1964"
+Repeated entry---line 343 of file bibliografia.bib
+ : @article{trovo2018improving
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 353 of file bibliografia.bib
+ : @inproceedings{nuara2018combinatorial
+ :                                      ,
+I'm skipping whatever remains of this entry
 Too many commas in name 1 of "Bobadilla Sancho, Jesus Ortega Requena, Fernando Hernando Esteban, Antonio Bernal Bermúdez, Jesús" for entry recsys2
 while executing---line 1347 of file abbrvnat.bst
 Too many commas in name 1 of "Bobadilla Sancho, Jesus Ortega Requena, Fernando Hernando Esteban, Antonio Bernal Bermúdez, Jesús" for entry recsys2
@@ -41,45 +48,46 @@ Too many commas in name 1 of "Bobadilla Sancho, Jesus Ortega Requena, Fernando H
 while executing---line 1429 of file abbrvnat.bst
 Too many commas in name 1 of "Bobadilla Sancho, Jesus Ortega Requena, Fernando Hernando Esteban, Antonio Bernal Bermúdez, Jesús" for entry recsys2
 while executing---line 1429 of file abbrvnat.bst
-You've used 13 entries,
+Warning--can't use both volume and number fields in nuara2018combinatorial
+You've used 36 entries,
             2773 wiz_defined-function locations,
-            692 strings with 7212 characters,
-and the built_in function-call counts, 6012 in all, are:
-= -- 557
-> -- 272
-< -- 13
-+ -- 94
-- -- 81
-* -- 441
-:= -- 895
-add.period$ -- 46
-call.type$ -- 13
-change.case$ -- 64
-chr.to.int$ -- 13
-cite$ -- 27
-duplicate$ -- 310
-empty$ -- 531
-format.name$ -- 100
-if$ -- 1302
-int.to.chr$ -- 1
+            812 strings with 11856 characters,
+and the built_in function-call counts, 19341 in all, are:
+= -- 1744
+> -- 1166
+< -- 26
++ -- 393
+- -- 356
+* -- 1550
+:= -- 2874
+add.period$ -- 123
+call.type$ -- 36
+change.case$ -- 223
+chr.to.int$ -- 35
+cite$ -- 74
+duplicate$ -- 904
+empty$ -- 1533
+format.name$ -- 400
+if$ -- 4157
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 15
-newline$ -- 77
-num.names$ -- 52
-pop$ -- 140
+missing$ -- 37
+newline$ -- 192
+num.names$ -- 146
+pop$ -- 483
 preamble$ -- 1
-purify$ -- 53
+purify$ -- 189
 quote$ -- 0
-skip$ -- 236
+skip$ -- 721
 stack$ -- 0
-substring$ -- 243
-swap$ -- 54
-text.length$ -- 5
+substring$ -- 739
+swap$ -- 184
+text.length$ -- 16
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 133
-warning$ -- 1
-while$ -- 57
+type$ -- 386
+warning$ -- 2
+while$ -- 164
 width$ -- 0
-write$ -- 184
-(There were 8 error messages)
+write$ -- 484
+(There were 10 error messages)

@@ -6,6 +6,7 @@
 \contentsline {section}{\numberline {2.1}The Exploration-Exploitation Dilemma}{5}{section.2.1}%
 \contentsline {section}{\numberline {2.2}The Multi-Armed Bandit Problem}{6}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Introducing Persistent Rewards}{10}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Related works}{11}{section.2.4}%
 \contentsline {chapter}{\numberline {3}Problem Formulation}{13}{chapter.3}%
 \contentsline {section}{\numberline {3.1}The MAB-PR Problem}{13}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1} Performance measures}{17}{subsection.3.1.1}%
@@ -17,13 +18,13 @@
 \contentsline {subsection}{\numberline {4.1.1}Farsighted and Myopic configuration}{24}{subsection.4.1.1}%
 \contentsline {section}{\numberline {4.2}Frequentist Algorithms}{25}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}PR-T-UCB (Frequentist Baseline Algorithm)}{26}{subsection.4.2.1}%
-\contentsline {subsubsection}{}{27}{section*.18}%
+\contentsline {subsubsection}{}{27}{section*.17}%
 \contentsline {subsection}{\numberline {4.2.2}PR-BW-UCB-P}{27}{subsection.4.2.2}%
-\contentsline {subsubsection}{PR-BW-UCB-P Theoretical Analysis}{28}{section*.19}%
-\contentsline {paragraph}{Proof of Theorem \ref {t_bw}}{29}{section*.20}%
+\contentsline {subsubsection}{PR-BW-UCB-P Theoretical Analysis}{28}{section*.18}%
+\contentsline {paragraph}{Proof of Theorem \ref {t_bw}}{29}{section*.19}%
 \contentsline {subsection}{\numberline {4.2.3}PR-NT-UCB-P}{31}{subsection.4.2.3}%
-\contentsline {subsubsection}{PR-NT-UCB-P Theoretical Analysis}{32}{section*.21}%
-\contentsline {paragraph}{Proof of Theorem \ref {t_NT}}{32}{section*.22}%
+\contentsline {subsubsection}{PR-NT-UCB-P Theoretical Analysis}{32}{section*.20}%
+\contentsline {paragraph}{Proof of Theorem \ref {t_NT}}{32}{section*.21}%
 \contentsline {section}{\numberline {4.3}Bayesian Algorithms}{34}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}PR-T-TS-P (Bayesian Baseline Algorithm)}{34}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}PR-T-TS-NP (Bayesian Baseline Algorithm)}{35}{subsection.4.3.2}%
@@ -37,4 +38,4 @@
 \contentsline {section}{\numberline {5.2}Results}{42}{section.5.2}%
 \contentsline {section}{\numberline {5.3}Observations}{46}{section.5.3}%
 \contentsline {chapter}{\numberline {6}Conclusions}{49}{chapter.6}%
-\contentsline {chapter}{Bibliography}{51}{chapter*.34}%
+\contentsline {chapter}{Bibliography}{53}{chapter*.33}%
